@@ -25,5 +25,15 @@ Este proceso se repite hasta que no queden peces o anzuelos, o se decida continu
 ## Arte
 ### Historia
 ### Estética
+Fishing Legends utilizará una estética sencilla y amigable acorde con el tono del juego. Los modelos 3D se representarán a través de formas geométricas sencillas y colores planos, utilizando la técnica de cell shading para el sombreado. A la hora de realizar los modelos se tendrá en cuenta que el juego utiliza en mayor medida la perspectiva cenital, por lo que se deben poder distinguir desde arriba.
+El diseño de los peces no será realista (¿contarán con nombres propios?), pero estarán inspirados en peces reales y tendrán variaciones de color. 
+Los peces estarán clasificados según su tamaño y rareza:
+- Peces pequeños (Jurel, Lubina, pez payaso?)
+- Peces medianos (Dorada, Gallo?)
+- Peces grandes (Atún, Pez espada, Tiburón?)
+- Otros (Pulpo, calamar, medusa, estrella de mar?)
+- Enemigo/s (Leviatán, Kraken, un pez muy grande?): Solamente aparecerán en caso de que intercepten la ruta de navegación.
+Cada categoría utilizará el mismo modelo debajo del agua, consistente de una sombra en la que no se podrá distinguir la especie concreta de pez.
+
 ### Música y Sonido
 ## Redes Sociales
