@@ -33,6 +33,7 @@ Los peces estarán clasificados según su tamaño y rareza:
 - Peces grandes (Atún, Pez espada, Tiburón?)
 - Otros (Pulpo, calamar, medusa, estrella de mar?)
 - Enemigo/s (Leviatán, Kraken, un pez muy grande?): Solamente aparecerán en caso de que intercepten la ruta de navegación.
+
 Cada categoría utilizará el mismo modelo debajo del agua, consistente de una sombra en la que no se podrá distinguir la especie concreta de pez.
 
 ### Música y Sonido
