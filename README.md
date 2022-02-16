@@ -37,4 +37,38 @@ Los peces estarán clasificados según su tamaño y rareza:
 Cada categoría utilizará el mismo modelo debajo del agua, consistente de una sombra en la que no se podrá distinguir la especie concreta de pez.
 
 ### Música y Sonido
+Música
+- Música del Menú: música tranquila que transmita sensación de bienvenida
+- Música de selección de ruta: música de aventura marítima
+- Música de Pesca: música de ambiente con oleaje y gaviotas
+- Música de Juego Rítmico: Percusión sencilla con la que distinguir el ritmo con facilidad.
+
+Sonido
+Menú:
+- Pulsar un botón
+- Cancelar/Volver atrás
+- Iniciar una partida
+
+Ruta marítima
+- Pintar una casilla
+- Alcanzar una zona de pesca
+- Alcanzar un obstáculo/enemigo(?)
+- Llegar al destino
+
+Pesca
+- Cargar el lanzamiento de la caña
+- Lanzar el anzuelo
+- Impacto del anzuelo con el agua
+- Impacto de cebo con el agua
+- Pez tocando el anzuelo
+- Pez mordiendo el anzuelo
+- Pez peleando con el anzuelo
+- Pulsar en el momento adecuado en el juego de ritmo
+- Pulsar en el momento perfecto en el juego de ritmo
+- Pulsar en el momento equivocado en el juego de ritmo
+- Recoger el anzuelo sin pez
+- Recoger el anzuelo con pez
+- Recompensa al capturar un pez
+- Derrota al romper un anzuelo
+- Volver a la ruta
 ## Redes Sociales
