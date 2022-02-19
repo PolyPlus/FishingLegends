@@ -22,6 +22,19 @@ Este proceso se repite hasta que no queden peces o anzuelos, o se decida continu
 ### Enemigos y obstáculos
 
 ## Interfaz
+
+### Pantallas y bocetos
+La interfaz se divide en interfaz de juego y menús
+  - Interfaz de Juego
+    - Indicador de cebos y anzuelos : Indicadores para indicar al jugador dentro de la zona de juego del numero de cebos y anzuelos del que dispondrá antes de realizar la ruta.
+    - Barra de combustible o resistencia : Indicador en forma de barra , para indicar cuanto combustible nos queda para pintar la ruta, y asu vez que indicará cuanto trayecto
+      queda por recorrer.   
+  - Menús
+    - Tienda
+    - Inicio de sesión
+    - Opciones
+        
+### Diagramas de flujo
 ## Arte
 ### Historia
 ### Estética
