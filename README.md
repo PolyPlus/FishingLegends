@@ -6,20 +6,34 @@ Fishing Legends es un juego de pesca arcade rítmico en el que planificas tu rut
 Con Fishing Legends se busca ampliar el clásico minijuego de pesca con mecánicas que añaden planificación previa y momentos de alta intensidad. El objetivo principal es crear un bucle de juego sencillo y accesible para un público casual, en el que cada partida es distinta debido a los eventos aleatorios en el mapa. Además, se ofrecerá una tabla de puntuaciones para los jugadores y las jugadoras que busquen una experiencia más competitiva.
 
 ## Mecánicas de Juego
-Cada partida comienza en un mapa cuadriculado en el que se escoge la ruta de navegación. La distancia que se puede navegar es limitada y la ruta debe comenzar y terminar en el muelle. El mapa está compuesto principalmente por casillas de agua, por las que se puede navegar, y casillas de tierra, que hay que rodear. Además, en las casillas de agua se distribuirán de forma aleatoria zonas de pesca y zonas rocosas. Dependiendo del número y de la calidad de los peces capturados se obtendrá una puntuación al final de la ruta y dinero con el que comprar recursos o mejorar el barco para futuras expediciones. 
+Cada partida comienza escogiendo la ruta de navegación. La distancia que se puede navegar es limitada y la ruta debe comenzar y terminar en el muelle. El objetivo será atravesar zonas de pesca y capturar al mayor número de peces posible. Al terminar la ruta, se obtendrá una puntuación y monedas, con las que comprar recursos o mejorar el barco para futuras expediciones.
 
-### Pesca
-Al atravesar zonas de captura se pasará a la pantalla de pesca compuesta por las siguientes fases:
-1. Observación: En el fondo del mar se puede distinguir la posición de peces de distinto tamaño a partir de su silueta. Se puede lanzar cebo al agua para que aparezcan más peces.
-2. Lanzamiento de caña: Al pulsar en la pantalla, el personaje se prepara para lanzar la caña. Manteniendo pulsado y arrastrando hacia atrás, se escoge la dirección de lanzamiento. La potencia del lanzamiento dependerá del tiempo que se mantenga pulsado.
-3. Espera: Una vez lanzado el anzuelo se puede tirar de la caña pulsando en la pantalla o esperar a que pique un pez. Los peces se mueven de forma aleatoria hasta que el anzuelo entra en su cono de visión. Una vez un pez detecta el anzuelo se dirige hacia él. El pez tocará el anzuelo un número aleatorio de veces hasta morderlo. Si se tira de la caña antes de que muerda el anzuelo, el pez escapará. Si se tira de la caña cuando lo muerde comenzará la pesca rítmica. En caso de no tirar de la caña, el pez se llevará el anzuelo
-4. Pesca rítmica: en la parte superior de la pantalla aparecerá una barra con un anzuelo en el centro. Desde la izquierda o la derecha de la barra aparecerán uno o más peces dependiendo del tamaño del pez que se está pescando. Para pescar al pez es necesario pulsar la pantalla en el momento en el que el pez se sitúe sobre el anzuelo. En caso de no pulsar en el momento preciso el pez escapará.
-5. Combo: Una vez superado el juego de ritmo el pez peleará con el anzuelo. En este momento, se puede esperar a que muerda otro pez y comenzar una nueva pesca rítmica. En este caso, el número de peces que aparecerán en la barra superior aumentará con el número de peces que esté mordiendo el anzuelo. En caso de fallar durante el combo, se perderán a todos los peces. Los peces capturados durante un combo recibirán un multiplicador de puntuación que aumenta con el número de capturas consecutivas.
-6. Recogida: Si se pulsa la pantalla mientras uno o más peces pelean con el anzuelo se recogerán los peces y terminará el combo. En este momento, se muestra una breve animación con los peces obtenidos y a continuación se vuelve a la fase de observación.
+### Planificación de ruta 
+Al comenzar una expedición, se dibuja el recorrido en un mapa dividido en casillas cuadriculadas. El mapa está compuesto principalmente por casillas de agua, por las que se puede navegar, y casillas de tierra, que hay que rodear. Además, en las casillas de agua se distribuirán de forma aleatoria zonas de pesca y obstáculos.
 
-Este proceso se repite hasta que no queden peces o anzuelos, o se decida continuar con la ruta, volviendo a la pantalla del mapa. Como se mencionó en la fase de observación, se puede utilizar cebo para que aparezcan más peces y continuar la pesca, pero se trata de un recurso limitado. 
+### Zonas de Pesca
+Al atravesar zonas de pesca se pasará a una pantalla en la que se verá al personaje en su bote en la parte inferior y la silueta de peces de distinto tamaño bajo el agua. La pesca está compuesta por las siguientes fases:
+- Observación: Desde la superficie, se puede distinguir la posición y el número de peces a partir de su silueta. Se puede lanzar cebo al agua para que aparezcan más peces.
+Lanzamiento de caña: Al pulsar en la pantalla, el personaje se prepara para lanzar la caña. Manteniendo pulsado y arrastrando hacia atrás, se escoge la dirección de lanzamiento. La potencia del lanzamiento dependerá del tiempo que se mantenga pulsado.
+- Espera: Una vez lanzado el anzuelo se puede tirar de la caña pulsando en la pantalla o esperar a que pique un pez. Los peces se mueven de forma aleatoria hasta que el anzuelo entra en su cono de visión. Una vez un pez detecta el anzuelo se dirige hacia él. El pez tocará el anzuelo un número aleatorio de veces hasta morderlo. Si se tira de la caña antes de que muerda el anzuelo, el pez escapará. Si se tira de la caña cuando lo muerde comenzará la pesca rítmica. En caso de no tirar de la caña, el pez se llevará el anzuelo
+- Pesca rítmica: en la parte superior de la pantalla aparecerá una barra con un anzuelo en el centro. Desde la izquierda o la derecha de la barra aparecerán uno o más peces dependiendo del tamaño del pez que se está pescando. Para pescar al pez es necesario pulsar la pantalla en el momento en el que el pez se sitúe sobre el anzuelo. En caso de no pulsar en el momento preciso el pez escapará.
+- Combo: Una vez superado el juego de ritmo el pez peleará con el anzuelo. En este momento, se puede esperar a que muerda otro pez y comenzar una nueva pesca rítmica. En este caso, el número de peces que aparecerán en la barra superior aumentará con el número de peces que esté mordiendo el anzuelo. En caso de fallar durante el combo, se perderán a todos los peces. Los peces capturados durante un combo recibirán un multiplicador de puntuación que aumenta con el número de capturas consecutivas.
+- Recogida: Si se pulsa la pantalla mientras uno o más peces pelean con el anzuelo se recogerán los peces y terminará el combo. En este momento, se muestra una breve animación con los peces obtenidos y a continuación se vuelve a la fase de observación.
 
-### Enemigos y obstáculos
+Este proceso se repite hasta que no queden peces o anzuelos, o se decida continuar con la ruta, volviendo a la pantalla del mapa. Como se mencionó en la fase de observación, se puede utilizar cebo para que aparezcan más peces y continuar la pesca, pero se trata de un recurso limitado.
+
+### Tesoros
+En las casillas de tierra situadas en la orilla podrán aparecer tesoros de forma aleatoria. Se recogerán automáticamente al pasar por la casilla de al lado y podrán contener cebos, anzuelos o monedas. Los tesoros recogidos incrementarán la puntuación final.
+
+### Criaturas Marinas
+Hay una probabilidad de que aparezca una criatura marina en una casilla de agua. La criatura se representará como una silueta grande bajo el agua y se moverá de forma aleatoria a otras casillas de agua durante la ruta. Si el bote pasa por una casilla con una criatura marina, comenzará un enfrentamiento con la criatura.
+
+- Lanzamiento de caña: se lanzará la caña al igual que en las zonas de pesca. En esta ocasión aparecerá una silueta de gran tamaño que morderá el cebo con tanta fuerza que arrastrará el bote
+- Evitar obstáculos: Mientras el bote es arrastrado de izquierda a derecha, se podrá mover verticalmente manteniendo pulsado en la pantalla y moviendo el cursor arriba y abajo. Aparecerán rocas desde la parte derecha de la pantalla que se deberán evitar.
+- Pesca rítmica: entre las secciones en las que hay que evitar obstáculos habrá que superar un juego de ritmo al igual que en las zonas de pesca, pero más complicado.
+
+Tras superar 3 pescas rítmicas se capturará a la criatura marina y se continuará la ruta. En caso de perder todos los anzuelos, se terminará la ruta.
+
 
 ## Interfaz
 
@@ -44,8 +58,7 @@ Los peces estarán clasificados según su tamaño y rareza:
 - Peces pequeños 
 - Peces medianos 
 - Peces grandes 
-- Otros
-- Criaturas marinas: Solamente aparecerán en caso de que intercepten la ruta de navegación.
+- Criaturas marinas
 
 Cada categoría utilizará el mismo modelo debajo del agua, consistente de una sombra en la que no se podrá distinguir la especie concreta de pez.
 
@@ -84,4 +97,14 @@ Pesca
 - Recompensa al capturar un pez
 - Derrota al romper un anzuelo
 - Volver a la ruta
+
+
 ## Redes Sociales
+Portfolio: 
+https://polyplus.github.io/
+
+Twitter:
+https://twitter.com/PolyplusStudios
+
+Youtube: 
+https://www.youtube.com/channel/UCORDpONBjQlp1iaylG8L9uw
