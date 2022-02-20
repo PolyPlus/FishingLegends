@@ -39,7 +39,7 @@ La interfaz se divide en interfaz de juego y menús
 ### Historia
 ### Estética
 Fishing Legends utilizará una estética sencilla y amigable acorde con el tono del juego. Los modelos 3D se representarán a través de formas geométricas sencillas y colores planos, utilizando la técnica de cell shading para el sombreado. A la hora de realizar los modelos se tendrá en cuenta que el juego utiliza en mayor medida la perspectiva cenital, por lo que se deben poder distinguir desde arriba.
-El diseño de los peces no será realista (¿contarán con nombres propios?), pero estarán inspirados en peces reales y tendrán variaciones de color. 
+El diseño de los peces no será realista, pero estarán inspirados en peces reales y tendrán variaciones de color. 
 Los peces estarán clasificados según su tamaño y rareza:
 - Peces pequeños 
 - Peces medianos 
