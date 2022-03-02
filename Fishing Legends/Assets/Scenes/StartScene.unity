@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 29006605}
   - component: {fileID: 29006604}
   - component: {fileID: 29006603}
-  - component: {fileID: 29006602}
   m_Layer: 5
   m_Name: SignIn Canvas
   m_TagString: Untagged
@@ -143,21 +142,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &29006602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 29006601}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca4072eaf86d9cf45a307c44ac7f89bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  username: {fileID: 1640974405}
-  password: {fileID: 622541750}
-  LogInCanvas: {fileID: 1011574475}
 --- !u!114 &29006603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,7 +193,7 @@ Canvas:
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 546591407}
-  m_PlaneDistance: 110
+  m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -327,8 +311,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1011574477}
-        m_TargetAssemblyTypeName: LogInPageBehaviour, Assembly-CSharp
+      - m_Target: {fileID: 1439032785}
+        m_TargetAssemblyTypeName: PanelsBehaviour, Assembly-CSharp
         m_MethodName: OnClickLogIn
         m_Mode: 1
         m_Arguments:
@@ -359,7 +343,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: be670143c6887054786b1d06076658cc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dd2f7eb91af74984d82e732815904a6b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1116,7 +1100,7 @@ RectTransform:
   m_GameObject: {fileID: 575033932}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3333175, y: 1.3333175, z: 1.3333175}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 761853568}
   m_Father: {fileID: 2044767362}
@@ -1171,9 +1155,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1018946108}
-        m_TargetAssemblyTypeName: LogInPageBehaviour, Assembly-CSharp
-        m_MethodName: OnClickContact
+      - m_Target: {fileID: 1439032785}
+        m_TargetAssemblyTypeName: PanelsBehaviour, Assembly-CSharp
+        m_MethodName: OnClickGoBack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1203,7 +1187,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: be670143c6887054786b1d06076658cc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dd2f7eb91af74984d82e732815904a6b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1942,8 +1926,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1011574477}
-        m_TargetAssemblyTypeName: LogInPageBehaviour, Assembly-CSharp
+      - m_Target: {fileID: 1439032785}
+        m_TargetAssemblyTypeName: PanelsBehaviour, Assembly-CSharp
         m_MethodName: OnClickSignIn
         m_Mode: 1
         m_Arguments:
@@ -1974,7 +1958,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: be670143c6887054786b1d06076658cc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dd2f7eb91af74984d82e732815904a6b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2119,7 +2103,6 @@ GameObject:
   - component: {fileID: 1011574475}
   - component: {fileID: 1011574474}
   - component: {fileID: 1011574473}
-  - component: {fileID: 1011574477}
   m_Layer: 5
   m_Name: LogIn Canvas
   m_TagString: Untagged
@@ -2215,21 +2198,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1011574477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1011574472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6672db8bd333d642a5d1d7d4ac82ae3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  username: {fileID: 416443949}
-  password: {fileID: 772436328}
-  SignInCanvas: {fileID: 29006605}
 --- !u!1 &1018946107
 GameObject:
   m_ObjectHideFlags: 0
@@ -2242,7 +2210,6 @@ GameObject:
   - component: {fileID: 1018946111}
   - component: {fileID: 1018946110}
   - component: {fileID: 1018946109}
-  - component: {fileID: 1018946108}
   m_Layer: 5
   m_Name: Configuration Cavas
   m_TagString: Untagged
@@ -2250,18 +2217,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1018946108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1018946107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2129a6b68e35cd4ba2fe8cf37a64a60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1018946109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2313,7 +2268,7 @@ Canvas:
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 546591407}
-  m_PlaneDistance: 80
+  m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -2430,9 +2385,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1018946108}
-        m_TargetAssemblyTypeName: LogInPageBehaviour, Assembly-CSharp
-        m_MethodName: OnClickLogIn
+      - m_Target: {fileID: 1439032785}
+        m_TargetAssemblyTypeName: PanelsBehaviour, Assembly-CSharp
+        m_MethodName: OnClickContact
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2462,7 +2417,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: be670143c6887054786b1d06076658cc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dd2f7eb91af74984d82e732815904a6b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2770,7 +2725,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9eaf46e4c9ae0284f8b846a1f4966147, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f00a5811cbab15c48a3b62abd6a1778c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2950,8 +2905,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 29006602}
-        m_TargetAssemblyTypeName: SignInPageBehaviour, Assembly-CSharp
+      - m_Target: {fileID: 1439032785}
+        m_TargetAssemblyTypeName: PanelsBehaviour, Assembly-CSharp
         m_MethodName: OnClickGoBack
         m_Mode: 1
         m_Arguments:
@@ -2994,7 +2949,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: be670143c6887054786b1d06076658cc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dd2f7eb91af74984d82e732815904a6b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3401,6 +3356,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1368887576}
   m_CullTransparentMesh: 1
+--- !u!1 &1439032784
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1439032786}
+  - component: {fileID: 1439032785}
+  m_Layer: 0
+  m_Name: PanelsFlow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1439032785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439032784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96218677d14739443ae1e05180888338, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LogInCanvas: {fileID: 1011574475}
+  SignInCanvas: {fileID: 29006605}
+  ConfigCanvas: {fileID: 1018946111}
+  SoundConfigCanvas: {fileID: 2044767361}
+  usernameL: {fileID: 416443949}
+  passwordL: {fileID: 772436328}
+  usernameS: {fileID: 1640974405}
+  passwordS: {fileID: 622541750}
+--- !u!4 &1439032786
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439032784}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.9300418, y: 5.379298, z: 107.64261}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1510889548
 GameObject:
   m_ObjectHideFlags: 0
@@ -3702,8 +3708,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1011574477}
-        m_TargetAssemblyTypeName: LogInPageBehaviour, Assembly-CSharp
+      - m_Target: {fileID: 1439032785}
+        m_TargetAssemblyTypeName: PanelsBehaviour, Assembly-CSharp
         m_MethodName: OnClickConfiguration
         m_Mode: 1
         m_Arguments:
@@ -3734,7 +3740,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: be670143c6887054786b1d06076658cc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dd2f7eb91af74984d82e732815904a6b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4007,9 +4013,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1018946108}
-        m_TargetAssemblyTypeName: LogInPageBehaviour, Assembly-CSharp
-        m_MethodName: OnClickContact
+      - m_Target: {fileID: 1439032785}
+        m_TargetAssemblyTypeName: PanelsBehaviour, Assembly-CSharp
+        m_MethodName: OnClickGoBack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4039,7 +4045,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: be670143c6887054786b1d06076658cc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dd2f7eb91af74984d82e732815904a6b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4388,8 +4394,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 29006602}
-        m_TargetAssemblyTypeName: SignInPageBehaviour, Assembly-CSharp
+      - m_Target: {fileID: 1439032785}
+        m_TargetAssemblyTypeName: PanelsBehaviour, Assembly-CSharp
         m_MethodName: OnClickSignIn
         m_Mode: 1
         m_Arguments:
@@ -4420,7 +4426,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: be670143c6887054786b1d06076658cc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dd2f7eb91af74984d82e732815904a6b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4675,7 +4681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.51135635, g: 0.7924528, b: 0.7712414, a: 1}
+  m_Color: {r: 0.93333334, g: 0.93333334, b: 0.93333334, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4791,7 +4797,6 @@ GameObject:
   - component: {fileID: 2044767361}
   - component: {fileID: 2044767360}
   - component: {fileID: 2044767359}
-  - component: {fileID: 2044767358}
   m_Layer: 5
   m_Name: Sound Configuration Cavas
   m_TagString: Untagged
@@ -4799,18 +4804,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2044767358
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2044767357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2129a6b68e35cd4ba2fe8cf37a64a60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2044767359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4862,7 +4855,7 @@ Canvas:
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 546591407}
-  m_PlaneDistance: 60
+  m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -4953,7 +4946,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9eaf46e4c9ae0284f8b846a1f4966147, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f00a5811cbab15c48a3b62abd6a1778c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5143,7 +5136,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9eaf46e4c9ae0284f8b846a1f4966147, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f00a5811cbab15c48a3b62abd6a1778c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5402,9 +5395,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1018946108}
-        m_TargetAssemblyTypeName: LogInPageBehaviour, Assembly-CSharp
-        m_MethodName: OnClickLogIn
+      - m_Target: {fileID: 1439032785}
+        m_TargetAssemblyTypeName: PanelsBehaviour, Assembly-CSharp
+        m_MethodName: OnClickSoundConfig
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5434,7 +5427,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: be670143c6887054786b1d06076658cc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dd2f7eb91af74984d82e732815904a6b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5535,8 +5528,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1011574477}
-        m_TargetAssemblyTypeName: LogInPageBehaviour, Assembly-CSharp
+      - m_Target: {fileID: 1439032785}
+        m_TargetAssemblyTypeName: PanelsBehaviour, Assembly-CSharp
         m_MethodName: OnClickContact
         m_Mode: 1
         m_Arguments:
@@ -5567,7 +5560,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: be670143c6887054786b1d06076658cc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dd2f7eb91af74984d82e732815904a6b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5717,7 +5710,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9eaf46e4c9ae0284f8b846a1f4966147, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f00a5811cbab15c48a3b62abd6a1778c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5785,7 +5778,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.51135635, g: 0.7924528, b: 0.7712414, a: 1}
+  m_Color: {r: 0.9339623, g: 0.9339623, b: 0.9339623, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
