@@ -1028,6 +1028,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f73b17c1fd343e24584969d8e67ebf47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onWater: 0
+  color1:
+    serializedVersion: 2
+    rgba: 4281545684
+  color2:
+    serializedVersion: 2
+    rgba: 2220594
 --- !u!1 &1349814146
 GameObject:
   m_ObjectHideFlags: 0

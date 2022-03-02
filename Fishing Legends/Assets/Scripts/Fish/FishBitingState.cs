@@ -22,10 +22,13 @@ public class FishBitingState : FishBaseState
         if (isBiting)
         {
             //Change to catching state?
-            timeToLeave--;
+            
+
+            timeToLeave -= Time.deltaTime;
             if(timeToLeave <= 0)
             {
-                //Leave
+                Scape(fish.transform);
+                bait.Bite(false);
             }
         }
         else
@@ -54,7 +57,7 @@ public class FishBitingState : FishBaseState
         if(distance < baitRadius)
         {
             isWaiting = true;
-            ChooseAction();
+            ChooseAction(bait);
         }
         else
         {
@@ -72,21 +75,20 @@ public class FishBitingState : FishBaseState
         }
     }
 
-    public void Bite()
-    {
-        isBiting = true;
-        Debug.Log("Bite!!");
-    }
-
-    public void ChooseAction()
+    public void ChooseAction(Bait bait)
     {
         int action = Random.Range(0, 2);
-        if (action == 1) Bite();
+        if (action == 1)
+        {
+            isBiting = true;
+            bait.Bite(true);
+            Debug.Log("Bite!!");
+        }
     }
 
     public void Scape(Transform transform)
     {
         Vector3 dir = new Vector3(0, -1, 0);
-        transform.position += dir* scapeSpeed * Time.deltaTime;
+        transform.position += dir * scapeSpeed * Time.deltaTime;
     }
 }
