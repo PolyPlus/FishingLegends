@@ -7,9 +7,13 @@ public class CanvasTienda : MonoBehaviour
     public GameObject productos;
     public GameObject piscipedia;
     public GameObject clubPesca;
+    public GameObject panelPrincipal;
+    public GameObject canvasBotonesAjustes;
     // Start is called before the first frame update
     void Start()
     {
+        panelPrincipal.SetActive(false);
+        productos.SetActive(false);
         piscipedia.SetActive(false);
         clubPesca.SetActive(false);
     }
@@ -40,5 +44,10 @@ public class CanvasTienda : MonoBehaviour
     public void exitButton()
     {
         Debug.Log("EXIT");
+        panelPrincipal.SetActive(false);
+        productos.SetActive(false);
+        piscipedia.SetActive(false);
+        clubPesca.SetActive(false);
+        canvasBotonesAjustes.SetActive(true);
     }
 }
