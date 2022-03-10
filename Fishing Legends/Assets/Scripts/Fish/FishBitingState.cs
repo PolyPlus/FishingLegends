@@ -17,17 +17,17 @@ public class FishBitingState : FishBaseState
         timeToAction = Random.Range(0.5f, 3.0f);
         isWaiting = true;
     }
-    public override void UpdateState(FishStateManager fish, Bait bait) 
+    public override void UpdateState(FishStateManager fish, BaitStateManager bait) 
     {
-        if (isBiting)
+        if (bait.currentState == bait.boatState)
         {
-            //Change to catching state?
-            
-
+            fish.Scape();
+        }
+        if (isBiting)
+        {            
             timeToLeave -= Time.deltaTime;
             if(timeToLeave <= 0)
-            {
-                Scape(fish.transform);
+            {               
                 bait.Bite(false);
             }
         }
@@ -50,7 +50,7 @@ public class FishBitingState : FishBaseState
     }
     public override void OnCollisionEnter(FishStateManager fish, Collision collision) { }
 
-    public void MoveToBait(Transform transform, Bait bait)
+    public void MoveToBait(Transform transform, BaitStateManager bait)
     {
         Vector3 dir = (bait.Pos - transform.position);
         float distance = dir.magnitude;
@@ -65,7 +65,7 @@ public class FishBitingState : FishBaseState
         }
     }
 
-    public void MoveToBiteRange(Transform transform, Bait bait)
+    public void MoveToBiteRange(Transform transform, BaitStateManager bait)
     {
         Vector3 dir = (bait.Pos - transform.position);
         float distance = dir.magnitude;
@@ -75,7 +75,7 @@ public class FishBitingState : FishBaseState
         }
     }
 
-    public void ChooseAction(Bait bait)
+    public void ChooseAction(BaitStateManager bait)
     {
         int action = Random.Range(0, 2);
         if (action == 1)

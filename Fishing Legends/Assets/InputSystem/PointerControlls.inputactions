@@ -1,33 +1,33 @@
 {
-    "name": "Pointer Controls",
+    "name": "PointerControlls",
     "maps": [
         {
             "name": "Pointer",
-            "id": "4573350a-13af-4869-94de-1c71af7ce4a0",
+            "id": "e3d92cc5-9d23-47d5-a33f-2ebe8a655b88",
             "actions": [
                 {
                     "name": "Press",
-                    "type": "PassThrough",
-                    "id": "12a3281f-3e37-4479-aa0a-529bba1daa16",
-                    "expectedControlType": "",
+                    "type": "Value",
+                    "id": "5d8b26c8-d277-4929-963d-eeb1788169d2",
+                    "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
+                    "interactions": "Press",
+                    "initialStateCheck": true
                 },
                 {
-                    "name": "PointerPosition",
-                    "type": "PassThrough",
-                    "id": "96ea658d-0a35-4493-bac8-145dbff6b16d",
+                    "name": "Position",
+                    "type": "Value",
+                    "id": "910d7281-9f47-4eb1-bfe5-f83f6466ae6a",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
                 {
                     "name": "",
-                    "id": "e78bc0ad-00e2-4159-94bf-8aa180c3bcef",
+                    "id": "0152045e-3665-4744-bb52-72f22a8ebaeb",
                     "path": "<Pointer>/press",
                     "interactions": "",
                     "processors": "",
@@ -38,12 +38,12 @@
                 },
                 {
                     "name": "",
-                    "id": "0356ee69-0ae4-477d-821b-e93fab86f923",
+                    "id": "1f267e5a-71c2-49f1-989e-75a94ce82f85",
                     "path": "<Pointer>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "PointerPosition",
+                    "action": "Position",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

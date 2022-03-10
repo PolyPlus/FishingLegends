@@ -21,7 +21,7 @@ public class FishIdleState : FishBaseState
         isWaiting = true;
         ResetTarget();
     }
-    public override void UpdateState(FishStateManager fish, Bait bait) 
+    public override void UpdateState(FishStateManager fish, BaitStateManager bait) 
     {
         if (canSeeBait)
         {
@@ -46,7 +46,7 @@ public class FishIdleState : FishBaseState
 
     public override void OnCollisionEnter(FishStateManager fish, Collision collision) { }
 
-    private void CheckBait(Transform transform, Bait bait)
+    private void CheckBait(Transform transform, BaitStateManager bait)
     {
         Vector3 direction = (bait.Pos - transform.position).normalized;
         float distance = (bait.Pos - transform.position).magnitude;

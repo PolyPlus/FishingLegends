@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class FishStateManager : MonoBehaviour
 {
-    public Bait bait;
+    public BaitStateManager bait;
+    public float scapeSpeed = 3.0f;
 
+    // States
     public FishBaseState currentState;
     public FishIdleState idleState = new FishIdleState();
     public FishChaseState chaseState = new FishChaseState();
     public FishBitingState bitingState = new FishBitingState();
     private GameObject _gameObject;
     
-    // Start is called before the first frame update
     void Start()
     {
         currentState = idleState;
         currentState.EnterState(this);
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         currentState.UpdateState(this, bait);
@@ -34,5 +34,18 @@ public class FishStateManager : MonoBehaviour
     {
         currentState = state;
         currentState.EnterState(this);
+    }
+
+    IEnumerator DestroyFishAfterTime()
+    {
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
+    }
+
+    public void Scape()
+    {
+        Vector3 dir = new Vector3(0, -1, 0);
+        this.transform.position += dir * scapeSpeed * Time.deltaTime;
+        StartCoroutine(DestroyFishAfterTime());
     }
 }

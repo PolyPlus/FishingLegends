@@ -12,8 +12,12 @@ public class FishChaseState : FishBaseState
     {
         Debug.Log("Entering Chase State");
     }
-    public override void UpdateState(FishStateManager fish, Bait bait)
+    public override void UpdateState(FishStateManager fish, BaitStateManager bait)
     {
+        if(bait.currentState == bait.boatState)
+        {
+            fish.Scape();
+        }
         FaceBait(fish.transform, bait);
         if (canBite)
         {
@@ -26,14 +30,14 @@ public class FishChaseState : FishBaseState
         //Go to the bait
     }
 
-    private void FaceBait(Transform transform, Bait bait)
+    private void FaceBait(Transform transform, BaitStateManager bait)
     {
         Vector3 direction = (bait.Pos - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0.0f, direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotSpeed);
     }
 
-    public void MoveToBait(Transform transform, Bait bait)
+    public void MoveToBait(Transform transform, BaitStateManager bait)
     {
         Vector3 dir = (bait.Pos - transform.position);
         float distance = dir.magnitude;
