@@ -3,9 +3,11 @@ using UnityEngine;
 public class FishBitingState : FishBaseState
 {
     public float moveSpeed = 6.0f;
+    public float scapeSpeed = 3.0f;
     public float baitRadius = 0.4f;
     public float biteRange = 1.5f;
     public bool isBiting;
+    public float timeToLeave = 1.0f;
 
     private float timeToAction;
     private bool isWaiting;
@@ -19,7 +21,12 @@ public class FishBitingState : FishBaseState
     {
         if (isBiting)
         {
-            //Change to catching state?           
+            //Change to catching state?
+            timeToLeave--;
+            if(timeToLeave <= 0)
+            {
+                //Leave
+            }
         }
         else
         {
@@ -75,5 +82,11 @@ public class FishBitingState : FishBaseState
     {
         int action = Random.Range(0, 2);
         if (action == 1) Bite();
+    }
+
+    public void Scape(Transform transform)
+    {
+        Vector3 dir = new Vector3(0, -1, 0);
+        transform.position += dir* scapeSpeed * Time.deltaTime;
     }
 }

@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Bait : MonoBehaviour
 {
+    public bool onWater;
+
     private Vector3 pos;
     private bool detected;
+    
 
     public Vector3 Pos { get => pos; set => pos = value; }
 
@@ -29,5 +32,10 @@ public class Bait : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void Pull()
+    {
+        onWater = false;
     }
 }
