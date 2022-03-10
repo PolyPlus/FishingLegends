@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/StartScene.unity
+    guid: 298d4dd7aaa4a6b4d9691d6cfb1104ba
+  - enabled: 1
+    path: Assets/Scenes/CanvasTienda.unity
+    guid: 64f142bfacbbbe347833a7a4d21f0d41
+  - enabled: 1
+    path: Assets/Scenes/FishingScene.unity
+    guid: ff012c662af4a874593cdfde78d1e28d
   m_configObjects: {}
