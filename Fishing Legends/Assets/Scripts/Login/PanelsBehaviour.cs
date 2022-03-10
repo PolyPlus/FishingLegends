@@ -16,6 +16,8 @@ public class PanelsBehaviour : MonoBehaviour
     private Canvas ConfigCanvas;
     [SerializeField]
     private Canvas SoundConfigCanvas;
+    [SerializeField]
+    private Canvas ContactCanvas;
     #endregion
 
     #region LogIn Elements
@@ -41,13 +43,18 @@ public class PanelsBehaviour : MonoBehaviour
             SignInCanvas.gameObject.SetActive(false);
             ConfigCanvas.gameObject.SetActive(false);
             SoundConfigCanvas.gameObject.SetActive(false);
+            ContactCanvas.gameObject.SetActive(false);
         }
     }
 
     public void OnClickLogIn()
     {
         Debug.Log("LogIn Pulsado");
-        Debug.Log("user: " + usernameL.text + " pass: " + passwordL.text);
+        if (usernameL.text != "" && passwordL.text != "")
+        {
+            Debug.Log("user: " + usernameL.text + " pass: " + passwordL.text);
+            GameManager.GetInstance().SelectScene("CanvasTienda");                  //Cambiar nombre a escena definitiva
+        }
     }
     public void OnClickSignIn()
     {
@@ -56,10 +63,16 @@ public class PanelsBehaviour : MonoBehaviour
         SignInCanvas.gameObject.SetActive(true);
         ConfigCanvas.gameObject.SetActive(false);
         SoundConfigCanvas.gameObject.SetActive(false);
+        ContactCanvas.gameObject.SetActive(false);
     }
     public void OnClickContact()
     {
         Debug.Log("Contact Pulsado");
+        LogInCanvas.gameObject.SetActive(false);
+        SignInCanvas.gameObject.SetActive(false);
+        ConfigCanvas.gameObject.SetActive(false);
+        SoundConfigCanvas.gameObject.SetActive(false);
+        ContactCanvas.gameObject.SetActive(true);
     }
     public void OnClickConfiguration()
     {
@@ -68,6 +81,7 @@ public class PanelsBehaviour : MonoBehaviour
         SignInCanvas.gameObject.SetActive(false);
         ConfigCanvas.gameObject.SetActive(true);
         SoundConfigCanvas.gameObject.SetActive(false);
+        ContactCanvas.gameObject.SetActive(false);
     }
     public void OnClickGoBack()
     {
@@ -77,6 +91,7 @@ public class PanelsBehaviour : MonoBehaviour
             SignInCanvas.gameObject.SetActive(false);
             ConfigCanvas.gameObject.SetActive(false);
             SoundConfigCanvas.gameObject.SetActive(false);
+            ContactCanvas.gameObject.SetActive(false);
         }
         else if (SoundConfigCanvas.gameObject.active == true)
         {
@@ -84,6 +99,15 @@ public class PanelsBehaviour : MonoBehaviour
             SignInCanvas.gameObject.SetActive(false);
             ConfigCanvas.gameObject.SetActive(true);
             SoundConfigCanvas.gameObject.SetActive(false);
+            ContactCanvas.gameObject.SetActive(false);
+        }
+        else if (ContactCanvas.gameObject.active == true)
+        {
+            LogInCanvas.gameObject.SetActive(true);
+            SignInCanvas.gameObject.SetActive(false);
+            ConfigCanvas.gameObject.SetActive(false);
+            SoundConfigCanvas.gameObject.SetActive(false);
+            ContactCanvas.gameObject.SetActive(false);
         }
     }
     public void OnClickSoundConfig()
@@ -93,5 +117,6 @@ public class PanelsBehaviour : MonoBehaviour
         SignInCanvas.gameObject.SetActive(false);
         ConfigCanvas.gameObject.SetActive(false);
         SoundConfigCanvas.gameObject.SetActive(true);
+        ContactCanvas.gameObject.SetActive(false);
     }
 }
