@@ -13,6 +13,7 @@ public class BaitStateManager : MonoBehaviour
     public BaitReadyState readyState = new BaitReadyState();
     public BaitDetectedState detectedState = new BaitDetectedState();
     public BaitBittenState bittenState = new BaitBittenState();
+    public BaitRythmState rythmState = new BaitRythmState();
 
     private Vector3 pos;
     private Animator animator;
@@ -30,7 +31,7 @@ public class BaitStateManager : MonoBehaviour
 
     void Update()
     {
-        //currentState.UpdateState(this);
+        currentState.UpdateState(this);
         Pos = transform.position;
     }
 
@@ -62,7 +63,7 @@ public class BaitStateManager : MonoBehaviour
 
     public void Bite(bool b)
     {
-        //animator.Play("Bite_Bait");
+        animator.Play("Bite_Bait");
         if (b)
         {
             SwitchState(bittenState);
@@ -70,12 +71,11 @@ public class BaitStateManager : MonoBehaviour
         else if(currentState==bittenState) { 
             SwitchState(readyState); 
         }
-        ChageColor();
     }
 
     public void ChageColor()
     {
-        if (currentState == bittenState)
+        if (currentState == rythmState)
         {
             this.GetComponent<Renderer>().material.color = color2;
         }
@@ -99,6 +99,6 @@ public class BaitStateManager : MonoBehaviour
     public void StartRythmGame()
     {
         Debug.Log("Start RythmGame");
-        SwitchState(readyState);
+        SwitchState(rythmState);
     }
 }

@@ -4,7 +4,6 @@ public class FishBitingState : FishBaseState
 {
     public bool isBiting;
     public float baitRadius = 0.4f;    
-    public float timeToLeave = 1.0f;
 
     private float moveSpeed;
     private float biteRange;
@@ -14,7 +13,7 @@ public class FishBitingState : FishBaseState
 
     public override void EnterState(FishStateManager fish, BaitStateManager bait) 
     {
-        Debug.Log("Entering Bite State");
+        //Debug.Log("Entering Bite State");
         moveSpeed = fish.moveSpeed * 6.0f;
         biteRange = fish.biteRange;
         timeToAction = Random.Range(0.5f, 3.0f);
@@ -25,15 +24,11 @@ public class FishBitingState : FishBaseState
     {
         if (bait.currentState == bait.boatState)
         {
-            fish.Scape();
+            fish.SwitchState(fish.scapeState);
         }
-        if (isBiting)
-        {            
-            timeToLeave -= Time.deltaTime;
-            if(timeToLeave <= 0)
-            {               
-                bait.Bite(false);
-            }
+        else if (isBiting)
+        {
+            fish.SwitchState(fish.comboState);
         }
         else
         {
@@ -48,7 +43,6 @@ public class FishBitingState : FishBaseState
                 MoveToBait(fish.transform, bait);
             } else
             {
-                //MoveToBiteRange(fish.transform, bait);
                 fish.MoveToTarget(target, moveSpeed);
             }
         }
@@ -74,16 +68,6 @@ public class FishBitingState : FishBaseState
         else
         {
             transform.position += dir.normalized * moveSpeed * Time.deltaTime;
-        }
-    }
-
-    public void MoveToBiteRange(Transform transform, BaitStateManager bait)
-    {
-        Vector3 dir = (bait.Pos - transform.position);
-        float distance = dir.magnitude;
-        if (distance < biteRange)
-        {
-            transform.position -= dir.normalized * moveSpeed * Time.deltaTime;
         }
     }
 

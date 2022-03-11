@@ -9,19 +9,19 @@ public class FishChaseState : FishBaseState
 
     public override void EnterState(FishStateManager fish, BaitStateManager bait) 
     {
-        Debug.Log("Entering Chase State");
-        moveSpeed = fish.moveSpeed * 0.80f;
+        //Debug.Log("Entering Chase State");
+        moveSpeed = fish.moveSpeed * 1.5f;
         biteRange = fish.biteRange;
         SetTarget(fish.transform.position, bait.Pos);
     }
     public override void UpdateState(FishStateManager fish, BaitStateManager bait)
     {
-        if(bait.currentState == bait.boatState)
-        {
-            fish.Scape();
-        }
         fish.FaceTarget(bait.Pos);
-        if (canBite)
+        if (bait.currentState == bait.boatState)
+        {
+            fish.SwitchState(fish.scapeState);
+        }     
+        else if (canBite)
         {
             fish.SwitchState(fish.bitingState);
         }

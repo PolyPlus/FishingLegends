@@ -6,7 +6,6 @@ public class FishStateManager : MonoBehaviour
 {
     public BaitStateManager bait;
     public float moveSpeed = 1.0f;
-    public float scapeSpeed = 3.0f;
     public float rotSpeed = 5f;
     public float biteRange = 0.75f;
 
@@ -15,6 +14,8 @@ public class FishStateManager : MonoBehaviour
     public FishIdleState idleState = new FishIdleState();
     public FishChaseState chaseState = new FishChaseState();
     public FishBitingState bitingState = new FishBitingState();
+    public FishScapeState scapeState = new FishScapeState();
+    public FishComboState comboState = new FishComboState();
     private GameObject _gameObject;
     
     void Start()
@@ -63,8 +64,8 @@ public class FishStateManager : MonoBehaviour
 
     public void Scape()
     {
-        Vector3 dir = new Vector3(0, -1, 0);
-        this.transform.position += dir * scapeSpeed * Time.deltaTime;
+        //Vector3 dir = new Vector3(0, -1, 0);
+        //this.transform.position += dir * scapeSpeed * Time.deltaTime;
         StartCoroutine(DestroyFishAfterTime());
     }
 }

@@ -460,7 +460,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bait: {fileID: 1274468414}
   moveSpeed: 1
-  scapeSpeed: 3
   rotSpeed: 5
   biteRange: 1.5
 --- !u!4 &674718348
@@ -1481,7 +1480,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bait: {fileID: 1274468414}
   moveSpeed: 1
-  scapeSpeed: 3
   rotSpeed: 5
   biteRange: 1.5
 --- !u!4 &1349814151
@@ -1691,7 +1689,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bait: {fileID: 1274468414}
   moveSpeed: 1
-  scapeSpeed: 3
   rotSpeed: 5
   biteRange: 1.5
 --- !u!4 &1435803347
@@ -1854,7 +1851,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bait: {fileID: 1274468414}
   moveSpeed: 1
-  scapeSpeed: 3
   rotSpeed: 5
   biteRange: 1.5
 --- !u!1 &1840243037
