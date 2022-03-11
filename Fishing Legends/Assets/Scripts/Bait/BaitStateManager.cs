@@ -95,4 +95,10 @@ public class BaitStateManager : MonoBehaviour
         animator.Play("PullBack_Bait");
         SwitchState(boatState);
     }
+
+    public void StartRythmGame()
+    {
+        Debug.Log("Start RythmGame");
+        SwitchState(readyState);
+    }
 }

@@ -17,6 +17,6 @@ public class BaitBittenState : BaitBaseState
 
     public override void OnPointerPress(BaitStateManager bait, Vector2 position)
     {
-        bait.PullBait();
+        bait.StartRythmGame();
     }
 }

@@ -2,15 +2,17 @@ using UnityEngine;
 
 public class FishChaseState : FishBaseState
 {
-    public float moveSpeed = 0.5f;
-    public float rotSpeed = 5.0f;
+    private bool canBite;
+    private float biteRange;
+    private float moveSpeed;
+    private Vector3 target;
 
-    public bool canBite;
-    public float biteRange = 1.5f;
-
-    public override void EnterState(FishStateManager fish) 
+    public override void EnterState(FishStateManager fish, BaitStateManager bait) 
     {
         Debug.Log("Entering Chase State");
+        moveSpeed = fish.moveSpeed * 0.80f;
+        biteRange = fish.biteRange;
+        SetTarget(fish.transform.position, bait.Pos);
     }
     public override void UpdateState(FishStateManager fish, BaitStateManager bait)
     {
@@ -18,48 +20,22 @@ public class FishChaseState : FishBaseState
         {
             fish.Scape();
         }
-        FaceBait(fish.transform, bait);
+        fish.FaceTarget(bait.Pos);
         if (canBite)
         {
             fish.SwitchState(fish.bitingState);
         }
         else
         {
-            MoveToBait(fish.transform, bait);
-        }
-        //Go to the bait
-    }
-
-    private void FaceBait(Transform transform, BaitStateManager bait)
-    {
-        Vector3 direction = (bait.Pos - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0.0f, direction.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotSpeed);
-    }
-
-    public void MoveToBait(Transform transform, BaitStateManager bait)
-    {
-        Vector3 dir = (bait.Pos - transform.position);
-        float distance = dir.magnitude;
-        if(distance > biteRange + 0.01)
-        {
-            transform.position += dir * moveSpeed * Time.deltaTime;
-        } 
-        else if(distance < biteRange - 0.01)
-        {
-            transform.position -= dir * moveSpeed * Time.deltaTime;
-        }
-        else
-        {
-            canBite = true;
-            Debug.Log(distance);
+            canBite = fish.MoveToTarget(target, moveSpeed);         
         }
     }
-    public override void OnCollisionEnter(FishStateManager fish, Collision collision) 
+
+    private void SetTarget(Vector3 fishPos, Vector3 baitPos)
     {
-        //If bait enters biting radius
-        canBite = true;
+        Vector3 dir = (fishPos - baitPos).normalized;
+        Vector3 translate = dir * biteRange;
+        target = baitPos + translate;
+        Debug.Log("Distance: " + translate.magnitude);
     }
-
-
 }

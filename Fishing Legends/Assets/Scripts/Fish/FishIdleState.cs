@@ -3,20 +3,20 @@ using UnityEngine;
 public class FishIdleState : FishBaseState
 {
     public bool canSeeBait;
-    public float moveSpeed = 1.0f;
-    public float rotSpeed = 5f;
     public float movementRange = 3.0f;
     public float visionAngle = Mathf.PI / 6.0f;
     public float visionRange = 4.5f;
 
+    private float moveSpeed;
     private Vector3 initPos;
     private Vector3 target;    
     private float timeToMove;
     private bool isWaiting;
 
-    public override void EnterState(FishStateManager fish) 
+    public override void EnterState(FishStateManager fish, BaitStateManager bait) 
     {
         initPos = fish.transform.position;
+        moveSpeed = fish.moveSpeed;
         timeToMove = Random.Range(2.0f, 6.0f);
         isWaiting = true;
         ResetTarget();
@@ -37,14 +37,12 @@ public class FishIdleState : FishBaseState
             }
             if (!isWaiting)
             {
-                FaceTarget(fish.transform);
-                MoveToTarget(fish.transform);
+                fish.FaceTarget(target);
+                isWaiting = fish.MoveToTarget(target, moveSpeed);
             }           
             CheckBait(fish.transform, bait);
         }
     }
-
-    public override void OnCollisionEnter(FishStateManager fish, Collision collision) { }
 
     private void CheckBait(Transform transform, BaitStateManager bait)
     {
@@ -67,22 +65,4 @@ public class FishIdleState : FishBaseState
         target = new Vector3(initPos.x + randomX, 0.0f, initPos.z + randomZ);
     }
 
-    private void MoveToTarget(Transform transform)
-    {
-        if((target - transform.position).magnitude > moveSpeed)
-        {
-            Vector3 direction = (target - transform.position).normalized;
-            transform.position += direction * moveSpeed * Time.deltaTime;
-        } else
-        {
-            isWaiting = true;
-        }      
-    }
-
-    private void FaceTarget(Transform transform)
-    {
-        Vector3 direction = (target - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0.0f, direction.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotSpeed);
-    }
 }
