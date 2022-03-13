@@ -11,6 +11,7 @@ public class JuegoRitmo : MonoBehaviour, IPointerClickHandler
     public float tiempoAparicion;
     public GameObject panelRitmo;
 
+    public BaitStateManager baitManager;
 
     public int tamano = 0; //3: GRANDE, 2: MEDIANO, 1: PEQUE
 
@@ -23,13 +24,14 @@ public class JuegoRitmo : MonoBehaviour, IPointerClickHandler
 
     private void Start()
     {
-        startFishing();
-       
+        startFishing();       
     }
     //Si empiezas a pescar, para todo el combo completo
     public void startFishing()
     {
         pez.GetComponent<MuevePez>().speed = 100; //Se reinicia la veloc
+        pez.GetComponent<MuevePez>().latDer = latDer;
+        pez.GetComponent<MuevePez>().latIz = latIz;
     }
     //Si pica pez
     public void startCombo()
@@ -80,8 +82,7 @@ public class JuegoRitmo : MonoBehaviour, IPointerClickHandler
         else if (Mathf.Abs(fish[cont2].transform.position.x - anzuelo.transform.position.x) > 8.0f)
         {
             Debug.Log("MAL");
-            stopCombo();
-          
+            stopCombo();       
         }
         Destroy(fish[cont2]);
         ++cont2;
@@ -97,19 +98,14 @@ public class JuegoRitmo : MonoBehaviour, IPointerClickHandler
         combo = false;
         for(int i=cont2;i<fish.Length;++i)
             Destroy(fish[i]);
+        baitManager.StopRythmGame();
     }
-    private void Update()
+    private void FixedUpdate()
     {
-        if (combo)
+        if (combo && (cont < fish.Length) && (Time.time - timeFish > tiempoAparicion))
         {
-            if (cont < fish.Length)
-            {
-                if (Time.time - timeFish > tiempoAparicion)
-                {
-                    aparecePez();
-                    ++cont;
-                }
-            }
+            aparecePez();
+            ++cont;
         }
     }
 

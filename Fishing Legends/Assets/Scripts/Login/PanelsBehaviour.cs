@@ -83,6 +83,8 @@ public class PanelsBehaviour : MonoBehaviour
         SoundConfigCanvas.gameObject.SetActive(false);
         ContactCanvas.gameObject.SetActive(false);
     }
+
+    [System.Obsolete]
     public void OnClickGoBack()
     {
         if(ConfigCanvas.gameObject.active == true || SignInCanvas.gameObject.active == true)

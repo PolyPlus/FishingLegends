@@ -5,16 +5,14 @@ using UnityEngine;
 public class MuevePez : MonoBehaviour
 {
     public float speed;
-    private GameObject latIz;
-    private GameObject latDer;
+    public GameObject latIz;
+    public GameObject latDer;
     public bool derecha;
 
     
     // Start is called before the first frame update
     void Start()
     {
-        latIz = GameObject.FindGameObjectWithTag("LatIz");
-        latDer = GameObject.FindGameObjectWithTag("LatDer");
         if (transform.position==latIz.transform.position)  //Si se te escapa el powerUp y pasa ese margen
         {
             derecha = false;
@@ -30,7 +28,7 @@ public class MuevePez : MonoBehaviour
     {
         if (derecha)
         {
-            transform.Translate(new Vector2(-1, 0f) * Time.deltaTime * speed); //Se mueve en y (hacia abajo) cada frame
+            transform.Translate(new Vector2(-1, 0f) * Time.deltaTime * speed);
             if (transform.position.x < latIz.transform.position.x)  //Si se te escapa el powerUp y pasa ese margen
             {
                 Destroy(gameObject); //Lo elimina
@@ -38,7 +36,7 @@ public class MuevePez : MonoBehaviour
         }
         else
         {
-            transform.Translate(new Vector2(-1, 0f) * Time.deltaTime * speed); //Se mueve en y (hacia abajo) cada frame
+            transform.Translate(new Vector2(-1, 0f) * Time.deltaTime * speed);
             if (transform.position.x > latDer.transform.position.x)  //Si se te escapa el powerUp y pasa ese margen
             {
                 Destroy(gameObject); //Lo elimina
