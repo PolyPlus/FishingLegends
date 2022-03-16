@@ -20,6 +20,7 @@ public class CanvasAjustesJugar : MonoBehaviour
     public void Jugar()
     {
         Debug.Log("Botón jugar pulsado");
+        GameManager.GetInstance().SelectScene("FishingScene");                 
     }
 
 }
