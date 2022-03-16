@@ -22,6 +22,7 @@ public class RythmManager : MonoBehaviour, IPointerClickHandler
     private int cont2;
     private int cont=0;
     private bool isActive = false;
+    private bool comboFailed = false;
 
     private void Start()
     {
