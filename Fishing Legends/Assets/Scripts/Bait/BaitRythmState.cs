@@ -5,7 +5,6 @@ public class BaitRythmState : BaitBaseState
     public override void EnterState(BaitStateManager bait)
     {
         Debug.Log("Entering rythm State");
-        bait.ChageColor();
     }
     public override void UpdateState(BaitStateManager bait)
     {
