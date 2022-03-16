@@ -19,10 +19,9 @@ public class RythmManager : MonoBehaviour, IPointerClickHandler
     private GameObject[] fish;
     private float timeFish=0;
     private int fishToSpawn;
-    private int cont2;
-    private int cont=0;
+    private int currentFish;
+    private int lastFish=0;
     private bool isActive = false;
-    private bool comboFailed = false;
 
     private void Start()
     {
@@ -34,10 +33,11 @@ public class RythmManager : MonoBehaviour, IPointerClickHandler
         pez.GetComponent<RythmFish>().Init(this, latIz, latDer, initSpeed);
     }
     //Si pica pez
-    public void startRythmGame()
+    public void startRythmGame(int numFish)
     {
-        cont = 0;
-        cont2 = cont;
+        size = numFish;
+        lastFish = 0;
+        currentFish = lastFish;
         timeFish = 0;
         fish = new GameObject[size];
         panelRitmo.SetActive(true);
@@ -63,7 +63,7 @@ public class RythmManager : MonoBehaviour, IPointerClickHandler
 
         timeFish = Time.time;
        // Debug.Log("tamano: "+tamano);
-        fish[cont] = newFish;
+        fish[lastFish] = newFish;
         
     }
     public void OnPointerClick(PointerEventData eventData)
@@ -71,7 +71,7 @@ public class RythmManager : MonoBehaviour, IPointerClickHandler
 
         // Vector2 pos = eventData.position;
         // Debug.Log("Pulsao, " + fish[cont2].transform.position.x+ ", aaa" + anzuelo.transform.position.x);
-        float distance = Mathf.Abs(fish[cont2].transform.position.x - anzuelo.transform.position.x);
+        float distance = Mathf.Abs(fish[currentFish].transform.position.x - anzuelo.transform.position.x);
         if (distance <= 9.0f)
         {
             Debug.Log("EXCELENTE");
@@ -83,32 +83,31 @@ public class RythmManager : MonoBehaviour, IPointerClickHandler
         else if (distance > 18.0f)
         {
             Debug.Log("MAL");
-            Debug.Log("Distance " + distance);
-            stopRythmGame();       
+            stopRythmGame(true);
+            return;
         }
-        Destroy(fish[cont2]);
-        ++cont2;
-        if (cont2 >= size )
+        Destroy(fish[currentFish]);
+        ++currentFish;
+        if (currentFish >= size )
         {
-            stopRythmGame();
+            stopRythmGame(false);
         }
 
     }
-    public void stopRythmGame()
+    public void stopRythmGame(bool comboFailed)
     {
         panelRitmo.SetActive(false);
         isActive = false;
-        for(int i=cont2;i<fish.Length;++i)
+        for(int i=currentFish;i<fish.Length;++i)
             Destroy(fish[i]);
-        baitManager.StopRythmGame();
+        baitManager.StopRythmGame(comboFailed);
     }
     private void FixedUpdate()
     {
-        if (isActive && (cont < fish.Length) && (Time.time - timeFish > tiempoAparicion))
+        if (isActive && (lastFish < fish.Length) && (Time.time - timeFish > tiempoAparicion))
         {
-
             spawnFish();
-            ++cont;
+            ++lastFish;
         }
     }
 

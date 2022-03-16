@@ -50,6 +50,7 @@ public class BaitStateManager : MonoBehaviour
     {
         currentState = state;
         state.EnterState(this);
+        ChageColor();
     }
 
     public bool Detect()
@@ -101,12 +102,20 @@ public class BaitStateManager : MonoBehaviour
     {
         Debug.Log("Start RythmGame");
         SwitchState(rythmState);
-        rythmGame.startRythmGame();
+        rythmGame.startRythmGame(2);
     }
 
-    public void StopRythmGame()
+    public void StopRythmGame(bool hasFailed)
     {
         Debug.Log("Stop RythmGame");
-        SwitchState(readyState);
+        if (hasFailed)
+        {
+            PullBait();
+        }
+        else
+        {
+            SwitchState(readyState);
+        }
+        
     }
 }

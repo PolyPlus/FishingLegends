@@ -25,13 +25,14 @@ public class RythmFish : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (derecha)
         {
             transform.Translate(new Vector2(-1, 0f) * Time.deltaTime * speed);
             if (transform.position.x < latIz.transform.position.x)  //Si se te escapa el pez y pasa ese margen
             {
+                rythmManager.stopRythmGame(true);
                 Destroy(gameObject); //Lo elimina
             }
         }
@@ -40,6 +41,7 @@ public class RythmFish : MonoBehaviour
             transform.Translate(new Vector2(-1, 0f) * Time.deltaTime * speed);
             if (transform.position.x > latDer.transform.position.x)  //Si se te escapa el pez y pasa ese margen
             {
+                rythmManager.stopRythmGame(true);
                 Destroy(gameObject); //Lo elimina
             }
         }
