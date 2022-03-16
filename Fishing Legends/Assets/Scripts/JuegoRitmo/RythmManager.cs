@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-public class JuegoRitmo : MonoBehaviour, IPointerClickHandler
+public class RythmManager : MonoBehaviour, IPointerClickHandler
 {
+    public float initSpeed = 100;
     public GameObject latIz;
     public GameObject latDer;
     public GameObject anzuelo;
@@ -13,14 +14,14 @@ public class JuegoRitmo : MonoBehaviour, IPointerClickHandler
 
     public BaitStateManager baitManager;
 
-    public int tamano = 0; //3: GRANDE, 2: MEDIANO, 1: PEQUE
+    public int size = 0; //3: GRANDE, 2: MEDIANO, 1: PEQUE
 
     private GameObject[] fish;
-
     private float timeFish=0;
+    private int fishToSpawn;
     private int cont2;
     private int cont=0;
-    private bool combo = false;
+    private bool isActive = false;
 
     private void Start()
     {
@@ -29,26 +30,24 @@ public class JuegoRitmo : MonoBehaviour, IPointerClickHandler
     //Si empiezas a pescar, para todo el combo completo
     public void startFishing()
     {
-        pez.GetComponent<MuevePez>().speed = 100; //Se reinicia la veloc
-        pez.GetComponent<MuevePez>().latDer = latDer;
-        pez.GetComponent<MuevePez>().latIz = latIz;
+        pez.GetComponent<RythmFish>().Init(this, latIz, latDer, initSpeed);
     }
     //Si pica pez
-    public void startCombo()
+    public void startRythmGame()
     {
         cont = 0;
         cont2 = cont;
         timeFish = 0;
-        fish = new GameObject[tamano];
+        fish = new GameObject[size];
         panelRitmo.SetActive(true);
-        combo = true;
-        pez.GetComponent<MuevePez>().speed+=50;
+        isActive = true;
+        pez.GetComponent<RythmFish>().speed+=50;
         
     }
     //Cada PEZ que aparece según el tamaño, dentro del combo
-    public void aparecePez()
+    public void spawnFish()
     {
-        
+        Debug.Log("Spawn Fish");
         GameObject newFish;
         int randomChance = Random.Range(1, 101); //Crea un valor aleatorio del 1 al 100      
         if (randomChance <= 50)
@@ -59,7 +58,7 @@ public class JuegoRitmo : MonoBehaviour, IPointerClickHandler
         {
             newFish = Instantiate(pez, latIz.transform.position, latIz.transform.rotation) as GameObject;
         }
-        newFish.transform.parent = gameObject.transform;
+        newFish.transform.SetParent(gameObject.transform);
 
         timeFish = Time.time;
        // Debug.Log("tamano: "+tamano);
@@ -68,43 +67,46 @@ public class JuegoRitmo : MonoBehaviour, IPointerClickHandler
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        
-       // Vector2 pos = eventData.position;
-       // Debug.Log("Pulsao, " + fish[cont2].transform.position.x+ ", aaa" + anzuelo.transform.position.x);
-        if (Mathf.Abs(fish[cont2].transform.position.x - anzuelo.transform.position.x) <= 4.0f)
+
+        // Vector2 pos = eventData.position;
+        // Debug.Log("Pulsao, " + fish[cont2].transform.position.x+ ", aaa" + anzuelo.transform.position.x);
+        float distance = Mathf.Abs(fish[cont2].transform.position.x - anzuelo.transform.position.x);
+        if (distance <= 9.0f)
         {
             Debug.Log("EXCELENTE");
         }
-        else if (Mathf.Abs(fish[cont2].transform.position.x - anzuelo.transform.position.x) <= 8.0f)
+        else if (distance <= 9.0f)
         {
             Debug.Log("BIEN");
         }
-        else if (Mathf.Abs(fish[cont2].transform.position.x - anzuelo.transform.position.x) > 8.0f)
+        else if (distance > 18.0f)
         {
             Debug.Log("MAL");
-            stopCombo();       
+            Debug.Log("Distance " + distance);
+            stopRythmGame();       
         }
         Destroy(fish[cont2]);
         ++cont2;
-        if (cont2 >= tamano )
+        if (cont2 >= size )
         {
-            stopCombo();
+            stopRythmGame();
         }
 
     }
-    public void stopCombo()
+    public void stopRythmGame()
     {
         panelRitmo.SetActive(false);
-        combo = false;
+        isActive = false;
         for(int i=cont2;i<fish.Length;++i)
             Destroy(fish[i]);
         baitManager.StopRythmGame();
     }
     private void FixedUpdate()
     {
-        if (combo && (cont < fish.Length) && (Time.time - timeFish > tiempoAparicion))
+        if (isActive && (cont < fish.Length) && (Time.time - timeFish > tiempoAparicion))
         {
-            aparecePez();
+
+            spawnFish();
             ++cont;
         }
     }

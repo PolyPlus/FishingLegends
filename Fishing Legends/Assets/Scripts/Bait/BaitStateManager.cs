@@ -6,7 +6,7 @@ public class BaitStateManager : MonoBehaviour
 {
     public Color32 color1;
     public Color32 color2;
-    public JuegoRitmo rythmGame;
+    public RythmManager rythmGame;
 
     // States
     public BaitBaseState currentState;
@@ -101,7 +101,7 @@ public class BaitStateManager : MonoBehaviour
     {
         Debug.Log("Start RythmGame");
         SwitchState(rythmState);
-        rythmGame.startCombo();
+        rythmGame.startRythmGame();
     }
 
     public void StopRythmGame()

@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class FishingManager : MonoBehaviour
 {
     public BaitStateManager baitManager;
-    public JuegoRitmo rythmGame;
+    public RythmManager rythmGame;
     private PointerControlls controls;
 
     private void Awake()

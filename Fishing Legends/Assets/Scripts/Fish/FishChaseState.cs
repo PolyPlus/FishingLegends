@@ -36,6 +36,5 @@ public class FishChaseState : FishBaseState
         Vector3 dir = (fishPos - baitPos).normalized;
         Vector3 translate = dir * biteRange;
         target = baitPos + translate;
-        Debug.Log("Distance: " + translate.magnitude);
     }
 }

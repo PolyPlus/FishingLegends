@@ -51,7 +51,6 @@ public class FishIdleState : FishBaseState
         float angle = Mathf.Acos(Vector3.Dot(direction, transform.forward));
         if (distance < visionRange && angle < visionAngle && bait.Detect())
         {
-            Debug.Log("Angle: " + angle);
             canSeeBait = true;
         }
     }
