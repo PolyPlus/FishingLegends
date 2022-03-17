@@ -20,6 +20,10 @@ public class GridManager : MonoBehaviour
 
     public GameObject boat;
 
+    public GameObject topCamera;
+
+    public GameObject boatCamera;
+
     // private bool[,] selectedPositions;
 
     public GameObject block;
@@ -116,8 +120,8 @@ public class GridManager : MonoBehaviour
         blockType[23, 22] = 1;
         blockType[23, 23] = 1;
 
-        lastPositionX = 4;
-        lastPositionY = 3;
+        lastPositionX = 14;
+        lastPositionY = 13;
 
         Vector3 start = TransformIdToGrid(lastPositionX, lastPositionY, new Vector3(0, 0, 0));
 
@@ -155,6 +159,7 @@ public class GridManager : MonoBehaviour
                 boat.transform.LookAt(indexPoints.ElementAt(routeIndex + 1));
                 Debug.Log(routeIndex);
                 boat.transform.position = route[routeIndex].GetPoint(t);
+                boatCamera.transform.position = boat.transform.position + new Vector3(-1, 8, -12);
             }
             
             
@@ -302,6 +307,7 @@ public class GridManager : MonoBehaviour
        
         routeStarted = true;
             grid.SetActive(false);
+            topCamera.SetActive(false);
 
          }
         
