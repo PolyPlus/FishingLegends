@@ -1,0 +1,34 @@
+{
+    "name": "ClickController",
+    "maps": [
+        {
+            "name": "pointer",
+            "id": "ccd17afb-f693-43a7-8105-ff44efb5729d",
+            "actions": [
+                {
+                    "name": "press",
+                    "type": "Value",
+                    "id": "873b4c1b-d746-4535-b86d-0f803eef406b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "cda4e55f-5bdc-42d6-ac1e-9d74dbfc6f72",
+                    "path": "<Pointer>/press",
+                    "interactions": "Hold(duration=1.401298E-45,pressPoint=0.5)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "press",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
