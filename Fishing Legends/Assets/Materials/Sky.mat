@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8937801975813687057
+--- !u!114 &-2018879572212436274
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,9 +20,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Water
-  m_Shader: {fileID: -6465566751694194690, guid: bb6c3f3b59b97764094484faa2dda9e6, type: 3}
-  m_ShaderKeywords: 
+  m_Name: Sky
+  m_Shader: {fileID: 106, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _SUNDISK_HIGH_QUALITY
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -32,12 +32,8 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_467bb71c97f341c6b4d154ed41ce2904:
-        m_Texture: {fileID: 2800000, guid: 3ccd4aea2cb198c4e97a1e0b6c0bc30d, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_7c154c0935ca4cd092bd22c3bbcd5c91:
-        m_Texture: {fileID: 2800000, guid: 4de750d23265a7b44bdaf16284c5b619, type: 3}
+    - _BackTex:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -60,7 +56,19 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _DownTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FrontTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _LeftTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -80,7 +88,15 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _RightTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _UpTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -97,21 +113,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_0d2b0d6beb8a404c9797f54bb189e65c: 2.7
-    - Vector1_1622010f4d164a64ba0f41830a5712de: 0.008
-    - Vector1_16a0d716053d45f49fe913700c5ec096: 3.99
-    - Vector1_2b26d4b2e1dd434b9ee8378adc5f7d97: 0.37
-    - Vector1_2b60ff92561148949e3dbf83c196d22c: 0.35
-    - Vector1_5e0939422c25407ab6953934ec61f926: 0.7
-    - Vector1_669643aa300c45168e926c23e31c5107: 0.27
-    - Vector1_8537ba9fe38b4d609b3e050a20eae22e: 0.73
-    - Vector1_8a7e79e77baa45edb72988097732299b: 0.58
-    - Vector1_8ffce27a400b4c029d608efa98869911: 3
-    - Vector1_9cf27e603a4c47ba9571781249384d1a: 0.71
-    - Vector1_a503f0a5d0494fe7affb245ee2ee6a0b: 0.14
-    - Vector1_c81d6e1fef124d44b65f46d04b6172df: 1.37
-    - Vector1_d6ac16ac7d5b4ed2b7150fd36b4c663c: 23.46
     - _AlphaClip: 0
+    - _AtmosphereThickness: 0.54
     - _Blend: 0
     - _BumpScale: 1
     - _ClearCoatMask: 0
@@ -122,6 +125,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnvironmentReflections: 1
+    - _Exposure: 1.24
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -134,17 +138,17 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _SunDisk: 2
+    - _SunSize: 0.23
+    - _SunSizeConvergence: 2.73
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_0c1938440f6748edac58dbb5effe3a8a: {r: 0.9386792, g: 0.9838275, b: 1, a: 0}
-    - Color_8a5a74fdc75b45ac8702cbac3ae374ec: {r: 0.1251335, g: 0.33563596, b: 0.7169812, a: 0}
-    - Color_df7b64486d7d42dda9562b8d4e721c0c: {r: 1024, g: 1024, b: 1024, a: 0}
-    - Color_e6ef2c54fb81428f8e26fef35840aa34: {r: 0.03470988, g: 0.23165406, b: 0.5660378, a: 0}
-    - Vector2_111e6dbf7e71403cb6f7aa7233ded7be: {r: 0, g: 0.1, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _GroundColor: {r: 0.27450982, g: 0.6139339, b: 0.91764706, a: 1}
+    - _SkyTint: {r: 0.4009434, g: 0.74967533, b: 1, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
