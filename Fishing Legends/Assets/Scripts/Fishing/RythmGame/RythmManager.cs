@@ -25,7 +25,7 @@ public class RythmManager : MonoBehaviour, IPointerClickHandler
 
     private void Start()
     {
-        startFishing();       
+        startFishing();
     }
     //Si empiezas a pescar, para todo el combo completo
     public void startFishing()
@@ -35,7 +35,7 @@ public class RythmManager : MonoBehaviour, IPointerClickHandler
     //Si pica pez
     public void startRythmGame(int numFish)
     {
-        size = numFish;
+        size += numFish;
         lastFish = 0;
         currentFish = lastFish;
         timeFish = 0;
@@ -48,7 +48,6 @@ public class RythmManager : MonoBehaviour, IPointerClickHandler
     //Cada PEZ que aparece según el tamaño, dentro del combo
     public void spawnFish()
     {
-        Debug.Log("Spawn Fish");
         GameObject newFish;
         int randomChance = Random.Range(1, 101); //Crea un valor aleatorio del 1 al 100      
         if (randomChance <= 50)
@@ -59,28 +58,24 @@ public class RythmManager : MonoBehaviour, IPointerClickHandler
         {
             newFish = Instantiate(pez, latIz.transform.position, latIz.transform.rotation) as GameObject;
         }
+        newFish.GetComponent<RythmFish>().Init(this, latIz, latDer, initSpeed);
         newFish.transform.SetParent(gameObject.transform);
 
         timeFish = Time.time;
-       // Debug.Log("tamano: "+tamano);
-        fish[lastFish] = newFish;
-        
+        fish[lastFish] = newFish;       
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-
-        // Vector2 pos = eventData.position;
-        // Debug.Log("Pulsao, " + fish[cont2].transform.position.x+ ", aaa" + anzuelo.transform.position.x);
         float distance = Mathf.Abs(fish[currentFish].transform.position.x - anzuelo.transform.position.x);
-        if (distance <= 9.0f)
+        if (distance <= 8.0f)
         {
             Debug.Log("EXCELENTE");
         }
-        else if (distance <= 9.0f)
+        else if (distance <= 16.0f)
         {
             Debug.Log("BIEN");
         }
-        else if (distance > 18.0f)
+        else if (distance > 16.0f)
         {
             Debug.Log("MAL");
             stopRythmGame(true);
@@ -88,7 +83,7 @@ public class RythmManager : MonoBehaviour, IPointerClickHandler
         }
         Destroy(fish[currentFish]);
         ++currentFish;
-        if (currentFish >= size )
+        if (currentFish >= size)
         {
             stopRythmGame(false);
         }
@@ -100,6 +95,7 @@ public class RythmManager : MonoBehaviour, IPointerClickHandler
         isActive = false;
         for(int i=currentFish;i<fish.Length;++i)
             Destroy(fish[i]);
+        if (comboFailed) size = 0;
         baitManager.StopRythmGame(comboFailed);
     }
     private void FixedUpdate()

@@ -49,7 +49,7 @@ public class RythmFish : MonoBehaviour
 
     public void Init(RythmManager _rythmManager, GameObject _latIzq, GameObject _latDer, float _speed)
     {
-        rythmManager = _rythmManager;
+        rythmManager = _rythmManager;        
         latIz = _latIzq;
         latDer = _latDer;
         speed = _speed;

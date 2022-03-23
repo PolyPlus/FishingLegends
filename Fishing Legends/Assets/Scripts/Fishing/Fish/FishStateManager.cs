@@ -11,6 +11,7 @@ public class FishStateManager : MonoBehaviour
 
     // States
     public FishBaseState currentState;
+    public FishSpawnState spawnState = new FishSpawnState();
     public FishIdleState idleState = new FishIdleState();
     public FishChaseState chaseState = new FishChaseState();
     public FishBitingState bitingState = new FishBitingState();
@@ -20,7 +21,7 @@ public class FishStateManager : MonoBehaviour
     
     void Start()
     {
-        currentState = idleState;
+        currentState = spawnState;
         currentState.EnterState(this, bait);
     }
 
@@ -64,8 +65,6 @@ public class FishStateManager : MonoBehaviour
 
     public void Scape()
     {
-        //Vector3 dir = new Vector3(0, -1, 0);
-        //this.transform.position += dir * scapeSpeed * Time.deltaTime;
         StartCoroutine(DestroyFishAfterTime());
     }
 }

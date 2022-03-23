@@ -17,7 +17,7 @@ public class FishIdleState : FishBaseState
     {
         initPos = fish.transform.position;
         moveSpeed = fish.moveSpeed;
-        timeToMove = Random.Range(2.0f, 6.0f);
+        timeToMove = Random.Range(0.0f, 4.0f);
         isWaiting = true;
         ResetTarget();
     }
@@ -32,7 +32,7 @@ public class FishIdleState : FishBaseState
             if(timeToMove <= 0)
             {
                 ResetTarget();
-                timeToMove = Random.Range(2.0f, 6.0f);
+                timeToMove = Random.Range(1.0f, 5.0f);
                 isWaiting = false;
             }
             if (!isWaiting)
