@@ -4,10 +4,19 @@ using UnityEngine;
 
 public class FishData : MonoBehaviour
 {
+
+    private enum fishSize
+    {
+        Small,
+        Medium,
+        Large,
+        Enemy
+    }
+
     [SerializeField]
     private string name;
     [SerializeField]
-    private int size;
+    private fishSize size;
     [SerializeField]
     private int points;
     [SerializeField]

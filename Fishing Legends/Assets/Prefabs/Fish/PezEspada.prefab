@@ -75,6 +75,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: 
-  size: 0
+  size: 2
   points: 0
   rarity: 0
