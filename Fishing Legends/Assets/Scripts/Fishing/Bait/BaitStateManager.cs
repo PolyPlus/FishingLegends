@@ -95,6 +95,7 @@ public class BaitStateManager : MonoBehaviour
     public void PullBait()
     {
         animator.Play("PullBack_Bait");
+        rythmGame.ResetSpeed();
         SwitchState(boatState);
     }
 

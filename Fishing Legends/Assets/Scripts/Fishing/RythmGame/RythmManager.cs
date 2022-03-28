@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 public class RythmManager : MonoBehaviour, IPointerClickHandler
 {
-    public float initSpeed = 100;
+    public float initSpeed = 200;
+    public float speed;
     public GameObject latIz;
     public GameObject latDer;
     public GameObject anzuelo;
@@ -17,20 +18,21 @@ public class RythmManager : MonoBehaviour, IPointerClickHandler
     public int size = 0; //3: GRANDE, 2: MEDIANO, 1: PEQUE
 
     private GameObject[] fish;
-    private float timeFish=0;
+    private float timeFish = 0;
     private int fishToSpawn;
     private int currentFish;
-    private int lastFish=0;
+    private int lastFish = 0;
     private bool isActive = false;
 
     private void Start()
     {
+        ResetSpeed();
         startFishing();
     }
     //Si empiezas a pescar, para todo el combo completo
     public void startFishing()
     {
-        pez.GetComponent<RythmFish>().Init(this, latIz, latDer, initSpeed);
+        pez.GetComponent<RythmFish>().Init(this, latIz, latDer, speed);
     }
     //Si pica pez
     public void startRythmGame(int numFish)
@@ -42,8 +44,9 @@ public class RythmManager : MonoBehaviour, IPointerClickHandler
         fish = new GameObject[size];
         panelRitmo.SetActive(true);
         isActive = true;
-        pez.GetComponent<RythmFish>().speed+=50;
-        
+        speed += 50;
+        pez.GetComponent<RythmFish>().speed = speed;
+
     }
     //Cada PEZ que aparece según el tamaño, dentro del combo
     public void spawnFish()
@@ -58,11 +61,11 @@ public class RythmManager : MonoBehaviour, IPointerClickHandler
         {
             newFish = Instantiate(pez, latIz.transform.position, latIz.transform.rotation) as GameObject;
         }
-        newFish.GetComponent<RythmFish>().Init(this, latIz, latDer, initSpeed);
+        newFish.GetComponent<RythmFish>().Init(this, latIz, latDer, speed);
         newFish.transform.SetParent(gameObject.transform);
 
         timeFish = Time.time;
-        fish[lastFish] = newFish;       
+        fish[lastFish] = newFish;
     }
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -78,6 +81,7 @@ public class RythmManager : MonoBehaviour, IPointerClickHandler
         else if (distance > 16.0f)
         {
             Debug.Log("MAL");
+            ResetSpeed();
             stopRythmGame(true);
             return;
         }
@@ -87,17 +91,22 @@ public class RythmManager : MonoBehaviour, IPointerClickHandler
         {
             stopRythmGame(false);
         }
-
     }
     public void stopRythmGame(bool comboFailed)
     {
         panelRitmo.SetActive(false);
         isActive = false;
-        for(int i=currentFish;i<fish.Length;++i)
+        for (int i = currentFish; i < fish.Length; ++i)
             Destroy(fish[i]);
         if (comboFailed) size = 0;
         baitManager.StopRythmGame(comboFailed);
     }
+
+    public void ResetSpeed()
+    {
+        speed = initSpeed;
+    }
+
     private void FixedUpdate()
     {
         if (isActive && (lastFish < fish.Length) && (Time.time - timeFish > tiempoAparicion))
@@ -106,5 +115,4 @@ public class RythmManager : MonoBehaviour, IPointerClickHandler
             ++lastFish;
         }
     }
-
 }

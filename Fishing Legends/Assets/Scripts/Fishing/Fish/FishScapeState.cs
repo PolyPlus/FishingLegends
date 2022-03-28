@@ -8,8 +8,8 @@ public class FishScapeState : FishBaseState
     public override void EnterState(FishStateManager fish, BaitStateManager bait)
     {
         //Debug.Log("Entering Scape State");
-        moveSpeed = fish.moveSpeed * 3.0f;
-        distance = 10.0f;
+        moveSpeed = fish.moveSpeed * 4.0f;
+        distance = 30.0f;
         SetTarget(fish.transform.position, bait.Pos);
         fish.Scape();
     }
@@ -22,8 +22,10 @@ public class FishScapeState : FishBaseState
 
     private void SetTarget(Vector3 fishPos, Vector3 baitPos)
     {
-        Vector3 dir = (fishPos - baitPos).normalized;
-        target = baitPos + dir * distance;
+        Vector3 pos = baitPos;
+        pos.y = -0.75f;
+        Vector3 dir = (fishPos - pos).normalized;
+        target = pos + dir * distance;
     }
 }
 

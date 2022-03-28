@@ -11,7 +11,7 @@ public class FishSpawnState : FishBaseState
         //Debug.Log("Entering Spawn State");
         moveSpeed = fish.moveSpeed;
         isReady = false;
-        target = new Vector3(fish.transform.position.x, 0.0f, fish.transform.position.z);
+        target = new Vector3(fish.transform.position.x, -1.0f, fish.transform.position.z);
     }
     public override void UpdateState(FishStateManager fish, BaitStateManager bait)
     {
