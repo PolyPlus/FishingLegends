@@ -8,6 +8,7 @@ public class FishingManager : MonoBehaviour
 {
     public BaitStateManager baitManager;
     public RythmManager rythmGame;
+    public int score;
     private PointerControlls controls;
 
     private void Awake()
@@ -31,12 +32,14 @@ public class FishingManager : MonoBehaviour
         controls.Pointer.Press.canceled += _ => OnPointerRelease();
         baitManager.rythmGame = rythmGame;
         rythmGame.baitManager = baitManager;
+        score = 0;
     }
 
     private void OnPointerPress()
     {
         Vector2 mousePosition = controls.Pointer.Position.ReadValue<Vector2>();
         baitManager.OnPointerPress(mousePosition);
+        if(rythmGame.started)rythmGame.OnPointerPress(mousePosition);
         //Debug.Log("Pointer Press on" + mousePosition);
     }
 

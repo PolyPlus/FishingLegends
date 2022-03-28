@@ -7,6 +7,8 @@ public class BaitStateManager : MonoBehaviour
     public Color32 color1;
     public Color32 color2;
     public RythmManager rythmGame;
+    public List<FishStateManager> fishList;
+    public List<FishStateManager> fishCaught;
 
     // States
     public BaitBaseState currentState;
@@ -18,7 +20,6 @@ public class BaitStateManager : MonoBehaviour
 
     private Vector3 pos;
     private Animator animator;
-    
 
     public Vector3 Pos { get => pos; set => pos = value; }
 
@@ -63,15 +64,17 @@ public class BaitStateManager : MonoBehaviour
         return false;
     }
 
-    public void Bite(bool b)
+    public void Bite(bool b, FishStateManager fish)
     {
         animator.Play("Bite_Bait");
         if (b)
         {
             SwitchState(bittenState);
+            fishList.Add(fish);
         }
         else if(currentState==bittenState) { 
-            SwitchState(readyState); 
+            SwitchState(readyState);
+            fishList.Remove(fish);
         }
     }
 
@@ -95,15 +98,17 @@ public class BaitStateManager : MonoBehaviour
     public void PullBait()
     {
         animator.Play("PullBack_Bait");
+        rythmGame.size = 0;
         rythmGame.ResetSpeed();
         SwitchState(boatState);
+        GetFish();
     }
 
     public void StartRythmGame()
     {
         Debug.Log("Start RythmGame");
         SwitchState(rythmState);
-        rythmGame.startRythmGame(2);
+        rythmGame.startRythmGame(GetTotalSize());
     }
 
     public void StopRythmGame(bool hasFailed)
@@ -112,11 +117,31 @@ public class BaitStateManager : MonoBehaviour
         if (hasFailed)
         {
             PullBait();
+            fishList.Clear();
         }
         else
         {
             SwitchState(readyState);
         }
         
+    }
+
+    private void GetFish()
+    {
+        for(int i = 0; i < fishList.Count; i++)
+        {
+            //fishList[i].PlayCaughtAnimation();
+            fishCaught.Add(fishList[i]);
+        }
+    }
+
+    private int GetTotalSize()
+    {
+        int size = 0;
+        for(int i = 0; i<fishList.Count; i++)
+        {
+            size += fishList[i].size;
+        }
+        return size;
     }
 }

@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-public class RythmManager : MonoBehaviour, IPointerClickHandler
+public class RythmManager : MonoBehaviour
 {
+    public bool started = false;
     public float initSpeed = 200;
     public float speed;
     public GameObject latIz;
     public GameObject latDer;
-    public GameObject anzuelo;
+    public GameObject bait;
     public GameObject pez;
     public float tiempoAparicion;
     public GameObject panelRitmo;
@@ -17,13 +18,13 @@ public class RythmManager : MonoBehaviour, IPointerClickHandler
 
     public int size = 0; //3: GRANDE, 2: MEDIANO, 1: PEQUE
 
+    private bool isActive = false;
     private GameObject[] fish;
     private float timeFish = 0;
     private int fishToSpawn;
     private int currentFish;
     private int lastFish = 0;
-    private bool isActive = false;
-
+    
     private void Start()
     {
         ResetSpeed();
@@ -66,21 +67,29 @@ public class RythmManager : MonoBehaviour, IPointerClickHandler
 
         timeFish = Time.time;
         fish[lastFish] = newFish;
+        started = true;
     }
-    public void OnPointerClick(PointerEventData eventData)
+
+    public void OnPointerPress(Vector2 position)
     {
-        float distance = Mathf.Abs(fish[currentFish].transform.position.x - anzuelo.transform.position.x);
-        if (distance <= 8.0f)
+        int value;
+        RythmFish rythmFish = fish[currentFish].GetComponent<RythmFish>();
+        bool right = rythmFish.right;      
+        if (position.x < Screen.width / 2 && !right)
         {
-            Debug.Log("EXCELENTE");
+            value = checkDistance();
         }
-        else if (distance <= 16.0f)
+        else if (position.x >= Screen.width / 2 && right)
         {
-            Debug.Log("BIEN");
+            value = checkDistance();
         }
-        else if (distance > 16.0f)
+        else
         {
-            Debug.Log("MAL");
+            value = 0;
+        }
+
+        if (value == 0)
+        {
             ResetSpeed();
             stopRythmGame(true);
             return;
@@ -92,8 +101,30 @@ public class RythmManager : MonoBehaviour, IPointerClickHandler
             stopRythmGame(false);
         }
     }
+
+    private int checkDistance()
+    {
+        float distance = Mathf.Abs(fish[currentFish].transform.position.x - bait.transform.position.x);
+        if (distance <= 10.0f)
+        {
+            Debug.Log("EXCELENTE");
+            return 2;
+        }
+        else if (distance <= 20.0f)
+        {
+            Debug.Log("BIEN");
+            return 1;
+        }
+        else
+        {
+            Debug.Log("MAL");
+            return 0;
+        }       
+    }
+
     public void stopRythmGame(bool comboFailed)
     {
+        started = false;
         panelRitmo.SetActive(false);
         isActive = false;
         for (int i = currentFish; i < fish.Length; ++i)

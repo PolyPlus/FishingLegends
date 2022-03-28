@@ -5,6 +5,7 @@ using UnityEngine;
 public class FishStateManager : MonoBehaviour
 {
     public BaitStateManager bait;
+    public int size = 2;
     public float moveSpeed = 1.0f;
     public float rotSpeed = 5f;
     public float biteRange = 0.75f;
