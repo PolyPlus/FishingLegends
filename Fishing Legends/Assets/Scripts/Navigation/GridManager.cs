@@ -12,6 +12,10 @@ public class GridManager : MonoBehaviour
 {
     public GameObject gridPoint;
 
+    private Animator transition;
+
+    public GameObject transition_go;
+
     private Camera _camera;
 
     private Ray _ray;
@@ -22,7 +26,7 @@ public class GridManager : MonoBehaviour
 
     public GameObject topCamera;
 
-    public GameObject boatCamera;
+    //public GameObject boatCamera;
 
     // private bool[,] selectedPositions;
 
@@ -54,6 +58,8 @@ public class GridManager : MonoBehaviour
 
     private bool routeStarted;
 
+    private bool stop;
+
     private int routeIndex;
 
     public uint maxFuel;
@@ -79,6 +85,7 @@ public class GridManager : MonoBehaviour
         cc.Disable();
     }
 
+    
     void Start()
     {
 
@@ -86,6 +93,7 @@ public class GridManager : MonoBehaviour
         cc.pointer.press.started += _ => OnHold();
         cc.pointer.press.canceled += _ => OnRelease();
         t = 0;
+        stop = false;
         routeIndex = 0;
         inHold = false;
 
@@ -93,6 +101,7 @@ public class GridManager : MonoBehaviour
 
         grid.GetComponent<Renderer>().material.SetFloat("_CellSize", (10.0f) / _rowsColumns);
 
+        transition = transition_go.GetComponent<Animator>();
         // Debug.Log(GetComponent<Collider>().bounds.min);
         //Debug.Log(GetComponent<Collider>().bounds.max);
 
@@ -104,6 +113,10 @@ public class GridManager : MonoBehaviour
         pointOrigin = min + gridOffset / 2.0f;
 
         blockType = new int[_rowsColumns, _rowsColumns];
+        
+        // 1 suelo
+        // 2 peces
+        
         blockType[2, 2] = 1;
         blockType[2, 3] = 1;
         blockType[3, 2] = 1;
@@ -145,22 +158,40 @@ public class GridManager : MonoBehaviour
 
         if (routeStarted)
         {
-            
-            
-            if (t > 1.0f)
+
+            if (!stop)
             {
-                t -= 1.0f;
-                routeIndex++;            
+                if (t > 1.0f)
+                {
+                    t -= 1.0f;
+                    routeIndex++;
+                    if (routeIndex == 6)
+                    {
+                        stop = true;
+                        
+                    }
                 
+                }
+                t += Time.deltaTime;
+                
+                if (routeIndex < route.Count)
+                {
+                    boat.transform.LookAt(indexPoints.ElementAt(routeIndex + 1));
+                    Debug.Log(routeIndex);
+                    boat.transform.position = route[routeIndex].GetPoint(t);
+                    topCamera.transform.position = boat.transform.position + new Vector3(-1, 8, -12);
+
+                    // if (blockType[TransformCoordinateToId(boat.transform.position.x, max.x, min.x),
+                    //         TransformCoordinateToId(boat.transform.position.z, max.z, min.z)] == 3)
+                    // {
+                    //     stop = true;
+                    //     transition.SetBool("fadingIn",true);
+                    // }
+                }
             }
-            t += Time.deltaTime;
-            if (routeIndex < route.Count)
-            {
-                boat.transform.LookAt(indexPoints.ElementAt(routeIndex + 1));
-                Debug.Log(routeIndex);
-                boat.transform.position = route[routeIndex].GetPoint(t);
-                boatCamera.transform.position = boat.transform.position + new Vector3(-1, 8, -12);
-            }
+            
+            
+            
             
             
             
@@ -170,6 +201,9 @@ public class GridManager : MonoBehaviour
             //_a.point.Lo;
             currentPositionX = ((int) (_rowsColumns * (_a.point.x - min.x) / (max.x - min.x)));
             currentPositionY = ((int) (_rowsColumns * (_a.point.z - min.z) / (max.z - min.z)));
+            
+            
+            
             Vector3 newPoint = TransformIdToGrid(currentPositionX, currentPositionY, _a.point);
 
             if (((((currentPositionX == lastPositionX + 1 || currentPositionX == lastPositionX - 1 ||
@@ -203,37 +237,37 @@ public class GridManager : MonoBehaviour
 
     struct RouteData
     {
-        private bool isBezier;
+        //private bool isBezier;
 
-        private Vector3 _p1;
+        private readonly Vector3 _p1;
 
-        public Vector3 _p2;
+        private readonly Vector3 _p2;
 
-        private Vector3 _p3;
+       // private readonly Vector3 _p3;
 
         public RouteData(Vector3 p1, Vector3 p2)
         {
             this._p1 = p1;
             this._p2 = p2;
-            this._p3 = new Vector3();
-            isBezier = false;
+            //this._p3 = new Vector3();
+            //isBezier = false;
         }
 
         public RouteData(Vector3 p1, Vector3 p2, Vector3 p3)
         {
             this._p1 = p1;
             this._p2 = p2;
-            this._p3 = p3;
-            isBezier = true;
+           // this._p3 = p3;
+          //  isBezier = true;
         }
 
         public Vector3 GetPoint(float t)
         {
-            if (isBezier)
-            {
-                return (1 - t) * (1 - t) * _p1 + 2 * t * (1 - t) * _p2 + t * t * _p3;
-            }
-            else
+            // if (isBezier)
+            // {
+            //     return (1 - t) * (1 - t) * _p1 + 2 * t * (1 - t) * _p2 + t * t * _p3;
+            // }
+            
             {
                 return _p1 + t * (_p2 - _p1);
             }
@@ -299,6 +333,8 @@ public class GridManager : MonoBehaviour
 
     public void startRoute()
     {
+        
+        transition.SetBool("fadingIn",true);
          if(TransformCoordinateToId(indexPoints.ElementAt(indexPoints.Count-1).x,min.x,max.x) 
          ==  TransformCoordinateToId(indexPoints.ElementAt(0).x,min.x,max.x) && TransformCoordinateToId(indexPoints.ElementAt(indexPoints.Count-1).z,min.z,max.z) 
          ==  TransformCoordinateToId(indexPoints.ElementAt(0).z,min.z,max.z)) 
@@ -307,8 +343,8 @@ public class GridManager : MonoBehaviour
        
         routeStarted = true;
             grid.SetActive(false);
-            topCamera.SetActive(false);
-
+            //topCamera.SetActive(false);
+            
          }
         
     }

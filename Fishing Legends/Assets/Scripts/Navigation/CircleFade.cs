@@ -1,10 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CircleFade : MonoBehaviour
 {
-    bool isActive = true;
+    public bool isActive = true;
 
     public bool isStarting = true;
 
@@ -12,6 +14,11 @@ public class CircleFade : MonoBehaviour
     void Start()
     {
         
+    }
+
+    private void OnDisable()
+    {
+        isStarting = false;
     }
 
     // Update is called once per frame
@@ -28,7 +35,7 @@ public class CircleFade : MonoBehaviour
                 }
                 else
                 {
-                    //isActive = false;
+                    gameObject.SetActive(false);
                 }
             }
             else
@@ -42,6 +49,7 @@ public class CircleFade : MonoBehaviour
                 {
                     //isActive = false;
                     transform.localScale = new Vector3(0, 0, 0);
+                    SceneManager.LoadScene("FishingScene");
                 }
                     
             }
