@@ -62,7 +62,7 @@ public class FishIdleState : FishBaseState
         float randomX = Random.Range(-movementRange, movementRange);
         float randomZ = Random.Range(-movementRange, movementRange);
         
-        target = new Vector3(initPos.x + randomX, 0.0f, initPos.z + randomZ);
+        target = new Vector3(initPos.x + randomX, -1.0f, initPos.z + randomZ);
     }
 
 }

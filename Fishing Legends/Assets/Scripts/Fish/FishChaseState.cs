@@ -36,6 +36,10 @@ public class FishChaseState : FishBaseState
         Vector3 dir = (fishPos - baitPos).normalized;
         Vector3 translate = dir * biteRange;
         target = baitPos + translate;
+<<<<<<< Updated upstream:Fishing Legends/Assets/Scripts/Fish/FishChaseState.cs
         Debug.Log("Distance: " + translate.magnitude);
+=======
+        target.y = fishPos.y;
+>>>>>>> Stashed changes:Fishing Legends/Assets/Scripts/Fishing/Fish/FishChaseState.cs
     }
 }
