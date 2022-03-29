@@ -32,6 +32,8 @@ public class GridManager : MonoBehaviour
 
     public GameObject block;
 
+    public GameObject tree;
+
     private Vector3 gridOffset;
 
     private Vector3 pointOrigin;
@@ -114,24 +116,26 @@ public class GridManager : MonoBehaviour
 
         blockType = new int[_rowsColumns, _rowsColumns];
         
-        // 1 suelo
-        // 2 peces
+        // 0 peces
+        // 1 tierra
+        // 2 tierra-arbol
+        // 3 roca
         
-        blockType[2, 2] = 1;
-        blockType[2, 3] = 1;
-        blockType[3, 2] = 1;
-        blockType[3, 3] = 1;
+        blockType[2, 2] = 2;
+        blockType[2, 3] = 2;
+        blockType[3, 2] = 3;
+        blockType[3, 3] = 2;
 
-        blockType[12, 12] = 1;
-        blockType[12, 13] = 1;
-        blockType[13, 12] = 1;
-        blockType[13, 13] = 1;
+        blockType[12, 12] = 2;
+        blockType[12, 13] = 2;
+        blockType[13, 12] = 2;
+        blockType[13, 13] = 3;
 
 
-        blockType[22, 22] = 1;
-        blockType[22, 23] = 1;
-        blockType[23, 22] = 1;
-        blockType[23, 23] = 1;
+        blockType[22, 22] = 3;
+        blockType[22, 23] = 2;
+        blockType[23, 22] = 2;
+        blockType[23, 23] = 2;
 
         lastPositionX = 14;
         lastPositionY = 13;
@@ -168,7 +172,7 @@ public class GridManager : MonoBehaviour
                     if (routeIndex == 6)
                     {
                         stop = true;
-                        
+                        //transition.SetBool("fadingIn",true);
                     }
                 
                 }
@@ -179,10 +183,10 @@ public class GridManager : MonoBehaviour
                     boat.transform.LookAt(indexPoints.ElementAt(routeIndex + 1));
                     Debug.Log(routeIndex);
                     boat.transform.position = route[routeIndex].GetPoint(t);
-                    topCamera.transform.position = boat.transform.position + new Vector3(-1, 8, -12);
+                    topCamera.transform.position = boat.transform.position + new Vector3(-1, 7, -12);
 
                     // if (blockType[TransformCoordinateToId(boat.transform.position.x, max.x, min.x),
-                    //         TransformCoordinateToId(boat.transform.position.z, max.z, min.z)] == 3)
+                    //         TransformCoordinateToId(boat.transform.position.z, max.z, min.z)] == 0)
                     // {
                     //     stop = true;
                     //     transition.SetBool("fadingIn",true);
@@ -334,7 +338,8 @@ public class GridManager : MonoBehaviour
     public void startRoute()
     {
         
-        transition.SetBool("fadingIn",true);
+        //transition.SetBool("fadingIn",true);
+        topCamera.transform.rotation = Quaternion.identity;
          if(TransformCoordinateToId(indexPoints.ElementAt(indexPoints.Count-1).x,min.x,max.x) 
          ==  TransformCoordinateToId(indexPoints.ElementAt(0).x,min.x,max.x) && TransformCoordinateToId(indexPoints.ElementAt(indexPoints.Count-1).z,min.z,max.z) 
          ==  TransformCoordinateToId(indexPoints.ElementAt(0).z,min.z,max.z)) 
@@ -356,11 +361,20 @@ public class GridManager : MonoBehaviour
             for (int j = 0; j < blockType.GetLength(1); j++)
             {
                  switch (blockType[i, j]) {
-                   case 1:
-                Instantiate(block,TransformIdToGrid(i,j,new Vector3(0,1,0)),block.transform.rotation);
+                   case 1: 
+                        //Instantiate(block,TransformIdToGrid(i,j,new Vector3(0,1,0)),block.transform.rotation);
                          break;
-                     default:
+                   case 2:
+                        Instantiate(block,TransformIdToGrid(i,j,new Vector3(0,1,0)),block.transform.rotation);
                          break;
+                   case 3:
+                       Instantiate(block,TransformIdToGrid(i,j,new Vector3(0,1,0)),block.transform.rotation);
+                       Instantiate(tree,TransformIdToGrid(i,j,new Vector3(0,10,0)),tree.transform.rotation);
+                       break;
+                   case 4:
+                       //Instantiate(block,TransformIdToGrid(i,j,new Vector3(0,1,0)),block.transform.rotation);
+                       break;
+                     
                  }
             }
         }
