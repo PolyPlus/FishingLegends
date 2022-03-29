@@ -4,7 +4,7 @@ public class BaitBittenState : BaitBaseState
 {
     public override void EnterState(BaitStateManager bait)
     {
-        Debug.Log("Entering Bitten State");
+        //Debug.Log("Entering Bitten State");
     }
     public override void UpdateState(BaitStateManager bait)
     {

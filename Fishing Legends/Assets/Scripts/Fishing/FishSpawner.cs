@@ -23,7 +23,7 @@ public class FishSpawner : MonoBehaviour
         {
             int fishType = Random.Range(0, fishPrefabs.Length - 1);
             Quaternion randomRot = Quaternion.Euler(new Vector3(0, Random.Range(0, 360), 0));
-            Vector3 randomPos = new Vector3(spawnPositions[i].x + Random.Range(0.0f, 0.5f), Random.Range(-2.5f, -1.0f), spawnPositions[i].z + Random.Range(0.0f, 0.5f));
+            Vector3 randomPos = new Vector3(spawnPositions[i].x + Random.Range(0.0f, 0.5f), Random.Range(-4.0f, -2.5f), spawnPositions[i].z + Random.Range(0.0f, 0.5f));
 
             GameObject newFish = Instantiate(fishPrefabs[fishType], randomPos, randomRot, this.transform);
             newFish.GetComponent<FishStateManager>().bait = bait;

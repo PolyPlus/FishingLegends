@@ -4,7 +4,7 @@ public class BaitRythmState : BaitBaseState
 {
     public override void EnterState(BaitStateManager bait)
     {
-        Debug.Log("Entering rythm State");
+        //Debug.Log("Entering rythm State");
     }
     public override void UpdateState(BaitStateManager bait)
     {

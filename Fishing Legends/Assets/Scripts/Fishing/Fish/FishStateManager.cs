@@ -5,6 +5,7 @@ using UnityEngine;
 public class FishStateManager : MonoBehaviour
 {
     public BaitStateManager bait;
+    public int size = 2;
     public float moveSpeed = 1.0f;
     public float rotSpeed = 5f;
     public float biteRange = 0.75f;
@@ -17,10 +18,11 @@ public class FishStateManager : MonoBehaviour
     public FishBitingState bitingState = new FishBitingState();
     public FishScapeState scapeState = new FishScapeState();
     public FishComboState comboState = new FishComboState();
-    private GameObject _gameObject;
-    
+    public Animator animator;
+
     void Start()
     {
+        animator = GetComponentInChildren<Animator>();
         currentState = spawnState;
         currentState.EnterState(this, bait);
     }
@@ -48,10 +50,12 @@ public class FishStateManager : MonoBehaviour
         {
             Vector3 direction = (target - transform.position).normalized;
             transform.position += direction * _moveSpeed * Time.deltaTime;
+            animator.SetFloat("Speed", _moveSpeed * 2);
             return false;
         }
         else
         {
+            animator.SetFloat("Speed", moveSpeed);
             return true;
         }
     }

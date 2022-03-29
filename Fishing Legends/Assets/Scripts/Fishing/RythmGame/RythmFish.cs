@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RythmFish : MonoBehaviour
 {      
-    public bool derecha;
+    public bool right;
     public float speed;
 
     public GameObject latIz;
@@ -16,18 +16,18 @@ public class RythmFish : MonoBehaviour
     {
         if (transform.position==latIz.transform.position)
         {
-            derecha = false;
+            right = false;
         }
         else
         {
-            derecha = true;
+            right = true;
         }
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (derecha)
+        if (right)
         {
             transform.Translate(new Vector2(-1, 0f) * Time.deltaTime * speed);
             if (transform.position.x < latIz.transform.position.x)  //Si se te escapa el pez y pasa ese margen

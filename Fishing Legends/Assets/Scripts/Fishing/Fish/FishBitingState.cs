@@ -3,15 +3,16 @@ using UnityEngine;
 public class FishBitingState : FishBaseState
 {
     public bool isBiting;
-    public float baitRadius = 0.4f;    
+    public float baitRadius = 0.5f;
 
     private float moveSpeed;
     private float biteRange;
     private float timeToAction;
     private bool isWaiting;
     private Vector3 target;
+    private Vector3 bitePos;
 
-    public override void EnterState(FishStateManager fish, BaitStateManager bait) 
+    public override void EnterState(FishStateManager fish, BaitStateManager bait)
     {
         //Debug.Log("Entering Bite State");
         moveSpeed = fish.moveSpeed * 6.0f;
@@ -19,8 +20,9 @@ public class FishBitingState : FishBaseState
         timeToAction = Random.Range(0.5f, 3.0f);
         isWaiting = true;
         SetTarget(fish.transform.position, bait.Pos);
+        SetBitePos(fish.transform.position, bait.Pos);
     }
-    public override void UpdateState(FishStateManager fish, BaitStateManager bait) 
+    public override void UpdateState(FishStateManager fish, BaitStateManager bait)
     {
         if (bait.currentState == bait.boatState)
         {
@@ -40,8 +42,10 @@ public class FishBitingState : FishBaseState
             }
             if (!isWaiting)
             {
-                MoveToBait(fish.transform, bait);
-            } else
+                isWaiting = fish.MoveToTarget(bitePos, moveSpeed);
+                if (isWaiting) ChooseAction(fish, bait);
+            }
+            else
             {
                 fish.MoveToTarget(target, moveSpeed);
             }
@@ -53,31 +57,24 @@ public class FishBitingState : FishBaseState
         Vector3 dir = (fishPos - baitPos).normalized;
         Vector3 translate = dir * biteRange;
         target = baitPos + translate;
+        target.y = fishPos.y;
     }
 
-    public void MoveToBait(Transform transform, BaitStateManager bait)
+    private void SetBitePos(Vector3 fishPos, Vector3 baitPos)
     {
-        Vector3 dir = (bait.Pos - transform.position);
-        float distance = dir.magnitude;
-        if(distance < baitRadius)
-        {
-            isWaiting = true;
-            ChooseAction(bait);
-        }
-        else
-        {
-            transform.position += dir.normalized * moveSpeed * Time.deltaTime;
-        }
+        Vector3 dir = (fishPos - baitPos).normalized;
+        Vector3 translate = dir * baitRadius;
+        bitePos = baitPos + translate;
+        bitePos.y = fishPos.y;
     }
 
-    public void ChooseAction(BaitStateManager bait)
+    public void ChooseAction(FishStateManager fish, BaitStateManager bait)
     {
         int action = Random.Range(0, 2);
         if (action == 1)
         {
             isBiting = true;
-            bait.Bite(true);
-            Debug.Log("Bite!!");
+            bait.Bite(true, fish);
         }
     }
 }
