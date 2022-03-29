@@ -33,6 +33,10 @@ public class GridManager : MonoBehaviour
     public GameObject block;
 
     public GameObject tree;
+    
+    public GameObject fishbank;
+
+    //public GameObject fishBank;
 
     private Vector3 gridOffset;
 
@@ -130,6 +134,9 @@ public class GridManager : MonoBehaviour
         blockType[12, 13] = 2;
         blockType[13, 12] = 2;
         blockType[13, 13] = 3;
+        
+       // blockType[15, 13] = 1;
+        blockType[18, 13] = 1;
 
 
         blockType[22, 22] = 3;
@@ -171,7 +178,7 @@ public class GridManager : MonoBehaviour
                     routeIndex++;
                     if (routeIndex == 6)
                     {
-                        stop = true;
+                        //stop = true;
                         //transition.SetBool("fadingIn",true);
                     }
                 
@@ -185,12 +192,12 @@ public class GridManager : MonoBehaviour
                     boat.transform.position = route[routeIndex].GetPoint(t);
                     topCamera.transform.position = boat.transform.position + new Vector3(-1, 7, -12);
 
-                    // if (blockType[TransformCoordinateToId(boat.transform.position.x, max.x, min.x),
-                    //         TransformCoordinateToId(boat.transform.position.z, max.z, min.z)] == 0)
-                    // {
-                    //     stop = true;
-                    //     transition.SetBool("fadingIn",true);
-                    // }
+                    if (blockType[TransformCoordinateToId(boat.transform.position.x, max.x, min.x),
+                            TransformCoordinateToId(boat.transform.position.z, max.z, min.z)] == 1)
+                    {
+                        stop = true;
+                        transition.SetBool("fadingIn",true);
+                    }
                 }
             }
             
@@ -214,7 +221,7 @@ public class GridManager : MonoBehaviour
                    currentPositionX == lastPositionX) &&
                   (currentPositionY == lastPositionY + 1 || currentPositionY == lastPositionY - 1 ||
                    currentPositionY == lastPositionY)) &&
-                 !(currentPositionX == lastPositionX && currentPositionY == lastPositionY)) || indexPoints.Count == 0) && blockType[currentPositionX,currentPositionY] != 1 )
+                 !(currentPositionX == lastPositionX && currentPositionY == lastPositionY)) || indexPoints.Count == 0) && blockType[currentPositionX,currentPositionY] <= 1 )
             {
                 gridPoint.transform.position = newPoint;
                  Debug.Log(gridPoint.transform.position);
@@ -361,8 +368,8 @@ public class GridManager : MonoBehaviour
             for (int j = 0; j < blockType.GetLength(1); j++)
             {
                  switch (blockType[i, j]) {
-                   case 1: 
-                        //Instantiate(block,TransformIdToGrid(i,j,new Vector3(0,1,0)),block.transform.rotation);
+                   case 1:
+                       Instantiate(fishbank,TransformIdToGrid(i,j,new Vector3(0,0,0)), Quaternion.identity);
                          break;
                    case 2:
                         Instantiate(block,TransformIdToGrid(i,j,new Vector3(0,1,0)),block.transform.rotation);
