@@ -78,6 +78,7 @@ public class GridManager : MonoBehaviour
 
     private void Awake()
     {
+        boat.GetComponentInChildren<Renderer>().material.renderQueue = 1998;
         cc = new ClickController();
     }
 
