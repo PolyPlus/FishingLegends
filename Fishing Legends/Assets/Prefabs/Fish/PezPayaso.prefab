@@ -93,10 +93,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 276870630850190596}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a9ef42b0b28a5e42b191397ea3dab70, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a6f3548ac1f07f4fba4e32c6a3d629f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   name: 
   size: 0
-  points: 100
-  rarity: 0
+  points: 10
+  rarity: 50
