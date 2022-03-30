@@ -17,28 +17,29 @@ public class RythmManager : MonoBehaviour
     public BaitStateManager baitManager;
 
     public int size = 0; //3: GRANDE, 2: MEDIANO, 1: PEQUE
-
+    
+    private int score;
     private bool isActive = false;
     private GameObject[] fish;
     private float timeFish = 0;
-    private int fishToSpawn;
     private int currentFish;
     private int lastFish = 0;
     
     private void Start()
-    {
+    {        
         ResetSpeed();
         startFishing();
     }
     //Si empiezas a pescar, para todo el combo completo
     public void startFishing()
-    {
+    {       
         pez.GetComponent<RythmFish>().Init(this, latIz, latDer, speed);
     }
     //Si pica pez
     public void startRythmGame(int numFish)
     {
-        size += numFish;
+        score = 0;
+        size = numFish;
         lastFish = 0;
         currentFish = lastFish;
         timeFish = 0;
@@ -90,10 +91,11 @@ public class RythmManager : MonoBehaviour
 
         if (value == 0)
         {
-            ResetSpeed();
+            ResetCombo();
             stopRythmGame(true);
             return;
         }
+        score += value;
         Destroy(fish[currentFish]);
         ++currentFish;
         if (currentFish >= size)
@@ -130,11 +132,18 @@ public class RythmManager : MonoBehaviour
         for (int i = currentFish; i < fish.Length; ++i)
             Destroy(fish[i]);
         if (comboFailed) size = 0;
-        baitManager.StopRythmGame(comboFailed);
+        baitManager.StopRythmGame(comboFailed, score);
     }
 
     public void ResetSpeed()
     {
+        speed = initSpeed;
+    }
+
+    public void ResetCombo()
+    {
+        score = 0;
+        size = 0;
         speed = initSpeed;
     }
 

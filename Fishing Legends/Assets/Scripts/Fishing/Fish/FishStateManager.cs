@@ -71,4 +71,9 @@ public class FishStateManager : MonoBehaviour
     {
         StartCoroutine(DestroyFishAfterTime());
     }
+
+    public void CatchFish()
+    {
+        Destroy(gameObject);
+    }
 }
