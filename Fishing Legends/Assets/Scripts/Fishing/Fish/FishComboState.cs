@@ -35,7 +35,7 @@ public class FishComboState : FishBaseState
         } 
         else
         {
-            if (bait.currentState == bait.boatState)
+            if (bait.currentState == bait.boatState && !bait.inCombo)
             {
                 fish.SwitchState(fish.scapeState);
             }

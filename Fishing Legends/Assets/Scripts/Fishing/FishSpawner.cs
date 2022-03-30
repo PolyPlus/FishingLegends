@@ -7,16 +7,16 @@ public class FishSpawner : MonoBehaviour
     public int numFish = 5;
     public BaitStateManager bait;
     public GameObject[] fishShadows;
-    public List<GameObject> fishTypes;
+    public List<GameObject> fishPrefabs;
     public Vector3[] spawnPositions;
     
     public GameObject[] fish;
-
-    private int[] fishWeights;
+    public int[] fishWeights;
 
     void Start()
     {
         fish = new GameObject[numFish];
+        fishWeights = new int[fishPrefabs.Count];
         GenerateWeights();
         SpawnFish(numFish);       
     }
@@ -25,12 +25,15 @@ public class FishSpawner : MonoBehaviour
     {
         for(int i=0; i<n; i++)
         {
-            int fishType = GetRandom(fishWeights);
-            switch(fishTypes[i].GetComponent<FishData>.Size)
+            int fishTypeId = GetRandom(fishWeights);
+            Debug.Log("Generating: " + fishPrefabs[fishTypeId] + " id: " + fishTypeId);
+            int fishSize = fishPrefabs[fishTypeId].GetComponent<FishData>().Size;
             Quaternion randomRot = Quaternion.Euler(new Vector3(0, Random.Range(0, 360), 0));
             Vector3 randomPos = new Vector3(spawnPositions[i].x + Random.Range(0.0f, 0.5f), Random.Range(-4.0f, -2.5f), spawnPositions[i].z + Random.Range(0.0f, 0.5f));
+            GameObject fishShadow = fishShadows[fishSize];
 
-            GameObject newFish = Instantiate(fishShadows[fishType], randomPos, randomRot, this.transform);
+            GameObject newFish = Instantiate(fishShadow, randomPos, randomRot, this.transform);
+            newFish.GetComponent<FishStateManager>().Init(fishPrefabs[fishTypeId]);
             newFish.GetComponent<FishStateManager>().bait = bait;
             fish[i] = newFish;
         }
@@ -38,9 +41,9 @@ public class FishSpawner : MonoBehaviour
 
     private void GenerateWeights()
     {
-        for(int i = 0; i < fishTypes.Count; i++)
+        for(int i = 0; i < fishPrefabs.Count; i++)
         {
-            fishWeights[i] = fishTypes[i].GetComponent<FishData>().Rarity;
+            fishWeights[i] = fishPrefabs[i].GetComponent<FishData>().Rarity;
         }
 
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class FishStateManager : MonoBehaviour
 {
     public BaitStateManager bait;
-    public int size = 2;
+    public int size;
     public float moveSpeed = 1.0f;
     public float rotSpeed = 5f;
     public float biteRange = 0.75f;
@@ -18,6 +18,7 @@ public class FishStateManager : MonoBehaviour
     public FishBitingState bitingState = new FishBitingState();
     public FishScapeState scapeState = new FishScapeState();
     public FishComboState comboState = new FishComboState();
+    public FishCaughtState caughtState = new FishCaughtState();
     public Animator animator;
     public GameObject fishPrefab;
 
@@ -39,9 +40,9 @@ public class FishStateManager : MonoBehaviour
         currentState.EnterState(this, bait);
     }
 
-    IEnumerator DestroyFishAfterTime()
+    IEnumerator DestroyFishAfterTime(float time)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(time);
         Destroy(gameObject);
     }
 
@@ -70,11 +71,23 @@ public class FishStateManager : MonoBehaviour
 
     public void Scape()
     {
-        StartCoroutine(DestroyFishAfterTime());
+        StartCoroutine(DestroyFishAfterTime(1.0f));
     }
 
     public void CatchFish()
     {
-        Destroy(gameObject);
+        
+        //StartCoroutine(DestroyFishAfterTime(0.1f));
+    }
+
+    public void Init(GameObject _prefab)
+    {
+        fishPrefab = _prefab;
+        size = _prefab.GetComponent<FishData>().Size + 1;
+    }
+
+    public FishData GetPrefabData()
+    {
+        return fishPrefab.GetComponent<FishData>();
     }
 }
