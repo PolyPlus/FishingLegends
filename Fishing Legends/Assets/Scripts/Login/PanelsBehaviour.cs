@@ -49,6 +49,8 @@ public class PanelsBehaviour : MonoBehaviour
 
     public void OnClickLogIn()
     {
+        AudioManager.instance.PlaySound("ButtonSelected");
+
         Debug.Log("LogIn Pulsado");
         if (usernameL.text != "" && passwordL.text != "")
         {
@@ -58,6 +60,8 @@ public class PanelsBehaviour : MonoBehaviour
     }
     public void OnClickSignIn()
     {
+        AudioManager.instance.PlaySound("ButtonSelected");
+
         Debug.Log("SignIn Pulsado");
         LogInCanvas.gameObject.SetActive(false);
         SignInCanvas.gameObject.SetActive(true);
@@ -67,6 +71,8 @@ public class PanelsBehaviour : MonoBehaviour
     }
     public void OnClickContact()
     {
+        AudioManager.instance.PlaySound("ButtonSelected");
+
         Debug.Log("Contact Pulsado");
         LogInCanvas.gameObject.SetActive(false);
         SignInCanvas.gameObject.SetActive(false);
@@ -76,6 +82,8 @@ public class PanelsBehaviour : MonoBehaviour
     }
     public void OnClickConfiguration()
     {
+        AudioManager.instance.PlaySound("ButtonSelected");
+
         Debug.Log("Opciones Pulsado");
         LogInCanvas.gameObject.SetActive(false);
         SignInCanvas.gameObject.SetActive(false);
@@ -87,7 +95,9 @@ public class PanelsBehaviour : MonoBehaviour
     [System.Obsolete]
     public void OnClickGoBack()
     {
-        if(ConfigCanvas.gameObject.active == true || SignInCanvas.gameObject.active == true)
+        AudioManager.instance.PlaySound("ButtonSelected");
+
+        if (ConfigCanvas.gameObject.active == true || SignInCanvas.gameObject.active == true)
         {
             LogInCanvas.gameObject.SetActive(true);
             SignInCanvas.gameObject.SetActive(false);
@@ -114,6 +124,8 @@ public class PanelsBehaviour : MonoBehaviour
     }
     public void OnClickSoundConfig()
     {
+        AudioManager.instance.PlaySound("ButtonSelected");
+
         Debug.Log("Opciones Sonido Pulsado");
         LogInCanvas.gameObject.SetActive(false);
         SignInCanvas.gameObject.SetActive(false);
