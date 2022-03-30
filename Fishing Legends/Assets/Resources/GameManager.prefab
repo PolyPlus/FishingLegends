@@ -122,12 +122,12 @@ MonoBehaviour:
     outputMixer: {fileID: 6633371015290128321, guid: db35175ae1ef9cf45bd391e211343bbe, type: 2}
   - name: TravesiaIntro
     clip: {fileID: 8300000, guid: ec4d86b766bed5941ada951aa71c564c, type: 3}
-    volume: 0.5
+    volume: 0.35
     source: {fileID: 0}
     outputMixer: {fileID: 6633371015290128321, guid: db35175ae1ef9cf45bd391e211343bbe, type: 2}
   - name: TravesiaLoop
     clip: {fileID: 8300000, guid: b813c6609ce874040a283429073af709, type: 3}
-    volume: 0.5
+    volume: 0.35
     source: {fileID: 0}
     outputMixer: {fileID: 6633371015290128321, guid: db35175ae1ef9cf45bd391e211343bbe, type: 2}
   musicAudioSource: {fileID: 1082700669072530431}
