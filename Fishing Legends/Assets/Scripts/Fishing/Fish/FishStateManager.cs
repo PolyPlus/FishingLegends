@@ -19,6 +19,7 @@ public class FishStateManager : MonoBehaviour
     public FishScapeState scapeState = new FishScapeState();
     public FishComboState comboState = new FishComboState();
     public Animator animator;
+    public GameObject fishPrefab;
 
     void Start()
     {
@@ -70,5 +71,10 @@ public class FishStateManager : MonoBehaviour
     public void Scape()
     {
         StartCoroutine(DestroyFishAfterTime());
+    }
+
+    public void CatchFish()
+    {
+        Destroy(gameObject);
     }
 }

@@ -7,8 +7,9 @@ public class BaitStateManager : MonoBehaviour
     public Color32 color1;
     public Color32 color2;
     public RythmManager rythmGame;
-    public List<FishStateManager> fishList;
+    public List<FishStateManager> fishCombo;
     public List<FishStateManager> fishCaught;
+    public int totalScore;
 
     // States
     public BaitBaseState currentState;
@@ -18,6 +19,7 @@ public class BaitStateManager : MonoBehaviour
     public BaitBittenState bittenState = new BaitBittenState();
     public BaitRythmState rythmState = new BaitRythmState();
 
+    private int comboScore;
     private Vector3 pos;
     private Animator animator;
 
@@ -70,11 +72,11 @@ public class BaitStateManager : MonoBehaviour
         if (b)
         {
             SwitchState(bittenState);
-            fishList.Add(fish);
+            fishCombo.Add(fish);
         }
         else if(currentState==bittenState) { 
             SwitchState(readyState);
-            fishList.Remove(fish);
+            fishCombo.Remove(fish);
         }
     }
 
@@ -98,29 +100,28 @@ public class BaitStateManager : MonoBehaviour
     public void PullBait()
     {
         animator.Play("PullBack_Bait");
-        rythmGame.size = 0;
-        rythmGame.ResetSpeed();
+        rythmGame.ResetCombo();
         SwitchState(boatState);
         GetFish();
     }
 
     public void StartRythmGame()
     {
-        Debug.Log("Start RythmGame");
         SwitchState(rythmState);
         rythmGame.startRythmGame(GetTotalSize());
     }
 
-    public void StopRythmGame(bool hasFailed)
+    public void StopRythmGame(bool hasFailed, int score)
     {
-        Debug.Log("Stop RythmGame");
         if (hasFailed)
         {
-            PullBait();
-            fishList.Clear();
+            fishCombo.Clear();
+            PullBait();           
         }
         else
         {
+            comboScore += score * 10 * fishCombo.Count;
+            Debug.Log("Combo Score: " + comboScore);
             SwitchState(readyState);
         }
         
@@ -128,19 +129,27 @@ public class BaitStateManager : MonoBehaviour
 
     private void GetFish()
     {
-        for(int i = 0; i < fishList.Count; i++)
+        Debug.Log("fish caught: " + fishCombo.Count);
+        if(fishCombo.Count > 0)
         {
-            //fishList[i].PlayCaughtAnimation();
-            fishCaught.Add(fishList[i]);
+            totalScore += comboScore;
+            comboScore = 0;            
+            for (int i = 0; i < fishCombo.Count; i++)
+            {
+                //fishList[i].PlayCaughtAnimation();           
+                fishCaught.Add(fishCombo[i]);
+            }
         }
+        Debug.Log("Total fish caught: " + fishCaught.Count);
+        Debug.Log("Total Score: " + totalScore);
     }
 
     private int GetTotalSize()
     {
         int size = 0;
-        for(int i = 0; i<fishList.Count; i++)
+        for(int i = 0; i<fishCombo.Count; i++)
         {
-            size += fishList[i].size;
+            size += fishCombo[i].size;
         }
         return size;
     }
