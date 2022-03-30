@@ -8,8 +8,9 @@ public class BaitStateManager : MonoBehaviour
     public Color32 color2;
     public RythmManager rythmGame;
     public List<FishStateManager> fishCombo;
-    public List<FishStateManager> fishCaught;
+    public List<FishData> fishCaught;
     public int totalScore;
+    public bool inCombo;
 
     // States
     public BaitBaseState currentState;
@@ -29,6 +30,7 @@ public class BaitStateManager : MonoBehaviour
     {
         Pos = transform.position;
         currentState = boatState;
+        inCombo = false;
         animator = this.GetComponent<Animator>();
         currentState.EnterState(this);
     }
@@ -98,15 +100,16 @@ public class BaitStateManager : MonoBehaviour
     }
 
     public void PullBait()
-    {
-        animator.Play("PullBack_Bait");
+    {       
         rythmGame.ResetCombo();
+        animator.Play("PullBack_Bait");       
         SwitchState(boatState);
         GetFish();
     }
 
     public void StartRythmGame()
     {
+        inCombo = true;
         SwitchState(rythmState);
         rythmGame.startRythmGame(GetTotalSize());
     }
@@ -115,6 +118,7 @@ public class BaitStateManager : MonoBehaviour
     {
         if (hasFailed)
         {
+            inCombo = false;
             fishCombo.Clear();
             PullBait();           
         }
@@ -127,6 +131,14 @@ public class BaitStateManager : MonoBehaviour
         
     }
 
+    public void showFish()
+    {
+        if(fishCombo.Count > 0)
+        {
+
+        }
+    }
+
     private void GetFish()
     {
         Debug.Log("fish caught: " + fishCombo.Count);
@@ -136,12 +148,13 @@ public class BaitStateManager : MonoBehaviour
             comboScore = 0;            
             for (int i = 0; i < fishCombo.Count; i++)
             {
-                //fishList[i].PlayCaughtAnimation();           
-                fishCaught.Add(fishCombo[i]);
+                fishCaught.Add(fishCombo[i].GetPrefabData());
+                fishCombo[i].CatchFish();             
             }
         }
         Debug.Log("Total fish caught: " + fishCaught.Count);
         Debug.Log("Total Score: " + totalScore);
+        inCombo = false;
     }
 
     private int GetTotalSize()

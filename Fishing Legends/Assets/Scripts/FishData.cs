@@ -14,7 +14,7 @@ public class FishData : MonoBehaviour
     private int rarity;
 
     public string Name { get => name; set => name = value; }
-    private int Size { get => size; set => size = value; }
+    public int Size { get => size; set => size = value; }
     public int Points { get => points; set => points = value; }
     public int Rarity { get => rarity; set => rarity = value; }
     
