@@ -1580,6 +1580,7 @@ MonoBehaviour:
     rgba: 4278255360
   rythmGame: {fileID: 0}
   fishCombo: []
+  fishPrefabs: []
   fishCaught: []
   totalScore: 0
   inCombo: 0
