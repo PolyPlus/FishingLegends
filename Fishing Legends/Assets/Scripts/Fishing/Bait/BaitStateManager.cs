@@ -7,8 +7,10 @@ public class BaitStateManager : MonoBehaviour
     public Color32 color1;
     public Color32 color2;
     public RythmManager rythmGame;
-    public List<FishStateManager> fishList;
-    public List<FishStateManager> fishCaught;
+    public List<FishStateManager> fishCombo;
+    public List<FishData> fishCaught;
+    public int totalScore;
+    public bool inCombo;
 
     // States
     public BaitBaseState currentState;
@@ -18,6 +20,7 @@ public class BaitStateManager : MonoBehaviour
     public BaitBittenState bittenState = new BaitBittenState();
     public BaitRythmState rythmState = new BaitRythmState();
 
+    private int comboScore;
     private Vector3 pos;
     private Animator animator;
 
@@ -27,6 +30,7 @@ public class BaitStateManager : MonoBehaviour
     {
         Pos = transform.position;
         currentState = boatState;
+        inCombo = false;
         animator = this.GetComponent<Animator>();
         currentState.EnterState(this);
     }
@@ -70,11 +74,11 @@ public class BaitStateManager : MonoBehaviour
         if (b)
         {
             SwitchState(bittenState);
-            fishList.Add(fish);
+            fishCombo.Add(fish);
         }
         else if(currentState==bittenState) { 
             SwitchState(readyState);
-            fishList.Remove(fish);
+            fishCombo.Remove(fish);
         }
     }
 
@@ -96,51 +100,69 @@ public class BaitStateManager : MonoBehaviour
     }
 
     public void PullBait()
-    {
-        animator.Play("PullBack_Bait");
-        rythmGame.size = 0;
-        rythmGame.ResetSpeed();
+    {       
+        rythmGame.ResetCombo();
+        animator.Play("PullBack_Bait");       
         SwitchState(boatState);
         GetFish();
     }
 
     public void StartRythmGame()
     {
-        Debug.Log("Start RythmGame");
+        inCombo = true;
         SwitchState(rythmState);
         rythmGame.startRythmGame(GetTotalSize());
     }
 
-    public void StopRythmGame(bool hasFailed)
+    public void StopRythmGame(bool hasFailed, int score)
     {
-        Debug.Log("Stop RythmGame");
         if (hasFailed)
         {
-            PullBait();
-            fishList.Clear();
+            inCombo = false;
+            fishCombo.Clear();
+            PullBait();           
         }
         else
         {
+            comboScore += score * 10 * fishCombo.Count;
+            Debug.Log("Combo Score: " + comboScore);
             SwitchState(readyState);
         }
         
     }
 
+    public void showFish()
+    {
+        if(fishCombo.Count > 0)
+        {
+
+        }
+    }
+
     private void GetFish()
     {
-        for(int i = 0; i < fishList.Count; i++)
+        Debug.Log("fish caught: " + fishCombo.Count);
+        if(fishCombo.Count > 0)
         {
-            //fishList[i].PlayCaughtAnimation();
-            fishCaught.Add(fishList[i]);
+            totalScore += comboScore;
+            comboScore = 0;            
+            for (int i = 0; i < fishCombo.Count; i++)
+            {
+                fishCaught.Add(fishCombo[i].GetPrefabData());
+                fishCombo[i].CatchFish();             
+            }
         }
+        Debug.Log("Total fish caught: " + fishCaught.Count);
+        Debug.Log("Total Score: " + totalScore);
+        inCombo = false;
     }
 
     private int GetTotalSize()
     {
         int size = 0;
-        for(int i = 0; i<fishList.Count; i++)
+        for(int i = 0; i<fishCombo.Count; i++)
         {
-            size += fishList[i].size;
+            size += fishCombo[i].size;
         }
         return size;
     }

@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     public void SelectScene(string nameScene)
     {
+        AudioManager.instance.PlayAtStartScene(nameScene);
         SceneManager.LoadScene(nameScene);
     }
 }
