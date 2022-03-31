@@ -7,9 +7,13 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class GridManager : MonoBehaviour
 {
+    #region Variables
+
     public GameObject gridPoint;
 
     private Animator transition;
@@ -46,6 +50,8 @@ public class GridManager : MonoBehaviour
 
     private Vector3 max;
 
+    public Image a;
+
     private RaycastHit _a;
 
     private ClickController cc;
@@ -75,6 +81,9 @@ public class GridManager : MonoBehaviour
     private int[,] blockType;
 
     private GameObject grid;
+
+    #endregion
+    
 
     private void Awake()
     {
@@ -109,8 +118,7 @@ public class GridManager : MonoBehaviour
         grid.GetComponent<Renderer>().material.SetFloat("_CellSize", (10.0f) / _rowsColumns);
 
         transition = transition_go.GetComponent<Animator>();
-        // Debug.Log(GetComponent<Collider>().bounds.min);
-        //Debug.Log(GetComponent<Collider>().bounds.max);
+        
 
         Collider auxCol = GetComponent<Collider>();
 
@@ -147,6 +155,8 @@ public class GridManager : MonoBehaviour
 
         lastPositionX = 14;
         lastPositionY = 13;
+        
+        GenerateMapContent();
 
         Vector3 start = TransformIdToGrid(lastPositionX, lastPositionY, new Vector3(0, 0, 0));
 
@@ -157,7 +167,7 @@ public class GridManager : MonoBehaviour
         Instantiate(gridPoint, start, Quaternion.identity);
 
         InitializeMap();
-        // Debug.Log(pointOrigin);
+       
         //GetComponent<Collider>().bounds.
     }
 
@@ -166,7 +176,7 @@ public class GridManager : MonoBehaviour
     {
         _ray = _camera.ScreenPointToRay(Mouse.current.position.ReadValue());
 
-        //Debug.Log(clickaction);
+       
 
         if (routeStarted)
         {
@@ -177,11 +187,7 @@ public class GridManager : MonoBehaviour
                 {
                     t -= 1.0f;
                     routeIndex++;
-                    if (routeIndex == 6)
-                    {
-                        //stop = true;
-                        //transition.SetBool("fadingIn",true);
-                    }
+                   
                 
                 }
                 t += Time.deltaTime;
@@ -189,7 +195,7 @@ public class GridManager : MonoBehaviour
                 if (routeIndex < route.Count)
                 {
                     boat.transform.LookAt(indexPoints.ElementAt(routeIndex + 1));
-                    Debug.Log(routeIndex);
+                    //Debug.Log(routeIndex);
                     boat.transform.position = route[routeIndex].GetPoint(t);
                     topCamera.transform.position = boat.transform.position + new Vector3(-1, 7, -12);
 
@@ -199,6 +205,10 @@ public class GridManager : MonoBehaviour
                         stop = true;
                         transition.SetBool("fadingIn",true);
                     }
+                }
+                else
+                {
+                    //EN ESTE ELSE SE EJECUTA CUANDO ACABA LA RUTA
                 }
             }
             
@@ -225,7 +235,7 @@ public class GridManager : MonoBehaviour
                  !(currentPositionX == lastPositionX && currentPositionY == lastPositionY)) || indexPoints.Count == 0) && blockType[currentPositionX,currentPositionY] <= 1 )
             {
                 gridPoint.transform.position = newPoint;
-                 Debug.Log(gridPoint.transform.position);
+               //  Debug.Log(gridPoint.transform.position);
                 if (inHold && indexPoints.Count < maxFuel )
                 {
 
@@ -234,17 +244,12 @@ public class GridManager : MonoBehaviour
                     lastPositionX = currentPositionX;
                     lastPositionY = currentPositionY;
                     indexPoints.AddLast(newPoint);
-                    Debug.Log(indexPoints.Count);
+                   // Debug.Log(indexPoints.Count);
                     //curvePoints.AddLast(new Vector2(cloned.transform.position.x,,))
 
                 }
             }
-
-
-
         }
-
-
     }
 
     struct RouteData
@@ -255,34 +260,18 @@ public class GridManager : MonoBehaviour
 
         private readonly Vector3 _p2;
 
-       // private readonly Vector3 _p3;
+       
 
         public RouteData(Vector3 p1, Vector3 p2)
         {
-            this._p1 = p1;
-            this._p2 = p2;
-            //this._p3 = new Vector3();
-            //isBezier = false;
+            _p1 = p1;
+            _p2 = p2;
+            
         }
-
-        public RouteData(Vector3 p1, Vector3 p2, Vector3 p3)
-        {
-            this._p1 = p1;
-            this._p2 = p2;
-           // this._p3 = p3;
-          //  isBezier = true;
-        }
-
         public Vector3 GetPoint(float t)
         {
-            // if (isBezier)
-            // {
-            //     return (1 - t) * (1 - t) * _p1 + 2 * t * (1 - t) * _p2 + t * t * _p3;
-            // }
+            return _p1 + t * (_p2 - _p1);
             
-            {
-                return _p1 + t * (_p2 - _p1);
-            }
         }
     }
 
@@ -290,29 +279,10 @@ public class GridManager : MonoBehaviour
     {
         for (int i = 0; i < indexPoints.Count - 1; i++)
         {
-            // if (i == indexPoints.Count - 1)
-            // {
-            //     route.Add(new routeData(indexPoints.ElementAt(i),indexPoints.ElementAt(i + 1)));
-            // }
-            // else
-            // {
-            //     //recta
-            //     if ((indexPoints.ElementAt(i + 1) - indexPoints.ElementAt(i)).sqrMagnitude ==
-            //         (indexPoints.ElementAt(i + 2) - indexPoints.ElementAt(i)).sqrMagnitude)
-            //     {
-            //         //recta
-            //         route.Add(new routeData(indexPoints.ElementAt(i),indexPoints.ElementAt(i + 1)));
-            //     }else
-            //     {
-            //         //bezier
 
-                    route.Add(new RouteData(indexPoints.ElementAt(i),indexPoints.ElementAt(i + 1)));
-                    
-                //}
-              
-            }
-            
+            route.Add(new RouteData(indexPoints.ElementAt(i), indexPoints.ElementAt(i + 1)));
         }
+    }
     
 
 
@@ -346,12 +316,14 @@ public class GridManager : MonoBehaviour
     public void startRoute()
     {
         
-        //transition.SetBool("fadingIn",true);
-        topCamera.transform.rotation = Quaternion.identity;
          if(TransformCoordinateToId(indexPoints.ElementAt(indexPoints.Count-1).x,min.x,max.x) 
          ==  TransformCoordinateToId(indexPoints.ElementAt(0).x,min.x,max.x) && TransformCoordinateToId(indexPoints.ElementAt(indexPoints.Count-1).z,min.z,max.z) 
-         ==  TransformCoordinateToId(indexPoints.ElementAt(0).z,min.z,max.z)) 
+         ==  TransformCoordinateToId(indexPoints.ElementAt(0).z,min.z,max.z) && indexPoints.Count > 1) 
          {
+             
+             topCamera.GetComponent<CameraMovementController>().enabled = false;
+             //transition.SetBool("fadingIn",true);
+             topCamera.transform.rotation = Quaternion.identity;
              ProcessRoute();
        
         routeStarted = true;
@@ -362,6 +334,30 @@ public class GridManager : MonoBehaviour
         
     }
 
+
+    private void GenerateMapContent()
+    {
+        for (int i = 0; i < _rowsColumns; i++)
+        {
+            for (int j = 0; j < _rowsColumns; j++)
+            {
+                
+                
+                j += Random.Range(1, 12);
+
+                if (j < _rowsColumns)
+                {
+                    if (blockType[i,j] ==  0)
+                    {
+                        blockType[i,j] = 1;
+                    }
+                    
+                }
+                
+            }
+
+        }
+    }
     private void InitializeMap()
     {
         for (int i = 0; i < blockType.GetLength(0); i++)

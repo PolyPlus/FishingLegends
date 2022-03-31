@@ -8,22 +8,22 @@ public class CameraMovementController : MonoBehaviour
 {
     private float offset = 10;
     private float speed = 20.0f;
-    
-    
     private Vector3 mRightDirection = Vector3.forward;
-
     private Vector3 mLeftDirection = -Vector3.forward;
-     private Vector3 mDownDirection = Vector3.right;
+    private Vector3 mDownDirection = Vector3.right;
     private Vector3 mUpDirection = -Vector3.right;
+
+    private Camera _camera;
     // Start is called before the first frame update
     void Start()
     {
-        
+        _camera = Camera.main;
     }
 
     // Update is called once per frame
     void Update()
     {
+       
         if (Mouse.current.position.ReadValue().x >= Screen.width - offset)
         {
             transform.position += mRightDirection * Time.deltaTime * speed;
