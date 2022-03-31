@@ -208,6 +208,7 @@ public class GridManager : MonoBehaviour
                 }
                 else
                 {
+                    stop = true;
                     //EN ESTE ELSE SE EJECUTA CUANDO ACABA LA RUTA
                 }
             }
