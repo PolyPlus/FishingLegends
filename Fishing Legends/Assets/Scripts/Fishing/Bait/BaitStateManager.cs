@@ -8,6 +8,7 @@ public class BaitStateManager : MonoBehaviour
     public Color32 color2;
     public RythmManager rythmGame;
     public List<FishStateManager> fishCombo;
+    public List<GameObject> fishPrefabs;
     public List<FishData> fishCaught;
     public int totalScore;
     public bool inCombo;
@@ -19,10 +20,12 @@ public class BaitStateManager : MonoBehaviour
     public BaitDetectedState detectedState = new BaitDetectedState();
     public BaitBittenState bittenState = new BaitBittenState();
     public BaitRythmState rythmState = new BaitRythmState();
+    public BaitCatchingState catchingState = new BaitCatchingState();
 
     private int comboScore;
     private Vector3 pos;
     private Animator animator;
+    private GameObject currentFish;
 
     public Vector3 Pos { get => pos; set => pos = value; }
 
@@ -102,9 +105,14 @@ public class BaitStateManager : MonoBehaviour
     public void PullBait()
     {       
         rythmGame.ResetCombo();
-        animator.Play("PullBack_Bait");       
-        SwitchState(boatState);
-        GetFish();
+        animator.Play("PullBack_Bait");
+        if (fishCombo.Count > 0)
+        {
+            GetFish();
+        } else
+        {
+            SwitchState(boatState);
+        }           
     }
 
     public void StartRythmGame()
@@ -133,28 +141,48 @@ public class BaitStateManager : MonoBehaviour
 
     public void showFish()
     {
-        if(fishCombo.Count > 0)
+        if(!inCombo)
         {
-
+            RemovePrefab(0);
         }
+        else
+        {
+            inCombo = false;
+        }
+
+        if(fishPrefabs.Count <= 0)
+        {
+            SwitchState(boatState);         
+        }
+        else
+        {
+            currentFish = Instantiate(fishPrefabs[0]);
+        }       
     }
 
     private void GetFish()
     {
         Debug.Log("fish caught: " + fishCombo.Count);
-        if(fishCombo.Count > 0)
+        totalScore += comboScore;
+        comboScore = 0;
+        for (int i = 0; i < fishCombo.Count; i++)
         {
-            totalScore += comboScore;
-            comboScore = 0;            
-            for (int i = 0; i < fishCombo.Count; i++)
-            {
-                fishCaught.Add(fishCombo[i].GetPrefabData());
-                fishCombo[i].CatchFish();             
-            }
+            fishPrefabs.Add(fishCombo[i].fishPrefab);
+            fishCaught.Add(fishCombo[i].GetPrefabData());
+            fishCombo[i].CatchFish();
         }
         Debug.Log("Total fish caught: " + fishCaught.Count);
         Debug.Log("Total Score: " + totalScore);
-        inCombo = false;
+        fishCombo.Clear();
+        SwitchState(catchingState);
+    }
+
+    private void RemovePrefab(int id)
+    {
+        Debug.Log("Remove prefab");
+        fishPrefabs[id] = null;
+        fishPrefabs.RemoveAt(id);
+        Destroy(currentFish);
     }
 
     private int GetTotalSize()
