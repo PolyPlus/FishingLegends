@@ -74,6 +74,25 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: baec1dacd0ddaaa4599b242c68d23c70, type: 3}
   m_PrefabInstance: {fileID: 7175675745445403193}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &-7023412900363987910
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8022167418604742504}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 777efccb85f19a248b1edd0b07d192ae, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &523548576704289626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,4 +108,4 @@ MonoBehaviour:
   name: 
   size: 1
   points: 10
-  rarity: 10
+  rarity: 20

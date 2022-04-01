@@ -75,9 +75,8 @@ public class FishStateManager : MonoBehaviour
     }
 
     public void CatchFish()
-    {
-        
-        //StartCoroutine(DestroyFishAfterTime(0.1f));
+    {       
+        StartCoroutine(DestroyFishAfterTime(0.1f));
     }
 
     public void Init(GameObject _prefab)
