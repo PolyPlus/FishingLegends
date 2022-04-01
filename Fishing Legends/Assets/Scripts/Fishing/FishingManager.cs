@@ -6,13 +6,20 @@ using UnityEngine.EventSystems;
 
 public class FishingManager : MonoBehaviour
 {
+    
     public BaitStateManager baitManager;
     public RythmManager rythmGame;
-    public int score;
+
+    private int score;
     private PointerControlls controls;
+    private bool paused;
+
+    public bool Paused { get => paused; set => paused = value; }
+    public int Score { get => score; set => score = value; }
 
     private void Awake()
     {
+        Paused = false;
         controls = new PointerControlls();
     }
 
@@ -30,16 +37,24 @@ public class FishingManager : MonoBehaviour
     {
         controls.Pointer.Press.started += _ => OnPointerPress();
         controls.Pointer.Press.canceled += _ => OnPointerRelease();
-        baitManager.rythmGame = rythmGame;
-        rythmGame.baitManager = baitManager;
-        score = 0;
+        baitManager.RythmGame = rythmGame;
+        baitManager.FishingManager = this;
+        rythmGame.BaitManager = baitManager;
+        Score = 0;
     }
 
     private void OnPointerPress()
     {
         Vector2 mousePosition = controls.Pointer.Position.ReadValue<Vector2>();
-        baitManager.OnPointerPress(mousePosition);
-        if(rythmGame.started)rythmGame.OnPointerPress(mousePosition);
+        if (rythmGame.started)
+        {
+            Paused = true;
+            rythmGame.OnPointerPress(mousePosition);
+        }
+        else
+        {
+            Paused = false;
+        }
         //Debug.Log("Pointer Press on" + mousePosition);
     }
 
@@ -49,4 +64,9 @@ public class FishingManager : MonoBehaviour
         //Debug.Log("Pointer Release on" + mousePosition);
     }
 
+    public void OnClick()
+    {
+        Vector2 mousePosition = controls.Pointer.Position.ReadValue<Vector2>();
+        if (!Paused) baitManager.OnPointerPress(mousePosition);
+    }
 }

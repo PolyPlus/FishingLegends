@@ -96,5 +96,5 @@ MonoBehaviour:
   name: 
   size: 2
   points: 10
-  rarity: 10
-  id: 10
+  rarity: 5
+  id: 0

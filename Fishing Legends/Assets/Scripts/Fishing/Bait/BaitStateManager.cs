@@ -6,7 +6,8 @@ public class BaitStateManager : MonoBehaviour
 {
     public Color32 color1;
     public Color32 color2;
-    public RythmManager rythmGame;
+    public Animator playerAnimator;
+    private RythmManager rythmGame;
     public List<FishStateManager> fishCombo;
     public List<GameObject> fishPrefabs;
     public List<FishData> fishCaught;
@@ -26,8 +27,11 @@ public class BaitStateManager : MonoBehaviour
     private Vector3 pos;
     private Animator animator;
     private GameObject currentFish;
+    private FishingManager fishingManager;
 
     public Vector3 Pos { get => pos; set => pos = value; }
+    public FishingManager FishingManager { get => fishingManager; set => fishingManager = value; }
+    public RythmManager RythmGame { get => rythmGame; set => rythmGame = value; }
 
     void Start()
     {
@@ -51,7 +55,7 @@ public class BaitStateManager : MonoBehaviour
 
     public void OnPointerPress(Vector2 position)
     {
-        currentState.OnPointerPress(this, position);
+        if(!FishingManager.Paused)currentState.OnPointerPress(this, position);
     }
 
     public void SwitchState(BaitBaseState state)
@@ -100,12 +104,14 @@ public class BaitStateManager : MonoBehaviour
     public void ThrowBait()
     {
         animator.Play("Throw_Bait");
+        playerAnimator.Play("Throw");
     }
 
     public void PullBait()
     {       
-        rythmGame.ResetCombo();
+        RythmGame.ResetCombo();
         animator.Play("PullBack_Bait");
+        playerAnimator.Play("Pull");
         if (fishCombo.Count > 0)
         {
             GetFish();
@@ -119,7 +125,7 @@ public class BaitStateManager : MonoBehaviour
     {
         inCombo = true;
         SwitchState(rythmState);
-        rythmGame.startRythmGame(GetTotalSize());
+        RythmGame.startRythmGame(GetTotalSize());
     }
 
     public void StopRythmGame(bool hasFailed, int score)
