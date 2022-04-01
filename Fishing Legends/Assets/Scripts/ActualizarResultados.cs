@@ -13,6 +13,7 @@ public class ActualizarResultados : MonoBehaviour
     public GameObject mostrarResultados;
 
     private bool pulsado = false;
+    private bool salir = false;
 
 
     public void actualizarPuntuacion(FishData[] pecesTotales)
@@ -20,6 +21,7 @@ public class ActualizarResultados : MonoBehaviour
         peces.text = "" + pecesTotales.Length;
 
         int puntuacion = 0;
+
         for(int i =0; i < pecesTotales.Length; i++)
         {
             puntuacion += pecesTotales[i].Points;
@@ -42,17 +44,29 @@ public class ActualizarResultados : MonoBehaviour
     {
         sr.gameObject.SetActive(true);
         mostrarPeces(lista);
+    }
 
+    private void Update()
+    {
         if (pulsado)
         {
             sr.gameObject.SetActive(false);
             mostrarResultados.SetActive(true);
             actualizarPuntuacion(lista);
         }
-    }
+        if (salir)
+        {
+            mostrarResultados.SetActive(false);
 
+        }
+    }
     public void onClick()
     {
         pulsado = true; 
+    }
+
+    public void Salir()
+    {
+        salir = true;
     }
 }
