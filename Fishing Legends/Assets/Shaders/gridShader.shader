@@ -9,7 +9,7 @@ Shader "Unlit/NewUnlitShader"
          _GridColor ("Color", Color) = (1, 1, 1, 1)
      }
      SubShader {
-         Tags { "RenderType" = "Transparent" "Queue" = "Overlay" }
+         Tags { "RenderType" = "Transparent" "Queue" = "Transparent" }
          pass
          {
              Cull Back
