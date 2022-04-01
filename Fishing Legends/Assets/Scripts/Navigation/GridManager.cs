@@ -132,40 +132,113 @@ public class GridManager : MonoBehaviour
         // 2 tierra-arbol
         // 3 roca
         
-        blockType[2, 2] = 2;
-        blockType[2, 3] = 2;
-        blockType[3, 2] = 3;
-        blockType[3, 3] = 2;
 
-        blockType[7, 7] = 3;
-        blockType[7, 8] = 2;
-        blockType[7, 9] = 3;
-        blockType[8, 7] = 2;
-        blockType[8, 8] = 2;
-        blockType[8, 9] = 3;
+        blockType[8, 8] = 3;
+        blockType[8, 9] = 2;
+        blockType[8, 10] = 3;
+        blockType[9, 8] = 2;
+        blockType[9, 9] = 2;
+        blockType[9, 10] = 3;
         
+        blockType[2, 1] = 2;
+        blockType[3, 1] = 3;
+        blockType[4, 1] = 2;
+        blockType[16, 1] = 3;
+        blockType[17, 1] = 2;
+        
+        blockType[2, 2] = 2;
+        blockType[3, 2] = 2;
+        blockType[4, 2] = 2;
+        blockType[10, 2] = 2;
+        blockType[11, 2] = 3;
+        blockType[15, 2] = 2;
+        blockType[16, 2] = 2;
+        blockType[17, 2] = 2;
+        
+        blockType[1, 3] = 2;
+        blockType[2, 3] = 3;
+        blockType[3, 3] = 2;
+        blockType[11, 3] = 2;
+        blockType[12, 3] = 2;
+        blockType[15, 3] = 3;
+        blockType[16, 3] = 2;
+        blockType[17, 3] = 3;
+
+        blockType[1, 4] = 3;
+        blockType[2, 4] = 2;
+        blockType[3, 4] = 2;
+        blockType[15, 4] = 2;
+        blockType[16, 4] = 2;
+        
+        blockType[1, 5] = 2;
+        blockType[2, 5] = 2;
+        blockType[3, 5] = 3;
+        blockType[15, 5] = 2;
+        blockType[16, 5] = 3;
+        
+        blockType[1, 6] = 3;
+        blockType[2, 6] = 2;
+        blockType[15, 6] = 2;
+        
+        blockType[1, 7] = 2;
+        blockType[2, 7] = 2;
+
+        
+        blockType[1, 13] = 2;
+        blockType[1, 14] = 2;
+        blockType[1, 15] = 2;
+        blockType[2, 12] = 2;
+        blockType[2, 13] = 2;
+        blockType[2, 14] = 3;
+        blockType[2, 15] = 2;
+        blockType[2, 16] = 3;
+        blockType[3, 14] = 2;
+        blockType[3, 15] = 2;
+        blockType[3, 16] = 2;
+        blockType[3, 17] = 2;
+        blockType[4, 15] = 3;
+        blockType[4, 16] = 2;
+        blockType[4, 17] = 2;
+        blockType[5, 16] = 2;
+        blockType[5, 17] = 2;
+        blockType[6, 16] = 2;
+        blockType[6, 17] = 3;
+        blockType[7, 17] = 2;
+        
+        blockType[12, 14] = 3;
+        blockType[12, 15] = 2;
+        blockType[12, 16] = 2;
+        blockType[13, 15] = 2;
+        blockType[13, 16] = 3;
+        blockType[13, 17] = 2;
+        blockType[13, 18] = 2;
+        blockType[14, 17] = 2;
+        blockType[14, 18] = 2;
+        blockType[15, 13] = 2;
+        blockType[15, 17] = 3;
+        blockType[15, 18] = 2;
+        blockType[16, 13] = 3;
+        blockType[16, 14] = 2;
+        blockType[16, 15] = 2;
+        blockType[16, 16] = 2;
+        blockType[16, 17] = 2;
+        blockType[16, 18] = 2;
+        blockType[17, 14] = 2;
+        blockType[17, 15] = 3;
+        blockType[17, 16] = 2;
         blockType[17, 17] = 2;
-        blockType[17, 18] = 2;
         
-        blockType[18, 17] = 2;
-        blockType[18, 18] = 3;
+
         
-        blockType[17, 7] = 2;
-        blockType[17, 8] = 2;
-        blockType[18, 7] = 2;
-        blockType[18, 8] = 3;
-        
-       // blockType[15, 13] = 1;
-       // blockType[15, 13] = 1;
-        
-       blockType[9, 8] = -1;
-       blockType[9, 7] = 5;
-        lastPositionX = 9;
-        lastPositionY = 8;
+        blockType[10, 9] = -1;
+        blockType[10, 8] = 5;
+       
+        lastPositionX = 10;
+        lastPositionY = 9;
         
         GenerateMapContent();
 
-        Vector3 start = TransformIdToGrid(lastPositionX, lastPositionY, new Vector3(0, 0, 0));
+        Vector3 start = TransformIdToGrid(lastPositionX, lastPositionY, new Vector3(0, 1.7f, 0));
 
         indexPoints.AddLast(start);
 
@@ -205,7 +278,7 @@ public class GridManager : MonoBehaviour
                     boat.transform.LookAt(indexPoints.ElementAt(routeIndex + 1));
                     //Debug.Log(routeIndex);
                     boat.transform.position = route[routeIndex].GetPoint(t);
-                    topCamera.transform.position = boat.transform.position + new Vector3(-1, 7, -12);
+                    topCamera.transform.position = boat.transform.position + new Vector3(6, 20, -27);
 
                     if (blockType[TransformCoordinateToId(boat.transform.position.x, max.x, min.x),
                             TransformCoordinateToId(boat.transform.position.z, max.z, min.z)] == 1)
@@ -232,7 +305,7 @@ public class GridManager : MonoBehaviour
             //_a.point.Lo;
             currentPositionX = ((int) (_rowsColumns * (_a.point.x - min.x) / (max.x - min.x)));
             currentPositionY = ((int) (_rowsColumns * (_a.point.z - min.z) / (max.z - min.z)));
-
+            //_a.collider.gameObject
             Vector3 newPoint = TransformIdToGrid(currentPositionX, currentPositionY, _a.point);
 
             if (((((currentPositionX == lastPositionX + 1 || currentPositionX == lastPositionX - 1 ||
@@ -330,7 +403,7 @@ public class GridManager : MonoBehaviour
              
              topCamera.GetComponent<CameraMovementController>().enabled = false;
              //transition.SetBool("fadingIn",true);
-             topCamera.transform.rotation = Quaternion.identity;
+             topCamera.transform.rotation = Quaternion.Euler(30,0,0);
              ProcessRoute();
        
         routeStarted = true;
