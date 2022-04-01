@@ -24,7 +24,7 @@ public class FishBitingState : FishBaseState
     }
     public override void UpdateState(FishStateManager fish, BaitStateManager bait)
     {
-        if (bait.currentState == bait.boatState)
+        if (bait.currentState == bait.boatState || bait.currentState == bait.catchingState)
         {
             fish.SwitchState(fish.scapeState);
         }
