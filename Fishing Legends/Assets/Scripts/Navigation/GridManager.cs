@@ -39,11 +39,10 @@ public class GridManager : MonoBehaviour
     public GameObject tree;
     
     public GameObject fishbank;
-    
-     public GameObject rock;
-     
 
-    private Vector3 gridOffset;
+    public GameObject rock;
+
+     private Vector3 gridOffset;
 
     private Vector3 pointOrigin;
 
@@ -138,22 +137,31 @@ public class GridManager : MonoBehaviour
         blockType[3, 2] = 3;
         blockType[3, 3] = 2;
 
-        blockType[12, 12] = 2;
-        blockType[12, 13] = 2;
-        blockType[13, 12] = 2;
-        blockType[13, 13] = 3;
+        blockType[7, 7] = 3;
+        blockType[7, 8] = 2;
+        blockType[7, 9] = 3;
+        blockType[8, 7] = 2;
+        blockType[8, 8] = 2;
+        blockType[8, 9] = 3;
+        
+        blockType[17, 17] = 2;
+        blockType[17, 18] = 2;
+        
+        blockType[18, 17] = 2;
+        blockType[18, 18] = 3;
+        
+        blockType[17, 7] = 2;
+        blockType[17, 8] = 2;
+        blockType[18, 7] = 2;
+        blockType[18, 8] = 3;
         
        // blockType[15, 13] = 1;
-        blockType[18, 13] = 1;
-
-
-        blockType[22, 22] = 3;
-        blockType[22, 23] = 2;
-        blockType[23, 22] = 2;
-        blockType[23, 23] = 2;
-
-        lastPositionX = 14;
-        lastPositionY = 13;
+       // blockType[15, 13] = 1;
+        
+       blockType[9, 8] = -1;
+       blockType[9, 7] = 5;
+        lastPositionX = 9;
+        lastPositionY = 8;
         
         GenerateMapContent();
 
@@ -166,7 +174,8 @@ public class GridManager : MonoBehaviour
         Instantiate(gridPoint, start, Quaternion.identity);
 
         InitializeMap();
-       
+        
+      
         //GetComponent<Collider>().bounds.
     }
 
@@ -189,7 +198,7 @@ public class GridManager : MonoBehaviour
                    
                 
                 }
-                t += Time.deltaTime;
+                t += Time.deltaTime*0.6f;
                 
                 if (routeIndex < route.Count)
                 {
@@ -223,9 +232,7 @@ public class GridManager : MonoBehaviour
             //_a.point.Lo;
             currentPositionX = ((int) (_rowsColumns * (_a.point.x - min.x) / (max.x - min.x)));
             currentPositionY = ((int) (_rowsColumns * (_a.point.z - min.z) / (max.z - min.z)));
-            
-            
-            
+
             Vector3 newPoint = TransformIdToGrid(currentPositionX, currentPositionY, _a.point);
 
             if (((((currentPositionX == lastPositionX + 1 || currentPositionX == lastPositionX - 1 ||
@@ -337,6 +344,7 @@ public class GridManager : MonoBehaviour
 
     private void GenerateMapContent()
     {
+        bool isFish = true;
         for (int i = 0; i < _rowsColumns; i++)
         {
             for (int j = 0; j < _rowsColumns; j++)
@@ -349,12 +357,24 @@ public class GridManager : MonoBehaviour
                 {
                     if (blockType[i,j] ==  0)
                     {
-                        blockType[i,j] = 1;
+                        if (isFish)
+                        {
+                            blockType[i,j] = 1;
+                        }
+                        else
+                        {
+                            blockType[i,j] = 4;
+                        }
+                        
                     }
                     
                 }
                 
+                isFish = !isFish;
+                
             }
+
+            
 
         }
     }
