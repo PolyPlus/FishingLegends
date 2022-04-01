@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 22133400}
   - component: {fileID: 22133404}
   m_Layer: 0
-  m_Name: Quad (1)
+  m_Name: FlechaBote
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2085,21 +2085,7 @@ MonoBehaviour:
   - {fileID: 7954192675559757041, guid: dab6141f1bd34e145a28d71522c6fc61, type: 3}
   - {fileID: 3261531230531893174, guid: 822ba1f1a08d157428b92d8b98d1c75b, type: 3}
   - {fileID: 5994584647485235899, guid: 71e8dedc9df5edb4bbe9118025758d2f, type: 3}
-  lista:
-  - {fileID: 523548576704289626, guid: e95547f9ecb3cb8488df15d84734c9dc, type: 3}
-  - {fileID: 4933633901416478343, guid: 2e2320597e1e32a418289deb3c112f4b, type: 3}
-  - {fileID: 1518644570661111306, guid: 26d5df25817f6ea48988c7f4059670f9, type: 3}
-  - {fileID: -5729563978287015649, guid: e8fba8d9280baff46abce978eeaa76e0, type: 3}
-  - {fileID: -5729563978287015649, guid: e8fba8d9280baff46abce978eeaa76e0, type: 3}
-  - {fileID: 8267453113132642912, guid: 983b460b4e134264d8d447c015c6dbb8, type: 3}
-  - {fileID: 7520579786698720020, guid: 5bd5742fc30aebb41946a2b5c6d3838f, type: 3}
-  - {fileID: -4055619050064429690, guid: 3dee3704c85f28b4699f98c89cf7e20d, type: 3}
-  - {fileID: -4055619050064429690, guid: 3dee3704c85f28b4699f98c89cf7e20d, type: 3}
-  - {fileID: 9093901458421359767, guid: 668c502dd29e8814db6f0feab0d90ca6, type: 3}
-  - {fileID: 3305127172895577235, guid: 4c17046bde6e0a240a5c6a465a0e8233, type: 3}
-  - {fileID: 8765767759722693804, guid: e0b8db30506bd0645af48e7bb50a9c1c, type: 3}
-  - {fileID: 523548576704289626, guid: e95547f9ecb3cb8488df15d84734c9dc, type: 3}
-  - {fileID: 1518644570661111306, guid: 26d5df25817f6ea48988c7f4059670f9, type: 3}
+  fishDataList: []
   mostrarResultados: {fileID: 633936238}
 --- !u!114 &1270118803
 MonoBehaviour:
@@ -2192,6 +2178,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1271562771}
+  - component: {fileID: 1271562772}
   m_Layer: 0
   m_Name: Bote
   m_TagString: Untagged
@@ -2215,6 +2202,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!136 &1271562772
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271562770}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.5331504
+  m_Height: 8.6439085
+  m_Direction: 2
+  m_Center: {x: -0.35567284, y: 0, z: 0.9857049}
 --- !u!1 &1318100164
 GameObject:
   m_ObjectHideFlags: 0
@@ -2766,6 +2767,7 @@ MonoBehaviour:
   _rowsColumns: 20
   boat: {fileID: 1271562770}
   topCamera: {fileID: 963194225}
+  resultados: {fileID: 1270118802}
   block: {fileID: 919132148822266987}
   tree: {fileID: 3656191086148359882}
   fishbank: {fileID: 7307628452227823183}
@@ -2869,7 +2871,7 @@ GameObject:
   - component: {fileID: 1801254609}
   - component: {fileID: 1801254613}
   m_Layer: 0
-  m_Name: Quad
+  m_Name: FlechaCasa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7906,6 +7908,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8384621553422856200}
+  - component: {fileID: 9158061379182799539}
   m_Layer: 0
   m_Name: casita
   m_TagString: Untagged
@@ -7913,3 +7916,16 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!135 &9158061379182799539
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9158061379182799538}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.0494182
+  m_Center: {x: 0, y: 0.53825283, z: -0.25073314}

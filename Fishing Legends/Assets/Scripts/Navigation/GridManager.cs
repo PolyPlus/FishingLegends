@@ -30,51 +30,39 @@ public class GridManager : MonoBehaviour
 
     public GameObject topCamera;
 
-    //public GameObject boatCamera;
-
-    // private bool[,] selectedPositions;
-
-    public GameObject block;
-
-    public GameObject tree;
+    public ActualizarResultados resultados;
     
-    public GameObject fishbank;
+    public GameObject block, tree, fishbank, rock;
 
-    public GameObject rock;
+    private Vector3 gridOffset,pointOrigin;
 
-     private Vector3 gridOffset;
+    private Vector3 min,max;
 
-    private Vector3 pointOrigin;
-
-    private Vector3 min;
-
-    private Vector3 max;
-    
     private RaycastHit _a;
+
+    private FishData[] _fishDataList;
 
     private ClickController cc;
 
     private InputAction clickaction;
 
-    private int currentPositionX, currentPositionY;
-
-    private int lastPositionX, lastPositionY;
-
+    private int currentPositionX, currentPositionY, lastPositionX, lastPositionY;
+    
     private LinkedList<Vector3> indexPoints = new LinkedList<Vector3>();
 
     private List<RouteData> route = new List<RouteData>();
 
     private float t;
 
-    private bool routeStarted;
-
-    private bool stop;
+    private bool routeStarted,stop;
 
     private int routeIndex;
 
     public uint maxFuel;
 
-    private bool inHold;
+    private bool inHold,release;
+    
+    private bool preRoute;
 
     private int[,] blockType;
 
@@ -110,6 +98,7 @@ public class GridManager : MonoBehaviour
         stop = false;
         routeIndex = 0;
         inHold = false;
+        preRoute = true;
 
         grid = GameObject.Find("Grid");
 
@@ -290,7 +279,9 @@ public class GridManager : MonoBehaviour
                 else
                 {
                     stop = true;
-                    //EN ESTE ELSE SE EJECUTA CUANDO ACABA LA RUTA
+                    
+                    resultados.sr.gameObject.SetActive(true);
+                    resultados.mostrarPeces(_fishDataList);
                 }
             }
             
@@ -302,45 +293,72 @@ public class GridManager : MonoBehaviour
 
         } else  if (Physics.Raycast(_ray, out _a))
         {
-            //_a.point.Lo;
-            currentPositionX = ((int) (_rowsColumns * (_a.point.x - min.x) / (max.x - min.x)));
-            currentPositionY = ((int) (_rowsColumns * (_a.point.z - min.z) / (max.z - min.z)));
-            //_a.collider.gameObject
-            Vector3 newPoint = TransformIdToGrid(currentPositionX, currentPositionY, _a.point);
-
-            if (((((currentPositionX == lastPositionX + 1 || currentPositionX == lastPositionX - 1 ||
-                   currentPositionX == lastPositionX) &&
-                  (currentPositionY == lastPositionY + 1 || currentPositionY == lastPositionY - 1 ||
-                   currentPositionY == lastPositionY)) &&
-                 !(currentPositionX == lastPositionX && currentPositionY == lastPositionY)) || indexPoints.Count == 0) && blockType[currentPositionX,currentPositionY] <= 1 )
+            
+            if (preRoute)
             {
-                gridPoint.transform.position = newPoint;
-               //  Debug.Log(gridPoint.transform.position);
-                if (inHold && indexPoints.Count < maxFuel )
+                if (release)
                 {
-
-                    GameObject cloned = Instantiate(gridPoint, newPoint, Quaternion.identity);
-                    //selectedPositions[currentPositionX, currentPositionY] = true;
-                    lastPositionX = currentPositionX;
-                    lastPositionY = currentPositionY;
-                    indexPoints.AddLast(newPoint);
-                   // Debug.Log(indexPoints.Count);
-                    //curvePoints.AddLast(new Vector2(cloned.transform.position.x,,))
-
+                    if ( _a.collider.gameObject.name == "casita" )
+                    {
+                        Debug.Log("CASSA");
+                        release = false;
+                    }
+                    else if (_a.collider.gameObject.name == "Bote")
+                    {
+                        preRoute = false;
+                        transition.SetBool("toRoute",true);
+                        Debug.Log("BARCO");
+                        release = false;
+                    }
+                    else
+                    {
+                        release = false;
+                    }
                 }
             }
+            else
+            {
+                currentPositionX = ((int) (_rowsColumns * (_a.point.x - min.x) / (max.x - min.x)));
+                currentPositionY = ((int) (_rowsColumns * (_a.point.z - min.z) / (max.z - min.z)));
+                //_a.collider.gameObject
+                Vector3 newPoint = TransformIdToGrid(currentPositionX, currentPositionY, _a.point);
+
+                if (((((currentPositionX == lastPositionX + 1 || currentPositionX == lastPositionX - 1 ||
+                        currentPositionX == lastPositionX) &&
+                       (currentPositionY == lastPositionY + 1 || currentPositionY == lastPositionY - 1 ||
+                        currentPositionY == lastPositionY)) &&
+                      !(currentPositionX == lastPositionX && currentPositionY == lastPositionY)) || indexPoints.Count == 0) && blockType[currentPositionX,currentPositionY] <= 1 )
+                {
+                    gridPoint.transform.position = newPoint;
+                    //  Debug.Log(gridPoint.transform.position);
+                    if (inHold && indexPoints.Count < maxFuel )
+                    {
+
+                        GameObject cloned = Instantiate(gridPoint, newPoint, Quaternion.identity);
+                        //selectedPositions[currentPositionX, currentPositionY] = true;
+                        lastPositionX = currentPositionX;
+                        lastPositionY = currentPositionY;
+                        indexPoints.AddLast(newPoint);
+                        // Debug.Log(indexPoints.Count);
+                        //curvePoints.AddLast(new Vector2(cloned.transform.position.x,,))
+
+                    }
+                }
+            }
+            
+            
+        }else if (release)
+        {
+            release = false;
         }
     }
 
     struct RouteData
     {
-        //private bool isBezier;
 
         private readonly Vector3 _p1;
 
         private readonly Vector3 _p2;
-
-       
 
         public RouteData(Vector3 p1, Vector3 p2)
         {
@@ -382,15 +400,13 @@ public class GridManager : MonoBehaviour
     private void OnHold()
     {
         inHold = true;
-        
-        
-        
+        //release = false;
     }
     
     private void OnRelease()
     {
         inHold = false;
-        
+        release = true;
     }
 
     public void startRoute()
