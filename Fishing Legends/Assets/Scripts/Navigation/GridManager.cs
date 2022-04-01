@@ -39,8 +39,9 @@ public class GridManager : MonoBehaviour
     public GameObject tree;
     
     public GameObject fishbank;
-
-    //public GameObject fishBank;
+    
+     public GameObject rock;
+     
 
     private Vector3 gridOffset;
 
@@ -49,9 +50,7 @@ public class GridManager : MonoBehaviour
     private Vector3 min;
 
     private Vector3 max;
-
-    public Image a;
-
+    
     private RaycastHit _a;
 
     private ClickController cc;
@@ -377,7 +376,7 @@ public class GridManager : MonoBehaviour
                        Instantiate(tree,TransformIdToGrid(i,j,new Vector3(0,10,0)),tree.transform.rotation);
                        break;
                    case 4:
-                       //Instantiate(block,TransformIdToGrid(i,j,new Vector3(0,1,0)),block.transform.rotation);
+                       Instantiate(rock,TransformIdToGrid(i,j,new Vector3(0,1,0)),rock.transform.rotation);
                        break;
                      
                  }
