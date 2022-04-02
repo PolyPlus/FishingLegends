@@ -55,7 +55,7 @@ public class CanvasProductos : MonoBehaviour {
     public void mejoraAnzuelo()
     {
 
-        if (numAnzuelos < 5)
+        if (numAnzuelos < 7)
         {
             // Por ejemplo si mejora vale 1000 se hace monedas -= numAnzuelos + numAnzuelos*1000;
             int m = StaticInfo.monedas - numAnzuelos * 1000;
@@ -72,7 +72,7 @@ public class CanvasProductos : MonoBehaviour {
             }
             textonumAnzuelos.text = "Número de anzuelos: " + numAnzuelos;
         }
-        else if (numAnzuelos == 5)
+        else if (numAnzuelos == 7)
         {
             botonAnzuelo.interactable = false;
         }
