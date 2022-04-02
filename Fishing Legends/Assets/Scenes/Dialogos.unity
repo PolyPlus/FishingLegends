@@ -211,29 +211,29 @@ MonoBehaviour:
     conseguirlos todos!"
   - "Y con esto concluye el tutorial. \xA1Ya puedes salir a pescar! "
   images:
-  - {fileID: 21300000, guid: a8e7c7bac89d66f439ff25f92f4d0fc8, type: 3}
-  - {fileID: 21300000, guid: a8e7c7bac89d66f439ff25f92f4d0fc8, type: 3}
-  - {fileID: 21300000, guid: b5d457d04bf722b4eb88709912caca5d, type: 3}
-  - {fileID: 21300000, guid: c88c430fab2543c4bae87f246e4ded0c, type: 3}
-  - {fileID: 21300000, guid: c580e195e4c96314d8d8043b8ab5f0fc, type: 3}
-  - {fileID: 21300000, guid: dceec7e3a5da82142bd8ff05a0f28f4c, type: 3}
-  - {fileID: 21300000, guid: af0f2a33d8f8c314fba6e1d521c9325f, type: 3}
-  - {fileID: 21300000, guid: e95852a8ded693042bd43509d7531b0e, type: 3}
-  - {fileID: 21300000, guid: e118af9b03d882d418d5b43951897b9d, type: 3}
-  - {fileID: 21300000, guid: e118af9b03d882d418d5b43951897b9d, type: 3}
-  - {fileID: 21300000, guid: 30fd0b73d4c358a448d32443b0233226, type: 3}
-  - {fileID: 21300000, guid: af0f2a33d8f8c314fba6e1d521c9325f, type: 3}
-  - {fileID: 21300000, guid: 8307c6e7e91a442429691d4e4fded53c, type: 3}
-  - {fileID: 21300000, guid: 2c1b85e1aa40be74f80b479ac1e80dfa, type: 3}
-  - {fileID: 21300000, guid: a711154def76aab41b60133160ac0eb8, type: 3}
-  - {fileID: 21300000, guid: 53f7a11db727c4e45b213625b8a578cb, type: 3}
-  - {fileID: 21300000, guid: a8e7c7bac89d66f439ff25f92f4d0fc8, type: 3}
-  - {fileID: 21300000, guid: 634e52525cafe1f4584d9086410a4256, type: 3}
-  - {fileID: 21300000, guid: 634e52525cafe1f4584d9086410a4256, type: 3}
-  - {fileID: 21300000, guid: 634e52525cafe1f4584d9086410a4256, type: 3}
-  - {fileID: 21300000, guid: 5f9b57b4ac755a14e813410de5a4746f, type: 3}
-  - {fileID: 21300000, guid: a8e7c7bac89d66f439ff25f92f4d0fc8, type: 3}
-  fondo: {fileID: 515628958}
+  - {fileID: 21300000, guid: 326e47cf5b5651e47865591553634fdb, type: 3}
+  - {fileID: 21300000, guid: 326e47cf5b5651e47865591553634fdb, type: 3}
+  - {fileID: 21300000, guid: 5a57b12245229084e9f338ce4f4c3a84, type: 3}
+  - {fileID: 21300000, guid: 49776f77b99fc574e98372700d00f924, type: 3}
+  - {fileID: 21300000, guid: 0d1d3cb5bee9b12448664962236f788e, type: 3}
+  - {fileID: 21300000, guid: beac91614f55c5d498d377ed4e7b38ec, type: 3}
+  - {fileID: 21300000, guid: 35be5d7802a4a454b8b4c5baf204510f, type: 3}
+  - {fileID: 21300000, guid: 3bf2b0d0f8f3eb448b634867fa16fb42, type: 3}
+  - {fileID: 21300000, guid: 253de087702142f4498b544230e67331, type: 3}
+  - {fileID: 21300000, guid: 253de087702142f4498b544230e67331, type: 3}
+  - {fileID: 21300000, guid: 89e570e72417e6c47b7b631c2cf6f0ed, type: 3}
+  - {fileID: 21300000, guid: 406cebb36415bde4881196a1f5fce638, type: 3}
+  - {fileID: 21300000, guid: 23d6918cfb3d48442974ea6ade7a8f8f, type: 3}
+  - {fileID: 21300000, guid: 406cebb36415bde4881196a1f5fce638, type: 3}
+  - {fileID: 21300000, guid: 621bc3f0afb6c9f479d30b5121b73929, type: 3}
+  - {fileID: 21300000, guid: 3d5a0b27da5572b4a82438cba6c6fe6a, type: 3}
+  - {fileID: 21300000, guid: 326e47cf5b5651e47865591553634fdb, type: 3}
+  - {fileID: 21300000, guid: 4b913f7061b67c441a9880763e7ad421, type: 3}
+  - {fileID: 21300000, guid: 4b913f7061b67c441a9880763e7ad421, type: 3}
+  - {fileID: 21300000, guid: 4b913f7061b67c441a9880763e7ad421, type: 3}
+  - {fileID: 21300000, guid: 0f9b3f9f232477144b4c5dedda936e00, type: 3}
+  - {fileID: 21300000, guid: 326e47cf5b5651e47865591553634fdb, type: 3}
+  fondo: {fileID: 0}
   textSpeed: 0.01
 --- !u!114 &204618688
 MonoBehaviour:
@@ -567,9 +567,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acea22e9d40174042873399e0b5b9c4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textComponent: {fileID: 0}
-  lines: []
-  textSpeed: 0
 --- !u!114 &880947035
 MonoBehaviour:
   m_ObjectHideFlags: 0
