@@ -310,7 +310,7 @@ public class GridManager : MonoBehaviour
                 else
                 {
                     stop = true;
-                    
+                    StaticInfo.finishRoute = true;
                     resultados.sr.gameObject.SetActive(true);
                     resultados.mostrarPeces(_fishDataList);
                 }

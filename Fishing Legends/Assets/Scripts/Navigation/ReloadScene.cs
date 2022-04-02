@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class FinishAnim : StateMachineBehaviour
+public class ReloadScene : StateMachineBehaviour
 {
-    
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
@@ -20,12 +20,7 @@ public class FinishAnim : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.SetBool("toRoute",false);
-        Camera.main.transform.position = new Vector3(105 , 81, 51);
-        Camera.main.transform.rotation = Quaternion.Euler(83, -90, 0);
-        GameObject.Find("FlechaBote").SetActive(false);
-        GameObject.Find("FlechaCasa").SetActive(false);
-        GameObject.Find("Grid").GetComponent<MeshRenderer>().enabled = true;
+        GameManager.GetInstance().SelectScene(StaticInfo.navigationScene);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

@@ -11,6 +11,7 @@ public class ActualizarResultados : MonoBehaviour
     public GameObject[] listaPeces;
     public FishData[] fishDataList;
     public GameObject mostrarResultados;
+    public Animator fishTransition;
 
     private bool pulsado = false;
     private bool salir = false;
@@ -64,5 +65,7 @@ public class ActualizarResultados : MonoBehaviour
     public void Salir()
     {
         mostrarResultados.SetActive(false);
+        fishTransition.SetBool("reloadScene",true);
+        //GameManager.GetInstance().SelectScene(StaticInfo.navigationScene);
     }
 }
