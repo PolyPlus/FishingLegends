@@ -25,6 +25,7 @@ public class FinishAnim : StateMachineBehaviour
         Camera.main.transform.rotation = Quaternion.Euler(83, -90, 0);
         GameObject.Find("FlechaBote").SetActive(false);
         GameObject.Find("FlechaCasa").SetActive(false);
+        GameObject.Find("Grid").GetComponent<MeshRenderer>().enabled = true;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

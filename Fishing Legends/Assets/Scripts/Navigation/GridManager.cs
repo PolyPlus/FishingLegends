@@ -307,6 +307,7 @@ public class GridManager : MonoBehaviour
                     {
                         preRoute = false;
                         transition.SetBool("toRoute",true);
+                        topCamera.GetComponent<CameraMovementController>().enabled = true;
                         Debug.Log("BARCO");
                         release = false;
                     }
