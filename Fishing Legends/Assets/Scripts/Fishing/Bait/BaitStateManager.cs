@@ -106,12 +106,15 @@ public class BaitStateManager : MonoBehaviour
 
     public void ThrowBait()
     {
-        if(StaticInfo.numAnzuelos > 0)
+        if (fishingManager.exit)
+        {
+            GameManager.GetInstance().SelectScene(StaticInfo.navigationScene);
+        } else
         {
             animator.Play("Throw_Bait");
             playerAnimator.Play("Throw");
             AudioManager.instance.PlayDelayed("ThrowingRod", 0.5f);
-        }        
+        }      
     }
 
     public void PullBait()
