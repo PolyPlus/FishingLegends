@@ -58,13 +58,12 @@ public class Dialog: MonoBehaviour, IPointerClickHandler
         }
         else
         {
-            gameObject.SetActive(false);
             endDialog();
         }
     }
     void endDialog()
     {
-
+        GameManager.GetInstance().SelectScene("NavigationScene");
     }
     IEnumerator TypeLine()
     {

@@ -200,7 +200,7 @@ MonoBehaviour:
   - "Si fallas, todos los peces del combo se ir\xE1n. Puedes sacar la ca\xF1a cuando
     quieras pulsando el rat\xF3n."
   - "Al sacar la ca\xF1a, se mostrar\xE1n los peces que has conseguido pescar."
-  - "La ruta sigue hasta que vualves al muelle. Entonces se mostrar\xE1n los peces
+  - "La ruta sigue hasta que vuelves al muelle. Entonces se mostrar\xE1n los peces
     que has conseguido en la ruta."
   - "Si seleccionas la casa, podr\xE1s realizar varias acciones."
   - "En este men\xFA podr\xE1s realizar varias mejoras que amenizar\xE1n tu tarea
@@ -233,7 +233,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4b913f7061b67c441a9880763e7ad421, type: 3}
   - {fileID: 21300000, guid: 0f9b3f9f232477144b4c5dedda936e00, type: 3}
   - {fileID: 21300000, guid: 326e47cf5b5651e47865591553634fdb, type: 3}
-  fondo: {fileID: 0}
+  fondo: {fileID: 515628958}
   textSpeed: 0.01
 --- !u!114 &204618688
 MonoBehaviour:
