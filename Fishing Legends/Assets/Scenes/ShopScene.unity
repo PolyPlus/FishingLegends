@@ -4841,7 +4841,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.09
-  m_Text: Cebo normal
+  m_Text: "Cebo \nnormal"
 --- !u!222 &1752969099
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5268,7 +5268,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 665899217}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.43860173
+  m_Size: 0.43813357
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
