@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class NextScene : StateMachineBehaviour
+public class FinishAnim : StateMachineBehaviour
 {
+    
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
@@ -20,8 +22,18 @@ public class NextScene : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        GameManager.GetInstance().SelectScene(StaticInfo.fishingScene);
-        //animator.enabled = false;
+        animator.SetBool("toRoute",false);
+        Camera.main.transform.position = new Vector3(105 , 81, 51);
+        Camera.main.transform.rotation = Quaternion.Euler(83, -90, 0);
+        GameObject.Find("FlechaBote").SetActive(false);
+        GameObject.Find("FlechaCasa").SetActive(false);
+        GameObject.Find("Grid").GetComponent<MeshRenderer>().enabled = true;
+        GameObject er = GameObject.Find("EmpezarRuta");
+        GameObject dr = GameObject.Find("DeshacerRuta");
+        er.GetComponent<Image>().enabled = true;
+        er.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
+        dr.GetComponent<Image>().enabled = true;
+        dr.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
