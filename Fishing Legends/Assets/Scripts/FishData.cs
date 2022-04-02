@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class FishData : MonoBehaviour
 {
@@ -27,4 +26,10 @@ public class FishData : MonoBehaviour
         this.Name = this.gameObject.name;
     }
 
+    private void mostrarPez()
+    {
+        string s = name + ".png";
+        //buscar s en Assets/Images/FotosPeces
+        // añadir la foto al scrollview.
+    }
 }

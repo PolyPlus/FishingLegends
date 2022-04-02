@@ -14,7 +14,7 @@ public class RythmManager : MonoBehaviour
     public float tiempoAparicion;
     public GameObject panelRitmo;
 
-    
+    public BaitStateManager baitManager;
 
     public int size = 0; //3: GRANDE, 2: MEDIANO, 1: PEQUE
     
@@ -24,10 +24,7 @@ public class RythmManager : MonoBehaviour
     private float timeFish = 0;
     private int currentFish;
     private int lastFish = 0;
-    private BaitStateManager baitManager;
-
-    public BaitStateManager BaitManager { get => baitManager; set => baitManager = value; }
-
+    
     private void Start()
     {        
         ResetSpeed();
@@ -56,18 +53,18 @@ public class RythmManager : MonoBehaviour
     //Cada PEZ que aparece según el tamaño, dentro del combo
     public void spawnFish()
     {
-        //GameObject newFish;
-        GameObject newFish = Instantiate(pez) as GameObject;
+        GameObject newFish;
         int randomChance = Random.Range(1, 101); //Crea un valor aleatorio del 1 al 100      
         if (randomChance <= 50)
         {
-            newFish.transform.SetParent(latDer.transform, false);
+            newFish = Instantiate(pez, latDer.transform.position, latDer.transform.rotation) as GameObject;
         }
         else
         {
-            newFish.transform.SetParent(latIz.transform, false);
+            newFish = Instantiate(pez, latIz.transform.position, latIz.transform.rotation) as GameObject;
         }
         newFish.GetComponent<RythmFish>().Init(this, latIz, latDer, speed);
+        newFish.transform.SetParent(gameObject.transform);
 
         timeFish = Time.time;
         fish[lastFish] = newFish;
@@ -110,22 +107,19 @@ public class RythmManager : MonoBehaviour
     private int checkDistance()
     {
         float distance = Mathf.Abs(fish[currentFish].transform.position.x - bait.transform.position.x);
-        if (distance <= 8.0f)
+        if (distance <= 10.0f)
         {
             Debug.Log("EXCELENTE");
-            AudioManager.instance.PlaySound("CorrectFishTap");
             return 2;
         }
-        else if (distance <= 22.0f)
+        else if (distance <= 20.0f)
         {
             Debug.Log("BIEN");
-            AudioManager.instance.PlaySound("CorrectFishTap2");
             return 1;
         }
         else
         {
             Debug.Log("MAL");
-            AudioManager.instance.PlaySound("FailFishTap");
             return 0;
         }       
     }
@@ -138,7 +132,7 @@ public class RythmManager : MonoBehaviour
         for (int i = currentFish; i < fish.Length; ++i)
             Destroy(fish[i]);
         if (comboFailed) size = 0;
-        BaitManager.StopRythmGame(comboFailed, score);
+        baitManager.StopRythmGame(comboFailed, score);
     }
 
     public void ResetSpeed()

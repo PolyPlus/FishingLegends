@@ -101,7 +101,6 @@ MonoBehaviour:
   size: 0
   points: 10
   rarity: 50
-  id: 9
 --- !u!95 &2889312808600252568
 Animator:
   serializedVersion: 3

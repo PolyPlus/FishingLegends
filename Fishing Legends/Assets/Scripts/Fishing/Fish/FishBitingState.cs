@@ -3,10 +3,10 @@ using UnityEngine;
 public class FishBitingState : FishBaseState
 {
     public bool isBiting;
-  
+    public float baitRadius = 0.5f;
+
     private float moveSpeed;
     private float biteRange;
-    private float baitDistance;
     private float timeToAction;
     private bool isWaiting;
     private Vector3 target;
@@ -17,7 +17,6 @@ public class FishBitingState : FishBaseState
         //Debug.Log("Entering Bite State");
         moveSpeed = fish.moveSpeed * 6.0f;
         biteRange = fish.biteRange;
-        baitDistance = fish.baitDistance;
         timeToAction = Random.Range(0.5f, 3.0f);
         isWaiting = true;
         SetTarget(fish.transform.position, bait.Pos);
@@ -56,7 +55,7 @@ public class FishBitingState : FishBaseState
     private void SetTarget(Vector3 fishPos, Vector3 baitPos)
     {
         Vector3 dir = (fishPos - baitPos).normalized;
-        Vector3 translate = dir * baitDistance;
+        Vector3 translate = dir * biteRange;
         target = baitPos + translate;
         target.y = fishPos.y;
     }
@@ -64,7 +63,7 @@ public class FishBitingState : FishBaseState
     private void SetBitePos(Vector3 fishPos, Vector3 baitPos)
     {
         Vector3 dir = (fishPos - baitPos).normalized;
-        Vector3 translate = dir * biteRange;
+        Vector3 translate = dir * baitRadius;
         bitePos = baitPos + translate;
         bitePos.y = fishPos.y;
     }
@@ -75,11 +74,7 @@ public class FishBitingState : FishBaseState
         if (action == 1)
         {
             isBiting = true;
-            AudioManager.instance.PlaySound("Splash");
             bait.Bite(true, fish);
-        } else
-        {
-            AudioManager.instance.PlaySound("SoftBite");
-        }       
+        }
     }
 }

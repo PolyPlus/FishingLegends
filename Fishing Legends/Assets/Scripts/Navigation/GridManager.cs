@@ -30,39 +30,52 @@ public class GridManager : MonoBehaviour
 
     public GameObject topCamera;
 
-    public ActualizarResultados resultados;
+    //public GameObject boatCamera;
+
+    // private bool[,] selectedPositions;
+
+    public GameObject block;
+
+    public GameObject tree;
     
-    public GameObject block, tree, fishbank, rock;
+    public GameObject fishbank;
+    
+     public GameObject rock;
+     
 
-    private Vector3 gridOffset,pointOrigin;
+    private Vector3 gridOffset;
 
-    private Vector3 min,max;
+    private Vector3 pointOrigin;
 
+    private Vector3 min;
+
+    private Vector3 max;
+    
     private RaycastHit _a;
-
-    private FishData[] _fishDataList;
 
     private ClickController cc;
 
     private InputAction clickaction;
 
-    private int currentPositionX, currentPositionY, lastPositionX, lastPositionY;
-    
+    private int currentPositionX, currentPositionY;
+
+    private int lastPositionX, lastPositionY;
+
     private LinkedList<Vector3> indexPoints = new LinkedList<Vector3>();
 
     private List<RouteData> route = new List<RouteData>();
 
     private float t;
 
-    private bool routeStarted,stop;
+    private bool routeStarted;
+
+    private bool stop;
 
     private int routeIndex;
 
     public uint maxFuel;
 
-    private bool inHold,release;
-    
-    private bool preRoute;
+    private bool inHold;
 
     private int[,] blockType;
 
@@ -98,7 +111,6 @@ public class GridManager : MonoBehaviour
         stop = false;
         routeIndex = 0;
         inHold = false;
-        preRoute = true;
 
         grid = GameObject.Find("Grid");
 
@@ -121,113 +133,31 @@ public class GridManager : MonoBehaviour
         // 2 tierra-arbol
         // 3 roca
         
-
-        blockType[8, 8] = 3;
-        blockType[8, 9] = 2;
-        blockType[8, 10] = 3;
-        blockType[9, 8] = 2;
-        blockType[9, 9] = 2;
-        blockType[9, 10] = 3;
-        
-        blockType[2, 1] = 2;
-        blockType[3, 1] = 3;
-        blockType[4, 1] = 2;
-        blockType[16, 1] = 3;
-        blockType[17, 1] = 2;
-        
         blockType[2, 2] = 2;
-        blockType[3, 2] = 2;
-        blockType[4, 2] = 2;
-        blockType[10, 2] = 2;
-        blockType[11, 2] = 3;
-        blockType[15, 2] = 2;
-        blockType[16, 2] = 2;
-        blockType[17, 2] = 2;
-        
-        blockType[1, 3] = 2;
-        blockType[2, 3] = 3;
+        blockType[2, 3] = 2;
+        blockType[3, 2] = 3;
         blockType[3, 3] = 2;
-        blockType[11, 3] = 2;
-        blockType[12, 3] = 2;
-        blockType[15, 3] = 3;
-        blockType[16, 3] = 2;
-        blockType[17, 3] = 3;
 
-        blockType[1, 4] = 3;
-        blockType[2, 4] = 2;
-        blockType[3, 4] = 2;
-        blockType[15, 4] = 2;
-        blockType[16, 4] = 2;
+        blockType[12, 12] = 2;
+        blockType[12, 13] = 2;
+        blockType[13, 12] = 2;
+        blockType[13, 13] = 3;
         
-        blockType[1, 5] = 2;
-        blockType[2, 5] = 2;
-        blockType[3, 5] = 3;
-        blockType[15, 5] = 2;
-        blockType[16, 5] = 3;
-        
-        blockType[1, 6] = 3;
-        blockType[2, 6] = 2;
-        blockType[15, 6] = 2;
-        
-        blockType[1, 7] = 2;
-        blockType[2, 7] = 2;
+       // blockType[15, 13] = 1;
+        blockType[18, 13] = 1;
 
-        
-        blockType[1, 13] = 2;
-        blockType[1, 14] = 2;
-        blockType[1, 15] = 2;
-        blockType[2, 12] = 2;
-        blockType[2, 13] = 2;
-        blockType[2, 14] = 3;
-        blockType[2, 15] = 2;
-        blockType[2, 16] = 3;
-        blockType[3, 14] = 2;
-        blockType[3, 15] = 2;
-        blockType[3, 16] = 2;
-        blockType[3, 17] = 2;
-        blockType[4, 15] = 3;
-        blockType[4, 16] = 2;
-        blockType[4, 17] = 2;
-        blockType[5, 16] = 2;
-        blockType[5, 17] = 2;
-        blockType[6, 16] = 2;
-        blockType[6, 17] = 3;
-        blockType[7, 17] = 2;
-        
-        blockType[12, 14] = 3;
-        blockType[12, 15] = 2;
-        blockType[12, 16] = 2;
-        blockType[13, 15] = 2;
-        blockType[13, 16] = 3;
-        blockType[13, 17] = 2;
-        blockType[13, 18] = 2;
-        blockType[14, 17] = 2;
-        blockType[14, 18] = 2;
-        blockType[15, 13] = 2;
-        blockType[15, 17] = 3;
-        blockType[15, 18] = 2;
-        blockType[16, 13] = 3;
-        blockType[16, 14] = 2;
-        blockType[16, 15] = 2;
-        blockType[16, 16] = 2;
-        blockType[16, 17] = 2;
-        blockType[16, 18] = 2;
-        blockType[17, 14] = 2;
-        blockType[17, 15] = 3;
-        blockType[17, 16] = 2;
-        blockType[17, 17] = 2;
-        
 
-        
-        blockType[10, 9] = -1;
-        blockType[10, 8] = 5;
-       
-        lastPositionX = 10;
-        lastPositionY = 9;
+        blockType[22, 22] = 3;
+        blockType[22, 23] = 2;
+        blockType[23, 22] = 2;
+        blockType[23, 23] = 2;
+
+        lastPositionX = 14;
+        lastPositionY = 13;
         
         GenerateMapContent();
 
-        Vector3 start = TransformIdToGrid(lastPositionX, lastPositionY, new Vector3(0, 1.7f, 0));
+        Vector3 start = TransformIdToGrid(lastPositionX, lastPositionY, new Vector3(0, 0, 0));
 
         indexPoints.AddLast(start);
 
@@ -236,8 +166,7 @@ public class GridManager : MonoBehaviour
         Instantiate(gridPoint, start, Quaternion.identity);
 
         InitializeMap();
-        
-      
+       
         //GetComponent<Collider>().bounds.
     }
 
@@ -260,14 +189,14 @@ public class GridManager : MonoBehaviour
                    
                 
                 }
-                t += Time.deltaTime*0.6f;
+                t += Time.deltaTime;
                 
                 if (routeIndex < route.Count)
                 {
                     boat.transform.LookAt(indexPoints.ElementAt(routeIndex + 1));
                     //Debug.Log(routeIndex);
                     boat.transform.position = route[routeIndex].GetPoint(t);
-                    topCamera.transform.position = boat.transform.position + new Vector3(6, 20, -27);
+                    topCamera.transform.position = boat.transform.position + new Vector3(-1, 7, -12);
 
                     if (blockType[TransformCoordinateToId(boat.transform.position.x, max.x, min.x),
                             TransformCoordinateToId(boat.transform.position.z, max.z, min.z)] == 1)
@@ -279,9 +208,7 @@ public class GridManager : MonoBehaviour
                 else
                 {
                     stop = true;
-                    
-                    resultados.sr.gameObject.SetActive(true);
-                    resultados.mostrarPeces(_fishDataList);
+                    //EN ESTE ELSE SE EJECUTA CUANDO ACABA LA RUTA
                 }
             }
             
@@ -293,72 +220,47 @@ public class GridManager : MonoBehaviour
 
         } else  if (Physics.Raycast(_ray, out _a))
         {
+            //_a.point.Lo;
+            currentPositionX = ((int) (_rowsColumns * (_a.point.x - min.x) / (max.x - min.x)));
+            currentPositionY = ((int) (_rowsColumns * (_a.point.z - min.z) / (max.z - min.z)));
             
-            if (preRoute)
+            
+            
+            Vector3 newPoint = TransformIdToGrid(currentPositionX, currentPositionY, _a.point);
+
+            if (((((currentPositionX == lastPositionX + 1 || currentPositionX == lastPositionX - 1 ||
+                   currentPositionX == lastPositionX) &&
+                  (currentPositionY == lastPositionY + 1 || currentPositionY == lastPositionY - 1 ||
+                   currentPositionY == lastPositionY)) &&
+                 !(currentPositionX == lastPositionX && currentPositionY == lastPositionY)) || indexPoints.Count == 0) && blockType[currentPositionX,currentPositionY] <= 1 )
             {
-                if (release)
+                gridPoint.transform.position = newPoint;
+               //  Debug.Log(gridPoint.transform.position);
+                if (inHold && indexPoints.Count < maxFuel )
                 {
-                    if ( _a.collider.gameObject.name == "casita" )
-                    {
-                        Debug.Log("CASSA");
-                        release = false;
-                    }
-                    else if (_a.collider.gameObject.name == "Bote")
-                    {
-                        preRoute = false;
-                        transition.SetBool("toRoute",true);
-                        Debug.Log("BARCO");
-                        release = false;
-                    }
-                    else
-                    {
-                        release = false;
-                    }
+
+                    GameObject cloned = Instantiate(gridPoint, newPoint, Quaternion.identity);
+                    //selectedPositions[currentPositionX, currentPositionY] = true;
+                    lastPositionX = currentPositionX;
+                    lastPositionY = currentPositionY;
+                    indexPoints.AddLast(newPoint);
+                   // Debug.Log(indexPoints.Count);
+                    //curvePoints.AddLast(new Vector2(cloned.transform.position.x,,))
+
                 }
             }
-            else
-            {
-                currentPositionX = ((int) (_rowsColumns * (_a.point.x - min.x) / (max.x - min.x)));
-                currentPositionY = ((int) (_rowsColumns * (_a.point.z - min.z) / (max.z - min.z)));
-                //_a.collider.gameObject
-                Vector3 newPoint = TransformIdToGrid(currentPositionX, currentPositionY, _a.point);
-
-                if (((((currentPositionX == lastPositionX + 1 || currentPositionX == lastPositionX - 1 ||
-                        currentPositionX == lastPositionX) &&
-                       (currentPositionY == lastPositionY + 1 || currentPositionY == lastPositionY - 1 ||
-                        currentPositionY == lastPositionY)) &&
-                      !(currentPositionX == lastPositionX && currentPositionY == lastPositionY)) || indexPoints.Count == 0) && blockType[currentPositionX,currentPositionY] <= 1 )
-                {
-                    gridPoint.transform.position = newPoint;
-                    //  Debug.Log(gridPoint.transform.position);
-                    if (inHold && indexPoints.Count < maxFuel )
-                    {
-
-                        GameObject cloned = Instantiate(gridPoint, newPoint, Quaternion.identity);
-                        //selectedPositions[currentPositionX, currentPositionY] = true;
-                        lastPositionX = currentPositionX;
-                        lastPositionY = currentPositionY;
-                        indexPoints.AddLast(newPoint);
-                        // Debug.Log(indexPoints.Count);
-                        //curvePoints.AddLast(new Vector2(cloned.transform.position.x,,))
-
-                    }
-                }
-            }
-            
-            
-        }else if (release)
-        {
-            release = false;
         }
     }
 
     struct RouteData
     {
+        //private bool isBezier;
 
         private readonly Vector3 _p1;
 
         private readonly Vector3 _p2;
+
+       
 
         public RouteData(Vector3 p1, Vector3 p2)
         {
@@ -400,13 +302,15 @@ public class GridManager : MonoBehaviour
     private void OnHold()
     {
         inHold = true;
-        //release = false;
+        
+        
+        
     }
     
     private void OnRelease()
     {
         inHold = false;
-        release = true;
+        
     }
 
     public void startRoute()
@@ -419,7 +323,7 @@ public class GridManager : MonoBehaviour
              
              topCamera.GetComponent<CameraMovementController>().enabled = false;
              //transition.SetBool("fadingIn",true);
-             topCamera.transform.rotation = Quaternion.Euler(30,0,0);
+             topCamera.transform.rotation = Quaternion.identity;
              ProcessRoute();
        
         routeStarted = true;
@@ -433,7 +337,6 @@ public class GridManager : MonoBehaviour
 
     private void GenerateMapContent()
     {
-        bool isFish = true;
         for (int i = 0; i < _rowsColumns; i++)
         {
             for (int j = 0; j < _rowsColumns; j++)
@@ -446,24 +349,12 @@ public class GridManager : MonoBehaviour
                 {
                     if (blockType[i,j] ==  0)
                     {
-                        if (isFish)
-                        {
-                            blockType[i,j] = 1;
-                        }
-                        else
-                        {
-                            blockType[i,j] = 4;
-                        }
-                        
+                        blockType[i,j] = 1;
                     }
                     
                 }
                 
-                isFish = !isFish;
-                
             }
-
-            
 
         }
     }

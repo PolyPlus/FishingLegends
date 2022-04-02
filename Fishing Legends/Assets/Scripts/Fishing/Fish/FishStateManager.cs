@@ -8,9 +8,7 @@ public class FishStateManager : MonoBehaviour
     public int size;
     public float moveSpeed = 1.0f;
     public float rotSpeed = 5f;
-    public float baitDistance = 0.75f;
-    public float biteRange = 0.5f;
-    
+    public float biteRange = 0.75f;
 
     // States
     public FishBaseState currentState;
