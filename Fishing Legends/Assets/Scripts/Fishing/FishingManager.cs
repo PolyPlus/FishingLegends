@@ -37,7 +37,7 @@ public class FishingManager : MonoBehaviour
 
     private void Start()
     {
-        numAnzuelos = StaticInfo.numAnzuelos;
+        numAnzuelos = StaticInfo.maxAnzuelos;
         lureUI.SetNumAnzuelos(numAnzuelos);
         controls.Pointer.Press.started += _ => OnPointerPress();
         controls.Pointer.Press.canceled += _ => OnPointerRelease();
@@ -78,7 +78,7 @@ public class FishingManager : MonoBehaviour
     {
         if(numAnzuelos>0) numAnzuelos --;
         lureUI.SetNumAnzuelos(numAnzuelos);
-        numAnzuelos = StaticInfo.numAnzuelos;
+        StaticInfo.numAnzuelos = numAnzuelos;
     }
 
     public void UpdateFishData(FishData[] data)

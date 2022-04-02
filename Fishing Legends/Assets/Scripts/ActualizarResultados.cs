@@ -38,6 +38,7 @@ public class ActualizarResultados : MonoBehaviour
         for (int i = 0; i < pecesTotales.Length; i++)
         {
             int id = pecesTotales[i].ID;
+            StaticInfo.piscipedia[id] = true;
             GameObject pez = Instantiate(listaPeces[id]);
             pez.transform.SetParent(sr.content);
         }
@@ -46,7 +47,9 @@ public class ActualizarResultados : MonoBehaviour
 
     public void actualizarMonedas()
     {
-        StaticInfo.monedas = StaticInfo.totalScore / 10;
+        int m = StaticInfo.totalScore / 10;
+        StaticInfo.monedas = m;
+        PlayerPrefs.SetInt(StaticInfo.monedasKey, m);
     }
 
     public void onClick()

@@ -42,6 +42,9 @@ public class CanvasProductos : MonoBehaviour {
             {
                 StaticInfo.monedas = m;
                 nivelBarco++;
+                StaticInfo.nivelBarco = nivelBarco;
+                PlayerPrefs.SetInt(StaticInfo.nivelBarcoKey, nivelBarco);
+                PlayerPrefs.SetInt(StaticInfo.monedasKey, m);
             }
             textonivBarco.text = "Nivel del barco: " + nivelBarco;
             panelPrincipal.textoMonedas.text = "Monedas: " + StaticInfo.monedas;
@@ -68,7 +71,9 @@ public class CanvasProductos : MonoBehaviour {
             {
                 StaticInfo.monedas = m;
                 numAnzuelos++;
-                StaticInfo.maxAnzuelos++;
+                StaticInfo.maxAnzuelos = numAnzuelos;
+                PlayerPrefs.SetInt(StaticInfo.maxAnzuelosKey, numAnzuelos);
+                PlayerPrefs.SetInt(StaticInfo.monedasKey, m);
             }
             textonumAnzuelos.text = "Número de anzuelos: " + numAnzuelos;
         }

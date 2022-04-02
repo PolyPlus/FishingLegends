@@ -55,7 +55,14 @@ public class PanelsBehaviour : MonoBehaviour
         if (usernameL.text != "" && passwordL.text != "")
         {
             Debug.Log("user: " + usernameL.text + " pass: " + passwordL.text);
-            GameManager.GetInstance().SelectScene("ShopScene");                  //Cambiar nombre a escena definitiva
+            if (PlayerPrefs.GetInt(StaticInfo.tutorialKey, 0) == 0)
+            {
+                GameManager.GetInstance().SelectScene("StoryScene");
+            }
+            else
+            {
+                GameManager.GetInstance().SelectScene("NavigationScene");
+            }
         }
     }
     public void OnClickSignIn()

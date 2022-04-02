@@ -53,6 +53,6 @@ public class CanvasTienda : MonoBehaviour
         clubPesca.SetActive(false);
         canvasBotonesAjustes.SetActive(true); */
 
-        GameManager.GetInstance().SelectScene("NavigationScene");
+        GameManager.GetInstance().SelectScene(StaticInfo.navigationScene);
     }
 }

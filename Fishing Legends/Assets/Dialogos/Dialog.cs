@@ -63,7 +63,8 @@ public class Dialog: MonoBehaviour, IPointerClickHandler
     }
     void endDialog()
     {
-        GameManager.GetInstance().SelectScene("NavigationScene");
+        PlayerPrefs.SetInt(StaticInfo.tutorialKey, 1);
+        GameManager.GetInstance().SelectScene(StaticInfo.navigationScene);
     }
     IEnumerator TypeLine()
     {
