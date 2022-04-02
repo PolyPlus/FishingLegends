@@ -178,8 +178,8 @@ MonoBehaviour:
   lines:
   - "Te doy la bienvenida a la isla de Fishing Legends. Para moverte por la isla,
     selecciona a d\xF3nde quieres ir."
-  - Para salir a pescar, selecciona el puerto
-  - "Al iniciar la ruta de pesca, te saldr\xE1 esta pantalla.talla."
+  - Para salir a pescar, selecciona el puerto.
+  - "Al iniciar la ruta de pesca, te saldr\xE1 esta pantalla."
   - "Dibuja la ruta que quieras realizar con el rat\xF3n. Es importante que la ruta
     empiece y acabe en el muelle."
   - "Una vez hayas dibujado la ruta, comenzar\xE1 el viaje, hasta que llegues a una
@@ -193,8 +193,8 @@ MonoBehaviour:
   - Hay que pulsar en la barra justo cuando un pez pase por el anzuelo. Si el pez
     viene por la derecha, hay que pulsar el lado derecho de la barra.
   - "Si viene por la izquierda, el lado izquierdo. Seg\xFAn lo cerca que aciertes
-    del centro del anzuelo, recibir\xE1s m\xE1s o menos puntos"
-  - "Si aciertas todos los peces del juego de ritmo, podr\xE1s seguir pescando"
+    del centro del anzuelo, recibir\xE1s m\xE1s o menos puntos."
+  - "Si aciertas todos los peces del juego de ritmo, podr\xE1s seguir pescando."
   - "Puede formarse un combo y picar m\xE1s peces. La dificultad aumenta conforme
     m\xE1s peces piquen, pero tambi\xE9n dar\xE1n m\xE1s puntos."
   - "Si fallas, todos los peces del combo se ir\xE1n. Puedes sacar la ca\xF1a cuando
@@ -202,14 +202,14 @@ MonoBehaviour:
   - "Al sacar la ca\xF1a, se mostrar\xE1n los peces que has conseguido pescar."
   - "La ruta sigue hasta que vualves al muelle. Entonces se mostrar\xE1n los peces
     que has conseguido en la ruta."
-  - "Esta es la tienda. Aqu\xED podr\xE1s realizar varias acciones"
+  - "Si seleccionas la casa, podr\xE1s realizar varias acciones."
   - "En este men\xFA podr\xE1s realizar varias mejoras que amenizar\xE1n tu tarea
-    de pesca"
+    de pesca."
   - "La mejora de barco permite recorrer m\xE1s distancia en la ruta."
-  - La mejora de anzuelo
-  - Cebos
+  - "La mejora de anzuelo, aumenta el n\xFAmero de anzuelos que se pueden tener."
   - "Esta es la piscipedia. En ella podr\xE1s ver los peces que has capturado, \xA1intenta
     conseguirlos todos!"
+  - "Y con esto concluye el tutorial. \xA1Ya puedes salir a pescar! "
   images:
   - {fileID: 21300000, guid: a8e7c7bac89d66f439ff25f92f4d0fc8, type: 3}
   - {fileID: 21300000, guid: a8e7c7bac89d66f439ff25f92f4d0fc8, type: 3}
@@ -231,8 +231,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 634e52525cafe1f4584d9086410a4256, type: 3}
   - {fileID: 21300000, guid: 634e52525cafe1f4584d9086410a4256, type: 3}
   - {fileID: 21300000, guid: 634e52525cafe1f4584d9086410a4256, type: 3}
-  - {fileID: 21300000, guid: 634e52525cafe1f4584d9086410a4256, type: 3}
   - {fileID: 21300000, guid: 5f9b57b4ac755a14e813410de5a4746f, type: 3}
+  - {fileID: 21300000, guid: a8e7c7bac89d66f439ff25f92f4d0fc8, type: 3}
   fondo: {fileID: 515628958}
   textSpeed: 0.01
 --- !u!114 &204618688
@@ -755,7 +755,7 @@ GameObject:
   - component: {fileID: 1241165176}
   - component: {fileID: 1241165175}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Tutorial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
