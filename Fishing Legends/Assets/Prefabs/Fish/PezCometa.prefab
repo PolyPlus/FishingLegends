@@ -107,6 +107,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   size: 1
-  points: 10
+  points: 150
   rarity: 60
   id: 6

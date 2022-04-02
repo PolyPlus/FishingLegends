@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   size: 0
-  points: 10
+  points: 200
   rarity: 50
   id: 9
 --- !u!95 &2889312808600252568
