@@ -79,6 +79,10 @@ public class FishingManager : MonoBehaviour
         if(numAnzuelos>0) numAnzuelos --;
         lureUI.SetNumAnzuelos(numAnzuelos);
         StaticInfo.numAnzuelos = numAnzuelos;
+        if(numAnzuelos <= 0)
+        {
+            GameManager.GetInstance().SelectScene(StaticInfo.navigationScene);
+        }
     }
 
     public void UpdateFishData(FishData[] data)

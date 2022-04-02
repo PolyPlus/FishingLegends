@@ -38,6 +38,7 @@ public class ActualizarResultados : MonoBehaviour
         for (int i = 0; i < pecesTotales.Length; i++)
         {
             int id = pecesTotales[i].ID;
+            PlayerPrefs.SetInt(StaticInfo.fishKeys[id], 1);
             StaticInfo.piscipedia[id] = true;
             GameObject pez = Instantiate(listaPeces[id]);
             pez.transform.SetParent(sr.content);

@@ -25,7 +25,14 @@ public static class StaticInfo
         monedasKey = "monedas", 
         nivelBarcoKey = "nivelBarco",
         maxAnzuelosKey = "maxAnzuelos";
+
     // Peces
+    public static string[] fishKeys = { 
+        "Barracuda", "Caballito", "Cangrejo", 
+        "Cirujano", "Estrella", "MantaRaya", 
+        "Cometa", "PezEspada", "PezGlobo", 
+        "PezPayaso", "PeligrosoKey", "Pulpo", 
+        "Tiburon" };
 
     // Nombres escenas
     public static string navigationScene = "NavigationScene",
