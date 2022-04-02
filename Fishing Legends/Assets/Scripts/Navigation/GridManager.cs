@@ -236,6 +236,7 @@ public class GridManager : MonoBehaviour
         Vector3 start = TransformIdToGrid(lastPositionX, lastPositionY, new Vector3(0, 1.7f, 0));
 
         indexPoints.AddLast(start);
+        
 
         gridPoint.transform.position = start;
 
@@ -346,6 +347,7 @@ public class GridManager : MonoBehaviour
                         lastPositionX = currentPositionX;
                         lastPositionY = currentPositionY;
                         indexPoints.AddLast(newPoint);
+                        gridPointList.AddLast(cloned);
                         // Debug.Log(indexPoints.Count);
                         //curvePoints.AddLast(new Vector2(cloned.transform.position.x,,))
 
@@ -434,6 +436,23 @@ public class GridManager : MonoBehaviour
             //topCamera.SetActive(false);
             
          }
+        
+    }
+
+    public void undoRoutePoint()
+    {
+        if (indexPoints.Count > 1)
+        {
+            indexPoints.RemoveLast();
+            lastPositionX = TransformCoordinateToId(indexPoints.ElementAt(indexPoints.Count - 1).x, max.x, min.x);
+            lastPositionY = TransformCoordinateToId(indexPoints.ElementAt(indexPoints.Count - 1).z, max.z, min.z);
+        }
+        if (gridPointList.Count > 0)
+        {
+            Destroy(gridPointList.ElementAt(gridPointList.Count - 1));
+            gridPointList.RemoveLast();
+        }
+       
         
     }
 
