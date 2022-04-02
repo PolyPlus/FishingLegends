@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FishSpawner : MonoBehaviour
 {
-    public int numFish = 5;
+    public int numFish;
     public BaitStateManager bait;
     public GameObject[] fishShadows;
     public List<GameObject> fishPrefabs;
@@ -15,6 +15,7 @@ public class FishSpawner : MonoBehaviour
 
     void Start()
     {
+        numFish = Random.Range(3, 6);
         fish = new GameObject[numFish];
         fishWeights = new int[fishPrefabs.Count];
         GenerateWeights();

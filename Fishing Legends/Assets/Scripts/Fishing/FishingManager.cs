@@ -9,7 +9,9 @@ public class FishingManager : MonoBehaviour
     
     public BaitStateManager baitManager;
     public RythmManager rythmGame;
-
+    public LureUI lureUI;
+    
+    private int numAnzuelos = 3;
     private int score;
     private PointerControlls controls;
     private bool paused;
@@ -35,6 +37,8 @@ public class FishingManager : MonoBehaviour
 
     private void Start()
     {
+        numAnzuelos = StaticInfo.numAnzuelos;
+        lureUI.SetNumAnzuelos(numAnzuelos);
         controls.Pointer.Press.started += _ => OnPointerPress();
         controls.Pointer.Press.canceled += _ => OnPointerRelease();
         baitManager.RythmGame = rythmGame;
@@ -68,5 +72,22 @@ public class FishingManager : MonoBehaviour
     {
         Vector2 mousePosition = controls.Pointer.Position.ReadValue<Vector2>();
         if (!Paused) baitManager.OnPointerPress(mousePosition);
+    }
+
+    public void UseLure()
+    {
+        if(numAnzuelos>0) numAnzuelos --;
+        lureUI.SetNumAnzuelos(numAnzuelos);
+        numAnzuelos = StaticInfo.numAnzuelos;
+    }
+
+    public void UpdateFishData(FishData[] data)
+    {
+        StaticInfo.staticFishData = data;
+    }
+
+    public void UpdateScore(int s)
+    {
+        StaticInfo.fishingScore += s;
     }
 }

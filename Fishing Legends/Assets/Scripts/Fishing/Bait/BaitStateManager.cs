@@ -120,10 +120,12 @@ public class BaitStateManager : MonoBehaviour
         if (fishCombo.Count > 0)
         {
             GetFish();
+            fishingManager.UseLure();
         } else
         {
             SwitchState(boatState);
-        }           
+        }
+        
     }
 
     public void StartRythmGame()
@@ -176,17 +178,20 @@ public class BaitStateManager : MonoBehaviour
     {
         Debug.Log("fish caught: " + fishCombo.Count);
         AudioManager.instance.PlaySound("GetOutFish");
+        fishingManager.UpdateScore(comboScore);
+        
         totalScore += comboScore;
         comboScore = 0;
         for (int i = 0; i < fishCombo.Count; i++)
         {
             fishPrefabs.Add(fishCombo[i].fishPrefab);
-            fishCaught.Add(fishCombo[i].GetPrefabData());
+            fishCaught.Add(fishCombo[i].GetPrefabData());           
             fishCombo[i].CatchFish();
         }
         Debug.Log("Total fish caught: " + fishCaught.Count);
         Debug.Log("Total Score: " + totalScore);
         fishCombo.Clear();
+        fishingManager.UpdateFishData(fishCaught.ToArray());
         SwitchState(catchingState);
     }
 
