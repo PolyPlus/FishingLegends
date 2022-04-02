@@ -8,11 +8,16 @@ public static class StaticInfo
 
     public static FishData[] staticFishData;
 
+    public static int position;
+
     public static int[,] map;
 
     public static bool finishRoute = true;
 
-    public static LinkedList<Vector3> indexPoints;
+    //public static LinkedList<Vector3> indexPoints;
+
+    public static List<RouteData> route;
+    
     // Guardar en playerPrefs
     public static int monedas, nivelBarco = 1, maxAnzuelos = 5;
     // Actualizar en cada ruta
