@@ -10,6 +10,7 @@ public class FishingManager : MonoBehaviour
     public BaitStateManager baitManager;
     public RythmManager rythmGame;
     public LureUI lureUI;
+    public bool exit;
     
     private int numAnzuelos = 3;
     private int score;
@@ -37,6 +38,7 @@ public class FishingManager : MonoBehaviour
 
     private void Start()
     {
+        exit = false;
         numAnzuelos = StaticInfo.maxAnzuelos;
         lureUI.SetNumAnzuelos(numAnzuelos);
         controls.Pointer.Press.started += _ => OnPointerPress();
@@ -79,6 +81,11 @@ public class FishingManager : MonoBehaviour
         if(numAnzuelos>0) numAnzuelos --;
         lureUI.SetNumAnzuelos(numAnzuelos);
         StaticInfo.numAnzuelos = numAnzuelos;
+        if(numAnzuelos <= 0)
+        {
+            exit = true;
+            //GameManager.GetInstance().SelectScene(StaticInfo.navigationScene);
+        }
     }
 
     public void UpdateFishData(FishData[] data)

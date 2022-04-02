@@ -19,7 +19,7 @@ public static class StaticInfo
     public static List<RouteData> route;
     
     // Guardar en playerPrefs
-    public static int monedas, nivelBarco = 1, maxAnzuelos = 5;
+    public static int monedas, nivelBarco = 1, maxAnzuelos = 2;
     // Actualizar en cada ruta
     public static int fishingScore, totalScore, numAnzuelos;
 
@@ -30,7 +30,14 @@ public static class StaticInfo
         monedasKey = "monedas", 
         nivelBarcoKey = "nivelBarco",
         maxAnzuelosKey = "maxAnzuelos";
+
     // Peces
+    public static string[] fishKeys = { 
+        "Barracuda", "Caballito", "Cangrejo", 
+        "Cirujano", "Estrella", "MantaRaya", 
+        "Cometa", "PezEspada", "PezGlobo", 
+        "PezPayaso", "PeligrosoKey", "Pulpo", 
+        "Tiburon" };
 
     // Nombres escenas
     public static string navigationScene = "NavigationScene",

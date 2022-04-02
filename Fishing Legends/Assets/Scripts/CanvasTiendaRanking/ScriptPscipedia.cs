@@ -25,13 +25,15 @@ public class ScriptPscipedia : MonoBehaviour
     void Start()
     {
         fishes = new Sprite[] { barracuda,seaHorse, crab,surgeonFish,star,stingray,kiteFish,swordfish,blowFish, clownfish,dangerousFish,octopus, sharp };
+        for(int i=0; i<fishes.Length; i++)
+        {
+            if (PlayerPrefs.GetInt(StaticInfo.fishKeys[i], 0) > 0)
+            {
+                changeImage(i);
+            }
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-       
-    }
     void changeImage(int fishID)
     {
         if ((fishID >=0) && (fishID < fishes.Length))
