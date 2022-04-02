@@ -18,7 +18,7 @@ public class CanvasTienda : MonoBehaviour
         productos.SetActive(false);
         piscipedia.SetActive(false);
         clubPesca.SetActive(false);
-        textoMonedas.text = "Monedas: " + StaticInfo.monedas;
+        textoMonedas.text = "" + StaticInfo.monedas;
     }
 
     // Update is called once per frame

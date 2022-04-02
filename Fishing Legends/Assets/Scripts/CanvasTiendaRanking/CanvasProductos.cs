@@ -47,7 +47,6 @@ public class CanvasProductos : MonoBehaviour {
                 PlayerPrefs.SetInt(StaticInfo.monedasKey, m);
             }
             textonivBarco.text = "Nivel del barco: " + nivelBarco;
-            panelPrincipal.textoMonedas.text = "Monedas: " + StaticInfo.monedas;
         }
         else if (nivelBarco == 3)
         {
@@ -76,6 +75,7 @@ public class CanvasProductos : MonoBehaviour {
                 PlayerPrefs.SetInt(StaticInfo.monedasKey, m);
             }
             textonumAnzuelos.text = "Número de anzuelos: " + numAnzuelos;
+            panelPrincipal.textoMonedas.text = "" + StaticInfo.monedas;
         }
         else if (numAnzuelos == 7)
         {
