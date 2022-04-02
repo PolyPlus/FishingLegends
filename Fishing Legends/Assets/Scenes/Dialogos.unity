@@ -179,7 +179,7 @@ MonoBehaviour:
   - "Te doy la bienvenida a la isla de Fishing Legends. Para moverte por la isla,
     selecciona a d\xF3nde quieres ir."
   - Para salir a pescar, selecciona el puerto
-  - "ciar la ruta de pesca, te saldr\xE1 esta pantalla.talla."
+  - "Al iniciar la ruta de pesca, te saldr\xE1 esta pantalla.talla."
   - "Dibuja la ruta que quieras realizar con el rat\xF3n. Es importante que la ruta
     empiece y acabe en el muelle."
   - "Una vez hayas dibujado la ruta, comenzar\xE1 el viaje, hasta que llegues a una
@@ -210,16 +210,13 @@ MonoBehaviour:
   - Cebos
   - "Esta es la piscipedia. En ella podr\xE1s ver los peces que has capturado, \xA1intenta
     conseguirlos todos!"
-  - "Este es el r\xE1nking."
-  - Y con esto concluye el tutorial.
-  - 
   images:
   - {fileID: 21300000, guid: a8e7c7bac89d66f439ff25f92f4d0fc8, type: 3}
   - {fileID: 21300000, guid: a8e7c7bac89d66f439ff25f92f4d0fc8, type: 3}
   - {fileID: 21300000, guid: b5d457d04bf722b4eb88709912caca5d, type: 3}
   - {fileID: 21300000, guid: c88c430fab2543c4bae87f246e4ded0c, type: 3}
   - {fileID: 21300000, guid: c580e195e4c96314d8d8043b8ab5f0fc, type: 3}
-  - {fileID: 21300000, guid: c580e195e4c96314d8d8043b8ab5f0fc, type: 3}
+  - {fileID: 21300000, guid: dceec7e3a5da82142bd8ff05a0f28f4c, type: 3}
   - {fileID: 21300000, guid: af0f2a33d8f8c314fba6e1d521c9325f, type: 3}
   - {fileID: 21300000, guid: e95852a8ded693042bd43509d7531b0e, type: 3}
   - {fileID: 21300000, guid: e118af9b03d882d418d5b43951897b9d, type: 3}
@@ -229,15 +226,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8307c6e7e91a442429691d4e4fded53c, type: 3}
   - {fileID: 21300000, guid: 2c1b85e1aa40be74f80b479ac1e80dfa, type: 3}
   - {fileID: 21300000, guid: a711154def76aab41b60133160ac0eb8, type: 3}
-  - {fileID: 21300000, guid: c580e195e4c96314d8d8043b8ab5f0fc, type: 3}
+  - {fileID: 21300000, guid: 53f7a11db727c4e45b213625b8a578cb, type: 3}
   - {fileID: 21300000, guid: a8e7c7bac89d66f439ff25f92f4d0fc8, type: 3}
   - {fileID: 21300000, guid: 634e52525cafe1f4584d9086410a4256, type: 3}
   - {fileID: 21300000, guid: 634e52525cafe1f4584d9086410a4256, type: 3}
   - {fileID: 21300000, guid: 634e52525cafe1f4584d9086410a4256, type: 3}
   - {fileID: 21300000, guid: 634e52525cafe1f4584d9086410a4256, type: 3}
   - {fileID: 21300000, guid: 5f9b57b4ac755a14e813410de5a4746f, type: 3}
-  - {fileID: 21300000, guid: ce8ce72f1edf60c4baedf6c172fe9204, type: 3}
-  - {fileID: 21300000, guid: ce8ce72f1edf60c4baedf6c172fe9204, type: 3}
   fondo: {fileID: 515628958}
   textSpeed: 0.01
 --- !u!114 &204618688
