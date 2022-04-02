@@ -5,14 +5,14 @@ using TMPro;
 using UnityEngine.EventSystems;
 
 public class Dialog : MonoBehaviour, IPointerClickHandler
-{ 
+{
     public TextMeshProUGUI textComponent;
     public string[] lines;
     public float textSpeed;
     private int index;
 
-   // private PointerControlls controlls;
-    
+    // private PointerControlls controlls;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -21,10 +21,10 @@ public class Dialog : MonoBehaviour, IPointerClickHandler
         //controlls.Pointer.Press.started += _ => OnPointerPress();
     }
 
-   
+
     void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
     {
-       // Debug.Log("PRESSED");
+        // Debug.Log("PRESSED");
         if (textComponent.text == lines[index])
         {
             NextLine();
@@ -56,7 +56,7 @@ public class Dialog : MonoBehaviour, IPointerClickHandler
     }
     IEnumerator TypeLine()
     {
-        foreach(char c in lines[index].ToCharArray())
+        foreach (char c in lines[index].ToCharArray())
         {
             textComponent.text += c;
             yield return new WaitForSeconds(textSpeed);

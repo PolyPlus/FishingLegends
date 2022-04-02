@@ -136,20 +136,6 @@ public class AudioManager : MonoBehaviour
         Sound s = Array.Find(sounds, sound => sound.name == name);
         s.source.Play();
     }
-
-    public void PlaySound(string name, float volume)
-    {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
-        s.volume = volume;
-        s.source.Play();
-    }
-
-    public void PlayDelayed(string name, float time)
-    {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
-        s.source.PlayDelayed(time);
-    }
-
     private void StartLoop(string intro, string loop)
     {
         Sound sIntro = Array.Find(soundtracks, sound => sound.name == intro);

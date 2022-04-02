@@ -13,7 +13,6 @@ public class BaitBoatState : BaitBaseState
     public override void OnCollisionEnter(BaitStateManager bait, Collision collision)
     {
         if (collision.gameObject.tag == "Water") bait.SwitchState(bait.readyState);
-        AudioManager.instance.PlaySound("Splash");
     }
     public override void OnPointerPress(BaitStateManager bait, Vector2 position)
     {

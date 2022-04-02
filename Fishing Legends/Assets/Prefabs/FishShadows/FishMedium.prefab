@@ -45,13 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bait: {fileID: 0}
-  size: 0
   moveSpeed: 1
   rotSpeed: 5
-  baitDistance: 1.75
-  biteRange: 0.5
-  animator: {fileID: 0}
-  fishPrefab: {fileID: 0}
+  biteRange: 2
 --- !u!1001 &7190903621092207879
 PrefabInstance:
   m_ObjectHideFlags: 0

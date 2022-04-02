@@ -17,11 +17,10 @@ public class CanvasAjustesJugar : MonoBehaviour
         canvasTienda.SetActive(true);
         canvasBotonesAjustes.SetActive(false);
     }
-
     public void Jugar()
     {
         Debug.Log("Botón jugar pulsado");
         GameManager.GetInstance().SelectScene("FishingScene");                 
-    } 
+    }
 
 }

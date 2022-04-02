@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CanvasTienda : MonoBehaviour
 {
@@ -10,15 +9,13 @@ public class CanvasTienda : MonoBehaviour
     public GameObject clubPesca;
     public GameObject panelPrincipal;
     public GameObject canvasBotonesAjustes;
-    public Text textoMonedas;
     // Start is called before the first frame update
     void Start()
     {
-        panelPrincipal.SetActive(true);
+        panelPrincipal.SetActive(false);
         productos.SetActive(false);
         piscipedia.SetActive(false);
         clubPesca.SetActive(false);
-        textoMonedas.text = "Monedas: " + StaticInfo.monedas;
     }
 
     // Update is called once per frame
@@ -46,13 +43,11 @@ public class CanvasTienda : MonoBehaviour
     }
     public void exitButton()
     {
-        /*Debug.Log("EXIT");
+        Debug.Log("EXIT");
         panelPrincipal.SetActive(false);
         productos.SetActive(false);
         piscipedia.SetActive(false);
         clubPesca.SetActive(false);
-        canvasBotonesAjustes.SetActive(true); */
-
-        GameManager.GetInstance().SelectScene("NavigationScene");
+        canvasBotonesAjustes.SetActive(true);
     }
 }
