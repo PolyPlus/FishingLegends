@@ -49,6 +49,7 @@ public class GridManager : MonoBehaviour
     private int currentPositionX, currentPositionY, lastPositionX, lastPositionY;
     
     private LinkedList<Vector3> indexPoints = new LinkedList<Vector3>();
+    private LinkedList<GameObject> gridPointList = new LinkedList<GameObject>();
 
     private List<RouteData> route = new List<RouteData>();
 
@@ -220,7 +221,12 @@ public class GridManager : MonoBehaviour
 
         
         blockType[10, 9] = -1;
+        blockType[10, 10] = -1;
         blockType[10, 8] = 5;
+        blockType[11, 8] = -1;
+        blockType[11, 9] = -1;
+        blockType[11, 10] = -1;
+        
        
         lastPositionX = 10;
         lastPositionY = 9;
