@@ -110,19 +110,22 @@ public class RythmManager : MonoBehaviour
     private int checkDistance()
     {
         float distance = Mathf.Abs(fish[currentFish].transform.position.x - bait.transform.position.x);
-        if (distance <= 10.0f)
+        if (distance <= 8.0f)
         {
             Debug.Log("EXCELENTE");
+            AudioManager.instance.PlaySound("CorrectFishTap");
             return 2;
         }
-        else if (distance <= 20.0f)
+        else if (distance <= 22.0f)
         {
             Debug.Log("BIEN");
+            AudioManager.instance.PlaySound("CorrectFishTap2");
             return 1;
         }
         else
         {
             Debug.Log("MAL");
+            AudioManager.instance.PlaySound("FailFishTap");
             return 0;
         }       
     }

@@ -23,6 +23,6 @@ public class ReturnMenu : MonoBehaviour
     public void ReturnToNavigation()
     {
         Debug.Log("Cambiar escena");
-        GameManager.GetInstance().SelectScene("NavigationScene");
+        GameManager.GetInstance().SelectScene(StaticInfo.navigationScene);
     }
 }
