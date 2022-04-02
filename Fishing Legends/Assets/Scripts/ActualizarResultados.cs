@@ -27,7 +27,9 @@ public class ActualizarResultados : MonoBehaviour
         {
             puntuacion += pecesTotales[i].Points;
         }
+        puntuacion += StaticInfo.fishingScore;
         puntos.text = "" + puntuacion;
+        StaticInfo.totalScore = puntuacion;
     }
 
     public void mostrarPeces(FishData[] pecesTotales)
@@ -42,11 +44,17 @@ public class ActualizarResultados : MonoBehaviour
 
     }
 
+    public void actualizarMonedas()
+    {
+        StaticInfo.monedas = StaticInfo.totalScore / 10;
+    }
+
     public void onClick()
     {
         sr.gameObject.SetActive(false);
         mostrarResultados.SetActive(true);
         actualizarPuntuacion(fishDataList);
+        actualizarMonedas();
     }
 
     public void Salir()

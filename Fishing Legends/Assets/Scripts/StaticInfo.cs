@@ -14,9 +14,9 @@ public static class StaticInfo
 
     public static LinkedList<Vector3> indexPoints;
     // Guardar en playerPrefs
-    public static int monedas, nivelBarco, maxAnzuelos;
+    public static int monedas, nivelBarco =1, maxAnzuelos;
     // Actualizar en cada ruta
-    public static int fishingScore, totalScore, numAnzuelos;
+    public static int fishingScore, totalScore, numAnzuelos=3;
 
     public static Dictionary<int, bool> piscipedia;    
 }

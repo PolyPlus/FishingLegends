@@ -11,7 +11,6 @@ public class CanvasTienda : MonoBehaviour
     public GameObject panelPrincipal;
     public GameObject canvasBotonesAjustes;
     public Text textoMonedas;
-    public int monedas = 5000;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +18,7 @@ public class CanvasTienda : MonoBehaviour
         productos.SetActive(false);
         piscipedia.SetActive(false);
         clubPesca.SetActive(false);
-        textoMonedas.text = "Monedas: " + monedas;
+        textoMonedas.text = "Monedas: " + StaticInfo.monedas;
     }
 
     // Update is called once per frame
