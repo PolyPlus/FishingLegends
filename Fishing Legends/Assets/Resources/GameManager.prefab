@@ -65,7 +65,7 @@ MonoBehaviour:
     source: {fileID: 0}
     outputMixer: {fileID: 8175875374606695600, guid: db35175ae1ef9cf45bd391e211343bbe, type: 2}
   - name: GetOutFish
-    clip: {fileID: 8300000, guid: 85e3346a30c485c4cb00cab673cac53b, type: 3}
+    clip: {fileID: 8300000, guid: 3cdd76e9b60f4e1419aca9543cdca609, type: 3}
     volume: 0.531
     source: {fileID: 0}
     outputMixer: {fileID: 8175875374606695600, guid: db35175ae1ef9cf45bd391e211343bbe, type: 2}
@@ -96,6 +96,31 @@ MonoBehaviour:
     outputMixer: {fileID: 8175875374606695600, guid: db35175ae1ef9cf45bd391e211343bbe, type: 2}
   - name: ThrowingRod2
     clip: {fileID: 8300000, guid: b625f1bbebbb09e4799525e85dbfb1ed, type: 3}
+    volume: 0.538
+    source: {fileID: 0}
+    outputMixer: {fileID: 8175875374606695600, guid: db35175ae1ef9cf45bd391e211343bbe, type: 2}
+  - name: CorrectFishTap
+    clip: {fileID: 8300000, guid: 7add7c80ccedc0f4facc3e6a39b053a5, type: 3}
+    volume: 0.538
+    source: {fileID: 0}
+    outputMixer: {fileID: 8175875374606695600, guid: db35175ae1ef9cf45bd391e211343bbe, type: 2}
+  - name: CorrectFishTap2
+    clip: {fileID: 8300000, guid: dbc676227e474474593d92035f9cde79, type: 3}
+    volume: 0.538
+    source: {fileID: 0}
+    outputMixer: {fileID: 8175875374606695600, guid: db35175ae1ef9cf45bd391e211343bbe, type: 2}
+  - name: FailFishTap
+    clip: {fileID: 8300000, guid: dd30e7bed21f212458412570ea18083e, type: 3}
+    volume: 0.538
+    source: {fileID: 0}
+    outputMixer: {fileID: 8175875374606695600, guid: db35175ae1ef9cf45bd391e211343bbe, type: 2}
+  - name: Splash
+    clip: {fileID: 8300000, guid: f9e6445fcfb7b5546b03d2d55929589a, type: 3}
+    volume: 0.538
+    source: {fileID: 0}
+    outputMixer: {fileID: 8175875374606695600, guid: db35175ae1ef9cf45bd391e211343bbe, type: 2}
+  - name: SoftBite
+    clip: {fileID: 8300000, guid: 45cc972e9c26c674f93f1bb394b10e93, type: 3}
     volume: 0.538
     source: {fileID: 0}
     outputMixer: {fileID: 8175875374606695600, guid: db35175ae1ef9cf45bd391e211343bbe, type: 2}

@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class BaitStateManager : MonoBehaviour
 {
-    public Color32 color1;
-    public Color32 color2;
-    public RythmManager rythmGame;
+    //public Color32 color1;
+    //public Color32 color2;
+
+    // Public
+    public Animator playerAnimator;
+    private RythmManager rythmGame;
     public List<FishStateManager> fishCombo;
     public List<GameObject> fishPrefabs;
     public List<FishData> fishCaught;
@@ -22,12 +25,16 @@ public class BaitStateManager : MonoBehaviour
     public BaitRythmState rythmState = new BaitRythmState();
     public BaitCatchingState catchingState = new BaitCatchingState();
 
+    // Private
     private int comboScore;
     private Vector3 pos;
     private Animator animator;
     private GameObject currentFish;
+    private FishingManager fishingManager;
 
     public Vector3 Pos { get => pos; set => pos = value; }
+    public FishingManager FishingManager { get => fishingManager; set => fishingManager = value; }
+    public RythmManager RythmGame { get => rythmGame; set => rythmGame = value; }
 
     void Start()
     {
@@ -51,14 +58,14 @@ public class BaitStateManager : MonoBehaviour
 
     public void OnPointerPress(Vector2 position)
     {
-        currentState.OnPointerPress(this, position);
+        if(!FishingManager.Paused)currentState.OnPointerPress(this, position);
     }
 
     public void SwitchState(BaitBaseState state)
     {
         currentState = state;
         state.EnterState(this);
-        ChageColor();
+        //ChageColor();
     }
 
     public bool Detect()
@@ -85,41 +92,47 @@ public class BaitStateManager : MonoBehaviour
         }
     }
 
-    public void ChageColor()
-    {
-        if (currentState == rythmState)
-        {
-            this.GetComponent<Renderer>().material.color = color2;
-        }
-        else
-        {
-            this.GetComponent<Renderer>().material.color = color1;
-        }
-    }
+    //public void ChageColor()
+    //{
+    //    if (currentState == rythmState)
+    //    {
+    //        this.GetComponent<Renderer>().material.color = color2;
+    //    }
+    //    else
+    //    {
+    //        this.GetComponent<Renderer>().material.color = color1;
+    //    }
+    //}
 
     public void ThrowBait()
     {
         animator.Play("Throw_Bait");
+        playerAnimator.Play("Throw");
+        AudioManager.instance.PlayDelayed("ThrowingRod", 0.5f);
     }
 
     public void PullBait()
     {       
-        rythmGame.ResetCombo();
+        RythmGame.ResetCombo();
         animator.Play("PullBack_Bait");
+        playerAnimator.Play("Pull");
+        AudioManager.instance.PlaySound("ThrowingRod2");
         if (fishCombo.Count > 0)
         {
             GetFish();
+            fishingManager.UseLure();
         } else
         {
             SwitchState(boatState);
-        }           
+        }
+        
     }
 
     public void StartRythmGame()
     {
         inCombo = true;
         SwitchState(rythmState);
-        rythmGame.startRythmGame(GetTotalSize());
+        RythmGame.startRythmGame(GetTotalSize());
     }
 
     public void StopRythmGame(bool hasFailed, int score)
@@ -156,6 +169,7 @@ public class BaitStateManager : MonoBehaviour
         }
         else
         {
+            AudioManager.instance.PlaySound("SmallVictory");
             currentFish = Instantiate(fishPrefabs[0]);
         }       
     }
@@ -163,17 +177,21 @@ public class BaitStateManager : MonoBehaviour
     private void GetFish()
     {
         Debug.Log("fish caught: " + fishCombo.Count);
+        AudioManager.instance.PlaySound("GetOutFish");
+        fishingManager.UpdateScore(comboScore);
+        
         totalScore += comboScore;
         comboScore = 0;
         for (int i = 0; i < fishCombo.Count; i++)
         {
             fishPrefabs.Add(fishCombo[i].fishPrefab);
-            fishCaught.Add(fishCombo[i].GetPrefabData());
+            fishCaught.Add(fishCombo[i].GetPrefabData());           
             fishCombo[i].CatchFish();
         }
         Debug.Log("Total fish caught: " + fishCaught.Count);
         Debug.Log("Total Score: " + totalScore);
         fishCombo.Clear();
+        fishingManager.UpdateFishData(fishCaught.ToArray());
         SwitchState(catchingState);
     }
 
