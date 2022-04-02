@@ -568,7 +568,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &527714373
 MonoBehaviour:
@@ -1631,12 +1631,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f73b17c1fd343e24584969d8e67ebf47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color1:
-    serializedVersion: 2
-    rgba: 4278190335
-  color2:
-    serializedVersion: 2
-    rgba: 4278255360
   playerAnimator: {fileID: 8084075765303938832}
   fishCombo: []
   fishPrefabs: []

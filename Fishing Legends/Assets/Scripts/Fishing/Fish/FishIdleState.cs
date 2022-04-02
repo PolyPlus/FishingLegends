@@ -5,7 +5,7 @@ public class FishIdleState : FishBaseState
     public bool canSeeBait;
     public float movementRange = 3.0f;
     public float visionAngle = Mathf.PI / 5.0f;
-    public float visionRange = 4.5f;
+    public float visionRange = 5.0f;
 
     private float moveSpeed;
     private Vector3 initPos;

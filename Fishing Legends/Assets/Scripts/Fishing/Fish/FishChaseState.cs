@@ -11,7 +11,7 @@ public class FishChaseState : FishBaseState
     {
         //Debug.Log("Entering Chase State");
         moveSpeed = fish.moveSpeed * 1.5f;
-        biteRange = fish.biteRange;
+        biteRange = fish.baitDistance;
         SetTarget(fish.transform.position, bait.Pos);
     }
     public override void UpdateState(FishStateManager fish, BaitStateManager bait)
