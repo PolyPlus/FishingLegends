@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class CanvasProductos : MonoBehaviour {
 
     int nivelBarco = StaticInfo.nivelBarco;
-    int numAnzuelos = StaticInfo.numAnzuelos;
+    int numAnzuelos = StaticInfo.maxAnzuelos;
     public Text textonivBarco;
     public Text textonumAnzuelos;
     public Button botonBarco;

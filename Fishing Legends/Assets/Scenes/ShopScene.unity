@@ -1671,7 +1671,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 814069537}
   m_OnClick:
     m_PersistentCalls:
@@ -4360,7 +4360,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1568165653}
   m_OnClick:
     m_PersistentCalls:
@@ -5438,7 +5438,6 @@ MonoBehaviour:
   panelPrincipal: {fileID: 1274906295}
   canvasBotonesAjustes: {fileID: 2039407934}
   textoMonedas: {fileID: 1359943921}
-  monedas: 5000
 --- !u!1 &2000150855
 GameObject:
   m_ObjectHideFlags: 0
@@ -5522,7 +5521,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 665899217}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.43860173
+  m_Size: 0.43813357
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
