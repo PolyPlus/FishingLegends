@@ -397,6 +397,7 @@ MonoBehaviour:
   botonBarco: {fileID: 1667047215}
   botonAnzuelo: {fileID: 906939695}
   panelPrincipal: {fileID: 1990990637}
+  textoFlotante: {fileID: 449683074867706991, guid: afd0b63fd6c21f84d87c009afba3c489, type: 3}
 --- !u!1 &213060388
 GameObject:
   m_ObjectHideFlags: 0

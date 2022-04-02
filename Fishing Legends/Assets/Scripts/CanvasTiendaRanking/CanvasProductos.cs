@@ -13,6 +13,8 @@ public class CanvasProductos : MonoBehaviour {
     public Button botonAnzuelo;
     public CanvasTienda panelPrincipal;
 
+    public GameObject textoFlotante;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +36,7 @@ public class CanvasProductos : MonoBehaviour {
             if (m < 0)
             {
                 Debug.Log("No se puede comprar.");
+                MostrarTextoFlotante();
             }
             else
             {
@@ -59,6 +62,7 @@ public class CanvasProductos : MonoBehaviour {
             if (m < 0)
             {
                 Debug.Log("No se puede comprar.");
+                MostrarTextoFlotante();
             }
             else
             {
@@ -81,6 +85,11 @@ public class CanvasProductos : MonoBehaviour {
     public void CeboGourmet()
     {
         Debug.Log("Boton Cebo Gourmet Pulsado");
+    }
+
+    public void MostrarTextoFlotante()
+    {
+        GameObject texto = Instantiate(textoFlotante, panelPrincipal.transform);
     }
 
 }
