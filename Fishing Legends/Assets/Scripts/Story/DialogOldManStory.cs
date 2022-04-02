@@ -91,6 +91,7 @@ public class DialogOldManStory : MonoBehaviour, IPointerClickHandler
                 black.color = color;
                 yield return new WaitForSeconds(textSpeed);
             }
+            GameManager.GetInstance().SelectScene(StaticInfo.tutorialScene);
         }
         else
         {
