@@ -247,7 +247,18 @@ public class GridManager : MonoBehaviour
         }
         else
         {
+           // indexPoints = StaticInfo.indexPoints;
+            blockType = StaticInfo.map;
+            route = StaticInfo.route;
+            routeIndex = StaticInfo.position;
+            for (int i = 0; i < route.Count; i++)
+            {
+                Instantiate(gridPoint, route.ElementAt(i)._p1, Quaternion.identity);
+            }
+            Instantiate(gridPoint, route.ElementAt(route.Count - 1)._p1, Quaternion.identity);
             
+            routeStarted = true;
+            topCamera.transform.rotation = Quaternion.Euler(30,0,0);
         }
         
         InitializeMap();
@@ -278,7 +289,7 @@ public class GridManager : MonoBehaviour
                 
                 if (routeIndex < route.Count)
                 {
-                    boat.transform.LookAt(indexPoints.ElementAt(routeIndex + 1));
+                    boat.transform.LookAt(route.ElementAt(routeIndex)._p2);
                     //Debug.Log(routeIndex);
                     boat.transform.position = route[routeIndex].GetPoint(t);
                     topCamera.transform.position = boat.transform.position + new Vector3(6, 20, -27);
@@ -286,8 +297,10 @@ public class GridManager : MonoBehaviour
                     if (blockType[TransformCoordinateToId(boat.transform.position.x, max.x, min.x),
                             TransformCoordinateToId(boat.transform.position.z, max.z, min.z)] == 1)
                     {
+                        blockType[TransformCoordinateToId(boat.transform.position.x, max.x, min.x),
+                            TransformCoordinateToId(boat.transform.position.z, max.z, min.z)] = 0;
                         stop = true;
-                        StaticInfo.indexPoints = indexPoints;
+                        StaticInfo.route = route;
                         StaticInfo.map = blockType;
                         StaticInfo.position = routeIndex;
                         StaticInfo.finishRoute = false;
@@ -297,7 +310,7 @@ public class GridManager : MonoBehaviour
                 else
                 {
                     stop = true;
-                    
+                    StaticInfo.finishRoute = true;
                     resultados.sr.gameObject.SetActive(true);
                     resultados.mostrarPeces(_fishDataList);
                 }
@@ -373,25 +386,7 @@ public class GridManager : MonoBehaviour
         }
     }
 
-    struct RouteData
-    {
-
-        private readonly Vector3 _p1;
-
-        private readonly Vector3 _p2;
-
-        public RouteData(Vector3 p1, Vector3 p2)
-        {
-            _p1 = p1;
-            _p2 = p2;
-            
-        }
-        public Vector3 GetPoint(float t)
-        {
-            return _p1 + t * (_p2 - _p1);
-            
-        }
-    }
+   
 
     void ProcessRoute()
     {
