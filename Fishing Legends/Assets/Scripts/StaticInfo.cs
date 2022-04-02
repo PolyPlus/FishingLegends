@@ -8,7 +8,7 @@ public static class StaticInfo
 
     public static FishData[] staticFishData;
 
-    public static int[] map;
+    public static int[,] map;
 
     public static bool finishRoute = true;
 
