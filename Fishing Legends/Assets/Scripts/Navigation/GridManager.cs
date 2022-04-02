@@ -226,24 +226,31 @@ public class GridManager : MonoBehaviour
         blockType[11, 8] = -1;
         blockType[11, 9] = -1;
         blockType[11, 10] = -1;
+
+        if (StaticInfo.finishRoute)
+        {
+            lastPositionX = 10;
+            lastPositionY = 9;
         
-       
-        lastPositionX = 10;
-        lastPositionY = 9;
-        
-        GenerateMapContent();
+            GenerateMapContent();
 
-        Vector3 start = TransformIdToGrid(lastPositionX, lastPositionY, new Vector3(0, 1.7f, 0));
+            Vector3 start = TransformIdToGrid(lastPositionX, lastPositionY, new Vector3(0, 1.7f, 0));
 
-        indexPoints.AddLast(start);
+            indexPoints.AddLast(start);
         
 
-        gridPoint.transform.position = start;
+            gridPoint.transform.position = start;         
 
-        Instantiate(gridPoint, start, Quaternion.identity);
+            Instantiate(gridPoint, start, Quaternion.identity);
 
+           
+        }
+        else
+        {
+            
+        }
+        
         InitializeMap();
-        
       
         //GetComponent<Collider>().bounds.
     }
@@ -280,6 +287,10 @@ public class GridManager : MonoBehaviour
                             TransformCoordinateToId(boat.transform.position.z, max.z, min.z)] == 1)
                     {
                         stop = true;
+                        StaticInfo.indexPoints = indexPoints;
+                        StaticInfo.map = blockType;
+                        StaticInfo.position = routeIndex;
+                        StaticInfo.finishRoute = false;
                         transition.SetBool("fadingIn",true);
                     }
                 }
