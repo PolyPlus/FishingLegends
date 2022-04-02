@@ -24,7 +24,7 @@ public class DialogOldManStory : MonoBehaviour, IPointerClickHandler
     private void Start()
     {
         textComponent.text = string.Empty;
-        StartCoroutine(Fade(false));
+        StartCoroutine(GameManager.GetInstance().Fade(black, false, textSpeed, ""));
         startDialog();
         //controlls.Pointer.Press.started += _ => OnPointerPress();
     }
@@ -60,7 +60,7 @@ public class DialogOldManStory : MonoBehaviour, IPointerClickHandler
         }
         else
         {
-            StartCoroutine(Fade(true));
+            StartCoroutine(GameManager.GetInstance().Fade(black, true, textSpeed, StaticInfo.tutorialScene));
             //gameObject.SetActive(false);
         }
     }
@@ -77,33 +77,6 @@ public class DialogOldManStory : MonoBehaviour, IPointerClickHandler
     {
         if (index == 7)
             OldMan.sprite = OldManHappy;
-    }
-
-    IEnumerator Fade(bool toBlack)
-    {
-        if (toBlack)
-        {
-            black.gameObject.SetActive(true);
-            while (black.color.a < 1)
-            {
-                var color = black.color;
-                color.a += 0.01f;
-                black.color = color;
-                yield return new WaitForSeconds(textSpeed);
-            }
-            GameManager.GetInstance().SelectScene(StaticInfo.tutorialScene);
-        }
-        else
-        {
-            while (black.color.a > 0)
-            {
-                var color = black.color;
-                color.a -= 0.01f;
-                black.color = color;
-                yield return new WaitForSeconds(textSpeed);
-            }
-            black.gameObject.SetActive(false);
-        }
     }
 
 }

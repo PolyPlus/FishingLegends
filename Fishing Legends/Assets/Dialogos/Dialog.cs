@@ -12,12 +12,14 @@ public class Dialog: MonoBehaviour, IPointerClickHandler
     public GameObject fondo;
     public float textSpeed;
     private int index;
+    public Image black;
 
     // private PointerControlls controlls;
 
     // Start is called before the first frame update
     private void Start()
     {
+        StartCoroutine(GameManager.GetInstance().Fade(black, false, textSpeed, ""));
         textComponent.text = string.Empty;
         startDialog();
         //controlls.Pointer.Press.started += _ => OnPointerPress();
@@ -64,7 +66,7 @@ public class Dialog: MonoBehaviour, IPointerClickHandler
     void endDialog()
     {
         PlayerPrefs.SetInt(StaticInfo.tutorialKey, 1);
-        GameManager.GetInstance().SelectScene(StaticInfo.navigationScene);
+        StartCoroutine(GameManager.GetInstance().Fade(black, true, textSpeed, StaticInfo.navigationScene));
     }
     IEnumerator TypeLine()
     {
