@@ -49,41 +49,10 @@ public class AudioManager : MonoBehaviour
 
         foreach (Sound s in sounds)
         {
-            if (s.name == "ButtonSelected")
-            {
-                s.source = gameObject.AddComponent<AudioSource>();
-                s.source.clip = s.clip;
-                s.source.volume = s.volume;
-                s.source.outputAudioMixerGroup = s.outputMixer;
-            }
-            else
-            {
-                switch (SceneManager.GetActiveScene().name)
-                {
-                    case "StartScene":
-                        break;
-                    case "FishingScene":
-                        s.source = gameObject.AddComponent<AudioSource>();
-                        s.source.clip = s.clip;
-                        s.source.volume = s.volume;
-                        s.source.outputAudioMixerGroup = s.outputMixer;
-                        break;
-                    case "NavigationScene":
-                        if (s.name == "SeaWaves")
-                        {
-                            s.source = gameObject.AddComponent<AudioSource>();
-                            s.source.clip = s.clip;
-                            s.source.volume = s.volume;
-                            s.source.outputAudioMixerGroup = s.outputMixer;
-                        }
-                        break;
-                    case "ShopScene":
-                        break;
-                    default:
-                        Debug.Log("Unknown Scene");
-                        break;
-                }
-            }
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.source.clip = s.clip;
+            s.source.volume = s.volume;
+            s.source.outputAudioMixerGroup = s.outputMixer;
         }
     }
 
@@ -117,6 +86,12 @@ public class AudioManager : MonoBehaviour
                 StartLoop("TravesiaIntro", "TravesiaLoop");
                 break;
             case "ShopScene":
+                PlaySoundtrack("MenuLoop");
+                break;
+            case "StoryScene":
+                PlaySoundtrack("MenuLoop");
+                break;
+            case "TutorialScene":
                 PlaySoundtrack("MenuLoop");
                 break;
             default:
