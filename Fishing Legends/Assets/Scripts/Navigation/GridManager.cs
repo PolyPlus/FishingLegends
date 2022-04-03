@@ -123,11 +123,11 @@ public class GridManager : MonoBehaviour
                 boatResistence.text = "Resistencia : 20";
                 break;
             case 2:
-                maxFuel = 40;
+                maxFuel = 30;
                 boatResistence.text = "Resistencia : 40";
                 break;
             case 3:
-                maxFuel = 80;
+                maxFuel = 40;
                 boatResistence.text = "Resistencia : 80";
                 break;
                 
