@@ -397,6 +397,8 @@ public class GridManager : MonoBehaviour
                         release = false;
 
                         StaticInfo.numAnzuelos = PlayerPrefs.GetInt(StaticInfo.maxAnzuelosKey,5);
+
+                        StaticInfo.staticFishData = null;
                     }
                     else
                     {
