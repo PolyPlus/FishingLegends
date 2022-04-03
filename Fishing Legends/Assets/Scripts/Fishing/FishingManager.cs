@@ -39,7 +39,7 @@ public class FishingManager : MonoBehaviour
     private void Start()
     {
         exit = false;
-        numAnzuelos = StaticInfo.maxAnzuelos;
+        numAnzuelos = StaticInfo.numAnzuelos;
         lureUI.SetNumAnzuelos(numAnzuelos);
         controls.Pointer.Press.started += _ => OnPointerPress();
         controls.Pointer.Press.canceled += _ => OnPointerRelease();
@@ -89,8 +89,12 @@ public class FishingManager : MonoBehaviour
     }
 
     public void UpdateFishData(FishData[] data)
-    {
+    {        
         StaticInfo.staticFishData = data;
+        for (int i = 0; i < StaticInfo.staticFishData.Length; i++)
+        {
+            Debug.Log(StaticInfo.staticFishData[i]);
+        }
     }
 
     public void UpdateScore(int s)
