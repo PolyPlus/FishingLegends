@@ -52,7 +52,8 @@ public class PanelsBehaviour : MonoBehaviour
         AudioManager.instance.PlaySound("ButtonSelected");
 
         Debug.Log("LogIn Pulsado");
-        if (usernameL.text != "" && passwordL.text != "")
+        //if (usernameL.text != "" && passwordL.text != "")
+        if (usernameL.text != "" )
         {
             Debug.Log("user: " + usernameL.text + " pass: " + passwordL.text);
             if (PlayerPrefs.GetInt(StaticInfo.tutorialKey, 0) == 0)
