@@ -302,8 +302,9 @@ public class GridManager : MonoBehaviour
     void Update()
     {
         _ray = _camera.ScreenPointToRay(Mouse.current.position.ReadValue());
+        bool isOverUI = UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject();
 
-       
+
 
         if (routeStarted)
         {
@@ -364,7 +365,7 @@ public class GridManager : MonoBehaviour
             {
                 if (release)
                 {
-                    if ( _a.collider.gameObject.name == "casita" )
+                    if ( _a.collider.gameObject.name == "casita" && !isOverUI)
                     {
                         Debug.Log("CASSA");
                        // GameManager.GetInstance().SelectScene(StaticInfo.shopScene);
@@ -511,10 +512,7 @@ public class GridManager : MonoBehaviour
         transition.SetBool("reloadScene", true);
     }
 
-    public void salir()
-    {
-        Application.Quit();
-    }
+
 
     private void GenerateMapContent()
     {
