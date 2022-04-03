@@ -465,6 +465,10 @@ public class GridManager : MonoBehaviour
         
     }
 
+    public void atras()
+    {
+        transition.SetBool("reloadScene", true);
+    }
 
     private void GenerateMapContent()
     {
