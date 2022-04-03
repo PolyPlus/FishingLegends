@@ -511,6 +511,11 @@ public class GridManager : MonoBehaviour
         transition.SetBool("reloadScene", true);
     }
 
+    public void salir()
+    {
+        Application.Quit();
+    }
+
     private void GenerateMapContent()
     {
         bool isFish = true;
