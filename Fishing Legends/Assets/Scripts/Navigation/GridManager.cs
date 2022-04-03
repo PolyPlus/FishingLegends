@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
@@ -30,6 +31,12 @@ public class GridManager : MonoBehaviour
 
     public GameObject topCamera;
 
+    public GameObject startRouteButton;
+
+    public GameObject resistenceUI;
+
+    public GameObject undoRoute;
+
     public ActualizarResultados resultados;
     
     public GameObject block, tree, fishbank, rock;
@@ -39,6 +46,8 @@ public class GridManager : MonoBehaviour
     private Vector3 min,max;
 
     private RaycastHit _a;
+
+    public TextMeshProUGUI boatResistence;
 
     private FishData[] _fishDataList;
 
@@ -59,7 +68,7 @@ public class GridManager : MonoBehaviour
 
     private int routeIndex;
 
-    public uint maxFuel;
+    private uint maxFuel;
 
     private bool inHold,release;
     
@@ -100,7 +109,23 @@ public class GridManager : MonoBehaviour
         routeIndex = 0;
         inHold = false;
         preRoute = true;
-
+        switch (PlayerPrefs.GetInt(StaticInfo.nivelBarcoKey,0))
+        {
+            case 0 :
+                maxFuel = 20;
+                boatResistence.text = "Resistencia : 20";
+                break;
+            case 1:
+                maxFuel = 40;
+                boatResistence.text = "Resistencia : 40";
+                break;
+            case 2:
+                maxFuel = 80;
+                boatResistence.text = "Resistencia : 80";
+                break;
+                
+        }
+        
         grid = GameObject.Find("Grid");
 
         grid.GetComponent<Renderer>().material.SetFloat("_CellSize", (10.0f) / _rowsColumns);
@@ -332,7 +357,8 @@ public class GridManager : MonoBehaviour
                     if ( _a.collider.gameObject.name == "casita" )
                     {
                         Debug.Log("CASSA");
-                        GameManager.GetInstance().SelectScene(StaticInfo.shopScene);
+                       // GameManager.GetInstance().SelectScene(StaticInfo.shopScene);
+                        transition.SetBool("toShop",true);
                         release = false;
                     }
                     else if (_a.collider.gameObject.name == "Bote")
@@ -340,6 +366,7 @@ public class GridManager : MonoBehaviour
                         preRoute = false;
                         transition.SetBool("toRoute",true);
                         topCamera.GetComponent<CameraMovementController>().enabled = true;
+                        
                         Debug.Log("BARCO");
                         release = false;
 
@@ -366,7 +393,7 @@ public class GridManager : MonoBehaviour
                 {
                     gridPoint.transform.position = newPoint;
                     //  Debug.Log(gridPoint.transform.position);
-                    if (inHold && indexPoints.Count < maxFuel )
+                    if (inHold && indexPoints.Count <= maxFuel )
                     {
 
                         GameObject cloned = Instantiate(gridPoint, newPoint, Quaternion.identity);
@@ -375,6 +402,7 @@ public class GridManager : MonoBehaviour
                         lastPositionY = currentPositionY;
                         indexPoints.AddLast(newPoint);
                         gridPointList.AddLast(cloned);
+                        boatResistence.text = "Resistencia : " + (maxFuel - gridPointList.Count);
                         // Debug.Log(indexPoints.Count);
                         //curvePoints.AddLast(new Vector2(cloned.transform.position.x,,))
 
@@ -429,7 +457,9 @@ public class GridManager : MonoBehaviour
 
     public void startRoute()
     {
-        
+        startRouteButton.SetActive(false);
+        resistenceUI.SetActive(false);
+        undoRoute.SetActive(false);
          if(TransformCoordinateToId(indexPoints.ElementAt(indexPoints.Count-1).x,min.x,max.x) 
          ==  TransformCoordinateToId(indexPoints.ElementAt(0).x,min.x,max.x) && TransformCoordinateToId(indexPoints.ElementAt(indexPoints.Count-1).z,min.z,max.z) 
          ==  TransformCoordinateToId(indexPoints.ElementAt(0).z,min.z,max.z) && indexPoints.Count > 1) 
@@ -460,6 +490,7 @@ public class GridManager : MonoBehaviour
         {
             Destroy(gridPointList.ElementAt(gridPointList.Count - 1));
             gridPointList.RemoveLast();
+            boatResistence.text = "Resistencia : " + (maxFuel - gridPointList.Count);
         }
        
         

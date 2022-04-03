@@ -25,6 +25,8 @@ public class PanelsBehaviour : MonoBehaviour
     private InputField usernameL;
     [SerializeField]
     private InputField passwordL;
+    [SerializeField]
+    private Image black;
     #endregion
 
     #region SignIn Elements
@@ -58,11 +60,11 @@ public class PanelsBehaviour : MonoBehaviour
             Debug.Log("user: " + usernameL.text + " pass: " + passwordL.text);
             if (PlayerPrefs.GetInt(StaticInfo.tutorialKey, 0) == 0)
             {
-                GameManager.GetInstance().SelectScene("StoryScene");
+                StartCoroutine(GameManager.GetInstance().Fade(black, true, 0.01f, StaticInfo.storyScene));
             }
             else
             {
-                GameManager.GetInstance().SelectScene("NavigationScene");
+                StartCoroutine(GameManager.GetInstance().Fade(black, true, 0.01f, StaticInfo.navigationScene));
             }
         }
     }

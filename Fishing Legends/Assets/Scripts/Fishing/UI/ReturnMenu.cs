@@ -7,6 +7,8 @@ public class ReturnMenu : MonoBehaviour
 {
     public FishingManager fishingManager;
     public GameObject ReturnPanel;
+    public Animator fishTransition;
+
 
     public void ShowPanel()
     {
@@ -23,6 +25,8 @@ public class ReturnMenu : MonoBehaviour
     public void ReturnToNavigation()
     {
         Debug.Log("Cambiar escena");
-        GameManager.GetInstance().SelectScene(StaticInfo.navigationScene);
+        fishTransition.SetBool("reloadScene", true);
+
+        //GameManager.GetInstance().SelectScene(StaticInfo.navigationScene);
     }
 }
