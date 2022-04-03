@@ -123,12 +123,12 @@ public class GridManager : MonoBehaviour
                 boatResistence.text = "Resistencia : 20";
                 break;
             case 2:
-                maxFuel = 40;
-                boatResistence.text = "Resistencia : 40";
+                maxFuel = 30;
+                boatResistence.text = "Resistencia : 30";
                 break;
             case 3:
-                maxFuel = 80;
-                boatResistence.text = "Resistencia : 80";
+                maxFuel = 40;
+                boatResistence.text = "Resistencia : 40";
                 break;
                 
         }
@@ -329,14 +329,17 @@ public class GridManager : MonoBehaviour
                     if (blockType[TransformCoordinateToId(boat.transform.position.x, max.x, min.x),
                             TransformCoordinateToId(boat.transform.position.z, max.z, min.z)] == 1)
                     {
-                        blockType[TransformCoordinateToId(boat.transform.position.x, max.x, min.x),
-                            TransformCoordinateToId(boat.transform.position.z, max.z, min.z)] = 0;
-                        stop = true;
-                        StaticInfo.route = route;
-                        StaticInfo.map = blockType;
-                        StaticInfo.position = routeIndex;
-                        StaticInfo.finishRoute = false;
-                        transition.SetBool("fadingIn",true);
+                        if (StaticInfo.numAnzuelos > 0)
+                        {
+                            blockType[TransformCoordinateToId(boat.transform.position.x, max.x, min.x),
+                                TransformCoordinateToId(boat.transform.position.z, max.z, min.z)] = 0;
+                            stop = true;
+                            StaticInfo.route = route;
+                            StaticInfo.map = blockType;
+                            StaticInfo.position = routeIndex;
+                            StaticInfo.finishRoute = false;
+                            transition.SetBool("fadingIn",true);
+                        }
                     }
                 }
                 else
@@ -377,7 +380,7 @@ public class GridManager : MonoBehaviour
                         Debug.Log("BARCO");
                         release = false;
 
-                        StaticInfo.numAnzuelos = StaticInfo.maxAnzuelos;
+                        StaticInfo.numAnzuelos = PlayerPrefs.GetInt(StaticInfo.maxAnzuelosKey,5);
                     }
                     else
                     {
@@ -464,14 +467,14 @@ public class GridManager : MonoBehaviour
 
     public void startRoute()
     {
-        startRouteButton.SetActive(false);
-        resistenceUI.SetActive(false);
-        undoRoute.SetActive(false);
+        
          if(TransformCoordinateToId(indexPoints.ElementAt(indexPoints.Count-1).x,min.x,max.x) 
          ==  TransformCoordinateToId(indexPoints.ElementAt(0).x,min.x,max.x) && TransformCoordinateToId(indexPoints.ElementAt(indexPoints.Count-1).z,min.z,max.z) 
          ==  TransformCoordinateToId(indexPoints.ElementAt(0).z,min.z,max.z) && indexPoints.Count > 1) 
          {
-             
+             startRouteButton.SetActive(false);
+             resistenceUI.SetActive(false);
+             undoRoute.SetActive(false);
              topCamera.GetComponent<CameraMovementController>().enabled = false;
              //transition.SetBool("fadingIn",true);
              topCamera.transform.rotation = Quaternion.Euler(30,0,0);
