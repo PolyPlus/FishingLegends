@@ -221,19 +221,19 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: toRoute
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: reloadScene
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -261,29 +261,41 @@ AnimatorStateMachine:
     m_Position: {x: 310, y: -10, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3728351939716965109}
-    m_Position: {x: 680, y: 20, z: 0}
+    m_Position: {x: 660, y: -100, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6789603335864015807}
     m_Position: {x: 970, y: 110, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -830921039625098785}
-    m_Position: {x: 530, y: -210, z: 0}
+    m_Position: {x: 310, y: -210, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2956611860672077493}
-    m_Position: {x: 430.33075, y: 241.43115, z: 0}
+    m_Position: {x: 390, y: 270, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4990135107531619488}
-    m_Position: {x: 872.81525, y: 287.2506, z: 0}
+    m_Position: {x: 790, y: 400, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 990, y: -140, z: 0}
-  m_EntryPosition: {x: 30, y: 50, z: 0}
+  m_EntryPosition: {x: 30, y: 20, z: 0}
   m_ExitPosition: {x: 1200, y: 30, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 3195175036768158936}
+--- !u!114 &1043731891568990832
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 022dc10ef50fc374586200a99da52964, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1118573712317034198
 MonoBehaviour:
   m_ObjectHideFlags: 1
