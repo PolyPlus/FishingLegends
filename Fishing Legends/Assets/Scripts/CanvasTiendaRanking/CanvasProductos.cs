@@ -19,8 +19,8 @@ public class CanvasProductos : MonoBehaviour {
     // Start is called before the first frame update
     void Start()
     {
-        textonivBarco.text = "Nivel del barco: " + PlayerPrefs.GetInt(StaticInfo.nivelBarcoKey, 0);
-        textonumAnzuelos.text = "Número de anzuelos: " + PlayerPrefs.GetInt(StaticInfo.maxAnzuelosKey, 0);
+        textonivBarco.text = "Nivel del barco: " + PlayerPrefs.GetInt(StaticInfo.nivelBarcoKey, 1);
+        textonumAnzuelos.text = "Número de anzuelos: " + PlayerPrefs.GetInt(StaticInfo.maxAnzuelosKey, 5);
         monedas = PlayerPrefs.GetInt(StaticInfo.monedasKey, 0);
     }
 
@@ -48,7 +48,7 @@ public class CanvasProductos : MonoBehaviour {
                 PlayerPrefs.SetInt(StaticInfo.nivelBarcoKey, nivelBarco);
                 PlayerPrefs.SetInt(StaticInfo.monedasKey, monedas);
             }
-            textonivBarco.text = "Nivel del barco: " + PlayerPrefs.GetInt(StaticInfo.nivelBarcoKey, 0);
+            textonivBarco.text = "Nivel del barco: " + PlayerPrefs.GetInt(StaticInfo.nivelBarcoKey, 1);
             panelPrincipal.textoMonedas.text = "" + monedas;
         }
         else if (nivelBarco == 3)
@@ -77,7 +77,7 @@ public class CanvasProductos : MonoBehaviour {
                 PlayerPrefs.SetInt(StaticInfo.maxAnzuelosKey, numAnzuelos);
                 PlayerPrefs.SetInt(StaticInfo.monedasKey, monedas);
             }
-            textonumAnzuelos.text = "Número de anzuelos: " + PlayerPrefs.GetInt(StaticInfo.maxAnzuelosKey, 0);
+            textonumAnzuelos.text = "Número de anzuelos: " + PlayerPrefs.GetInt(StaticInfo.maxAnzuelosKey, 5);
             panelPrincipal.textoMonedas.text = "" + monedas;
         }
         else if (numAnzuelos == 7)
