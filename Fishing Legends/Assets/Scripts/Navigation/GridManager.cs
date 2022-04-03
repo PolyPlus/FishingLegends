@@ -41,6 +41,8 @@ public class GridManager : MonoBehaviour
     
     public GameObject block, tree, fishbank, rock;
 
+    public GameObject player;
+
     private Vector3 gridOffset,pointOrigin;
 
     private Vector3 min,max;
@@ -85,6 +87,11 @@ public class GridManager : MonoBehaviour
     {
         boat.GetComponentInChildren<Renderer>().material.renderQueue = 1998;
         cc = new ClickController();
+        Material[] m = player.GetComponent<Renderer>().sharedMaterials;
+        for (int i = 0; i < m.Length; i++)
+        {
+            player.GetComponent<Renderer>().sharedMaterials[i].renderQueue = 1998;
+        }
     }
 
     private void OnEnable()
