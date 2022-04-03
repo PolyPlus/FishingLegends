@@ -4,6 +4,10 @@ using UnityEngine;
 
 public static class StaticInfo 
 {
+    public static string  playerName;
+
+    public static bool newResult = false;
+
     public static List<FishData> staticFishDataList;
 
     public static FishData[] staticFishData = null;

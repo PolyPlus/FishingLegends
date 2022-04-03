@@ -58,6 +58,7 @@ public class PanelsBehaviour : MonoBehaviour
         if (usernameL.text != "" )
         {
             Debug.Log("user: " + usernameL.text + " pass: " + passwordL.text);
+            StaticInfo.playerName = usernameL.text;
             if (PlayerPrefs.GetInt(StaticInfo.tutorialKey, 0) == 0)
             {
                 StartCoroutine(GameManager.GetInstance().Fade(black, true, 0.01f, StaticInfo.storyScene));
