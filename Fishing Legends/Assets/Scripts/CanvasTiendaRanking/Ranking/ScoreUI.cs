@@ -6,15 +6,12 @@ public class ScoreUI : MonoBehaviour
 {
     public RowUI rowUi;
     public ScoreManager scoreManager;
-    
+
     void Start()
     {
-        if (StaticInfo.newResult == true)
-        {
-            scoreManager.AddScore(new Score(StaticInfo.playerName, StaticInfo.totalScore));
-            StaticInfo.newResult = false;
-        }
-
+        
+        //scoreManager.AddScore(new Score("BanbAna", 50));
+        //scoreManager.AddScore(new Score("ManzAna", 120));
         var scores = scoreManager.GetHighScores().ToArray();
         for (int i=0; i < scores.Length; ++i)
         {
@@ -24,5 +21,4 @@ public class ScoreUI : MonoBehaviour
             row.score.text = scores[i].score.ToString();
         }
     }
-
 }

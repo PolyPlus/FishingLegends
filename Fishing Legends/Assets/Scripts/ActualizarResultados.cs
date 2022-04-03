@@ -12,7 +12,6 @@ public class ActualizarResultados : MonoBehaviour
     public FishData[] fishDataList;
     public GameObject mostrarResultados;
     public Animator fishTransition;
-   
 
     private bool pulsado = false;
     private bool salir = false;
@@ -34,8 +33,6 @@ public class ActualizarResultados : MonoBehaviour
         puntuacion += StaticInfo.fishingScore;
         puntos.text = "" + puntuacion;
         StaticInfo.totalScore = puntuacion;
-
-        StaticInfo.newResult = true;
     }
 
     public void mostrarPeces(FishData[] pecesTotales)
