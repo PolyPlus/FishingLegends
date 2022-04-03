@@ -11,6 +11,8 @@ public class CanvasTienda : MonoBehaviour
     public GameObject panelPrincipal;
     public GameObject canvasBotonesAjustes;
     public Text textoMonedas;
+    public Animator fishTransition;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,6 +55,7 @@ public class CanvasTienda : MonoBehaviour
         clubPesca.SetActive(false);
         canvasBotonesAjustes.SetActive(true); */
 
-        GameManager.GetInstance().SelectScene(StaticInfo.navigationScene);
+        fishTransition.SetBool("reloadScene", true);
+        //GameManager.GetInstance().SelectScene(StaticInfo.navigationScene);
     }
 }
