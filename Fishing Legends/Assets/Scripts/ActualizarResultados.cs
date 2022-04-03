@@ -49,7 +49,7 @@ public class ActualizarResultados : MonoBehaviour
 
     public void actualizarMonedas()
     {
-        int m = StaticInfo.totalScore / 10;
+        int m = StaticInfo.totalScore / 2;
         StaticInfo.monedas = m;
         PlayerPrefs.SetInt(StaticInfo.monedasKey, m + PlayerPrefs.GetInt(StaticInfo.monedasKey, 0));
     }
