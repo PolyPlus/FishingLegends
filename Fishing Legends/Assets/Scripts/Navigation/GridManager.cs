@@ -41,6 +41,8 @@ public class GridManager : MonoBehaviour
     
     public GameObject block, tree, fishbank, rock;
 
+    public GameObject player;
+
     private Vector3 gridOffset,pointOrigin;
 
     private Vector3 min,max;
@@ -85,6 +87,11 @@ public class GridManager : MonoBehaviour
     {
         boat.GetComponentInChildren<Renderer>().material.renderQueue = 1998;
         cc = new ClickController();
+        Material[] m = player.GetComponent<Renderer>().sharedMaterials;
+        for (int i = 0; i < m.Length; i++)
+        {
+            player.GetComponent<Renderer>().sharedMaterials[i].renderQueue = 1998;
+        }
     }
 
     private void OnEnable()
@@ -109,18 +116,18 @@ public class GridManager : MonoBehaviour
         routeIndex = 0;
         inHold = false;
         preRoute = true;
-        switch (PlayerPrefs.GetInt(StaticInfo.nivelBarcoKey,0))
+        switch (PlayerPrefs.GetInt(StaticInfo.nivelBarcoKey,1))
         {
-            case 0 :
+            case 1 :
                 maxFuel = 20;
                 boatResistence.text = "Resistencia : 20";
                 break;
-            case 1:
-                maxFuel = 40;
+            case 2:
+                maxFuel = 30;
                 boatResistence.text = "Resistencia : 40";
                 break;
-            case 2:
-                maxFuel = 80;
+            case 3:
+                maxFuel = 40;
                 boatResistence.text = "Resistencia : 80";
                 break;
                 
@@ -322,14 +329,18 @@ public class GridManager : MonoBehaviour
                     if (blockType[TransformCoordinateToId(boat.transform.position.x, max.x, min.x),
                             TransformCoordinateToId(boat.transform.position.z, max.z, min.z)] == 1)
                     {
-                        blockType[TransformCoordinateToId(boat.transform.position.x, max.x, min.x),
-                            TransformCoordinateToId(boat.transform.position.z, max.z, min.z)] = 0;
-                        stop = true;
-                        StaticInfo.route = route;
-                        StaticInfo.map = blockType;
-                        StaticInfo.position = routeIndex;
-                        StaticInfo.finishRoute = false;
-                        transition.SetBool("fadingIn",true);
+                        if (StaticInfo.numAnzuelos > 0)
+                        {
+                            blockType[TransformCoordinateToId(boat.transform.position.x, max.x, min.x),
+                                TransformCoordinateToId(boat.transform.position.z, max.z, min.z)] = 0;
+                            stop = true;
+                            StaticInfo.route = route;
+                            StaticInfo.map = blockType;
+                            StaticInfo.position = routeIndex;
+                            StaticInfo.finishRoute = false;
+                            transition.SetBool("fadingIn",true);
+                        }
+                       
                     }
                 }
                 else
@@ -457,13 +468,13 @@ public class GridManager : MonoBehaviour
 
     public void startRoute()
     {
-        startRouteButton.SetActive(false);
-        resistenceUI.SetActive(false);
-        undoRoute.SetActive(false);
+        
          if(TransformCoordinateToId(indexPoints.ElementAt(indexPoints.Count-1).x,min.x,max.x) 
          ==  TransformCoordinateToId(indexPoints.ElementAt(0).x,min.x,max.x) && TransformCoordinateToId(indexPoints.ElementAt(indexPoints.Count-1).z,min.z,max.z) 
          ==  TransformCoordinateToId(indexPoints.ElementAt(0).z,min.z,max.z) && indexPoints.Count > 1) 
-         {
+         {startRouteButton.SetActive(false);
+             resistenceUI.SetActive(false);
+             undoRoute.SetActive(false);
              
              topCamera.GetComponent<CameraMovementController>().enabled = false;
              //transition.SetBool("fadingIn",true);
