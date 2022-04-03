@@ -108,7 +108,7 @@ public class GridManager : MonoBehaviour
         transition = transition_go.GetComponent<Animator>();
         
 
-        Collider auxCol = GetComponent<Collider>();
+        Collider auxCol = grid.GetComponent<Collider>();
 
         max = auxCol.bounds.max;
         min = auxCol.bounds.min;

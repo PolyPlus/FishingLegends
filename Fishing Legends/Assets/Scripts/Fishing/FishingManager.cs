@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
+using System.Linq;
 
 public class FishingManager : MonoBehaviour
 {
@@ -89,8 +90,16 @@ public class FishingManager : MonoBehaviour
     }
 
     public void UpdateFishData(FishData[] data)
-    {        
-        StaticInfo.staticFishData = data;
+    {
+        /*  */
+        if (StaticInfo.staticFishData == null)
+            StaticInfo.staticFishData = data;
+        else
+        {
+            FishData[] d = StaticInfo.staticFishData.Concat(data).ToArray();
+            StaticInfo.staticFishData = d;
+        }
+
         for (int i = 0; i < StaticInfo.staticFishData.Length; i++)
         {
             Debug.Log(StaticInfo.staticFishData[i]);
