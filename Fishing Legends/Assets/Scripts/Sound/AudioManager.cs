@@ -142,14 +142,13 @@ public class AudioManager : MonoBehaviour
     }
     #endregion
 
-    public IEnumerator FadeMusic(bool toSilent)
+    public IEnumerator FadeMusicCoroutine(bool toSilent)
     {
         float vol, volTarget;
         AudioMixer mixer = AudioManager.instance.mixer;
         mixer.GetFloat("MusicVolume", out vol);
         volTarget = (toSilent) ? -40 : GameManager.GetInstance().volumeMusic;
         float inc = (toSilent) ? ((volTarget - Mathf.Abs(vol)) / 100) : Mathf.Abs((volTarget - Mathf.Abs(vol)) / 100);
-        Debug.Log("Inicio: VolTarget: " + volTarget + "     Inc: " + inc);
         if (toSilent)
         {
             while (vol >= volTarget)
@@ -168,6 +167,11 @@ public class AudioManager : MonoBehaviour
                 mixer.GetFloat("MusicVolume", out vol);
             }
         }
+    }
+
+    public void FadeMusic(bool toSilent)
+    {
+        StartCoroutine(FadeMusicCoroutine(toSilent));
     }
 
 }
