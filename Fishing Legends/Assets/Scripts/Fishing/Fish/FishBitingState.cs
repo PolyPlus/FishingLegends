@@ -71,8 +71,8 @@ public class FishBitingState : FishBaseState
 
     public void ChooseAction(FishStateManager fish, BaitStateManager bait)
     {
-        int action = Random.Range(0, 2);
-        if (action == 1)
+        int action = Random.Range(0, 3);
+        if (action < 2)
         {
             isBiting = true;
             AudioManager.instance.PlaySound("Splash");

@@ -15,11 +15,13 @@ public class CanvasProductos : MonoBehaviour {
 
     public GameObject textoFlotante;
 
+    private int monedas;
     // Start is called before the first frame update
     void Start()
     {
         textonivBarco.text = "Nivel del barco:" + nivelBarco;
         textonumAnzuelos.text = "Número de anzuelos: " + numAnzuelos;
+        monedas = PlayerPrefs.GetInt(StaticInfo.monedasKey, 0);
     }
 
     // Update is called once per frame
@@ -32,7 +34,7 @@ public class CanvasProductos : MonoBehaviour {
         if (nivelBarco < 3)
         {
             // Por ejemplo si mejora vale 1000 se hace monedas -= nivelBarco + nivelBarco*1000;
-            int m = StaticInfo.monedas - nivelBarco * 1000;
+            int m = monedas - nivelBarco * 1000;
             if (m < 0)
             {
                 Debug.Log("No se puede comprar.");
@@ -40,13 +42,14 @@ public class CanvasProductos : MonoBehaviour {
             }
             else
             {
-                StaticInfo.monedas = m;
+                monedas = m;
                 nivelBarco++;
                 StaticInfo.nivelBarco = nivelBarco;
                 PlayerPrefs.SetInt(StaticInfo.nivelBarcoKey, nivelBarco);
-                PlayerPrefs.SetInt(StaticInfo.monedasKey, m);
+                PlayerPrefs.SetInt(StaticInfo.monedasKey, monedas);
             }
             textonivBarco.text = "Nivel del barco: " + nivelBarco;
+            panelPrincipal.textoMonedas.text = "" + monedas;
         }
         else if (nivelBarco == 3)
         {
@@ -60,7 +63,7 @@ public class CanvasProductos : MonoBehaviour {
         if (numAnzuelos < 7)
         {
             // Por ejemplo si mejora vale 1000 se hace monedas -= numAnzuelos + numAnzuelos*1000;
-            int m = StaticInfo.monedas - numAnzuelos * 1000;
+            int m = monedas - numAnzuelos * 1000;
             if (m < 0)
             {
                 Debug.Log("No se puede comprar.");
@@ -68,14 +71,14 @@ public class CanvasProductos : MonoBehaviour {
             }
             else
             {
-                StaticInfo.monedas = m;
+                monedas = m;
                 numAnzuelos++;
                 StaticInfo.maxAnzuelos = numAnzuelos;
                 PlayerPrefs.SetInt(StaticInfo.maxAnzuelosKey, numAnzuelos);
-                PlayerPrefs.SetInt(StaticInfo.monedasKey, m);
+                PlayerPrefs.SetInt(StaticInfo.monedasKey, monedas);
             }
             textonumAnzuelos.text = "Número de anzuelos: " + numAnzuelos;
-            panelPrincipal.textoMonedas.text = "" + StaticInfo.monedas;
+            panelPrincipal.textoMonedas.text = "" + monedas;
         }
         else if (numAnzuelos == 7)
         {

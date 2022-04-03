@@ -40,7 +40,7 @@ public class ActualizarResultados : MonoBehaviour
         {
             int id = pecesTotales[i].ID;
             PlayerPrefs.SetInt(StaticInfo.fishKeys[id], 1);
-            StaticInfo.piscipedia[id] = true;
+            //StaticInfo.piscipedia[id] = true;
             GameObject pez = Instantiate(listaPeces[id]);
             pez.transform.SetParent(sr.content);
         }
@@ -51,7 +51,7 @@ public class ActualizarResultados : MonoBehaviour
     {
         int m = StaticInfo.totalScore / 10;
         StaticInfo.monedas = m;
-        PlayerPrefs.SetInt(StaticInfo.monedasKey, m);
+        PlayerPrefs.SetInt(StaticInfo.monedasKey, m + PlayerPrefs.GetInt(StaticInfo.monedasKey, 0));
     }
 
     public void onClick()

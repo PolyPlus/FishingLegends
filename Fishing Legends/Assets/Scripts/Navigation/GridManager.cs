@@ -312,7 +312,7 @@ public class GridManager : MonoBehaviour
                     stop = true;
                     StaticInfo.finishRoute = true;
                     resultados.sr.gameObject.SetActive(true);
-                    resultados.mostrarPeces(_fishDataList);
+                    resultados.mostrarPeces(StaticInfo.staticFishData);
                 }
             }
             
@@ -332,6 +332,7 @@ public class GridManager : MonoBehaviour
                     if ( _a.collider.gameObject.name == "casita" )
                     {
                         Debug.Log("CASSA");
+                        GameManager.GetInstance().SelectScene(StaticInfo.shopScene);
                         release = false;
                     }
                     else if (_a.collider.gameObject.name == "Bote")
@@ -341,6 +342,8 @@ public class GridManager : MonoBehaviour
                         topCamera.GetComponent<CameraMovementController>().enabled = true;
                         Debug.Log("BARCO");
                         release = false;
+
+                        StaticInfo.numAnzuelos = StaticInfo.maxAnzuelos;
                     }
                     else
                     {
