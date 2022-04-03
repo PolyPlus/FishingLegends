@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
+
+    public float volumeMusic;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     public static void LoadMain()
@@ -19,6 +22,7 @@ public class GameManager : MonoBehaviour
     {
         if (instance == null)
             instance = this;
+        volumeMusic = -18f;
     }
 
     public static GameManager GetInstance()
@@ -34,6 +38,11 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator Fade(Image black, bool toBlack, float speed, string scene)
     {
+        float vol, volTarget;
+        AudioMixer mixer = AudioManager.instance.mixer;
+        mixer.GetFloat("MusicVolume", out vol);
+        volTarget = (toBlack) ? -40 : this.volumeMusic;
+        float inc = (toBlack)?((volTarget - Mathf.Abs(vol))/ 100):Mathf.Abs((volTarget - Mathf.Abs(vol)) / 100);
         if (toBlack)
         {
             black.gameObject.SetActive(true);
@@ -42,7 +51,10 @@ public class GameManager : MonoBehaviour
                 var color = black.color;
                 color.a += 0.01f;
                 black.color = color;
+                if(vol >= volTarget)
+                    mixer.SetFloat("MusicVolume", vol + inc);
                 yield return new WaitForSeconds(speed);
+                mixer.GetFloat("MusicVolume", out vol);
             }
             GameManager.GetInstance().SelectScene(scene);
         }
@@ -53,7 +65,10 @@ public class GameManager : MonoBehaviour
                 var color = black.color;
                 color.a -= 0.01f;
                 black.color = color;
+                if (vol <= volTarget)
+                    mixer.SetFloat("MusicVolume", vol + inc);
                 yield return new WaitForSeconds(speed);
+                mixer.GetFloat("MusicVolume", out vol);
             }
             black.gameObject.SetActive(false);
         }

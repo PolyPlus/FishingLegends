@@ -18,7 +18,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource musicAudioSourceIntro;
 
     [SerializeField]
-    private AudioMixer mixer;
+    public AudioMixer mixer;
 
     public void Awake()
     {
@@ -64,6 +64,7 @@ public class AudioManager : MonoBehaviour
     public void SetVolumeMusic(float vol)
     {
         mixer.SetFloat("MusicVolume", vol);
+        GameManager.GetInstance().volumeMusic = vol;
     }
 
     public void SetVolumeSounds(float vol)
@@ -74,6 +75,8 @@ public class AudioManager : MonoBehaviour
     #region PlayClipsMethods
     public void PlayAtStartScene(string sceneName)
     {
+        musicAudioSource.Stop();
+        musicAudioSourceIntro.Stop();
         switch (sceneName)
         {
             case "StartScene":
@@ -138,4 +141,33 @@ public class AudioManager : MonoBehaviour
         sLoop.source.PlayDelayed(sIntro.clip.length);
     }
     #endregion
+
+    public IEnumerator FadeMusic(bool toSilent)
+    {
+        float vol, volTarget;
+        AudioMixer mixer = AudioManager.instance.mixer;
+        mixer.GetFloat("MusicVolume", out vol);
+        volTarget = (toSilent) ? -40 : GameManager.GetInstance().volumeMusic;
+        float inc = (toSilent) ? ((volTarget - Mathf.Abs(vol)) / 100) : Mathf.Abs((volTarget - Mathf.Abs(vol)) / 100);
+        Debug.Log("Inicio: VolTarget: " + volTarget + "     Inc: " + inc);
+        if (toSilent)
+        {
+            while (vol >= volTarget)
+            {
+                mixer.SetFloat("MusicVolume", vol + inc);
+                yield return new WaitForSeconds(0.01f);
+                mixer.GetFloat("MusicVolume", out vol);
+            }
+        }
+        else
+        {
+            while (vol <= volTarget)
+            {
+                mixer.SetFloat("MusicVolume", vol + inc);
+                yield return new WaitForSeconds(0.01f);
+                mixer.GetFloat("MusicVolume", out vol);
+            }
+        }
+    }
+
 }
