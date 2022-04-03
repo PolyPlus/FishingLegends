@@ -30,11 +30,14 @@ public class FinishAnim : StateMachineBehaviour
         GameObject.Find("Grid").GetComponent<MeshRenderer>().enabled = true;
         GameObject er = GameObject.Find("EmpezarRuta");
         GameObject dr = GameObject.Find("DeshacerRuta");
+        GameObject br = GameObject.Find("InterfazResistencia");
         GameObject ba = GameObject.Find("BotonAtras");
         er.GetComponent<Image>().enabled = true;
         er.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
         dr.GetComponent<Image>().enabled = true;
         dr.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
+        br.GetComponent<Image>().enabled = true;
+        br.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
         ba.GetComponent<Image>().enabled = true;
         ba.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
     }

@@ -51,6 +51,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5754084199372789682, guid: e03512a13d5aa3348bd2adb4d4260fab, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -5495902117074765545, guid: 47cd0469f86cfc9499915816d139f350, type: 3}
     - target: {fileID: 919132149155446097, guid: e03512a13d5aa3348bd2adb4d4260fab, type: 3}
       propertyPath: m_Name
       value: MantaRaya
