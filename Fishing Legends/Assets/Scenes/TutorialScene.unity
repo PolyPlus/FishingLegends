@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -185,6 +185,7 @@ MonoBehaviour:
   - "Una vez hayas dibujado la ruta, comenzar\xE1 el viaje, hasta que llegues a una
     zona de pesca."
   - "Esta es una zona de pesca. Cuando est\xE9s en ella puedes pescar."
+  - "Arriba a la izquierda se muestra el n\xFAmero de anzualos que te quedan."
   - "Para pescar, pulsa el rat\xF3n para lanzar la ca\xF1a y espera a que se acerque
     alg\xFAn pez. "
   - "El pez comenzar\xE1 a tocar el anzuelo varias veces, hasta que pique. Cuando
@@ -194,29 +195,35 @@ MonoBehaviour:
     viene por la derecha, hay que pulsar el lado derecho de la barra.
   - "Si viene por la izquierda, el lado izquierdo. Seg\xFAn lo cerca que aciertes
     del centro del anzuelo, recibir\xE1s m\xE1s o menos puntos."
-  - "Si aciertas todos los peces del juego de ritmo, podr\xE1s seguir pescando."
-  - "Puede formarse un combo y picar m\xE1s peces. La dificultad aumenta conforme
-    m\xE1s peces piquen, pero tambi\xE9n dar\xE1n m\xE1s puntos."
+  - "Si aciertas todos los peces del juego de ritmo, podr\xE1s seguir pescando. Si
+    sacas la ca\xF1a, perder\xE1s un anzuelo."
+  - "Si no sacas la ca\xF1a, puede formarse un combo y picar m\xE1s peces. La dificultad
+    aumenta conforme m\xE1s peces piquen, pero tambi\xE9n dar\xE1n m\xE1s puntos."
+  - "Adem\xE1s, s\xF3lo perder\xE1s un anzuelo cuando hayas sacado la ca\xF1a, por
+    lo que podr\xE1s aprovechar el combo para pescar tantos peces como puedas sin
+    perder tantos anzuelos."
   - "Si fallas, todos los peces del combo se ir\xE1n. Puedes sacar la ca\xF1a cuando
     quieras pulsando el rat\xF3n."
   - "Al sacar la ca\xF1a, se mostrar\xE1n los peces que has conseguido pescar."
   - "La ruta sigue hasta que vuelves al muelle. Entonces se mostrar\xE1n los peces
-    que has conseguido en la ruta."
+    que has conseguido en la ruta, y la puntuaci\xF3n total. Tambi\xE9n obtendr\xE1s
+    monedas."
   - "Si seleccionas la casa, podr\xE1s realizar varias acciones."
   - "En este men\xFA podr\xE1s realizar varias mejoras que amenizar\xE1n tu tarea
     de pesca."
-  - "La mejora de barco permite recorrer m\xE1s distancia en la ruta."
-  - "La mejora de anzuelo, aumenta el n\xFAmero de anzuelos que se pueden tener."
+  - "Utiliza las monedas para mejorar el barco y recorrer m\xE1s distancia, o para
+    obtener m\xE1s anzuelos."
   - "Esta es la piscipedia. En ella podr\xE1s ver los peces que has capturado, \xA1intenta
     conseguirlos todos!"
   - "Y con esto concluye el tutorial. \xA1Ya puedes salir a pescar! "
   images:
-  - {fileID: 21300000, guid: 326e47cf5b5651e47865591553634fdb, type: 3}
-  - {fileID: 21300000, guid: 326e47cf5b5651e47865591553634fdb, type: 3}
-  - {fileID: 21300000, guid: 5a57b12245229084e9f338ce4f4c3a84, type: 3}
-  - {fileID: 21300000, guid: 49776f77b99fc574e98372700d00f924, type: 3}
+  - {fileID: 21300000, guid: 2fead77150060d54c90fefe11d49c1dd, type: 3}
+  - {fileID: 21300000, guid: 2fead77150060d54c90fefe11d49c1dd, type: 3}
+  - {fileID: 21300000, guid: e133ab793e4b6e84aa51a7c1a7b9d00a, type: 3}
+  - {fileID: 21300000, guid: be0f34dc41ca435489486f6094f6b65b, type: 3}
   - {fileID: 21300000, guid: 0d1d3cb5bee9b12448664962236f788e, type: 3}
   - {fileID: 21300000, guid: beac91614f55c5d498d377ed4e7b38ec, type: 3}
+  - {fileID: 21300000, guid: 13228bd56325a0348a9fd67eb18a5db6, type: 3}
   - {fileID: 21300000, guid: 35be5d7802a4a454b8b4c5baf204510f, type: 3}
   - {fileID: 21300000, guid: 3bf2b0d0f8f3eb448b634867fa16fb42, type: 3}
   - {fileID: 21300000, guid: 253de087702142f4498b544230e67331, type: 3}
@@ -224,15 +231,15 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 89e570e72417e6c47b7b631c2cf6f0ed, type: 3}
   - {fileID: 21300000, guid: 406cebb36415bde4881196a1f5fce638, type: 3}
   - {fileID: 21300000, guid: 23d6918cfb3d48442974ea6ade7a8f8f, type: 3}
+  - {fileID: 21300000, guid: 23d6918cfb3d48442974ea6ade7a8f8f, type: 3}
   - {fileID: 21300000, guid: 406cebb36415bde4881196a1f5fce638, type: 3}
   - {fileID: 21300000, guid: 621bc3f0afb6c9f479d30b5121b73929, type: 3}
-  - {fileID: 21300000, guid: 3d5a0b27da5572b4a82438cba6c6fe6a, type: 3}
-  - {fileID: 21300000, guid: 326e47cf5b5651e47865591553634fdb, type: 3}
-  - {fileID: 21300000, guid: 4b913f7061b67c441a9880763e7ad421, type: 3}
-  - {fileID: 21300000, guid: 4b913f7061b67c441a9880763e7ad421, type: 3}
-  - {fileID: 21300000, guid: 4b913f7061b67c441a9880763e7ad421, type: 3}
+  - {fileID: 21300000, guid: 4a9789cc57b9f7a45981a7bed4630881, type: 3}
+  - {fileID: 21300000, guid: 2fead77150060d54c90fefe11d49c1dd, type: 3}
+  - {fileID: 21300000, guid: 97515f1127d94cc46a3b0dc4d4082e29, type: 3}
+  - {fileID: 21300000, guid: 97515f1127d94cc46a3b0dc4d4082e29, type: 3}
   - {fileID: 21300000, guid: 0f9b3f9f232477144b4c5dedda936e00, type: 3}
-  - {fileID: 21300000, guid: 326e47cf5b5651e47865591553634fdb, type: 3}
+  - {fileID: 21300000, guid: 2fead77150060d54c90fefe11d49c1dd, type: 3}
   fondo: {fileID: 515628958}
   textSpeed: 0.01
   black: {fileID: 1418378921}
