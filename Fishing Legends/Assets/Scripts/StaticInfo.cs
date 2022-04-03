@@ -16,6 +16,8 @@ public static class StaticInfo
 
     public static bool addRanking = false;
 
+    public static string name;
+
     //public static LinkedList<Vector3> indexPoints;
 
     public static List<RouteData> route;
