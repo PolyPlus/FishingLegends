@@ -35,6 +35,8 @@ public class ActualizarResultados : MonoBehaviour
         puntuacion += StaticInfo.fishingScore;
         puntos.text = "" + puntuacion;
         StaticInfo.totalScore = puntuacion;
+
+        StaticInfo.addRanking = true;
     }
 
     public void mostrarPeces(FishData[] pecesTotales)
