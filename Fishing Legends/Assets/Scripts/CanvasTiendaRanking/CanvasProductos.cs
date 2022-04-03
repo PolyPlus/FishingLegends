@@ -19,9 +19,18 @@ public class CanvasProductos : MonoBehaviour {
     // Start is called before the first frame update
     void Start()
     {
-        textonivBarco.text = "Nivel del barco: " + PlayerPrefs.GetInt(StaticInfo.nivelBarcoKey, 1);
-        textonumAnzuelos.text = "Número de anzuelos: " + PlayerPrefs.GetInt(StaticInfo.maxAnzuelosKey, 5);
+        textonivBarco.text = "Nivel del barco: " + PlayerPrefs.GetInt(StaticInfo.nivelBarcoKey, 0);
+        textonumAnzuelos.text = "Número de anzuelos: " + PlayerPrefs.GetInt(StaticInfo.maxAnzuelosKey, 0);
         monedas = PlayerPrefs.GetInt(StaticInfo.monedasKey, 0);
+
+        if (PlayerPrefs.GetInt(StaticInfo.maxAnzuelosKey, 5) == 7)
+        {
+            botonAnzuelo.interactable = false;
+        }
+        if (PlayerPrefs.GetInt(StaticInfo.nivelBarcoKey, 1) == 3)
+        {
+            botonBarco.interactable = false;
+        }
     }
 
     // Update is called once per frame
@@ -47,8 +56,13 @@ public class CanvasProductos : MonoBehaviour {
                 StaticInfo.nivelBarco = nivelBarco;
                 PlayerPrefs.SetInt(StaticInfo.nivelBarcoKey, nivelBarco);
                 PlayerPrefs.SetInt(StaticInfo.monedasKey, monedas);
+
+                if (PlayerPrefs.GetInt(StaticInfo.nivelBarcoKey, 1) == 3)
+                {
+                    botonBarco.interactable = false;
+                }
             }
-            textonivBarco.text = "Nivel del barco: " + PlayerPrefs.GetInt(StaticInfo.nivelBarcoKey, 1);
+            textonivBarco.text = "Nivel del barco: " + PlayerPrefs.GetInt(StaticInfo.nivelBarcoKey, 0);
             panelPrincipal.textoMonedas.text = "" + monedas;
         }
         else if (nivelBarco == 3)
@@ -76,8 +90,13 @@ public class CanvasProductos : MonoBehaviour {
                 StaticInfo.maxAnzuelos = numAnzuelos;
                 PlayerPrefs.SetInt(StaticInfo.maxAnzuelosKey, numAnzuelos);
                 PlayerPrefs.SetInt(StaticInfo.monedasKey, monedas);
+
+                if (PlayerPrefs.GetInt(StaticInfo.maxAnzuelosKey, 5) == 7)
+                {
+                    botonAnzuelo.interactable = false;
+                }
             }
-            textonumAnzuelos.text = "Número de anzuelos: " + PlayerPrefs.GetInt(StaticInfo.maxAnzuelosKey, 5);
+            textonumAnzuelos.text = "Número de anzuelos: " + PlayerPrefs.GetInt(StaticInfo.maxAnzuelosKey, 0);
             panelPrincipal.textoMonedas.text = "" + monedas;
         }
         else if (numAnzuelos == 7)
