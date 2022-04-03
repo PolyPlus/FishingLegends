@@ -41,6 +41,8 @@ public class GridManager : MonoBehaviour
     
     public GameObject block, tree, fishbank, rock;
 
+    public GameObject player;
+
     private Vector3 gridOffset,pointOrigin;
 
     private Vector3 min,max;
@@ -85,6 +87,11 @@ public class GridManager : MonoBehaviour
     {
         boat.GetComponentInChildren<Renderer>().material.renderQueue = 1998;
         cc = new ClickController();
+
+        for(int i = 0; i < player.GetComponent<Renderer>().sharedMaterials.Length; i++)
+        {
+            player.GetComponent<Renderer>().sharedMaterials[i].renderQueue = 1998;
+        }
     }
 
     private void OnEnable()
@@ -109,17 +116,17 @@ public class GridManager : MonoBehaviour
         routeIndex = 0;
         inHold = false;
         preRoute = true;
-        switch (PlayerPrefs.GetInt(StaticInfo.nivelBarcoKey,0))
+        switch (PlayerPrefs.GetInt(StaticInfo.nivelBarcoKey,1))
         {
-            case 0 :
+            case 1 :
                 maxFuel = 20;
                 boatResistence.text = "Resistencia : 20";
                 break;
-            case 1:
+            case 2:
                 maxFuel = 40;
                 boatResistence.text = "Resistencia : 40";
                 break;
-            case 2:
+            case 3:
                 maxFuel = 80;
                 boatResistence.text = "Resistencia : 80";
                 break;
