@@ -6,7 +6,7 @@ public static class StaticInfo
 {
     public static List<FishData> staticFishDataList;
 
-    public static FishData[] staticFishData;
+    public static FishData[] staticFishData = null;
 
     public static int position;
 
