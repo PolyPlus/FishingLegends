@@ -23,11 +23,13 @@ public class ActualizarResultados : MonoBehaviour
         peces.text = "" + pecesTotales.Length;
 
         int puntuacion = 0;
-
-        for(int i =0; i < pecesTotales.Length; i++)
+        if (pecesTotales != null)
         {
-            puntuacion += pecesTotales[i].Points;
-        }
+            for (int i = 0; i < pecesTotales.Length; i++)
+            {
+                puntuacion += pecesTotales[i].Points;
+            }
+        }      
         puntuacion += StaticInfo.fishingScore;
         puntos.text = "" + puntuacion;
         StaticInfo.totalScore = puntuacion;
@@ -35,16 +37,19 @@ public class ActualizarResultados : MonoBehaviour
 
     public void mostrarPeces(FishData[] pecesTotales)
     {
-        fishDataList = pecesTotales;
-        for (int i = 0; i < pecesTotales.Length; i++)
+        if(pecesTotales != null)
         {
-            int id = pecesTotales[i].ID;
-            PlayerPrefs.SetInt(StaticInfo.fishKeys[id], 1);
-            //StaticInfo.piscipedia[id] = true;
-            GameObject pez = Instantiate(listaPeces[id]);
-            pez.transform.SetParent(sr.content);
+            fishDataList = pecesTotales;
+            for (int i = 0; i < pecesTotales.Length; i++)
+            {
+                int id = pecesTotales[i].ID;
+                PlayerPrefs.SetInt(StaticInfo.fishKeys[id], 1);
+                //StaticInfo.piscipedia[id] = true;
+                GameObject pez = Instantiate(listaPeces[id]);
+                pez.transform.SetParent(sr.content);
+            }
         }
-
+        
     }
 
     public void actualizarMonedas()
