@@ -55,9 +55,11 @@ public class PanelsBehaviour : MonoBehaviour
 
         Debug.Log("LogIn Pulsado");
         //if (usernameL.text != "" && passwordL.text != "")
+       
         if (usernameL.text != "" )
         {
             Debug.Log("user: " + usernameL.text + " pass: " + passwordL.text);
+            StaticInfo.name = usernameL.text;
             if (PlayerPrefs.GetInt(StaticInfo.tutorialKey, 0) == 0)
             {
                 StartCoroutine(GameManager.GetInstance().Fade(black, true, 0.01f, StaticInfo.storyScene));

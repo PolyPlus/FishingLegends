@@ -9,9 +9,14 @@ public class ScoreUI : MonoBehaviour
 
     void Start()
     {
-        
+
         //scoreManager.AddScore(new Score("BanbAna", 50));
         //scoreManager.AddScore(new Score("ManzAna", 120));
+        if (StaticInfo.addRanking == true)
+        {
+            scoreManager.AddScore(new Score(StaticInfo.name, StaticInfo.totalScore));
+        }
+
         var scores = scoreManager.GetHighScores().ToArray();
         for (int i=0; i < scores.Length; ++i)
         {
