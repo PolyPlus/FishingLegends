@@ -181,7 +181,8 @@ MonoBehaviour:
   - Para salir a pescar, selecciona el puerto.
   - "Al iniciar la ruta de pesca, te saldr\xE1 esta pantalla."
   - "Dibuja la ruta que quieras realizar con el rat\xF3n. Es importante que la ruta
-    empiece y acabe en el barco."
+    empiece y acabe en el barco. "
+  - "La resistencia determina la distancia m\xE1xima que puedes recorrer."
   - "Una vez hayas dibujado la ruta, comenzar\xE1 el viaje, hasta que llegues a una
     zona de pesca."
   - "Esta es una zona de pesca. Cuando est\xE9s en ella puedes pescar."
@@ -217,11 +218,12 @@ MonoBehaviour:
     conseguirlos todos!"
   - "Y con esto concluye el tutorial. \xA1Ya puedes salir a pescar! "
   images:
-  - {fileID: 21300000, guid: 2fead77150060d54c90fefe11d49c1dd, type: 3}
-  - {fileID: 21300000, guid: 2fead77150060d54c90fefe11d49c1dd, type: 3}
-  - {fileID: 21300000, guid: e133ab793e4b6e84aa51a7c1a7b9d00a, type: 3}
-  - {fileID: 21300000, guid: be0f34dc41ca435489486f6094f6b65b, type: 3}
-  - {fileID: 21300000, guid: 0d1d3cb5bee9b12448664962236f788e, type: 3}
+  - {fileID: 21300000, guid: 722515ace27b0e947853c07a127d79b8, type: 3}
+  - {fileID: 21300000, guid: 722515ace27b0e947853c07a127d79b8, type: 3}
+  - {fileID: 21300000, guid: 354a1ad8115de8145bca96a365919ba9, type: 3}
+  - {fileID: 21300000, guid: 5fccaa0e444e1f8429e9ba16e4aa1255, type: 3}
+  - {fileID: 21300000, guid: 5fccaa0e444e1f8429e9ba16e4aa1255, type: 3}
+  - {fileID: 21300000, guid: 70d269c9000ae5849a96ac09641d3350, type: 3}
   - {fileID: 21300000, guid: beac91614f55c5d498d377ed4e7b38ec, type: 3}
   - {fileID: 21300000, guid: 13228bd56325a0348a9fd67eb18a5db6, type: 3}
   - {fileID: 21300000, guid: 35be5d7802a4a454b8b4c5baf204510f, type: 3}
@@ -235,13 +237,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 23d6918cfb3d48442974ea6ade7a8f8f, type: 3}
   - {fileID: 21300000, guid: 406cebb36415bde4881196a1f5fce638, type: 3}
   - {fileID: 21300000, guid: 621bc3f0afb6c9f479d30b5121b73929, type: 3}
-  - {fileID: 21300000, guid: 4a9789cc57b9f7a45981a7bed4630881, type: 3}
-  - {fileID: 21300000, guid: f1ca2bffbb9f88f40b20bd5c67596236, type: 3}
-  - {fileID: 21300000, guid: 2fead77150060d54c90fefe11d49c1dd, type: 3}
+  - {fileID: 21300000, guid: 74255412adfe55a4da60643606002636, type: 3}
+  - {fileID: 21300000, guid: 6fbe7c1c5918c6147be683e747ce5e0b, type: 3}
+  - {fileID: 21300000, guid: 722515ace27b0e947853c07a127d79b8, type: 3}
   - {fileID: 21300000, guid: 97515f1127d94cc46a3b0dc4d4082e29, type: 3}
   - {fileID: 21300000, guid: 97515f1127d94cc46a3b0dc4d4082e29, type: 3}
   - {fileID: 21300000, guid: 0f9b3f9f232477144b4c5dedda936e00, type: 3}
-  - {fileID: 21300000, guid: 2fead77150060d54c90fefe11d49c1dd, type: 3}
+  - {fileID: 21300000, guid: 722515ace27b0e947853c07a127d79b8, type: 3}
   fondo: {fileID: 515628958}
   textSpeed: 0.01
   black: {fileID: 1418378921}
