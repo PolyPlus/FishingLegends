@@ -12,6 +12,8 @@ public class SignInPageBehaviour : MonoBehaviour
     [SerializeField]
     private Canvas LogInCanvas;
 
+
+
     public void OnClickGoBack()
     {
         LogInCanvas.gameObject.SetActive(true);
@@ -19,6 +21,7 @@ public class SignInPageBehaviour : MonoBehaviour
     }
     public void OnClickSignIn()
     {
-        Debug.Log("SignIn Pulsado");
+        Debug.Log("SignIn Pulsado" );
+
     }
 }
