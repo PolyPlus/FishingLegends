@@ -19,6 +19,10 @@ public class GridManager : MonoBehaviour
 
     private Animator transition;
 
+    public GameObject flechaCasa;
+
+    public GameObject flechaBote;
+
     public GameObject transition_go;
 
     private Camera _camera;
@@ -280,6 +284,10 @@ public class GridManager : MonoBehaviour
         else
         {
            // indexPoints = StaticInfo.indexPoints;
+           //GameObject.Find("FlechaCasa").SetActive(false);
+           //GameObject.Find("FlechaBote ").SetActive(false);
+           flechaBote.SetActive(false);
+           flechaCasa.SetActive(false);
             blockType = StaticInfo.map;
             route = StaticInfo.route;
             routeIndex = StaticInfo.position;
