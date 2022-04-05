@@ -13,8 +13,8 @@ public class ActualizarResultados : MonoBehaviour
     public GameObject mostrarResultados;
     public Animator fishTransition;
 
-    private bool pulsado = false;
-    private bool salir = false;
+    //private bool pulsado = false;
+    //private bool salir = false;
 
 
     public void actualizarPuntuacion(FishData[] pecesTotales)

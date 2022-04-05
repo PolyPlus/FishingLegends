@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class FishData : MonoBehaviour
 {
     [SerializeField]
-    private string name;
+    private string fishName;
     [SerializeField]
     private int size;
     [SerializeField]
@@ -16,7 +16,7 @@ public class FishData : MonoBehaviour
     [SerializeField]
     private int id;
 
-    public string Name { get => name; set => name = value; }
+    public string Name { get => fishName; set => fishName = value; }
     public int Size { get => size; set => size = value; }
     public int Points { get => points; set => points = value; }
     public int Rarity { get => rarity; set => rarity = value; }
