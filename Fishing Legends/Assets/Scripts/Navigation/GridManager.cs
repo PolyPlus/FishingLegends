@@ -412,6 +412,7 @@ public class GridManager : MonoBehaviour
                 currentPositionY = ((int) (_rowsColumns * (_a.point.z - min.z) / (max.z - min.z)));
                 //_a.collider.gameObject
                 Vector3 newPoint = TransformIdToGrid(currentPositionX, currentPositionY, _a.point);
+                newPoint.y = 1.7f;
 
                 if (((((currentPositionX == lastPositionX + 1 || currentPositionX == lastPositionX - 1 ||
                         currentPositionX == lastPositionX) &&
