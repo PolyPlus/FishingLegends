@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657528, g: 0.4964128, b: 0.5748163, a: 1}
+  m_IndirectSpecularColor: {r: 0.446576, g: 0.4964134, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1626,7 +1626,7 @@ GameObject:
   - component: {fileID: 1179918109}
   - component: {fileID: 1179918108}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: TransitionCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1970,6 +1970,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numFish: 5
+  fishingManager: {fileID: 578494203}
+  fishTransition: {fileID: 804299963}
   bait: {fileID: 1274468414}
   fishShadows:
   - {fileID: 2337916926729279174, guid: 2621c8c0691bbf347abc9eb311d6efbc, type: 3}
@@ -2109,6 +2111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerAnimator: {fileID: 8084075765303938832}
+  fishTransition: {fileID: 804299963}
   fishCombo: []
   fishPrefabs: []
   fishCaught: []

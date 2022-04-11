@@ -17,7 +17,7 @@ public class CanvasTienda : MonoBehaviour
     void Start()
     {
         panelPrincipal.SetActive(true);
-        productos.SetActive(false);
+        productos.SetActive(true);
         piscipedia.SetActive(false);
         clubPesca.SetActive(false);
         textoMonedas.text = "" + PlayerPrefs.GetInt(StaticInfo.monedasKey, 0);

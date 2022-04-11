@@ -86,26 +86,12 @@ public class FishingManager : MonoBehaviour
         if(numAnzuelos <= 0)
         {
             exit = true;
-            //GameManager.GetInstance().SelectScene(StaticInfo.navigationScene);
         }
     }
 
     public void UpdateFishData(FishData[] data)
     {
-        /*  */
         FishCaught = data;
-        //if (StaticInfo.staticFishData == null)
-        //    StaticInfo.staticFishData = data;
-        //else
-        //{
-        //    FishData[] d = StaticInfo.staticFishData.Concat(data).ToArray();
-        //    StaticInfo.staticFishData = d;
-        //}
-
-        //for (int i = 0; i < StaticInfo.staticFishData.Length; i++)
-        //{
-        //    Debug.Log(StaticInfo.staticFishData[i]);
-        //}
     }
 
     public void UpdateScore(int s)

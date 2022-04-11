@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class BaitStateManager : MonoBehaviour
 {
-    //public Color32 color1;
-    //public Color32 color2;
 
     // Public
     public Animator playerAnimator;
+    public Animator fishTransition;
     private RythmManager rythmGame;
     public List<FishStateManager> fishCombo;
     public List<GameObject> fishPrefabs;
@@ -65,7 +65,6 @@ public class BaitStateManager : MonoBehaviour
     {
         currentState = state;
         state.EnterState(this);
-        //ChageColor();
     }
 
     public bool Detect()
@@ -92,23 +91,21 @@ public class BaitStateManager : MonoBehaviour
         }
     }
 
-    //public void ChageColor()
-    //{
-    //    if (currentState == rythmState)
-    //    {
-    //        this.GetComponent<Renderer>().material.color = color2;
-    //    }
-    //    else
-    //    {
-    //        this.GetComponent<Renderer>().material.color = color1;
-    //    }
-    //}
-
     public void ThrowBait()
     {
         if (fishingManager.exit)
         {
-            GameManager.GetInstance().SelectScene(StaticInfo.navigationScene);
+            if (StaticInfo.staticFishData == null)
+            {
+                StaticInfo.staticFishData = fishingManager.FishCaught;
+            }
+            else
+            {
+                FishData[] d = StaticInfo.staticFishData.Concat(fishingManager.FishCaught).ToArray();
+                StaticInfo.staticFishData = d;
+            }
+            fishTransition.SetBool("reloadScene", true);
+            fishingManager.exit = false;
         } else
         {
             animator.Play("Throw_Bait");

@@ -1,25 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class FishSpawner : MonoBehaviour
 {
     public int numFish;
+    public FishingManager fishingManager;
+    public Animator fishTransition;
     public BaitStateManager bait;
     public GameObject[] fishShadows;
     public List<GameObject> fishPrefabs;
-    public Vector3[] spawnPositions;
-    
-    public GameObject[] fish;
+    public Vector3[] spawnPositions;    
+    public List<GameObject> fish;
     public int[] fishWeights;
+
+    private bool spawned;
 
     void Start()
     {
         numFish = Random.Range(3, 6);
-        fish = new GameObject[numFish];
+        spawned = false;
         fishWeights = new int[fishPrefabs.Count];
         GenerateWeights();
         SpawnFish(numFish);       
+    }
+
+    private void FixedUpdate()
+    {
+        if(this.transform.childCount <= 0 && spawned)
+        {
+            if (StaticInfo.staticFishData == null)
+            {
+                StaticInfo.staticFishData = fishingManager.FishCaught;
+            }
+            else
+            {
+                FishData[] d = StaticInfo.staticFishData.Concat(fishingManager.FishCaught).ToArray();
+                StaticInfo.staticFishData = d;
+            }
+            fishTransition.SetBool("reloadScene", true);
+            spawned = false;
+        }
     }
 
     public void SpawnFish(int n)
@@ -36,8 +58,9 @@ public class FishSpawner : MonoBehaviour
             GameObject newFish = Instantiate(fishShadow, randomPos, randomRot, this.transform);
             newFish.GetComponent<FishStateManager>().Init(fishPrefabs[fishTypeId]);
             newFish.GetComponent<FishStateManager>().bait = bait;
-            fish[i] = newFish;
+            fish.Add(newFish);
         }
+        spawned = true;
     }
 
     private void GenerateWeights()

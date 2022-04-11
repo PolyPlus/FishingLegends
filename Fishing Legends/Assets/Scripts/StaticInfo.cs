@@ -23,7 +23,7 @@ public static class StaticInfo
     public static List<RouteData> route;
     
     // Guardar en playerPrefs
-    public static int monedas, nivelBarco = 1, maxAnzuelos = 5;
+    public static int monedas, nivelBarco = 1, maxAnzuelos = 3;
     // Actualizar en cada ruta
     public static int fishingScore, totalScore, numAnzuelos;
 

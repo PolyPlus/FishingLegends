@@ -7,6 +7,7 @@ public class ActualizarResultados : MonoBehaviour
 {
     public Text peces;
     public Text puntos;
+    public Text monedas;
     public ScrollRect sr;
     public GameObject[] listaPeces;
     public FishData[] fishDataList;
@@ -59,8 +60,9 @@ public class ActualizarResultados : MonoBehaviour
     public void actualizarMonedas()
     {
         int m = StaticInfo.totalScore / 2;
+        monedas.text = "" + m;
         StaticInfo.monedas = m;
-        PlayerPrefs.SetInt(StaticInfo.monedasKey, m + PlayerPrefs.GetInt(StaticInfo.monedasKey, 0));
+        PlayerPrefs.SetInt(StaticInfo.monedasKey, m + PlayerPrefs.GetInt(StaticInfo.monedasKey, 0));        
     }
 
     public void onClick()

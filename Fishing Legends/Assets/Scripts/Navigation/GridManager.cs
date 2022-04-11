@@ -128,15 +128,15 @@ public class GridManager : MonoBehaviour
         {
             case 1 :
                 maxFuel = 20;
-                boatResistence.text = "Resistencia : 20";
+                boatResistence.text = "Resistencia: 20";
                 break;
             case 2:
-                maxFuel = 30;
-                boatResistence.text = "Resistencia : 30";
+                maxFuel = 25;
+                boatResistence.text = "Resistencia: 25";
                 break;
             case 3:
-                maxFuel = 40;
-                boatResistence.text = "Resistencia : 40";
+                maxFuel = 30;
+                boatResistence.text = "Resistencia: 30";
                 break;
                 
         }
@@ -396,7 +396,7 @@ public class GridManager : MonoBehaviour
                         Debug.Log("BARCO");
                         release = false;
 
-                        StaticInfo.numAnzuelos = PlayerPrefs.GetInt(StaticInfo.maxAnzuelosKey,5);
+                        StaticInfo.numAnzuelos = PlayerPrefs.GetInt(StaticInfo.maxAnzuelosKey,3);
 
                         StaticInfo.staticFishData = null;
                     }

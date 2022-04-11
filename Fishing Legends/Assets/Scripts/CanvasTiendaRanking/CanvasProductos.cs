@@ -5,25 +5,31 @@ using UnityEngine.UI;
 
 public class CanvasProductos : MonoBehaviour {
 
-    int nivelBarco = StaticInfo.nivelBarco;
-    int numAnzuelos = StaticInfo.maxAnzuelos;
-    public Text textonivBarco;
-    public Text textonumAnzuelos;
+    
+    public Text precioBarco;
+    public Text precioAnzuelo;
+    public Text textoNivBarco;
+    public Text textoNumAnzuelos;
     public Button botonBarco;
     public Button botonAnzuelo;
     public CanvasTienda panelPrincipal;
-
     public GameObject textoFlotante;
 
+    private int nivelBarco;
+    private int numAnzuelos;
     private int monedas;
     // Start is called before the first frame update
     void Start()
     {
-        textonivBarco.text = "Nivel del barco: " + PlayerPrefs.GetInt(StaticInfo.nivelBarcoKey, 1);
-        textonumAnzuelos.text = "Número de anzuelos: " + PlayerPrefs.GetInt(StaticInfo.maxAnzuelosKey, 5);
+        nivelBarco = PlayerPrefs.GetInt(StaticInfo.nivelBarcoKey, 1);
+        numAnzuelos = PlayerPrefs.GetInt(StaticInfo.maxAnzuelosKey, 3);
         monedas = PlayerPrefs.GetInt(StaticInfo.monedasKey, 0);
+        textoNivBarco.text = "Nivel barco: " + nivelBarco;
+        textoNumAnzuelos.text = "Nº anzuelos: " + numAnzuelos;
+        precioBarco.text = "" + (nivelBarco * 1000);
+        precioAnzuelo.text = "" + (numAnzuelos * 200);
 
-        if (PlayerPrefs.GetInt(StaticInfo.maxAnzuelosKey, 5) == 7)
+        if (PlayerPrefs.GetInt(StaticInfo.maxAnzuelosKey, 3) == 7)
         {
             botonAnzuelo.interactable = false;
         }
@@ -33,20 +39,15 @@ public class CanvasProductos : MonoBehaviour {
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     public void mejoraBarco()
     {
         if (nivelBarco < 3)
         {
-            // Por ejemplo si mejora vale 1000 se hace monedas -= nivelBarco + nivelBarco*1000;
+            // Por ejemplo si mejora vale 1000 se hace monedas -= nivelBarco*1000;
             int m = monedas - nivelBarco * 1000;
             if (m < 0)
             {
-                Debug.Log("No se puede comprar.");
+                Debug.Log("No hay suficientes monedas.");
                 MostrarTextoFlotante();
             }
             else
@@ -62,7 +63,8 @@ public class CanvasProductos : MonoBehaviour {
                     botonBarco.interactable = false;
                 }
             }
-            textonivBarco.text = "Nivel del barco: " + PlayerPrefs.GetInt(StaticInfo.nivelBarcoKey, 1);
+            textoNivBarco.text = "Nivel barco: " + nivelBarco;
+            precioBarco.text = "" + (nivelBarco * 1000);
             panelPrincipal.textoMonedas.text = "" + monedas;
         }
         else if (nivelBarco == 3)
@@ -76,11 +78,11 @@ public class CanvasProductos : MonoBehaviour {
 
         if (numAnzuelos < 7)
         {
-            // Por ejemplo si mejora vale 1000 se hace monedas -= numAnzuelos + numAnzuelos*1000;
-            int m = monedas - numAnzuelos * 1000;
+            // Por ejemplo si mejora vale 1000 se hace monedas -= numAnzuelos*1000;
+            int m = monedas - numAnzuelos * 200;
             if (m < 0)
             {
-                Debug.Log("No se puede comprar.");
+                Debug.Log("No hay suficientes monedas.");
                 MostrarTextoFlotante();
             }
             else
@@ -91,12 +93,13 @@ public class CanvasProductos : MonoBehaviour {
                 PlayerPrefs.SetInt(StaticInfo.maxAnzuelosKey, numAnzuelos);
                 PlayerPrefs.SetInt(StaticInfo.monedasKey, monedas);
 
-                if (PlayerPrefs.GetInt(StaticInfo.maxAnzuelosKey, 5) == 7)
+                if (PlayerPrefs.GetInt(StaticInfo.maxAnzuelosKey, 3) == 7)
                 {
                     botonAnzuelo.interactable = false;
                 }
             }
-            textonumAnzuelos.text = "Número de anzuelos: " + PlayerPrefs.GetInt(StaticInfo.maxAnzuelosKey, 5);
+            textoNumAnzuelos.text = "Nº anzuelos: " + numAnzuelos;          
+            precioAnzuelo.text = "" + (numAnzuelos * 200);
             panelPrincipal.textoMonedas.text = "" + monedas;
         }
         else if (numAnzuelos == 7)
