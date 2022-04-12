@@ -84,6 +84,8 @@ public class GridManager : MonoBehaviour
     
     private bool preRoute;
 
+    private bool enteringShop;
+
     private int[,] blockType;
 
     private GameObject grid;
@@ -124,6 +126,7 @@ public class GridManager : MonoBehaviour
         routeIndex = 0;
         inHold = false;
         preRoute = true;
+        enteringShop = false;
         switch (PlayerPrefs.GetInt(StaticInfo.nivelBarcoKey,1))
         {
             case 1 :
@@ -382,12 +385,13 @@ public class GridManager : MonoBehaviour
                 {
                     if ( _a.collider.gameObject.name == "casita" && !isOverUI)
                     {
+                        enteringShop = true;
                         Debug.Log("CASSA");
                        // GameManager.GetInstance().SelectScene(StaticInfo.shopScene);
                         transition.SetBool("toShop",true);
                         release = false;
                     }
-                    else if (_a.collider.gameObject.name == "Bote")
+                    else if (_a.collider.gameObject.name == "Bote" && !enteringShop)
                     {
                         preRoute = false;
                         transition.SetBool("toRoute",true);
