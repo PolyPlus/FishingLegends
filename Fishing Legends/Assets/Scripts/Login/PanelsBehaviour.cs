@@ -18,6 +18,8 @@ public class PanelsBehaviour : MonoBehaviour
     private Canvas SoundConfigCanvas;
     [SerializeField]
     private Canvas ContactCanvas;
+    [SerializeField]
+    private Canvas TutorialCanvas;
     #endregion
 
     #region LogIn Elements
@@ -70,6 +72,19 @@ public class PanelsBehaviour : MonoBehaviour
             }
         }
     }
+
+    public void OnClickStart()
+    {
+        if (PlayerPrefs.GetInt(StaticInfo.tutorialKey, 0) == 0)
+        {
+            StartCoroutine(GameManager.GetInstance().Fade(black, true, 0.01f, StaticInfo.storyScene));
+        }
+        else
+        {
+            StartCoroutine(GameManager.GetInstance().Fade(black, true, 0.01f, StaticInfo.navigationScene));
+        }
+    }
+
     public void OnClickSignIn()
     {
         AudioManager.instance.PlaySound("ButtonSelected");
@@ -80,6 +95,7 @@ public class PanelsBehaviour : MonoBehaviour
         ConfigCanvas.gameObject.SetActive(false);
         SoundConfigCanvas.gameObject.SetActive(false);
         ContactCanvas.gameObject.SetActive(false);
+        TutorialCanvas.gameObject.SetActive(false);
     }
     public void OnClickContact()
     {
@@ -91,6 +107,7 @@ public class PanelsBehaviour : MonoBehaviour
         ConfigCanvas.gameObject.SetActive(false);
         SoundConfigCanvas.gameObject.SetActive(false);
         ContactCanvas.gameObject.SetActive(true);
+        TutorialCanvas.gameObject.SetActive(false);
     }
     public void OnClickConfiguration()
     {
@@ -102,36 +119,61 @@ public class PanelsBehaviour : MonoBehaviour
         ConfigCanvas.gameObject.SetActive(true);
         SoundConfigCanvas.gameObject.SetActive(false);
         ContactCanvas.gameObject.SetActive(false);
+        TutorialCanvas.gameObject.SetActive(false);
     }
 
-    [System.Obsolete]
+    public void OnClickTutorial()
+    {
+        AudioManager.instance.PlaySound("ButtonSelected");
+
+        Debug.Log("Tutorial Pulsado");
+        LogInCanvas.gameObject.SetActive(false);
+        SignInCanvas.gameObject.SetActive(false);
+        ConfigCanvas.gameObject.SetActive(false);
+        SoundConfigCanvas.gameObject.SetActive(false);
+        ContactCanvas.gameObject.SetActive(false);
+        TutorialCanvas.gameObject.SetActive(true);
+    }
+
     public void OnClickGoBack()
     {
         AudioManager.instance.PlaySound("ButtonSelected");
 
-        if (ConfigCanvas.gameObject.active == true || SignInCanvas.gameObject.active == true)
+        if (ConfigCanvas.gameObject.activeSelf == true || SignInCanvas.gameObject.activeSelf == true)
         {
             LogInCanvas.gameObject.SetActive(true);
             SignInCanvas.gameObject.SetActive(false);
             ConfigCanvas.gameObject.SetActive(false);
             SoundConfigCanvas.gameObject.SetActive(false);
             ContactCanvas.gameObject.SetActive(false);
+            TutorialCanvas.gameObject.SetActive(false);
         }
-        else if (SoundConfigCanvas.gameObject.active == true)
+        else if (SoundConfigCanvas.gameObject.activeSelf == true)
         {
             LogInCanvas.gameObject.SetActive(false);
             SignInCanvas.gameObject.SetActive(false);
             ConfigCanvas.gameObject.SetActive(true);
             SoundConfigCanvas.gameObject.SetActive(false);
             ContactCanvas.gameObject.SetActive(false);
+            TutorialCanvas.gameObject.SetActive(false);
         }
-        else if (ContactCanvas.gameObject.active == true)
+        else if (ContactCanvas.gameObject.activeSelf == true)
         {
             LogInCanvas.gameObject.SetActive(true);
             SignInCanvas.gameObject.SetActive(false);
             ConfigCanvas.gameObject.SetActive(false);
             SoundConfigCanvas.gameObject.SetActive(false);
             ContactCanvas.gameObject.SetActive(false);
+            TutorialCanvas.gameObject.SetActive(false);
+        }
+        else if (TutorialCanvas.gameObject.activeSelf == true)
+        {
+            LogInCanvas.gameObject.SetActive(true);
+            SignInCanvas.gameObject.SetActive(false);
+            ConfigCanvas.gameObject.SetActive(false);
+            SoundConfigCanvas.gameObject.SetActive(false);
+            ContactCanvas.gameObject.SetActive(false);
+            TutorialCanvas.gameObject.SetActive(false);
         }
     }
     public void OnClickSoundConfig()
@@ -144,5 +186,28 @@ public class PanelsBehaviour : MonoBehaviour
         ConfigCanvas.gameObject.SetActive(false);
         SoundConfigCanvas.gameObject.SetActive(true);
         ContactCanvas.gameObject.SetActive(false);
+    }
+
+    public void OnClickExit()
+    {
+        Application.Quit();
+    }
+
+    public void StartTutorial(int n)
+    {
+        StaticInfo.tutorialID = n;
+        switch (n)
+        {
+            case 1:
+                PlayerPrefs.SetInt(StaticInfo.tutorialNavKey, 1);
+                break;
+            case 2:
+                PlayerPrefs.SetInt(StaticInfo.tutorialFishKey, 1);
+                break;
+            case 3:
+                PlayerPrefs.SetInt(StaticInfo.tutorialShopKey, 1);
+                break;
+        }
+        StartCoroutine(GameManager.GetInstance().Fade(black, true, 0.01f, StaticInfo.tutorialScene));
     }
 }

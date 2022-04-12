@@ -68,15 +68,37 @@ public class Dialog: MonoBehaviour, IPointerClickHandler
         switch (StaticInfo.tutorialID)
         {
             case 1:
-                StartCoroutine(GameManager.GetInstance().Fade(black, true, textSpeed, StaticInfo.navigationScene));
+                if (PlayerPrefs.GetInt(StaticInfo.tutorialNavKey, 0) == 0)
+                {
+                    PlayerPrefs.SetInt(StaticInfo.tutorialNavKey, 1);
+                    StartCoroutine(GameManager.GetInstance().Fade(black, true, 0.01f, StaticInfo.navigationScene));
+                }
+                else
+                {                    
+                    StartCoroutine(GameManager.GetInstance().Fade(black, true, 0.01f, StaticInfo.startScene));
+                }
                 break;
             case 2:
-                StartCoroutine(GameManager.GetInstance().Fade(black, true, textSpeed, StaticInfo.fishingScene));
-                PlayerPrefs.SetInt(StaticInfo.tutorialFishKey, 1);
+                if (PlayerPrefs.GetInt(StaticInfo.tutorialFishKey, 0) == 0)
+                {
+                    PlayerPrefs.SetInt(StaticInfo.tutorialFishKey, 1);
+                    StartCoroutine(GameManager.GetInstance().Fade(black, true, textSpeed, StaticInfo.fishingScene));
+                }
+                else
+                {
+                    StartCoroutine(GameManager.GetInstance().Fade(black, true, 0.01f, StaticInfo.startScene));
+                }                             
                 break;
             case 3:
-                StartCoroutine(GameManager.GetInstance().Fade(black, true, textSpeed, StaticInfo.shopScene));
-                PlayerPrefs.SetInt(StaticInfo.tutorialShopKey, 1);
+                if (PlayerPrefs.GetInt(StaticInfo.tutorialShopKey, 0) == 0)
+                {
+                    PlayerPrefs.SetInt(StaticInfo.tutorialShopKey, 1);
+                    StartCoroutine(GameManager.GetInstance().Fade(black, true, textSpeed, StaticInfo.shopScene));
+                }
+                else
+                {
+                    StartCoroutine(GameManager.GetInstance().Fade(black, true, 0.01f, StaticInfo.startScene));
+                }                             
                 break;
         }
     }

@@ -38,6 +38,7 @@ public static class StaticInfo
         monedasKey = "monedas", 
         nivelBarcoKey = "nivelBarco",
         maxAnzuelosKey = "maxAnzuelos",
+        tutorialNavKey = "TutorialNavigationVisto",
         tutorialFishKey = "TutorialPescaVisto",
         tutorialShopKey = "TutorialTiendaVisto";
 

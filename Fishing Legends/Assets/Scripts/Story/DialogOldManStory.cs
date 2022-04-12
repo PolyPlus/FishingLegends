@@ -59,10 +59,16 @@ public class DialogOldManStory : MonoBehaviour, IPointerClickHandler
             StartCoroutine(TypeLine());
         }
         else
-        {
-            StaticInfo.tutorialID = 1;
-            PlayerPrefs.SetInt(StaticInfo.tutorialKey, 1);
-            StartCoroutine(GameManager.GetInstance().Fade(black, true, textSpeed, StaticInfo.tutorialScene));
+        {            
+            if (PlayerPrefs.GetInt(StaticInfo.tutorialNavKey, 0) == 0)
+            {
+                StaticInfo.tutorialID = 1;
+                StartCoroutine(GameManager.GetInstance().Fade(black, true, 0.01f, StaticInfo.tutorialScene));
+            }
+            else
+            {
+                StartCoroutine(GameManager.GetInstance().Fade(black, true, 0.01f, StaticInfo.navigationScene));
+            }
             //gameObject.SetActive(false);
         }
     }

@@ -30,17 +30,7 @@ public class FishSpawner : MonoBehaviour
     {
         if(this.transform.childCount <= 0 && spawned)
         {
-            if (StaticInfo.staticFishData == null)
-            {
-                StaticInfo.staticFishData = fishingManager.FishCaught;
-            }
-            else
-            {
-                FishData[] d = StaticInfo.staticFishData.Concat(fishingManager.FishCaught).ToArray();
-                StaticInfo.staticFishData = d;
-            }
-            fishTransition.SetBool("reloadScene", true);
-            spawned = false;
+            fishingManager.exit = true;
         }
     }
 

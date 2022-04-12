@@ -9,7 +9,7 @@ public class FishComboState : FishBaseState
     {
         //Debug.Log("Entering Combo State");
         isPulling = false;
-        timeToScape = 0.5f;
+        timeToScape = 0.7f;
     }
     public override void UpdateState(FishStateManager fish, BaitStateManager bait)
     {
