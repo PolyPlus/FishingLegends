@@ -47,7 +47,7 @@ public class GridManager : MonoBehaviour
 
     public ActualizarResultados resultados;
     
-    public GameObject block, tree, fishbank, rock;
+    public GameObject block, tree, fishbank, rock, treasure;
 
     public GameObject player;
 
@@ -134,12 +134,12 @@ public class GridManager : MonoBehaviour
                 boatResistence.text = "Resistencia: 20";
                 break;
             case 2:
-                maxFuel = 25;
-                boatResistence.text = "Resistencia: 25";
-                break;
-            case 3:
                 maxFuel = 30;
                 boatResistence.text = "Resistencia: 30";
+                break;
+            case 3:
+                maxFuel = 40;
+                boatResistence.text = "Resistencia: 40";
                 break;
                 
         }
@@ -367,6 +367,33 @@ public class GridManager : MonoBehaviour
                                 transition.SetBool("fadingIn", true);
                         }
                     }
+                    else
+                    {
+                        bool treasureFound = false;
+                        if (x - 1 > 0 && x + 1 < _rowsColumns)
+                        {
+                            if (blockType[x - 1, y] == 6 || blockType[x + 1, y] == 6)
+                            {
+                                treasureFound = true;
+                            }
+                                
+                        }
+                        if (!treasureFound && y - 1 > 0 && y + 1 < _rowsColumns)
+                        {
+                            if (blockType[x , y - 1] == 6 || blockType[x , y - 1] == 6)
+                            {
+                                treasureFound = true;
+                            }
+                                
+                        }
+                        if (treasureFound)
+                        {
+                            //Hacer random y sacar el objeto que se ha conseguido
+                            Debug.Log("COFRE");
+                            stop = true;
+                            //Mostrar panel de lo que se ha conseguido
+                        }
+                    }
                 }
                 else
                 {
@@ -431,11 +458,14 @@ public class GridManager : MonoBehaviour
                 Vector3 newPoint = TransformIdToGrid(currentPositionX, currentPositionY, _a.point);
                 newPoint.y = 1.7f;
 
-                if (((((currentPositionX == lastPositionX + 1 || currentPositionX == lastPositionX - 1 ||
-                        currentPositionX == lastPositionX) &&
-                       (currentPositionY == lastPositionY + 1 || currentPositionY == lastPositionY - 1 ||
-                        currentPositionY == lastPositionY)) &&
-                      !(currentPositionX == lastPositionX && currentPositionY == lastPositionY)) || indexPoints.Count == 0) && blockType[currentPositionX,currentPositionY] <= 1 )
+                if (((
+                    ((currentPositionY == lastPositionY + 1 || currentPositionY == lastPositionY - 1) &&
+                    currentPositionX == lastPositionX) ||
+                      
+                    ((currentPositionX == lastPositionX + 1 || currentPositionX == lastPositionX - 1) &&
+                    currentPositionY == lastPositionY)) 
+                     
+                    || indexPoints.Count == 0) && blockType[currentPositionX,currentPositionY] <= 1 )
                 {
                     gridPoint.transform.position = newPoint;
                     //  Debug.Log(gridPoint.transform.position);
@@ -567,11 +597,39 @@ public class GridManager : MonoBehaviour
 
                 if (j < _rowsColumns)
                 {
-                    if (blockType[i,j] ==  0)
+                    
+                    if(blockType[i,j] ==  2 && (blockType[i - 1,j] == 0 || blockType[i + 1,j] == 0 || blockType[i ,j - 1] == 0 || blockType[i ,j + 1] == 0) 
+                            && Random.Range(0,100) < 66)
+                    {
+                        
+                        blockType[i, j] = 6;
+                    }
+                    else if ( blockType[i,j] ==  0 )
                     {
                         if (isFish)
                         {
-                            blockType[i,j] = 1;
+                            bool validPosition = true;
+                            if (i - 1 > 0 && i + 1 < _rowsColumns)
+                            {
+                                if (blockType[i - 1, j] == 6 || blockType[i + 1, j] == 6)
+                                {
+                                    validPosition = false;
+                                }
+                                
+                            }
+                            if (validPosition && j - 1 > 0 && j + 1 < _rowsColumns)
+                            {
+                                if (blockType[i , j - 1] == 6 || blockType[i , j - 1] == 6)
+                                {
+                                    validPosition = false;
+                                }
+                                
+                            }
+                            if (validPosition)
+                            {
+                                blockType[i,j] = 1;
+                            }
+                            
                         }
                         else
                         {
@@ -602,7 +660,7 @@ public class GridManager : MonoBehaviour
                          break;
                    case 2:
                         Instantiate(block,TransformIdToGrid(i,j,new Vector3(0,1,0)),block.transform.rotation);
-                         break;
+                        break;
                    case 3:
                        Instantiate(block,TransformIdToGrid(i,j,new Vector3(0,1,0)),block.transform.rotation);
                        Instantiate(tree,TransformIdToGrid(i,j,new Vector3(0,10,0)),tree.transform.rotation);
@@ -610,7 +668,11 @@ public class GridManager : MonoBehaviour
                    case 4:
                        Instantiate(rock,TransformIdToGrid(i,j,new Vector3(0,1,0)),rock.transform.rotation);
                        break;
-                     
+                   case 6:
+                       Instantiate(block,TransformIdToGrid(i,j,new Vector3(0,1,0)),block.transform.rotation);
+                       Instantiate(treasure,TransformIdToGrid(i,j,new Vector3(0,4,0)),treasure.transform.rotation);
+                       
+                       break;
                  }
             }
         }
