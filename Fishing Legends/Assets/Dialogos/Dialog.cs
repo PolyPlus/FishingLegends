@@ -65,8 +65,20 @@ public class Dialog: MonoBehaviour, IPointerClickHandler
     }
     void endDialog()
     {
-        PlayerPrefs.SetInt(StaticInfo.tutorialKey, 1);
-        StartCoroutine(GameManager.GetInstance().Fade(black, true, textSpeed, StaticInfo.navigationScene));
+        switch (StaticInfo.tutorialID)
+        {
+            case 1:
+                StartCoroutine(GameManager.GetInstance().Fade(black, true, textSpeed, StaticInfo.navigationScene));
+                break;
+            case 2:
+                StartCoroutine(GameManager.GetInstance().Fade(black, true, textSpeed, StaticInfo.fishingScene));
+                PlayerPrefs.SetInt(StaticInfo.tutorialFishKey, 1);
+                break;
+            case 3:
+                StartCoroutine(GameManager.GetInstance().Fade(black, true, textSpeed, StaticInfo.shopScene));
+                PlayerPrefs.SetInt(StaticInfo.tutorialShopKey, 1);
+                break;
+        }
     }
     IEnumerator TypeLine()
     {

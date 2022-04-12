@@ -357,7 +357,13 @@ public class GridManager : MonoBehaviour
                             StaticInfo.map = blockType;
                             StaticInfo.position = routeIndex;
                             StaticInfo.finishRoute = false;
-                            transition.SetBool("fadingIn",true);
+                            if (PlayerPrefs.GetInt(StaticInfo.tutorialFishKey, 0) == 0)
+                            {
+                                StaticInfo.tutorialID = 2;
+                                GameManager.GetInstance().SelectScene(StaticInfo.tutorialScene);
+                            }
+                            else
+                                transition.SetBool("fadingIn", true);
                         }
                     }
                 }
@@ -387,9 +393,15 @@ public class GridManager : MonoBehaviour
                     {
                         enteringShop = true;
                         Debug.Log("CASSA");
-                       // GameManager.GetInstance().SelectScene(StaticInfo.shopScene);
-                        transition.SetBool("toShop",true);
+                        // GameManager.GetInstance().SelectScene(StaticInfo.shopScene);
                         release = false;
+                        if (PlayerPrefs.GetInt(StaticInfo.tutorialShopKey, 0) == 0)
+                        {
+                            StaticInfo.tutorialID = 3;
+                            GameManager.GetInstance().SelectScene(StaticInfo.tutorialScene);
+                        }
+                        else
+                            transition.SetBool("toShop",true);
                     }
                     else if (_a.collider.gameObject.name == "Bote" && !enteringShop)
                     {

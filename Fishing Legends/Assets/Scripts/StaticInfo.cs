@@ -18,6 +18,8 @@ public static class StaticInfo
 
     public static string name;
 
+    public static int tutorialID;
+
     //public static LinkedList<Vector3> indexPoints;
 
     public static List<RouteData> route;
@@ -33,7 +35,9 @@ public static class StaticInfo
     public static string tutorialKey = "TutorialVisto", 
         monedasKey = "monedas", 
         nivelBarcoKey = "nivelBarco",
-        maxAnzuelosKey = "maxAnzuelos";
+        maxAnzuelosKey = "maxAnzuelos",
+        tutorialFishKey = "TutorialPescaVisto",
+        tutorialShopKey = "TutorialTiendaVisto";
 
     // Peces
     public static string[] fishKeys = { 
