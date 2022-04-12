@@ -380,7 +380,7 @@ public class GridManager : MonoBehaviour
                         }
                         if (!treasureFound && y - 1 > 0 && y + 1 < _rowsColumns)
                         {
-                            if (blockType[x , y - 1] == 6 || blockType[x , y - 1] == 6)
+                            if (blockType[x , y - 1] == 6 || blockType[x , y + 1] == 6)
                             {
                                 treasureFound = true;
                             }
