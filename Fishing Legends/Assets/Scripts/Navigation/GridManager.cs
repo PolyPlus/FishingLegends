@@ -321,7 +321,7 @@ public class GridManager : MonoBehaviour
     {
         _ray = _camera.ScreenPointToRay(Mouse.current.position.ReadValue());
         bool isOverUI = UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject();
-
+        
 
 
         if (routeStarted)
@@ -344,14 +344,15 @@ public class GridManager : MonoBehaviour
                     //Debug.Log(routeIndex);
                     boat.transform.position = route[routeIndex].GetPoint(t);
                     topCamera.transform.position = boat.transform.position + new Vector3(6, 20, -27);
-
-                    if (blockType[TransformCoordinateToId(boat.transform.position.x, max.x, min.x),
-                            TransformCoordinateToId(boat.transform.position.z, max.z, min.z)] == 1)
+                    int x = TransformCoordinateToId(boat.transform.position.x, max.x, min.x);
+                    int y = TransformCoordinateToId(boat.transform.position.z, max.z, min.z);
+                    
+                    if (blockType[x,y] == 1)
                     {
                         if (StaticInfo.numAnzuelos > 0)
                         {
-                            blockType[TransformCoordinateToId(boat.transform.position.x, max.x, min.x),
-                                TransformCoordinateToId(boat.transform.position.z, max.z, min.z)] = 0;
+                            StaticInfo.probabilityByDistance = Math.Abs(10 - x) + Math.Abs(9 - y);
+                            blockType[x,y] = 0;
                             stop = true;
                             StaticInfo.route = route;
                             StaticInfo.map = blockType;

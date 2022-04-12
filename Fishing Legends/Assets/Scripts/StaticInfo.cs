@@ -31,6 +31,8 @@ public static class StaticInfo
 
     public static Dictionary<int, bool> piscipedia;
 
+    public static float probabilityByDistance;
+
     // Claves de Player Prefs
     public static string tutorialKey = "TutorialVisto", 
         monedasKey = "monedas", 
