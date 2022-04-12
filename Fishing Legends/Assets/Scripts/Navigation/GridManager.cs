@@ -19,7 +19,7 @@ public class GridManager : MonoBehaviour
 
     public GameObject botonSalir;
 
-    public GameObject botonAtras;
+    public GameObject botonAtras, salirRuta;
     
     private Animator transition;
 
@@ -293,11 +293,11 @@ public class GridManager : MonoBehaviour
            // indexPoints = StaticInfo.indexPoints;
            //GameObject.Find("FlechaCasa").SetActive(false);
            //GameObject.Find("FlechaBote ").SetActive(false);
-           botonAtras.GetComponent<Image>().enabled = true;
-           botonAtras.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
-           botonSalir.SetActive(false);
-           flechaBote.SetActive(false);
-           flechaCasa.SetActive(false);
+            botonAtras.GetComponent<Image>().enabled = true;
+            botonAtras.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
+            botonSalir.SetActive(false);
+            flechaBote.SetActive(false);
+            flechaCasa.SetActive(false);
             blockType = StaticInfo.map;
             route = StaticInfo.route;
             routeIndex = StaticInfo.position;
@@ -496,6 +496,10 @@ public class GridManager : MonoBehaviour
          ==  TransformCoordinateToId(indexPoints.ElementAt(0).z,min.z,max.z) && indexPoints.Count > 1) 
          {
              botonSalir.SetActive(false);
+
+             salirRuta.SetActive(true);
+             botonAtras.SetActive(false);
+            
              startRouteButton.SetActive(false);
              resistenceUI.SetActive(false);
              undoRoute.SetActive(false);
@@ -535,7 +539,6 @@ public class GridManager : MonoBehaviour
         StaticInfo.finishRoute = true;
         transition.SetBool("reloadScene", true);
     }
-
 
 
     private void GenerateMapContent()
