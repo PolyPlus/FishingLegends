@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RythmManager : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class RythmManager : MonoBehaviour
     public float tiempoAparicion;
     public GameObject panelRitmo;
 
-    
+    public EvaluationTexts textScript;
 
     public int size = 0; //3: GRANDE, 2: MEDIANO, 1: PEQUE
     
@@ -32,6 +33,7 @@ public class RythmManager : MonoBehaviour
     {        
         ResetSpeed();
         startFishing();
+
     }
     //Si empiezas a pescar, para todo el combo completo
     public void startFishing()
@@ -113,18 +115,21 @@ public class RythmManager : MonoBehaviour
         if (distance <= 8.0f)
         {
             Debug.Log("EXCELENTE");
+            textScript.showEvText(0);
             AudioManager.instance.PlaySound("CorrectFishTap");
             return 2;
         }
         else if (distance <= 22.0f)
         {
             Debug.Log("BIEN");
+            textScript.showEvText(1);
             AudioManager.instance.PlaySound("CorrectFishTap2");
             return 1;
         }
         else
         {
             Debug.Log("MAL");
+            textScript.showEvText(2);
             AudioManager.instance.PlaySound("FailFishTap");
             return 0;
         }       
@@ -161,4 +166,6 @@ public class RythmManager : MonoBehaviour
             ++lastFish;
         }
     }
+
+
 }
