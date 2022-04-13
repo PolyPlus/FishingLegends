@@ -1991,6 +1991,10 @@ MonoBehaviour:
   - {fileID: 1671606147132617963, guid: e0b8db30506bd0645af48e7bb50a9c1c, type: 3}
   - {fileID: 2592901032178346290, guid: 27cd7a4ef50054548bd52ade4a5e2f6a, type: 3}
   - {fileID: 5110324332631119344, guid: 26d5df25817f6ea48988c7f4059670f9, type: 3}
+  - {fileID: 4930623570603622047, guid: 1b8da229edc7f354aaa56cd4fdd8aa80, type: 3}
+  - {fileID: 9067719355223816642, guid: 8627a4a9bedc02549acb1b4db98bc304, type: 3}
+  - {fileID: 2478012020713284267, guid: 3ef8c8bfdb91d0e47b688088176dca60, type: 3}
+  - {fileID: 3759740717216534716, guid: 2a61f08dae5de8a408e77ca2b2a990de, type: 3}
   spawnPositions:
   - {x: 0, y: 0, z: 9}
   - {x: -4, y: 0, z: 3}
