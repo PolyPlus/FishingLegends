@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -181,20 +181,22 @@ MonoBehaviour:
     alg\xFAn pez. "
   - "El pez comenzar\xE1 a tocar el anzuelo varias veces, hasta que pique. Cuando
     pique, vuelve a pulsar el rat\xF3n."
-  - "Entonces dar\xE1 comienzo el juego de ritmo."
-  - Hay que pulsar en la barra justo cuando un pez pase por el anzuelo. Si el pez
+  - "Entonces dar\xE1 comienzo el juego de ritmo en el que aparecer\xE1n peces en
+    la parte superior de la pantalla."
+  - Hay que pulsar la pantalla justo cuando un pez pase por el anzuelo. Si el pez
     viene por la derecha, hay que pulsar el lado derecho de la pantalla.
-  - "Si viene por la izquierda, el lado izquierdo. Seg\xFAn lo cerca que aciertes
-    del centro del anzuelo, recibir\xE1s m\xE1s o menos puntos."
-  - "Si aciertas todos los peces del juego de ritmo, podr\xE1s seguir pescando. Si
-    sacas la ca\xF1a, perder\xE1s un anzuelo."
-  - "Si no sacas la ca\xF1a, puede formarse un combo y picar m\xE1s peces. La dificultad
-    aumenta conforme m\xE1s peces piquen, pero tambi\xE9n dar\xE1n m\xE1s puntos."
+  - "Si viene por la izquierda, el lado izquierdo de la pantalla. Seg\xFAn lo cerca
+    que est\xE9 el pez del anzuelo, recibir\xE1s m\xE1s o menos puntos."
+  - "Si aciertas todos los peces del juego de ritmo, podr\xE1s seguir pescando. Cada
+    vez que saques peces del agua, perder\xE1s un anzuelo."
+  - "Si mantienes la ca\xF1a en el agua, puede formarse un combo y picar m\xE1s peces.
+    La dificultad aumenta conforme m\xE1s peces piquen, pero tambi\xE9n dar\xE1n
+    m\xE1s puntos."
   - "Adem\xE1s, s\xF3lo perder\xE1s un anzuelo cuando hayas sacado la ca\xF1a, por
-    lo que podr\xE1s aprovechar el combo para pescar"
-  - tantos peces como puedas sin perder tantos anzuelos.
-  - "Si fallas, todos los peces del combo se ir\xE1n. Puedes sacar la ca\xF1a cuando
-    quieras pulsando el rat\xF3n."
+    lo que podr\xE1s aprovechar el combo para pescar m\xE1s peces sin perder tantos
+    anzuelos."
+  - "Si fallas en el juego de ritmo, todos los peces del combo se ir\xE1n. Puedes
+    sacar la ca\xF1a cuando quieras pulsando el rat\xF3n."
   - "Al sacar la ca\xF1a, se mostrar\xE1n los peces que has conseguido pescar."
   images:
   - {fileID: 21300000, guid: 13228bd56325a0348a9fd67eb18a5db6, type: 3}
@@ -206,15 +208,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 406cebb36415bde4881196a1f5fce638, type: 3}
   - {fileID: 21300000, guid: 23d6918cfb3d48442974ea6ade7a8f8f, type: 3}
   - {fileID: 21300000, guid: 23d6918cfb3d48442974ea6ade7a8f8f, type: 3}
-  - {fileID: 21300000, guid: 23d6918cfb3d48442974ea6ade7a8f8f, type: 3}
   - {fileID: 21300000, guid: 406cebb36415bde4881196a1f5fce638, type: 3}
   - {fileID: 21300000, guid: 621bc3f0afb6c9f479d30b5121b73929, type: 3}
   fondo: {fileID: 1734837881}
   textSpeed: 0.01
   black: {fileID: 1893732108}
-  navegacion: {fileID: 1174938163}
-  pesca: {fileID: 0}
-  tienda: {fileID: 0}
 --- !u!114 &43691568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,9 +375,6 @@ MonoBehaviour:
   fondo: {fileID: 515628958}
   textSpeed: 0.01
   black: {fileID: 1418378921}
-  navegacion: {fileID: 0}
-  pesca: {fileID: 0}
-  tienda: {fileID: 0}
 --- !u!114 &204618688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1150,19 +1145,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textComponent: {fileID: 1393238489}
   lines:
-  - "Te doy la bienvenida a la isla de Fishing Legends. Para moverte por la isla,
-    selecciona a d\xF3nde quieres ir."
+  - Te doy la bienvenida a la isla de Fishing Legends.
   - Para salir a pescar, selecciona el barco.
-  - "Al iniciar la ruta de pesca, te saldr\xE1 esta pantalla."
-  - "Dibuja la ruta que quieras realizar con el rat\xF3n. Es importante que la ruta
-    empiece y acabe en el barco. "
+  - "Al iniciar la ruta de pesca, aparecer\xE1 la siguiente pantalla."
+  - "Dibuja la ruta deseada con el rat\xF3n. Es importante que la ruta empiece y
+    acabe en el barco. "
   - "La resistencia determina la distancia m\xE1xima que puedes recorrer."
-  - "Una vez hayas dibujado la ruta, comenzar\xE1 el viaje, hasta que llegues a una
-    zona de pesca."
-  - "Esta es una zona de pesca. Cuando est\xE9s en ella puedes pescar."
-  - "Despu\xE9s de pescar, la ruta sigue hasta que vuelves al muelle."
-  - "Entonces se mostrar\xE1n los peces que has conseguido en la ruta, y la puntuaci\xF3n
-    total. Tambi\xE9n obtendr\xE1s monedas."
+  - "Una vez hayas dibujado la ruta, pulsa en el bot\xF3n \"Empezar ruta\" para comenzar
+    el viaje."
+  - "Esta es una zona de pesca. Al atravesarla, pasar\xE1s a la pantalla de pesca."
+  - "Despu\xE9s de pescar, la ruta contin\xFAa hasta que llegar al muelle."
+  - "Entonces se mostrar\xE1n los peces que has conseguido en la ruta, la puntuaci\xF3n
+    total y las monedas de recompensa."
   images:
   - {fileID: 21300000, guid: 722515ace27b0e947853c07a127d79b8, type: 3}
   - {fileID: 21300000, guid: 722515ace27b0e947853c07a127d79b8, type: 3}
@@ -1176,9 +1170,6 @@ MonoBehaviour:
   fondo: {fileID: 1144207563}
   textSpeed: 0.01
   black: {fileID: 1886111728}
-  navegacion: {fileID: 1174938163}
-  pesca: {fileID: 387302123}
-  tienda: {fileID: 2067321105}
 --- !u!114 &915898407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2341,9 +2332,6 @@ MonoBehaviour:
   fondo: {fileID: 256698776}
   textSpeed: 0.01
   black: {fileID: 951651990}
-  navegacion: {fileID: 0}
-  pesca: {fileID: 0}
-  tienda: {fileID: 0}
 --- !u!114 &1575719111
 MonoBehaviour:
   m_ObjectHideFlags: 0
