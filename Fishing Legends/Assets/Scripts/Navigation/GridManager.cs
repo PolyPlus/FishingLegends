@@ -15,6 +15,16 @@ public class GridManager : MonoBehaviour
 {
     #region Variables
 
+    public Sprite coinTexture;
+
+    public Sprite baitTexture;
+
+    public Image treasureImage;
+    
+    public Text treasureText;
+    
+    public GameObject treasurePanel;
+    
     public GameObject gridPoint;
 
     public GameObject botonSalir;
@@ -367,22 +377,34 @@ public class GridManager : MonoBehaviour
                                 transition.SetBool("fadingIn", true);
                         }
                     }
-                    else
+                    else if(blockType[x,y] == 0)
                     {
                         bool treasureFound = false;
                         if (x - 1 > 0 && x + 1 < _rowsColumns)
                         {
-                            if (blockType[x - 1, y] == 6 || blockType[x + 1, y] == 6)
+                            if (blockType[x - 1, y] == 6 )
                             {
                                 treasureFound = true;
+                                blockType[x - 1, y] = 2;
+                            }
+                            if  (!treasureFound && blockType[x + 1, y] == 6)
+                            {
+                                treasureFound = true;
+                                blockType[x + 1, y] = 2;
                             }
                                 
                         }
                         if (!treasureFound && y - 1 > 0 && y + 1 < _rowsColumns)
                         {
-                            if (blockType[x , y - 1] == 6 || blockType[x , y + 1] == 6)
+                            if (blockType[x , y - 1] == 6 )
                             {
                                 treasureFound = true;
+                                blockType[x, y - 1] = 2;
+                            }
+                            if ( blockType[x , y + 1] == 6)
+                            {
+                                treasureFound = true;
+                                blockType[x, y + 1] = 2;
                             }
                                 
                         }
@@ -390,6 +412,24 @@ public class GridManager : MonoBehaviour
                         {
                             //Hacer random y sacar el objeto que se ha conseguido
                             Debug.Log("COFRE");
+                            StaticInfo.fishingScore += 400;
+                            switch (Random.Range(0,2))
+                            {
+                                
+                                case 0:
+                                    int anzuelos = Random.Range(1, 4);
+                                    StaticInfo.numAnzuelos += anzuelos;
+                                    treasureText.text =  "+ " + anzuelos;
+                                    treasureImage.sprite = baitTexture;
+                                    break;
+                                case 1:
+                                    int monedas = Random.Range(10, 31) * 10;
+                                    StaticInfo.fishingScore += monedas*2;
+                                    treasureText.text = "+ " + monedas;
+                                    treasureImage.sprite = coinTexture;
+                                    break;
+                            }
+                            treasurePanel.SetActive(true);
                             stop = true;
                             //Mostrar panel de lo que se ha conseguido
                         }
@@ -676,5 +716,11 @@ public class GridManager : MonoBehaviour
                  }
             }
         }
+    }
+
+    public void continueRouteAfterTreasure()
+    {   
+        treasurePanel.SetActive(false);
+        stop = false;
     }
 }
