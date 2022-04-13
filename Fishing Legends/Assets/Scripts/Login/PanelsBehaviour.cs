@@ -55,6 +55,8 @@ public class PanelsBehaviour : MonoBehaviour
             ConfigCanvas.gameObject.SetActive(false);
             SoundConfigCanvas.gameObject.SetActive(false);
             ContactCanvas.gameObject.SetActive(false);
+
+            StartCoroutine(GameManager.GetInstance().Fade(black, false, 0.01f, ""));
         }
     }
 
