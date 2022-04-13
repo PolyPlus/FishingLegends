@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     {
         if (instance == null)
             instance = this;
-        volumeMusic = -18f;
+        volumeMusic = -10f;
     }
 
     public static GameManager GetInstance()
