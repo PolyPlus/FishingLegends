@@ -26,6 +26,8 @@ public static class StaticInfo
     
     // Guardar en playerPrefs
     public static int monedas, nivelBarco = 1, maxAnzuelos = 3;
+    public static string volMusicKey = "volMusic", 
+        volSoundsKey = "volSounds";
     // Actualizar en cada ruta
     public static int fishingScore, totalScore, numAnzuelos;
 

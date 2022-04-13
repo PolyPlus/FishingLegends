@@ -38,6 +38,13 @@ public class PanelsBehaviour : MonoBehaviour
     private InputField passwordS;
     #endregion
 
+    #region Sliders
+    [SerializeField]
+    private Slider sliderMusic;
+    [SerializeField]
+    private Slider sliderSound;
+    #endregion
+
     // Start is called before the first frame update
     void Start()
     {
@@ -187,6 +194,9 @@ public class PanelsBehaviour : MonoBehaviour
         ConfigCanvas.gameObject.SetActive(false);
         SoundConfigCanvas.gameObject.SetActive(true);
         ContactCanvas.gameObject.SetActive(false);
+
+        sliderMusic.value = PlayerPrefs.GetFloat(StaticInfo.volMusicKey);
+        sliderSound.value = PlayerPrefs.GetFloat(StaticInfo.volSoundsKey);
     }
 
     public void OnClickExit()
