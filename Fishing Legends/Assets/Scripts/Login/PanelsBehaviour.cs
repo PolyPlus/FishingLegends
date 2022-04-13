@@ -62,7 +62,7 @@ public class PanelsBehaviour : MonoBehaviour
         {
             Debug.Log("user: " + usernameL.text + " pass: " + passwordL.text);
             StaticInfo.name = usernameL.text;
-            if (PlayerPrefs.GetInt(StaticInfo.tutorialKey, 0) == 0)
+            if (PlayerPrefs.GetInt(StaticInfo.storyKey, 0) == 0)
             {
                 StartCoroutine(GameManager.GetInstance().Fade(black, true, 0.01f, StaticInfo.storyScene));
             }
@@ -75,8 +75,9 @@ public class PanelsBehaviour : MonoBehaviour
 
     public void OnClickStart()
     {
-        if (PlayerPrefs.GetInt(StaticInfo.tutorialKey, 0) == 0)
+        if (PlayerPrefs.GetInt(StaticInfo.storyKey, 0) == 0)
         {
+            PlayerPrefs.SetInt(StaticInfo.storyKey, 1);
             StartCoroutine(GameManager.GetInstance().Fade(black, true, 0.01f, StaticInfo.storyScene));
         }
         else

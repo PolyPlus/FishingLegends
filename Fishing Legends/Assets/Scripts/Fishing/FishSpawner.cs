@@ -57,9 +57,14 @@ public class FishSpawner : MonoBehaviour
     {
         for(int i = 0; i < fishPrefabs.Count; i++)
         {
-            fishWeights[i] = fishPrefabs[i].GetComponent<FishData>().Rarity;
+            int commonality = fishPrefabs[i].GetComponent<FishData>().Commonality;
+            if(commonality <= 20)
+            {
+                commonality += (int)StaticInfo.probabilityByDistance;
+            }
+            Debug.Log(fishPrefabs[i] + " Commonality: " + commonality);
+            fishWeights[i] = commonality;
         }
-
     }
 
     public int GetRandom(int[] choices)

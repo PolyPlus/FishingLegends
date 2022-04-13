@@ -109,8 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a6f3548ac1f07f4fba4e32c6a3d629f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  fishName: 
   size: 1
   points: 300
-  rarity: 30
+  commonality: 40
   id: 8

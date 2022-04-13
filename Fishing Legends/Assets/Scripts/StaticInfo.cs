@@ -34,7 +34,7 @@ public static class StaticInfo
     public static float probabilityByDistance;
 
     // Claves de Player Prefs
-    public static string tutorialKey = "TutorialVisto", 
+    public static string storyKey = "HistoriaVista", 
         monedasKey = "monedas", 
         nivelBarcoKey = "nivelBarco",
         maxAnzuelosKey = "maxAnzuelos",

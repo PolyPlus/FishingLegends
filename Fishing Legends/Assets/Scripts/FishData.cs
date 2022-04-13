@@ -12,14 +12,14 @@ public class FishData : MonoBehaviour
     [SerializeField]
     private int points;
     [SerializeField]
-    private int rarity;
+    private int commonality;
     [SerializeField]
     private int id;
 
     public string Name { get => fishName; set => fishName = value; }
     public int Size { get => size; set => size = value; }
     public int Points { get => points; set => points = value; }
-    public int Rarity { get => rarity; set => rarity = value; }
+    public int Commonality { get => commonality; set => commonality = value; }
     public int ID { get => id; set => id = value; }
 
     private void Start()
