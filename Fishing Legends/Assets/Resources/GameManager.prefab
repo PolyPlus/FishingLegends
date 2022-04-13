@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6056516e2d190d046a6308dc32d14fca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  volumeMusic: 0
 --- !u!114 &3047929230219273167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,8 +71,8 @@ MonoBehaviour:
     source: {fileID: 0}
     outputMixer: {fileID: 8175875374606695600, guid: db35175ae1ef9cf45bd391e211343bbe, type: 2}
   - name: ButtonSelected
-    clip: {fileID: 8300000, guid: 467351f826e83784291bdf168aeecd41, type: 3}
-    volume: 0.538
+    clip: {fileID: 8300000, guid: f193ef23e795edf4aa168fb59bfd4099, type: 3}
+    volume: 0.895
     source: {fileID: 0}
     outputMixer: {fileID: 8175875374606695600, guid: db35175ae1ef9cf45bd391e211343bbe, type: 2}
   - name: SeaWaves
