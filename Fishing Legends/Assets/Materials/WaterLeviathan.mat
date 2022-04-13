@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Water fishing
+  m_Name: WaterLeviathan
   m_Shader: {fileID: -6465566751694194690, guid: bb6c3f3b59b97764094484faa2dda9e6, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
