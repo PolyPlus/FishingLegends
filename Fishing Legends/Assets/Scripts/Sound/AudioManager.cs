@@ -58,6 +58,10 @@ public class AudioManager : MonoBehaviour
 
     public void Start()
     {
+        if(PlayerPrefs.HasKey(StaticInfo.volMusicKey))
+            SetVolumeMusic(PlayerPrefs.GetFloat(StaticInfo.volMusicKey));
+        if (PlayerPrefs.HasKey(StaticInfo.volSoundsKey))
+            SetVolumeSounds(PlayerPrefs.GetFloat(StaticInfo.volSoundsKey));
         this.PlayAtStartScene(SceneManager.GetActiveScene().name);
     }
 
@@ -65,11 +69,13 @@ public class AudioManager : MonoBehaviour
     {
         mixer.SetFloat("MusicVolume", vol);
         GameManager.GetInstance().volumeMusic = vol;
+        PlayerPrefs.SetFloat(StaticInfo.volMusicKey, vol);
     }
 
     public void SetVolumeSounds(float vol)
     {
         mixer.SetFloat("SoundsVolume", vol);
+        PlayerPrefs.SetFloat(StaticInfo.volSoundsKey, vol);
     }
 
     #region PlayClipsMethods

@@ -22,7 +22,10 @@ public class GameManager : MonoBehaviour
     {
         if (instance == null)
             instance = this;
-        volumeMusic = -10f;
+        if (PlayerPrefs.HasKey(StaticInfo.volMusicKey))
+            volumeMusic = PlayerPrefs.GetFloat(StaticInfo.volMusicKey);
+        else
+            volumeMusic = -10f;
     }
 
     public static GameManager GetInstance()

@@ -6844,6 +6844,8 @@ MonoBehaviour:
   black: {fileID: 1055210131}
   usernameS: {fileID: 1640974405}
   passwordS: {fileID: 622541750}
+  sliderMusic: {fileID: 1853504273}
+  sliderSound: {fileID: 398434487}
 --- !u!4 &1439032786
 Transform:
   m_ObjectHideFlags: 0
