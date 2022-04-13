@@ -20,6 +20,8 @@ public class PanelsBehaviour : MonoBehaviour
     private Canvas ContactCanvas;
     [SerializeField]
     private Canvas TutorialCanvas;
+    [SerializeField]
+    private Canvas NameCanvas;
     #endregion
 
     #region LogIn Elements
@@ -55,6 +57,7 @@ public class PanelsBehaviour : MonoBehaviour
             ConfigCanvas.gameObject.SetActive(false);
             SoundConfigCanvas.gameObject.SetActive(false);
             ContactCanvas.gameObject.SetActive(false);
+            NameCanvas.gameObject.SetActive(false);
 
             StartCoroutine(GameManager.GetInstance().Fade(black, false, 0.01f, ""));
         }
@@ -84,14 +87,22 @@ public class PanelsBehaviour : MonoBehaviour
 
     public void OnClickStart()
     {
-        if (PlayerPrefs.GetInt(StaticInfo.storyKey, 0) == 0)
+        if (PlayerPrefs.HasKey(StaticInfo.name))
         {
-            PlayerPrefs.SetInt(StaticInfo.storyKey, 1);
-            StartCoroutine(GameManager.GetInstance().Fade(black, true, 0.01f, StaticInfo.storyScene));
+            if (PlayerPrefs.GetInt(StaticInfo.storyKey, 0) == 0)
+            {
+                PlayerPrefs.SetInt(StaticInfo.storyKey, 1);
+                StartCoroutine(GameManager.GetInstance().Fade(black, true, 0.01f, StaticInfo.storyScene));
+            }
+            else
+            {
+                StartCoroutine(GameManager.GetInstance().Fade(black, true, 0.01f, StaticInfo.navigationScene));
+            }
         }
         else
         {
-            StartCoroutine(GameManager.GetInstance().Fade(black, true, 0.01f, StaticInfo.navigationScene));
+            NameCanvas.gameObject.SetActive(true);
+            LogInCanvas.gameObject.SetActive(false);
         }
     }
 
@@ -130,6 +141,13 @@ public class PanelsBehaviour : MonoBehaviour
         SoundConfigCanvas.gameObject.SetActive(false);
         ContactCanvas.gameObject.SetActive(false);
         TutorialCanvas.gameObject.SetActive(false);
+    }
+
+    public void OnClickNameSet()
+    {
+        AudioManager.instance.PlaySound("ButtonSelected");
+        PlayerPrefs.SetString(StaticInfo.name, usernameL.text);
+        this.OnClickStart();      
     }
 
     public void OnClickTutorial()

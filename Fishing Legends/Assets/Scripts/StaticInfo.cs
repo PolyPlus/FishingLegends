@@ -16,7 +16,7 @@ public static class StaticInfo
 
     public static bool addRanking = false;
 
-    public static string name;
+    public static string name = "name";
 
     public static int tutorialID;
 
