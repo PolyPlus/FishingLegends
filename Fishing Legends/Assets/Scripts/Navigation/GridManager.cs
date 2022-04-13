@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security;
+using System.Security.Cryptography;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -100,6 +101,8 @@ public class GridManager : MonoBehaviour
 
     private GameObject grid;
 
+    private Dictionary<Vector2Int, GameObject> treasures;
+
     #endregion
     
 
@@ -137,6 +140,7 @@ public class GridManager : MonoBehaviour
         inHold = false;
         preRoute = true;
         enteringShop = false;
+        treasures = new Dictionary<Vector2Int, GameObject>();
         switch (PlayerPrefs.GetInt(StaticInfo.nivelBarcoKey,1))
         {
             case 1 :
@@ -386,11 +390,13 @@ public class GridManager : MonoBehaviour
                             {
                                 treasureFound = true;
                                 blockType[x - 1, y] = 2;
+                                Destroy(treasures[new Vector2Int(x - 1, y)]);
                             }
                             if  (!treasureFound && blockType[x + 1, y] == 6)
                             {
                                 treasureFound = true;
                                 blockType[x + 1, y] = 2;
+                                Destroy(treasures[new Vector2Int(x + 1, y)]);
                             }
                                 
                         }
@@ -400,11 +406,13 @@ public class GridManager : MonoBehaviour
                             {
                                 treasureFound = true;
                                 blockType[x, y - 1] = 2;
+                                Destroy(treasures[new Vector2Int(x , y - 1)]);
                             }
-                            if ( blockType[x , y + 1] == 6)
+                            if ( !treasureFound && blockType[x , y + 1] == 6)
                             {
                                 treasureFound = true;
                                 blockType[x, y + 1] = 2;
+                                Destroy(treasures[new Vector2Int(x , y + 1)]);
                             }
                                 
                         }
@@ -643,6 +651,7 @@ public class GridManager : MonoBehaviour
                     {
                         
                         blockType[i, j] = 6;
+                        
                     }
                     else if ( blockType[i,j] ==  0 )
                     {
@@ -704,14 +713,15 @@ public class GridManager : MonoBehaviour
                    case 3:
                        Instantiate(block,TransformIdToGrid(i,j,new Vector3(0,1,0)),block.transform.rotation);
                        Instantiate(tree,TransformIdToGrid(i,j,new Vector3(0,10,0)),tree.transform.rotation);
+                       
                        break;
                    case 4:
                        Instantiate(rock,TransformIdToGrid(i,j,new Vector3(0,1,0)),rock.transform.rotation);
                        break;
                    case 6:
                        Instantiate(block,TransformIdToGrid(i,j,new Vector3(0,1,0)),block.transform.rotation);
-                       Instantiate(treasure,TransformIdToGrid(i,j,new Vector3(0,4,0)),treasure.transform.rotation);
-                       
+                       GameObject chest =  Instantiate(treasure,TransformIdToGrid(i,j,new Vector3(0,4,0)),treasure.transform.rotation);
+                       treasures.Add(new Vector2Int(i,j),chest);
                        break;
                  }
             }
