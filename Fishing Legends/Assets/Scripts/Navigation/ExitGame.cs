@@ -5,6 +5,8 @@ using UnityEngine;
 public class ExitGame : MonoBehaviour
 {
     public GameObject exitpanel;
+    public Animator transition;
+
     public void ShowPanel()
     {
         exitpanel.SetActive(true);
@@ -17,6 +19,6 @@ public class ExitGame : MonoBehaviour
 
     public void salir()
     {
-        Application.Quit();
+        GameManager.GetInstance().SelectScene(StaticInfo.startScene);
     }
 }
