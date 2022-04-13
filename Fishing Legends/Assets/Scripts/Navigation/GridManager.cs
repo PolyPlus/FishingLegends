@@ -447,7 +447,8 @@ public class GridManager : MonoBehaviour
                 {
                     stop = true;
                     StaticInfo.finishRoute = true;
-                    resultados.sr.gameObject.SetActive(true);
+                    //resultados.sr.gameObject.SetActive(true);
+                    resultados.mostrarPecesPanel.SetActive(true);
                     resultados.mostrarPeces(StaticInfo.staticFishData);
                 }
             }

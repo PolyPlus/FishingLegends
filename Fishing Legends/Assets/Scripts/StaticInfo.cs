@@ -46,11 +46,11 @@ public static class StaticInfo
 
     // Peces
     public static string[] fishKeys = { 
-        "Barracuda", "Caballito", "Cangrejo", 
-        "Cirujano", "Estrella", "MantaRaya", 
-        "Cometa", "PezEspada", "PezGlobo", 
-        "PezPayaso", "PeligrosoKey", "Pulpo", 
-        "Tiburon" };
+        "anguila", "Barracuda", "Caballito", "Cangrejo", 
+        "Cirujano", "dorada", "Estrella", "gamba", "lenguado", "MantaRaya", 
+        "mariposaMarina", "Cometa", "PezEspada", "PezGlobo", "pezLuna",
+        "PezPayaso", "PeligrosoKey", "PeligrosoArcoirisKey", "Pulpo", 
+        "Tiburon", "tortuga", "Leviatan"};
 
     // Nombres escenas
     public static string navigationScene = "NavigationScene",

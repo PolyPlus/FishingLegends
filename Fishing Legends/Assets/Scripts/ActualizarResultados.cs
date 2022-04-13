@@ -9,6 +9,7 @@ public class ActualizarResultados : MonoBehaviour
     public Text puntos;
     public Text monedas;
     public ScrollRect sr;
+    public GameObject mostrarPecesPanel;
     public GameObject[] listaPeces;
     public FishData[] fishDataList;
     public GameObject mostrarResultados;
@@ -67,7 +68,8 @@ public class ActualizarResultados : MonoBehaviour
 
     public void onClick()
     {
-        sr.gameObject.SetActive(false);
+        //sr.gameObject.SetActive(false);
+        mostrarPecesPanel.SetActive(false);
         mostrarResultados.SetActive(true);
         actualizarPuntuacion(fishDataList);
         actualizarMonedas();
