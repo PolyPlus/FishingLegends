@@ -16,6 +16,8 @@ public class GridManager : MonoBehaviour
 {
     #region Variables
 
+    public GameObject leviathan;
+    
     public Sprite coinTexture;
 
     public Sprite baitTexture;
@@ -103,6 +105,8 @@ public class GridManager : MonoBehaviour
 
     private Dictionary<Vector2Int, GameObject> treasures;
 
+    private bool leviatanSpawned;
+
     #endregion
     
 
@@ -136,6 +140,7 @@ public class GridManager : MonoBehaviour
         cc.pointer.press.canceled += _ => OnRelease();
         t = 0;
         stop = false;
+        leviatanSpawned = false;
         routeIndex = 0;
         inHold = false;
         preRoute = true;
@@ -677,7 +682,16 @@ public class GridManager : MonoBehaviour
                             }
                             if (validPosition)
                             {
-                                blockType[i,j] = 1;
+                                if (!leviatanSpawned && Random.Range(1,30 ) <= 4)
+                                {
+                                    leviatanSpawned = true;
+                                    blockType[i,j] = -2;
+                                }
+                                else
+                                {
+                                    blockType[i,j] = 1;
+                                }
+                                
                             }
                             
                         }
@@ -705,6 +719,10 @@ public class GridManager : MonoBehaviour
             for (int j = 0; j < blockType.GetLength(1); j++)
             {
                  switch (blockType[i, j]) {
+                     
+                   case -2:
+                         Instantiate(leviathan,TransformIdToGrid(i,j,new Vector3(0,0.3f,0)), leviathan.transform.rotation);
+                         break;
                    case 1:
                        Instantiate(fishbank,TransformIdToGrid(i,j,new Vector3(0,0,0)), Quaternion.identity);
                          break;
