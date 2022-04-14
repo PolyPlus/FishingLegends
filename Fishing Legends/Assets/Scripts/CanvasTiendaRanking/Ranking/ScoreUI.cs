@@ -15,6 +15,7 @@ public class ScoreUI : MonoBehaviour
         if (StaticInfo.addRanking == true)
         {
             scoreManager.AddScore(new Score(PlayerPrefs.GetString(StaticInfo.name), StaticInfo.totalScore));
+            StaticInfo.addRanking = false;
         }
 
         var scores = scoreManager.GetHighScores().ToArray();
