@@ -49,7 +49,6 @@ public class EvaluationTexts : MonoBehaviour
             c = text.color;
             c.a = c.a - 0.02f;
             text.color = c;
-            Debug.Log("Alfa"+text.color.a);
             yield return new WaitForSeconds(0.01f);
         }
     }
