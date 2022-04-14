@@ -30,18 +30,24 @@ public class CanvasTienda : MonoBehaviour
     }
     public void Productos()
     {
+        AudioManager.instance.PlaySound("ButtonSelected");
+
         productos.SetActive(true);
         piscipedia.SetActive(false);
         clubPesca.SetActive(false);
     }
     public void Piscipedia()
     {
+        AudioManager.instance.PlaySound("ButtonSelected");
+
         piscipedia.SetActive(true);
         productos.SetActive(false);
         clubPesca.SetActive(false);
     }
     public void ClubPesca()
     {
+        AudioManager.instance.PlaySound("ButtonSelected");
+
         clubPesca.SetActive(true);
         productos.SetActive(false);
         piscipedia.SetActive(false);
@@ -54,6 +60,8 @@ public class CanvasTienda : MonoBehaviour
         piscipedia.SetActive(false);
         clubPesca.SetActive(false);
         canvasBotonesAjustes.SetActive(true); */
+
+        AudioManager.instance.PlaySound("ButtonSelected");
 
         fishTransition.SetBool("reloadScene", true);
         //GameManager.GetInstance().SelectScene(StaticInfo.navigationScene);

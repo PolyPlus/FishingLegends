@@ -41,6 +41,8 @@ public class CanvasProductos : MonoBehaviour {
 
     public void mejoraBarco()
     {
+        AudioManager.instance.PlaySound("ButtonSelected");
+
         if (nivelBarco < 3)
         {
             // Por ejemplo si mejora vale 1000 se hace monedas -= nivelBarco*1000;
@@ -75,6 +77,7 @@ public class CanvasProductos : MonoBehaviour {
 
     public void mejoraAnzuelo()
     {
+        AudioManager.instance.PlaySound("ButtonSelected");
 
         if (numAnzuelos < 7)
         {

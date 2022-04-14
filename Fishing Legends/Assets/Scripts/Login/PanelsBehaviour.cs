@@ -87,6 +87,8 @@ public class PanelsBehaviour : MonoBehaviour
 
     public void OnClickStart()
     {
+        AudioManager.instance.PlaySound("ButtonSelected");
+
         if (PlayerPrefs.HasKey(StaticInfo.name))
         {
             if (PlayerPrefs.GetInt(StaticInfo.storyKey, 0) == 0)
@@ -104,6 +106,7 @@ public class PanelsBehaviour : MonoBehaviour
             NameCanvas.gameObject.SetActive(true);
             LogInCanvas.gameObject.SetActive(false);
         }
+
     }
 
     public void OnClickSignIn()
