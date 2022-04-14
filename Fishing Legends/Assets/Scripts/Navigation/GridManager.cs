@@ -338,7 +338,7 @@ public class GridManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _ray = _camera.ScreenPointToRay(Mouse.current.position.ReadValue());
+        _ray = _camera.ScreenPointToRay(Pointer.current.position.ReadValue());
         bool isOverUI = UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject();
         
 
