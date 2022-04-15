@@ -306,7 +306,8 @@ public class GridManager : MonoBehaviour
 
             Instantiate(gridPoint, start, Quaternion.identity);
 
-           
+            StaticInfo.fishingScore = 0;
+
         }
         else
         {
