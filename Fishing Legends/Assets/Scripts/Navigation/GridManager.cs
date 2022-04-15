@@ -547,7 +547,7 @@ public class GridManager : MonoBehaviour
                     ((currentPositionX == lastPositionX + 1 || currentPositionX == lastPositionX - 1) &&
                     currentPositionY == lastPositionY)) 
                      
-                    || indexPoints.Count == 0) && blockType[currentPositionX,currentPositionY] <= 1 )
+                    || indexPoints.Count == 0) && currentPositionX < _rowsColumns && currentPositionX >= 0 && currentPositionY < _rowsColumns && currentPositionY >= 0 && blockType[currentPositionX,currentPositionY] <= 1 )
                 {
                     ballPointer.transform.position = newPoint;
 
