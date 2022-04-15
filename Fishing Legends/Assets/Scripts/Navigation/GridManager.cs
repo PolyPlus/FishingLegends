@@ -754,7 +754,7 @@ public class GridManager : MonoBehaviour
                  switch (blockType[i, j]) {
                      
                    case -2:
-                         Instantiate(leviathan,TransformIdToGrid(i,j,new Vector3(0,0.3f,0)), leviathan.transform.rotation);
+                         Instantiate(leviathan,TransformIdToGrid(i,j,new Vector3(0,0f,0)), leviathan.transform.rotation);
                          break;
                    case 1:
                        Instantiate(fishbank,TransformIdToGrid(i,j,new Vector3(0,0,0)), Quaternion.identity);
