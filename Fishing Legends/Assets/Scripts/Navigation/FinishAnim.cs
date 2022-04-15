@@ -40,7 +40,7 @@ public class FinishAnim : StateMachineBehaviour
         br.GetComponent<Image>().enabled = true;
         br.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
         ba.GetComponent<Image>().enabled = true;
-        ba.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
+        ba.GetComponentInChildren<TextMeshProUGUI>().enabled = true; 
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

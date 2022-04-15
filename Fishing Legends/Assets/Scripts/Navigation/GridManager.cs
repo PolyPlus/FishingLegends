@@ -304,7 +304,7 @@ public class GridManager : MonoBehaviour
 
             gridPoint.transform.position = start;         
 
-            Instantiate(gridPoint, start, Quaternion.identity);
+            //Instantiate(gridPoint, start, Quaternion.identity);
 
             StaticInfo.fishingScore = 0;
 
@@ -544,7 +544,7 @@ public class GridManager : MonoBehaviour
                     if (inHold && indexPoints.Count <= maxFuel )
                     {
 
-                        GameObject cloned = Instantiate(gridPoint, newPoint, Quaternion.identity);
+                        GameObject cloned = Instantiate(gridPoint, newPoint, gridPoint.transform.rotation);
                         //selectedPositions[currentPositionX, currentPositionY] = true;
                         lastPositionX = currentPositionX;
                         lastPositionY = currentPositionY;
