@@ -123,7 +123,7 @@ public class CanvasProductos : MonoBehaviour {
 
     public void MostrarTextoFlotante()
     {
-        GameObject texto = Instantiate(textoFlotante, panelPrincipal.transform);
+        GameObject texto = Instantiate(textoFlotante, transform);
     }
 
 }
