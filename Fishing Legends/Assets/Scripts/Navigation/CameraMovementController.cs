@@ -35,19 +35,27 @@ public class CameraMovementController : MonoBehaviour
     private void OnEnable()
     {
         cc.Enable();
-        flechaAbajo.SetActive(true);
-        flechaArriba.SetActive(true);
-        flechaDerecha.SetActive(true);
-        flechaIzda.SetActive(true);
+        if (flechaAbajo != null)
+            flechaAbajo.SetActive(true);
+        if (flechaArriba != null)
+            flechaArriba.SetActive(true);
+        if (flechaDerecha != null)
+            flechaDerecha.SetActive(true);
+        if (flechaIzda != null)
+            flechaIzda.SetActive(true);
     }
 
     private void OnDisable()
     {
-        cc.Disable();
-        flechaAbajo.SetActive(false);
-        flechaArriba.SetActive(false);
-        flechaDerecha.SetActive(false);
-        flechaIzda.SetActive(false);
+        cc.Disable(); 
+        if (flechaAbajo != null)
+            flechaAbajo.SetActive(false);
+        if (flechaArriba != null)
+            flechaArriba.SetActive(false);
+        if (flechaDerecha != null)
+            flechaDerecha.SetActive(false);
+        if (flechaIzda != null)
+            flechaIzda.SetActive(false);
     }
 
     // Start is called before the first frame update

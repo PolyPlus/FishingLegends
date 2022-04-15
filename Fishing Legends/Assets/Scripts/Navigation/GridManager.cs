@@ -64,6 +64,8 @@ public class GridManager : MonoBehaviour
 
     public GameObject player;
 
+    public LureUI lureUI;
+
     private Vector3 gridOffset,pointOrigin;
 
     private Vector3 min,max;
@@ -108,7 +110,7 @@ public class GridManager : MonoBehaviour
     private bool leviatanSpawned;
 
     #endregion
-    
+
 
     private void Awake()
     {
@@ -134,7 +136,6 @@ public class GridManager : MonoBehaviour
     
     void Start()
     {
-
         _camera = Camera.main;
         cc.pointer.press.started += _ => OnHold();
         cc.pointer.press.canceled += _ => OnRelease();
@@ -513,6 +514,7 @@ public class GridManager : MonoBehaviour
                         release = false;
 
                         StaticInfo.numAnzuelos = PlayerPrefs.GetInt(StaticInfo.maxAnzuelosKey,3);
+                        lureUI.SetNumAnzuelos(StaticInfo.numAnzuelos);
 
                         StaticInfo.staticFishData = null;
                     }

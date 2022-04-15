@@ -33,6 +33,7 @@ public class FinishAnim : StateMachineBehaviour
         GameObject dr = GameObject.Find("DeshacerRuta");
         GameObject br = GameObject.Find("InterfazResistencia");
         GameObject ba = GameObject.Find("BotonAtras");
+        GameObject lure = GameObject.Find("Lure Panel");
         er.GetComponent<Image>().enabled = true;
         er.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
         dr.GetComponent<Image>().enabled = true;
@@ -40,7 +41,10 @@ public class FinishAnim : StateMachineBehaviour
         br.GetComponent<Image>().enabled = true;
         br.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
         ba.GetComponent<Image>().enabled = true;
-        ba.GetComponentInChildren<TextMeshProUGUI>().enabled = true; 
+        ba.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
+        lure.GetComponent<Image>().enabled = true;
+        lure.GetComponentInChildren<Text>().enabled = true;
+        GameObject.Find("LureIcon").GetComponent<Image>().enabled = true;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
