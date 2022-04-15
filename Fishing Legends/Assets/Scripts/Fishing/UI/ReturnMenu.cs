@@ -14,19 +14,22 @@ public class ReturnMenu : MonoBehaviour
 
     public void ShowPanel()
     {
+        AudioManager.instance.PlaySound("ButtonSelected");
         fishingManager.Paused = true;
         ReturnPanel.SetActive(true);
     }
 
     public void HidePanel()
     {
+        AudioManager.instance.PlaySound("ButtonSelected");
         fishingManager.Paused = false;
         ReturnPanel.SetActive(false);
     }
 
     public void ReturnToNavigation()
     {
-        if(fishingManager != null)
+        AudioManager.instance.PlaySound("ButtonSelected");
+        if (fishingManager != null)
         {
             if (StaticInfo.staticFishData == null)
             {
