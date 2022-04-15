@@ -449,13 +449,20 @@ public class GridManager : MonoBehaviour
                         }
                     } else if (blockType[x,y] == -2)
                     {
+                        StaticInfo.probabilityByDistance = Math.Abs(10 - x) + Math.Abs(9 - y);
+                        blockType[x, y] = 0;
+                        stop = true;
+                        StaticInfo.route = route;
+                        StaticInfo.map = blockType;
+                        StaticInfo.position = routeIndex;
+                        StaticInfo.finishRoute = false;
                         /*if (PlayerPrefs.GetInt(StaticInfo.tutorialLevKey, 0) == 0)
                         {
                             StaticInfo.tutorialID = 4;
                             GameManager.GetInstance().SelectScene(StaticInfo.tutorialScene);
                         }
                         else*/
-                            transition.SetBool("toLeviatan", true);
+                        transition.SetBool("toLeviatan", true);
                     }
                 }
                 else
