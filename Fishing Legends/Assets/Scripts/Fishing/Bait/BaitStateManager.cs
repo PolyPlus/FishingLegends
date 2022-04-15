@@ -58,7 +58,17 @@ public class BaitStateManager : MonoBehaviour
 
     public void OnPointerPress(Vector2 position)
     {
-        if(!FishingManager.Paused)currentState.OnPointerPress(this, position);
+        if(FishingManager!= null)
+        {
+            if (!FishingManager.Paused)
+            {
+                currentState.OnPointerPress(this, position);
+            }
+        }
+        else
+        {
+            currentState.OnPointerPress(this, position);
+        }      
     }
 
     public void SwitchState(BaitBaseState state)

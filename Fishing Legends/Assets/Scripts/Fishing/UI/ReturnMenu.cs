@@ -6,6 +6,7 @@ using System.Linq;
 
 public class ReturnMenu : MonoBehaviour
 {
+    public BossFightManager bossManager;
     public FishingManager fishingManager;
     public GameObject ReturnPanel;
     public Animator fishTransition;
@@ -25,15 +26,18 @@ public class ReturnMenu : MonoBehaviour
 
     public void ReturnToNavigation()
     {
-        if (StaticInfo.staticFishData == null)
+        if(fishingManager != null)
         {
-            StaticInfo.staticFishData = fishingManager.FishCaught;
-        }            
-        else
-        {
-            FishData[] d = StaticInfo.staticFishData.Concat(fishingManager.FishCaught).ToArray();
-            StaticInfo.staticFishData = d;
-        }
+            if (StaticInfo.staticFishData == null)
+            {
+                StaticInfo.staticFishData = fishingManager.FishCaught;
+            }
+            else
+            {
+                FishData[] d = StaticInfo.staticFishData.Concat(fishingManager.FishCaught).ToArray();
+                StaticInfo.staticFishData = d;
+            }
+        }       
         fishTransition.SetBool("reloadScene", true);
         //GameManager.GetInstance().SelectScene(StaticInfo.navigationScene);
     }

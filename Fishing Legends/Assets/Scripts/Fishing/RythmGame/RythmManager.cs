@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class RythmManager : MonoBehaviour
 {
     public bool started = false;
+    public bool bossFight = false;
     public float initSpeed = 200;
     public float speed;
     public GameObject latIz;
@@ -25,16 +26,30 @@ public class RythmManager : MonoBehaviour
     private float timeFish = 0;
     private int currentFish;
     private int lastFish = 0;
+    private BossFightManager bossManager;
     private BaitStateManager baitManager;
 
     public BaitStateManager BaitManager { get => baitManager; set => baitManager = value; }
+    public BossFightManager BossManager { get => bossManager; set => bossManager = value; }
 
     private void Start()
-    {        
+    {
         ResetSpeed();
         startFishing();
-
     }
+
+    private void FixedUpdate()
+    {
+        if (isActive && (lastFish < fish.Length))
+        {
+            if(Time.time - timeFish > tiempoAparicion)
+            {
+                spawnFish();
+                ++lastFish;
+            }          
+        }
+    }
+
     //Si empiezas a pescar, para todo el combo completo
     public void startFishing()
     {       
@@ -47,7 +62,7 @@ public class RythmManager : MonoBehaviour
         size = numFish;
         lastFish = 0;
         currentFish = lastFish;
-        timeFish = 0;
+        timeFish = Time.time;
         fish = new GameObject[size];
         panelRitmo.SetActive(true);
         isActive = true;
@@ -55,6 +70,22 @@ public class RythmManager : MonoBehaviour
         pez.GetComponent<RythmFish>().speed = speed;
 
     }
+
+    public void startRythmGame(int numFish, float _speed)
+    {
+        score = 0;
+        size = numFish;
+        lastFish = 0;
+        currentFish = lastFish;
+        timeFish = Time.time;
+        fish = new GameObject[size];
+        panelRitmo.SetActive(true);
+        isActive = true;
+        speed = _speed;
+        pez.GetComponent<RythmFish>().speed = speed;
+
+    }
+
     //Cada PEZ que aparece según el tamaño, dentro del combo
     public void spawnFish()
     {
@@ -96,6 +127,9 @@ public class RythmManager : MonoBehaviour
 
         if (value == 0)
         {
+            Debug.Log("MAL");
+            textScript.showEvText(2);
+            AudioManager.instance.PlaySound("FailFishTap");
             ResetCombo();
             stopRythmGame(true);
             return;
@@ -127,10 +161,7 @@ public class RythmManager : MonoBehaviour
             return 1;
         }
         else
-        {
-            Debug.Log("MAL");
-            textScript.showEvText(2);
-            AudioManager.instance.PlaySound("FailFishTap");
+        {           
             return 0;
         }       
     }
@@ -143,7 +174,14 @@ public class RythmManager : MonoBehaviour
         for (int i = currentFish; i < fish.Length; ++i)
             Destroy(fish[i]);
         if (comboFailed) size = 0;
-        BaitManager.StopRythmGame(comboFailed, score);
+        if (bossFight)
+        {
+            bossManager.StopRythmGame(comboFailed, score);
+        }
+        else
+        {
+            BaitManager.StopRythmGame(comboFailed, score);
+        }       
     }
 
     public void ResetSpeed()
@@ -158,14 +196,7 @@ public class RythmManager : MonoBehaviour
         speed = initSpeed;
     }
 
-    private void FixedUpdate()
-    {
-        if (isActive && (lastFish < fish.Length) && (Time.time - timeFish > tiempoAparicion))
-        {
-            spawnFish();
-            ++lastFish;
-        }
-    }
+    
 
 
 }
