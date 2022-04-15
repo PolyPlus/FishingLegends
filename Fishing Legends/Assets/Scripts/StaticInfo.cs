@@ -18,6 +18,8 @@ public static class StaticInfo
 
     public static string name = "name";
 
+    public static List<int> totalScores=new List<int>();
+
     public static int tutorialID;
 
     //public static LinkedList<Vector3> indexPoints;

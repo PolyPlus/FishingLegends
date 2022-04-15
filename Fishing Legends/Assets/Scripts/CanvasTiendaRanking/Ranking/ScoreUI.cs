@@ -14,7 +14,12 @@ public class ScoreUI : MonoBehaviour
         //scoreManager.AddScore(new Score("ManzAna", 120));
         if (StaticInfo.addRanking == true)
         {
-            scoreManager.AddScore(new Score(PlayerPrefs.GetString(StaticInfo.name), StaticInfo.totalScore));
+            for (int i=0; i<StaticInfo.totalScores.Count; ++i)
+            {
+                scoreManager.AddScore(new Score(PlayerPrefs.GetString(StaticInfo.name), StaticInfo.totalScores[i]));
+            }
+
+            StaticInfo.totalScores = new List<int>(); 
             StaticInfo.addRanking = false;
         }
 
