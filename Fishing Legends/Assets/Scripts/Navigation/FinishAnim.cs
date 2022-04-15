@@ -29,6 +29,10 @@ public class FinishAnim : StateMachineBehaviour
         GameObject.Find("FlechaCasa").SetActive(false);
         GameObject.Find("ExitButton").SetActive(false);
         GameObject.Find("Grid").GetComponent<MeshRenderer>().enabled = true;
+        GameObject.Find("FlechaAbajo").GetComponent<Image>().enabled = true;
+        GameObject.Find("FlechaDerecha").GetComponent<Image>().enabled = true;
+        GameObject.Find("FlechaIzda").GetComponent<Image>().enabled = true;
+        GameObject.Find("FlechaArriba").GetComponent<Image>().enabled = true;
         GameObject er = GameObject.Find("EmpezarRuta");
         GameObject dr = GameObject.Find("DeshacerRuta");
         GameObject br = GameObject.Find("InterfazResistencia");

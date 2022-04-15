@@ -18,6 +18,8 @@ public static class StaticInfo
 
     public static string name = "name";
 
+    public static List<int> totalScores=new List<int>();
+
     public static int tutorialID;
 
     //public static LinkedList<Vector3> indexPoints;
@@ -42,7 +44,8 @@ public static class StaticInfo
         maxAnzuelosKey = "maxAnzuelos",
         tutorialNavKey = "TutorialNavigationVisto",
         tutorialFishKey = "TutorialPescaVisto",
-        tutorialShopKey = "TutorialTiendaVisto";
+        tutorialShopKey = "TutorialTiendaVisto",
+        tutorialLevKey = "TutorialLeviatanVisto";
 
     // Peces
     public static string[] fishKeys = { 
@@ -58,5 +61,6 @@ public static class StaticInfo
         storyScene = "StoryScene",
         fishingScene = "FishingScene",
         shopScene = "ShopScene",
-        startScene = "StartScene";
+        startScene = "StartScene",
+        leviatanSecene = "LeviathanScene";
 }

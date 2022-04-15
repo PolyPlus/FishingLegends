@@ -105,14 +105,18 @@ public class BaitStateManager : MonoBehaviour
     {
         if (fishingManager.exit)
         {
-            if (StaticInfo.staticFishData == null)
+            if (fishingManager.FishCaught != null)
             {
-                StaticInfo.staticFishData = fishingManager.FishCaught;
-            }
-            else
-            {
-                FishData[] d = StaticInfo.staticFishData.Concat(fishingManager.FishCaught).ToArray();
-                StaticInfo.staticFishData = d;
+                if (StaticInfo.staticFishData == null)
+                {
+                    StaticInfo.staticFishData = fishingManager.FishCaught;
+                }
+                else
+                {
+                    FishData[] d = StaticInfo.staticFishData.Concat(fishingManager.FishCaught).ToArray();
+                    StaticInfo.staticFishData = d;
+                }
+                fishingManager.FishCaught = null;
             }
             fishTransition.SetBool("reloadScene", true);
             fishingManager.exit = false;

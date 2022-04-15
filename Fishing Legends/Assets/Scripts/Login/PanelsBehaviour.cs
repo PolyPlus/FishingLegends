@@ -47,11 +47,26 @@ public class PanelsBehaviour : MonoBehaviour
     private Slider sliderSound;
     #endregion
 
+    [SerializeField]
+    private Button exitGame;
+
+    [SerializeField]
+    private Button goBackFromNameCanvas;
+
+    private bool comeFromConfig;
+
     // Start is called before the first frame update
     void Start()
     {
         if (SceneManager.GetActiveScene().name == "StartScene")
         {
+            if (Application.platform == RuntimePlatform.WebGLPlayer)
+            {
+                exitGame.gameObject.SetActive(false);
+            }
+
+            comeFromConfig = false;
+
             LogInCanvas.gameObject.SetActive(true);
             SignInCanvas.gameObject.SetActive(false);
             ConfigCanvas.gameObject.SetActive(false);
@@ -87,6 +102,8 @@ public class PanelsBehaviour : MonoBehaviour
 
     public void OnClickStart()
     {
+        AudioManager.instance.PlaySound("ButtonSelected");
+
         if (PlayerPrefs.HasKey(StaticInfo.name))
         {
             if (PlayerPrefs.GetInt(StaticInfo.storyKey, 0) == 0)
@@ -103,7 +120,9 @@ public class PanelsBehaviour : MonoBehaviour
         {
             NameCanvas.gameObject.SetActive(true);
             LogInCanvas.gameObject.SetActive(false);
+            goBackFromNameCanvas.gameObject.SetActive(false);
         }
+
     }
 
     public void OnClickSignIn()
@@ -146,8 +165,32 @@ public class PanelsBehaviour : MonoBehaviour
     public void OnClickNameSet()
     {
         AudioManager.instance.PlaySound("ButtonSelected");
-        PlayerPrefs.SetString(StaticInfo.name, usernameL.text);
-        this.OnClickStart();      
+        if (usernameL.text != "")
+        {
+            PlayerPrefs.SetString(StaticInfo.name, usernameL.text);
+            if (comeFromConfig)
+            {
+                AudioManager.instance.PlaySound("ButtonSelected");
+
+                Debug.Log("Opciones Pulsado");
+                NameCanvas.gameObject.SetActive(false);
+                LogInCanvas.gameObject.SetActive(false);
+                SignInCanvas.gameObject.SetActive(false);
+                ConfigCanvas.gameObject.SetActive(true);
+                SoundConfigCanvas.gameObject.SetActive(false);
+                ContactCanvas.gameObject.SetActive(false);
+                TutorialCanvas.gameObject.SetActive(false);
+            }
+            else
+            {
+                this.OnClickStart();
+            }
+        }
+        else
+        {
+            usernameL.placeholder.color = new Color(255,0,0,1);
+            usernameL.placeholder.GetComponent<Text>().text = "Introduce un nuevo nombre";
+        }
     }
 
     public void OnClickTutorial()
@@ -161,6 +204,28 @@ public class PanelsBehaviour : MonoBehaviour
         SoundConfigCanvas.gameObject.SetActive(false);
         ContactCanvas.gameObject.SetActive(false);
         TutorialCanvas.gameObject.SetActive(true);
+    }
+
+    public void OnClickGoChangeName()
+    {
+        comeFromConfig = true;
+        NameCanvas.gameObject.SetActive(true);
+
+        LogInCanvas.gameObject.SetActive(false);
+        SignInCanvas.gameObject.SetActive(false);
+        ConfigCanvas.gameObject.SetActive(false);
+        SoundConfigCanvas.gameObject.SetActive(false);
+        ContactCanvas.gameObject.SetActive(false);
+        TutorialCanvas.gameObject.SetActive(false);
+
+        usernameL.text = "";
+        goBackFromNameCanvas.gameObject.SetActive(true);
+        if (PlayerPrefs.HasKey(StaticInfo.name))
+        {
+            usernameL.placeholder.GetComponent<Text>().text = "Nombre actual: " + PlayerPrefs.GetString(StaticInfo.name);
+        }
+        usernameL.placeholder.GetComponent<Text>().color = new Color(0.5f, 0.5f, 0.5f, 1);
+
     }
 
     public void OnClickGoBack()
@@ -199,6 +264,16 @@ public class PanelsBehaviour : MonoBehaviour
             LogInCanvas.gameObject.SetActive(true);
             SignInCanvas.gameObject.SetActive(false);
             ConfigCanvas.gameObject.SetActive(false);
+            SoundConfigCanvas.gameObject.SetActive(false);
+            ContactCanvas.gameObject.SetActive(false);
+            TutorialCanvas.gameObject.SetActive(false);
+        }
+        else if (NameCanvas.gameObject.activeSelf == true)
+        {
+            NameCanvas.gameObject.SetActive(false);
+            LogInCanvas.gameObject.SetActive(false);
+            SignInCanvas.gameObject.SetActive(false);
+            ConfigCanvas.gameObject.SetActive(true);
             SoundConfigCanvas.gameObject.SetActive(false);
             ContactCanvas.gameObject.SetActive(false);
             TutorialCanvas.gameObject.SetActive(false);

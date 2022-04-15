@@ -16,6 +16,8 @@ public class GridManager : MonoBehaviour
 {
     #region Variables
 
+    public GameObject leviathan;
+    
     public Sprite coinTexture;
 
     public Sprite baitTexture;
@@ -26,7 +28,7 @@ public class GridManager : MonoBehaviour
     
     public GameObject treasurePanel;
     
-    public GameObject gridPoint;
+    public GameObject gridPoint, ballPointer;
 
     public GameObject botonSalir;
 
@@ -61,6 +63,10 @@ public class GridManager : MonoBehaviour
     public GameObject block, tree, fishbank, rock, treasure;
 
     public GameObject player;
+
+    public LureUI lureUI;
+
+    public GameObject lure;
 
     private Vector3 gridOffset,pointOrigin;
 
@@ -103,8 +109,10 @@ public class GridManager : MonoBehaviour
 
     private Dictionary<Vector2Int, GameObject> treasures;
 
+    private bool leviatanSpawned;
+
     #endregion
-    
+
 
     private void Awake()
     {
@@ -130,12 +138,12 @@ public class GridManager : MonoBehaviour
     
     void Start()
     {
-
         _camera = Camera.main;
         cc.pointer.press.started += _ => OnHold();
         cc.pointer.press.canceled += _ => OnRelease();
         t = 0;
         stop = false;
+        leviatanSpawned = false;
         routeIndex = 0;
         inHold = false;
         preRoute = true;
@@ -178,6 +186,7 @@ public class GridManager : MonoBehaviour
         // 1 tierra
         // 2 tierra-arbol
         // 3 roca
+        // -2 leviatan
         
 
         blockType[8, 8] = 3;
@@ -296,11 +305,12 @@ public class GridManager : MonoBehaviour
             indexPoints.AddLast(start);
         
 
-            gridPoint.transform.position = start;         
+            //gridPoint.transform.position = start;         
 
-            Instantiate(gridPoint, start, Quaternion.identity);
+            //Instantiate(gridPoint, start, Quaternion.identity);
 
-           
+            StaticInfo.fishingScore = 0;
+
         }
         else
         {
@@ -317,12 +327,16 @@ public class GridManager : MonoBehaviour
             routeIndex = StaticInfo.position;
             for (int i = 0; i < route.Count; i++)
             {
-                Instantiate(gridPoint, route.ElementAt(i)._p1, Quaternion.identity);
+                GameObject arrow = Instantiate(gridPoint, route.ElementAt(i)._p1, Quaternion.identity);
+                arrow.transform.LookAt(route.ElementAt(i)._p2);
+
             }
-            Instantiate(gridPoint, route.ElementAt(route.Count - 1)._p1, Quaternion.identity);
+            //Instantiate(gridPoint, route.ElementAt(route.Count - 1)._p1, Quaternion.identity);
             
             routeStarted = true;
             topCamera.transform.rotation = Quaternion.Euler(30,0,0);
+            lure.SetActive(true);
+            lureUI.SetNumAnzuelos(StaticInfo.numAnzuelos);
         }
         
         InitializeMap();
@@ -333,7 +347,7 @@ public class GridManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _ray = _camera.ScreenPointToRay(Mouse.current.position.ReadValue());
+        _ray = _camera.ScreenPointToRay(Pointer.current.position.ReadValue());
         bool isOverUI = UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject();
         
 
@@ -429,6 +443,7 @@ public class GridManager : MonoBehaviour
                                     StaticInfo.numAnzuelos += anzuelos;
                                     treasureText.text =  "+ " + anzuelos;
                                     treasureImage.sprite = baitTexture;
+                                    lureUI.SetNumAnzuelos(StaticInfo.numAnzuelos);
                                     break;
                                 case 1:
                                     int monedas = Random.Range(10, 31) * 10;
@@ -441,6 +456,22 @@ public class GridManager : MonoBehaviour
                             stop = true;
                             //Mostrar panel de lo que se ha conseguido
                         }
+                    } else if (blockType[x,y] == -2)
+                    {
+                        StaticInfo.probabilityByDistance = Math.Abs(10 - x) + Math.Abs(9 - y);
+                        blockType[x, y] = 0;
+                        stop = true;
+                        StaticInfo.route = route;
+                        StaticInfo.map = blockType;
+                        StaticInfo.position = routeIndex;
+                        StaticInfo.finishRoute = false;
+                        /*if (PlayerPrefs.GetInt(StaticInfo.tutorialLevKey, 0) == 0)
+                        {
+                            StaticInfo.tutorialID = 4;
+                            GameManager.GetInstance().SelectScene(StaticInfo.tutorialScene);
+                        }
+                        else*/
+                        transition.SetBool("toLeviatan", true);
                     }
                 }
                 else
@@ -449,6 +480,7 @@ public class GridManager : MonoBehaviour
                     StaticInfo.finishRoute = true;
                     //resultados.sr.gameObject.SetActive(true);
                     resultados.mostrarPecesPanel.SetActive(true);
+                    salirRuta.SetActive(false);
                     resultados.mostrarPeces(StaticInfo.staticFishData);
                 }
             }
@@ -490,6 +522,7 @@ public class GridManager : MonoBehaviour
                         release = false;
 
                         StaticInfo.numAnzuelos = PlayerPrefs.GetInt(StaticInfo.maxAnzuelosKey,3);
+                        lureUI.SetNumAnzuelos(StaticInfo.numAnzuelos);
 
                         StaticInfo.staticFishData = null;
                     }
@@ -514,14 +547,16 @@ public class GridManager : MonoBehaviour
                     ((currentPositionX == lastPositionX + 1 || currentPositionX == lastPositionX - 1) &&
                     currentPositionY == lastPositionY)) 
                      
-                    || indexPoints.Count == 0) && blockType[currentPositionX,currentPositionY] <= 1 )
+                    || indexPoints.Count == 0) && currentPositionX < _rowsColumns && currentPositionX >= 0 && currentPositionY < _rowsColumns && currentPositionY >= 0 && blockType[currentPositionX,currentPositionY] <= 1 )
                 {
-                    gridPoint.transform.position = newPoint;
+                    ballPointer.transform.position = newPoint;
+
                     //  Debug.Log(gridPoint.transform.position);
                     if (inHold && indexPoints.Count <= maxFuel )
                     {
 
-                        GameObject cloned = Instantiate(gridPoint, newPoint, Quaternion.identity);
+                        GameObject cloned = Instantiate(gridPoint, indexPoints.ElementAt(indexPoints.Count-1), gridPoint.transform.rotation);
+                        cloned.transform.LookAt(newPoint);
                         //selectedPositions[currentPositionX, currentPositionY] = true;
                         lastPositionX = currentPositionX;
                         lastPositionY = currentPositionY;
@@ -599,11 +634,14 @@ public class GridManager : MonoBehaviour
              //transition.SetBool("fadingIn",true);
              topCamera.transform.rotation = Quaternion.Euler(30,0,0);
              ProcessRoute();
+
        
-        routeStarted = true;
+            routeStarted = true;
             grid.SetActive(false);
             //topCamera.SetActive(false);
-            
+
+            lure.SetActive(true);
+
          }
         
     }
@@ -677,7 +715,16 @@ public class GridManager : MonoBehaviour
                             }
                             if (validPosition)
                             {
-                                blockType[i,j] = 1;
+                                if (!leviatanSpawned && Random.Range(1,30 ) <= 4)
+                                {
+                                    leviatanSpawned = true;
+                                    blockType[i,j] = -2;
+                                }
+                                else
+                                {
+                                    blockType[i,j] = 1;
+                                }
+                                
                             }
                             
                         }
@@ -705,6 +752,10 @@ public class GridManager : MonoBehaviour
             for (int j = 0; j < blockType.GetLength(1); j++)
             {
                  switch (blockType[i, j]) {
+                     
+                   case -2:
+                         Instantiate(leviathan,TransformIdToGrid(i,j,new Vector3(0,0f,0)), leviathan.transform.rotation);
+                         break;
                    case 1:
                        Instantiate(fishbank,TransformIdToGrid(i,j,new Vector3(0,0,0)), Quaternion.identity);
                          break;

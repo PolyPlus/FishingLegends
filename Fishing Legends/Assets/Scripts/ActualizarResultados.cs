@@ -38,6 +38,7 @@ public class ActualizarResultados : MonoBehaviour
         puntos.text = "" + puntuacion;
         StaticInfo.totalScore = puntuacion;
 
+        StaticInfo.totalScores.Add(puntuacion);
         StaticInfo.addRanking = true;
     }
 
