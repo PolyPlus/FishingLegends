@@ -42,7 +42,8 @@ public static class StaticInfo
         maxAnzuelosKey = "maxAnzuelos",
         tutorialNavKey = "TutorialNavigationVisto",
         tutorialFishKey = "TutorialPescaVisto",
-        tutorialShopKey = "TutorialTiendaVisto";
+        tutorialShopKey = "TutorialTiendaVisto",
+        tutorialLevKey = "TutorialLeviatanVisto";
 
     // Peces
     public static string[] fishKeys = { 
@@ -58,5 +59,6 @@ public static class StaticInfo
         storyScene = "StoryScene",
         fishingScene = "FishingScene",
         shopScene = "ShopScene",
-        startScene = "StartScene";
+        startScene = "StartScene",
+        leviatanSecene = "LeviathanScene";
 }

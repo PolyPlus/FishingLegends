@@ -183,6 +183,7 @@ public class GridManager : MonoBehaviour
         // 1 tierra
         // 2 tierra-arbol
         // 3 roca
+        // -2 leviatan
         
 
         blockType[8, 8] = 3;
@@ -446,6 +447,15 @@ public class GridManager : MonoBehaviour
                             stop = true;
                             //Mostrar panel de lo que se ha conseguido
                         }
+                    } else if (blockType[x,y] == -2)
+                    {
+                        /*if (PlayerPrefs.GetInt(StaticInfo.tutorialLevKey, 0) == 0)
+                        {
+                            StaticInfo.tutorialID = 4;
+                            GameManager.GetInstance().SelectScene(StaticInfo.tutorialScene);
+                        }
+                        else*/
+                            transition.SetBool("toLeviatan", true);
                     }
                 }
                 else
