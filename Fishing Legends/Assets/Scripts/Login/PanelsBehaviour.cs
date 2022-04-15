@@ -47,11 +47,19 @@ public class PanelsBehaviour : MonoBehaviour
     private Slider sliderSound;
     #endregion
 
+    [SerializeField]
+    private Button exitGame;
+
     // Start is called before the first frame update
     void Start()
     {
         if (SceneManager.GetActiveScene().name == "StartScene")
         {
+            if (Application.platform == RuntimePlatform.WebGLPlayer)
+            {
+                exitGame.gameObject.SetActive(false);
+            }
+            
             LogInCanvas.gameObject.SetActive(true);
             SignInCanvas.gameObject.SetActive(false);
             ConfigCanvas.gameObject.SetActive(false);
