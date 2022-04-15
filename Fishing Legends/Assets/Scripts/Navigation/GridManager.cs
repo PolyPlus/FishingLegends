@@ -28,7 +28,7 @@ public class GridManager : MonoBehaviour
     
     public GameObject treasurePanel;
     
-    public GameObject gridPoint;
+    public GameObject gridPoint, ballPointer;
 
     public GameObject botonSalir;
 
@@ -65,6 +65,8 @@ public class GridManager : MonoBehaviour
     public GameObject player;
 
     public LureUI lureUI;
+
+    public GameObject lure;
 
     private Vector3 gridOffset,pointOrigin;
 
@@ -303,7 +305,7 @@ public class GridManager : MonoBehaviour
             indexPoints.AddLast(start);
         
 
-            gridPoint.transform.position = start;         
+            //gridPoint.transform.position = start;         
 
             //Instantiate(gridPoint, start, Quaternion.identity);
 
@@ -325,12 +327,16 @@ public class GridManager : MonoBehaviour
             routeIndex = StaticInfo.position;
             for (int i = 0; i < route.Count; i++)
             {
-                Instantiate(gridPoint, route.ElementAt(i)._p1, Quaternion.identity);
+                GameObject arrow = Instantiate(gridPoint, route.ElementAt(i)._p1, Quaternion.identity);
+                arrow.transform.LookAt(route.ElementAt(i)._p2);
+
             }
-            Instantiate(gridPoint, route.ElementAt(route.Count - 1)._p1, Quaternion.identity);
+            //Instantiate(gridPoint, route.ElementAt(route.Count - 1)._p1, Quaternion.identity);
             
             routeStarted = true;
             topCamera.transform.rotation = Quaternion.Euler(30,0,0);
+            lure.SetActive(true);
+            lureUI.SetNumAnzuelos(StaticInfo.numAnzuelos);
         }
         
         InitializeMap();
@@ -437,6 +443,7 @@ public class GridManager : MonoBehaviour
                                     StaticInfo.numAnzuelos += anzuelos;
                                     treasureText.text =  "+ " + anzuelos;
                                     treasureImage.sprite = baitTexture;
+                                    lureUI.SetNumAnzuelos(StaticInfo.numAnzuelos);
                                     break;
                                 case 1:
                                     int monedas = Random.Range(10, 31) * 10;
@@ -473,6 +480,7 @@ public class GridManager : MonoBehaviour
                     StaticInfo.finishRoute = true;
                     //resultados.sr.gameObject.SetActive(true);
                     resultados.mostrarPecesPanel.SetActive(true);
+                    salirRuta.SetActive(false);
                     resultados.mostrarPeces(StaticInfo.staticFishData);
                 }
             }
@@ -541,12 +549,14 @@ public class GridManager : MonoBehaviour
                      
                     || indexPoints.Count == 0) && blockType[currentPositionX,currentPositionY] <= 1 )
                 {
-                    gridPoint.transform.position = newPoint;
+                    ballPointer.transform.position = newPoint;
+
                     //  Debug.Log(gridPoint.transform.position);
                     if (inHold && indexPoints.Count <= maxFuel )
                     {
 
-                        GameObject cloned = Instantiate(gridPoint, newPoint, gridPoint.transform.rotation);
+                        GameObject cloned = Instantiate(gridPoint, indexPoints.ElementAt(indexPoints.Count-1), gridPoint.transform.rotation);
+                        cloned.transform.LookAt(newPoint);
                         //selectedPositions[currentPositionX, currentPositionY] = true;
                         lastPositionX = currentPositionX;
                         lastPositionY = currentPositionY;
@@ -624,11 +634,14 @@ public class GridManager : MonoBehaviour
              //transition.SetBool("fadingIn",true);
              topCamera.transform.rotation = Quaternion.Euler(30,0,0);
              ProcessRoute();
+
        
-        routeStarted = true;
+            routeStarted = true;
             grid.SetActive(false);
             //topCamera.SetActive(false);
-            
+
+            lure.SetActive(true);
+
          }
         
     }

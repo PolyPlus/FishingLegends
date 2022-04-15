@@ -29,11 +29,14 @@ public class FinishAnim : StateMachineBehaviour
         GameObject.Find("FlechaCasa").SetActive(false);
         GameObject.Find("ExitButton").SetActive(false);
         GameObject.Find("Grid").GetComponent<MeshRenderer>().enabled = true;
+        GameObject.Find("FlechaAbajo").GetComponent<Image>().enabled = true;
+        GameObject.Find("FlechaDerecha").GetComponent<Image>().enabled = true;
+        GameObject.Find("FlechaIzda").GetComponent<Image>().enabled = true;
+        GameObject.Find("FlechaArriba").GetComponent<Image>().enabled = true;
         GameObject er = GameObject.Find("EmpezarRuta");
         GameObject dr = GameObject.Find("DeshacerRuta");
         GameObject br = GameObject.Find("InterfazResistencia");
         GameObject ba = GameObject.Find("BotonAtras");
-        GameObject lure = GameObject.Find("Lure Panel");
         er.GetComponent<Image>().enabled = true;
         er.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
         dr.GetComponent<Image>().enabled = true;
@@ -42,9 +45,6 @@ public class FinishAnim : StateMachineBehaviour
         br.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
         ba.GetComponent<Image>().enabled = true;
         ba.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
-        lure.GetComponent<Image>().enabled = true;
-        lure.GetComponentInChildren<Text>().enabled = true;
-        GameObject.Find("LureIcon").GetComponent<Image>().enabled = true;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
