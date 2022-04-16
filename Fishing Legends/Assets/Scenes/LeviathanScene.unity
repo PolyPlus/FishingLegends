@@ -2515,7 +2515,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1286742362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2846,7 +2846,7 @@ MonoBehaviour:
   pez: {fileID: 2284873962205502027, guid: bd2a8b58be9f680428424713d398d939, type: 3}
   tiempoAparicion: 1
   panelRitmo: {fileID: 1286742361}
-  textScript: {fileID: 0}
+  textScript: {fileID: 1056616665}
   size: 0
 --- !u!114 &1430418353
 MonoBehaviour:
