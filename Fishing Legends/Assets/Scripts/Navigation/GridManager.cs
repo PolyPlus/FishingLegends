@@ -74,7 +74,7 @@ public class GridManager : MonoBehaviour
 
     private RaycastHit _a;
 
-    public TextMeshProUGUI boatResistence;
+    public Text boatResistence;
 
     private FishData[] _fishDataList;
 
@@ -471,13 +471,13 @@ public class GridManager : MonoBehaviour
                         StaticInfo.map = blockType;
                         StaticInfo.position = routeIndex;
                         StaticInfo.finishRoute = false;
-                        /*if (PlayerPrefs.GetInt(StaticInfo.tutorialLevKey, 0) == 0)
+                        if (PlayerPrefs.GetInt(StaticInfo.tutorialLevKey, 0) == 0)
                         {
                             StaticInfo.tutorialID = 4;
                             GameManager.GetInstance().SelectScene(StaticInfo.tutorialScene);
                         }
-                        else*/
-                        transition.SetBool("toLeviatan", true);
+                        else
+                            transition.SetBool("toLeviatan", true);
                     }
                 }
                 else

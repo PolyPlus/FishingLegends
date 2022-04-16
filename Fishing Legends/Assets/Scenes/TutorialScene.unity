@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -463,6 +463,7 @@ MonoBehaviour:
   navegacion: {fileID: 1174938163}
   pesca: {fileID: 387302123}
   tienda: {fileID: 1694218947}
+  leviatan: {fileID: 2067321105}
 --- !u!1 &256698776
 GameObject:
   m_ObjectHideFlags: 0
@@ -2508,19 +2509,19 @@ MonoBehaviour:
   lines:
   - "\xA1Te has encontrado una sombra enorme! Ten cuidado con ella, parece un pez
     muy grande y peligroso."
-  - "Si aun as\xED quieres pescarlo, \xA1lanza la ca\xF1a y ve a por \xE9l!"
-  - "El pescado gigante te arrastrar\xE1 por el mar, tendr\xE1s que esquivar las
+  - "Si a\xFAn as\xED quieres pescarlo, \xA1lanza la ca\xF1a y ve a por \xE9l!"
+  - "La criatura gigante te arrastrar\xE1 por el mar y tendr\xE1s que esquivar las
     rocas. "
   - "Para esquivarlas, pulsa con el rat\xF3n el lado de la pantalla donde te quieras
     desplazar, \xA1ve a donde no haya ninguna roca!"
-  - "Si te golpea una roca, perder\xE1s un anzuelo. Si te quedas sin anzuelo, pierdes
-    el pez y encima no podr\xE1s pescar m\xE1s."
-  - "En cualquier momento te aparecer\xE1 un juego de ritmo, que funciona como cuando
-    pescas un pez."
+  - "Si te golpea una roca, perder\xE1s un anzuelo. Si te quedas sin anzuelos, la
+    criatura se escapar\xE1 y adem\xE1s no podr\xE1s continuar pescando."
+  - "Si sobrevives a una tanda de rocas, te aparecer\xE1 un juego de ritmo, que funciona
+    como cuando pescas un pez."
   - Hay que pulsar en la pantalla justo cuando el pez pase por el anzuelo.
-  - Si el pez aparece por la derecha, hay que pulsar por el lado derecho de la pantalla,
-    y si no por el izquierdo.
-  - "Si consigues llegar al final, \xA1Habr\xE1s conseguido el pez!"
+  - Si el pez aparece por la derecha, hay que pulsar en el lado derecho de la pantalla,
+    y sino, en el izquierdo.
+  - "Si consigues llegar al final, \xA1habr\xE1s conseguido a la criatura!"
   images:
   - {fileID: 21300000, guid: 8a46a542e3f476b4d85cf64326625de5, type: 3}
   - {fileID: 21300000, guid: 8a46a542e3f476b4d85cf64326625de5, type: 3}

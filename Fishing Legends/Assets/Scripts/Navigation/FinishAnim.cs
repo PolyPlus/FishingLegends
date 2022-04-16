@@ -38,13 +38,13 @@ public class FinishAnim : StateMachineBehaviour
         GameObject br = GameObject.Find("InterfazResistencia");
         GameObject ba = GameObject.Find("BotonAtras");
         er.GetComponent<Image>().enabled = true;
-        er.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
+        er.GetComponentInChildren<Text>().enabled = true;
         dr.GetComponent<Image>().enabled = true;
-        dr.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
+        dr.GetComponentInChildren<Text>().enabled = true;
         br.GetComponent<Image>().enabled = true;
-        br.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
+        br.GetComponentInChildren<Text>().enabled = true;
         ba.GetComponent<Image>().enabled = true;
-        ba.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
+        ba.GetComponentInChildren<Text>().enabled = true;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

@@ -5,7 +5,7 @@ using UnityEngine;
 public class TutorialManager : MonoBehaviour
 {
 
-    public GameObject navegacion, pesca, tienda;
+    public GameObject navegacion, pesca, tienda, leviatan;
 
     void Start()
     {
@@ -19,6 +19,9 @@ public class TutorialManager : MonoBehaviour
                 break;
             case 3:
                 tienda.SetActive(true);
+                break;
+            case 4:
+                leviatan.SetActive(true);
                 break;
         }
     }

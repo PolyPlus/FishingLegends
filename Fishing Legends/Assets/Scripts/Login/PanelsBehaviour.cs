@@ -313,6 +313,9 @@ public class PanelsBehaviour : MonoBehaviour
             case 3:
                 PlayerPrefs.SetInt(StaticInfo.tutorialShopKey, 1);
                 break;
+            case 4:
+                PlayerPrefs.SetInt(StaticInfo.tutorialLevKey, 1);
+                break;
         }
         StartCoroutine(GameManager.GetInstance().Fade(black, true, 0.01f, StaticInfo.tutorialScene));
     }

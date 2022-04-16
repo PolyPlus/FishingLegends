@@ -100,6 +100,17 @@ public class Dialog: MonoBehaviour, IPointerClickHandler
                     StartCoroutine(GameManager.GetInstance().Fade(black, true, 0.01f, StaticInfo.startScene));
                 }                             
                 break;
+            case 4:
+                if (PlayerPrefs.GetInt(StaticInfo.tutorialLevKey, 0) == 0)
+                {
+                    PlayerPrefs.SetInt(StaticInfo.tutorialLevKey, 1);
+                    StartCoroutine(GameManager.GetInstance().Fade(black, true, textSpeed, StaticInfo.leviatanSecene));
+                }
+                else
+                {
+                    StartCoroutine(GameManager.GetInstance().Fade(black, true, 0.01f, StaticInfo.startScene));
+                }
+                break;
         }
     }
     IEnumerator TypeLine()
