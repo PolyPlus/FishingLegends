@@ -86,6 +86,7 @@ public class GridManager : MonoBehaviour
     
     private LinkedList<Vector3> indexPoints = new LinkedList<Vector3>();
     private LinkedList<GameObject> gridPointList = new LinkedList<GameObject>();
+    private LinkedList<GameObject> gridPointDiamondsList = new LinkedList<GameObject>();
 
     private List<RouteData> route = new List<RouteData>();
 
@@ -558,7 +559,7 @@ public class GridManager : MonoBehaviour
                     //  Debug.Log(gridPoint.transform.position);
                     if (inHold && indexPoints.Count <= maxFuel )
                     {
-                        Instantiate(diamondPoint, newPoint, gridPoint.transform.rotation);
+                        GameObject diamond = Instantiate(diamondPoint, newPoint, gridPoint.transform.rotation);
                         GameObject cloned = Instantiate(gridPoint, indexPoints.ElementAt(indexPoints.Count-1), gridPoint.transform.rotation);
                         cloned.transform.LookAt(newPoint);
                         //selectedPositions[currentPositionX, currentPositionY] = true;
@@ -566,6 +567,7 @@ public class GridManager : MonoBehaviour
                         lastPositionY = currentPositionY;
                         indexPoints.AddLast(newPoint);
                         gridPointList.AddLast(cloned);
+                        gridPointDiamondsList.AddLast(diamond);
                         boatResistence.text = "Resistencia : " + (maxFuel - gridPointList.Count);
                         // Debug.Log(indexPoints.Count);
                         //curvePoints.AddLast(new Vector2(cloned.transform.position.x,,))
@@ -661,7 +663,9 @@ public class GridManager : MonoBehaviour
         if (gridPointList.Count > 0)
         {
             Destroy(gridPointList.ElementAt(gridPointList.Count - 1));
+            Destroy(gridPointDiamondsList.ElementAt(gridPointDiamondsList.Count -1));
             gridPointList.RemoveLast();
+            gridPointDiamondsList.RemoveLast();
             boatResistence.text = "Resistencia : " + (maxFuel - gridPointList.Count);
         }
        
