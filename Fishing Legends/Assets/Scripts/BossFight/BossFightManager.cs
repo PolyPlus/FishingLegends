@@ -143,6 +143,7 @@ public class BossFightManager: MonoBehaviour
         bossAnimator.Play("Start");
         AudioManager.instance.PlayDelayed("ThrowingRod", 0.5f);
         Waiting = true;
+        AudioManager.instance.StartLoop("LeviatanIntro", "LeviatanLoop");
     }
 
     public void StopBossFight()

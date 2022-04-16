@@ -31,14 +31,17 @@ public class ReturnMenu : MonoBehaviour
         AudioManager.instance.PlaySound("ButtonSelected");
         if (fishingManager != null)
         {
-            if (StaticInfo.staticFishData == null)
+            if (fishingManager.FishCaught != null)
             {
-                StaticInfo.staticFishData = fishingManager.FishCaught;
-            }
-            else
-            {
-                FishData[] d = StaticInfo.staticFishData.Concat(fishingManager.FishCaught).ToArray();
-                StaticInfo.staticFishData = d;
+                if (StaticInfo.staticFishData == null)
+                {
+                    StaticInfo.staticFishData = fishingManager.FishCaught;
+                }
+                else
+                {
+                    FishData[] d = StaticInfo.staticFishData.Concat(fishingManager.FishCaught).ToArray();
+                    StaticInfo.staticFishData = d;
+                }
             }
         }       
         fishTransition.SetBool("reloadScene", true);
