@@ -1155,19 +1155,23 @@ MonoBehaviour:
   - "Una vez hayas dibujado la ruta, pulsa en el bot\xF3n \"Empezar ruta\" para comenzar
     el viaje."
   - "Esta es una zona de pesca. Al atravesarla, pasar\xE1s a la pantalla de pesca."
+  - Esto es un cofre, contiene  puntos o monedas.
+  - Para obtener su contenido, dibuja la ruta de forma que pase por su lado.
   - "Despu\xE9s de pescar, la ruta contin\xFAa hasta que llegar al muelle."
   - "Entonces se mostrar\xE1n los peces que has conseguido en la ruta, la puntuaci\xF3n
     total y las monedas de recompensa."
   images:
-  - {fileID: 21300000, guid: 722515ace27b0e947853c07a127d79b8, type: 3}
-  - {fileID: 21300000, guid: 722515ace27b0e947853c07a127d79b8, type: 3}
-  - {fileID: 21300000, guid: 354a1ad8115de8145bca96a365919ba9, type: 3}
-  - {fileID: 21300000, guid: 5fccaa0e444e1f8429e9ba16e4aa1255, type: 3}
-  - {fileID: 21300000, guid: 5fccaa0e444e1f8429e9ba16e4aa1255, type: 3}
-  - {fileID: 21300000, guid: 70d269c9000ae5849a96ac09641d3350, type: 3}
+  - {fileID: 21300000, guid: 6d5638ad8f6c4b44daf98d3330dbd9c3, type: 3}
+  - {fileID: 21300000, guid: 6d5638ad8f6c4b44daf98d3330dbd9c3, type: 3}
+  - {fileID: 21300000, guid: 06db021957e90114a85e0f4b27ece172, type: 3}
+  - {fileID: 21300000, guid: dd7bf4dce89bf5d43815c6677e9088d8, type: 3}
+  - {fileID: 21300000, guid: dd7bf4dce89bf5d43815c6677e9088d8, type: 3}
+  - {fileID: 21300000, guid: 83ca2fa261031b24c9147d96b356ede7, type: 3}
   - {fileID: 21300000, guid: beac91614f55c5d498d377ed4e7b38ec, type: 3}
-  - {fileID: 21300000, guid: 74255412adfe55a4da60643606002636, type: 3}
-  - {fileID: 21300000, guid: 6fbe7c1c5918c6147be683e747ce5e0b, type: 3}
+  - {fileID: 21300000, guid: 6098da5669e9d0c4b9fcb8e84af29898, type: 3}
+  - {fileID: 21300000, guid: b4613551ec482dc4a8c8a0004edf85b9, type: 3}
+  - {fileID: 21300000, guid: 45d49793b89c49f4d8ce6cb248559155, type: 3}
+  - {fileID: 21300000, guid: d5fe6dd9726ff48418fa13e538aaf3aa, type: 3}
   fondo: {fileID: 1144207563}
   textSpeed: 0.01
   black: {fileID: 1886111728}
@@ -2190,7 +2194,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70
+  m_fontSize: 72
   m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2399,7 +2403,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70
+  m_fontSize: 72
   m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 1
