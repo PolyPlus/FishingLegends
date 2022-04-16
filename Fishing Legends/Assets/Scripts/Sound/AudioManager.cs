@@ -103,9 +103,9 @@ public class AudioManager : MonoBehaviour
             case "TutorialScene":
                 PlaySoundtrack("MenuLoop");
                 break;
-            case "LeviathanScene":
-                StartLoop("LeviatanIntro", "LeviatanLoop");
-                break;
+            //case "LeviathanScene":
+            //    StartLoop("LeviatanIntro", "LeviatanLoop");
+            //    break;
             default:
                 Debug.Log("Unknown Scene");
                 break;
@@ -137,7 +137,7 @@ public class AudioManager : MonoBehaviour
         s.source.PlayDelayed(time);
     }
 
-    private void StartLoop(string intro, string loop)
+    public void StartLoop(string intro, string loop)
     {
         Sound sIntro = Array.Find(soundtracks, sound => sound.name == intro);
         Sound sLoop = Array.Find(soundtracks, sound => sound.name == loop);
