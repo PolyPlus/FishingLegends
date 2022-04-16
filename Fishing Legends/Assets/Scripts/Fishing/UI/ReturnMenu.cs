@@ -48,6 +48,7 @@ public class ReturnMenu : MonoBehaviour
                     FishData[] d = StaticInfo.staticFishData.Concat(fishingManager.FishCaught).ToArray();
                     StaticInfo.staticFishData = d;
                 }
+                fishingManager.FishCaught = null;
             }
         }       
         fishTransition.SetBool("reloadScene", true);
