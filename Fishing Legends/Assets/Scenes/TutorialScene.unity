@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -621,7 +621,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70
+  m_fontSize: 72
   m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2319,16 +2319,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textComponent: {fileID: 262698931}
   lines:
-  - "En este men\xFA podr\xE1s realizar varias mejoras que amenizar\xE1n tu tarea
-    de pesca."
-  - "Utiliza las monedas para mejorar el barco y recorrer m\xE1s distancia, o para
-    obtener m\xE1s anzuelos."
-  - "Esta es la piscipedia. En ella podr\xE1s ver los peces que has capturado, \xA1intenta
-    conseguirlos todos!"
+  - "\xA1Te has encontrado una sombra enorme! Ten cuidado con ella, parece un pez
+    muy grande y peligroso."
+  - "Si aun as\xED quieres pescarlo, \xA1lanza la ca\xF1a y ve a por \xE9l!"
+  - "El pescado gigante te arrastrar\xE1 por el mar, tendr\xE1s que esquivar las
+    rocas. "
+  - "Para esquivarlas, pulsa con el rat\xF3n el lado de la pantalla donde te quieras
+    desplazar, \xA1ve a donde no haya ninguna roca!"
+  - "Si te golpea una roca, perder\xE1s un anzuelo. Si te quedas sin anzuelo, pierdes
+    el pez y encima no podr\xE1s pescar m\xE1s."
+  - "En cualquier momento te aparecer\xE1 un juego de ritmo, que funciona como cuando
+    pescas un pez."
+  - Hay que pulsar en la pantalla justo cuando el pez pase por el anzuelo.
+  - Si el pez aparece por la derecha, hay que pulsar por el lado derecho de la pantalla,
+    y si no por el izquierdo.
+  - "Si consigues llegar al final, \xA1Habr\xE1s conseguido el pez!"
   images:
-  - {fileID: 21300000, guid: 97515f1127d94cc46a3b0dc4d4082e29, type: 3}
-  - {fileID: 21300000, guid: 97515f1127d94cc46a3b0dc4d4082e29, type: 3}
-  - {fileID: 21300000, guid: 0f9b3f9f232477144b4c5dedda936e00, type: 3}
+  - {fileID: 21300000, guid: 8a46a542e3f476b4d85cf64326625de5, type: 3}
+  - {fileID: 21300000, guid: 8a46a542e3f476b4d85cf64326625de5, type: 3}
+  - {fileID: 21300000, guid: f85bcdc878abcf249a3b16650bd0b0bd, type: 3}
+  - {fileID: 21300000, guid: f85bcdc878abcf249a3b16650bd0b0bd, type: 3}
+  - {fileID: 21300000, guid: f85bcdc878abcf249a3b16650bd0b0bd, type: 3}
+  - {fileID: 21300000, guid: 6c3ac9ffa57869c419cbd99ed13a2002, type: 3}
+  - {fileID: 21300000, guid: 6c3ac9ffa57869c419cbd99ed13a2002, type: 3}
+  - {fileID: 21300000, guid: 6c3ac9ffa57869c419cbd99ed13a2002, type: 3}
+  - {fileID: 21300000, guid: f85bcdc878abcf249a3b16650bd0b0bd, type: 3}
   fondo: {fileID: 256698776}
   textSpeed: 0.01
   black: {fileID: 951651990}
@@ -2608,7 +2623,7 @@ GameObject:
   - component: {fileID: 2067321107}
   - component: {fileID: 2067321106}
   m_Layer: 5
-  m_Name: TutorialTienda
+  m_Name: TutorialBoss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
