@@ -28,7 +28,7 @@ public class GridManager : MonoBehaviour
     
     public GameObject treasurePanel;
     
-    public GameObject gridPoint, ballPointer;
+    public GameObject gridPoint, ballPointer, diamondPoint;
 
     public GameObject botonSalir;
 
@@ -553,12 +553,12 @@ public class GridManager : MonoBehaviour
                      
                     || indexPoints.Count == 0) && currentPositionX < _rowsColumns && currentPositionX >= 0 && currentPositionY < _rowsColumns && currentPositionY >= 0 && blockType[currentPositionX,currentPositionY] <= 1 )
                 {
-                    ballPointer.transform.position = newPoint;
+                    diamondPoint.transform.position = newPoint;
 
                     //  Debug.Log(gridPoint.transform.position);
                     if (inHold && indexPoints.Count <= maxFuel )
                     {
-
+                        Instantiate(diamondPoint, newPoint, gridPoint.transform.rotation);
                         GameObject cloned = Instantiate(gridPoint, indexPoints.ElementAt(indexPoints.Count-1), gridPoint.transform.rotation);
                         cloned.transform.LookAt(newPoint);
                         //selectedPositions[currentPositionX, currentPositionY] = true;
