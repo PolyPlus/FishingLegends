@@ -7,6 +7,7 @@ public class BoatMovement : MonoBehaviour
     public float speed;
     public Vector3 target;
     public BossFightManager bossFightManager;
+    public GameObject player;
 
     private int pos;
     private bool atTarget;
@@ -15,6 +16,10 @@ public class BoatMovement : MonoBehaviour
     private void Awake()
     {
         gameObject.GetComponent<Renderer>().material.renderQueue = 1998;
+        for (int i = 0; i < player.GetComponent<Renderer>().sharedMaterials.Length; i++)
+        {
+            player.GetComponent<Renderer>().sharedMaterials[i].renderQueue = 1998;
+        }
     }
 
     private void Start()

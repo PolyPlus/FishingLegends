@@ -4319,6 +4319,7 @@ MonoBehaviour:
   speed: 15
   target: {x: 0, y: 0, z: 0}
   bossFightManager: {fileID: 578494203}
+  player: {fileID: 8084075765303938831}
 --- !u!54 &976193372549003238
 Rigidbody:
   m_ObjectHideFlags: 0
