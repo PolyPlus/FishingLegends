@@ -728,7 +728,7 @@ public class GridManager : MonoBehaviour
                             }
                             if (validPosition)
                             {
-                                if (!leviatanSpawned && Random.Range(1,60) <= 2)
+                                if (!leviatanSpawned && Random.Range(1,60) <= 2 && PlayerPrefs.GetInt(StaticInfo.tutorialFishKey,0) == 1)
                                 {
                                     leviatanSpawned = true;
                                     blockType[i,j] = -2;
