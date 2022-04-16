@@ -715,7 +715,7 @@ public class GridManager : MonoBehaviour
                             }
                             if (validPosition)
                             {
-                                if (!leviatanSpawned && Random.Range(1,30 ) <= 4)
+                                if (!leviatanSpawned && Random.Range(1,60) <= 2)
                                 {
                                     leviatanSpawned = true;
                                     blockType[i,j] = -2;
