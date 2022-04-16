@@ -103,6 +103,9 @@ public class AudioManager : MonoBehaviour
             case "TutorialScene":
                 PlaySoundtrack("MenuLoop");
                 break;
+            case "LeviathanScene":
+                StartLoop("LeviatanIntro", "LeviatanLoop");
+                break;
             default:
                 Debug.Log("Unknown Scene");
                 break;
