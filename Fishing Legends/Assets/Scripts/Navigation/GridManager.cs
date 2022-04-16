@@ -319,11 +319,12 @@ public class GridManager : MonoBehaviour
         }
         else
         {
-           // indexPoints = StaticInfo.indexPoints;
-           //GameObject.Find("FlechaCasa").SetActive(false);
-           //GameObject.Find("FlechaBote ").SetActive(false);
-            botonAtras.GetComponent<Image>().enabled = true;
-            botonAtras.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
+            // indexPoints = StaticInfo.indexPoints;
+            //GameObject.Find("FlechaCasa").SetActive(false);
+            //GameObject.Find("FlechaBote ").SetActive(false);
+            //botonAtras.GetComponent<Image>().enabled = true;
+            //botonAtras.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
+            salirRuta.SetActive(true);
             botonSalir.SetActive(false);
             flechaBote.SetActive(false);
             flechaCasa.SetActive(false);
