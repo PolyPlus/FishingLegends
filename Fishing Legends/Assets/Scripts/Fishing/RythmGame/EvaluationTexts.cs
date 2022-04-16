@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class EvaluationTexts : MonoBehaviour
 {
-    public Text ExcelenteText;
-    public Text BienText;
-    public Text MalText;
+    public TextMeshProUGUI ExcelenteText;
+    public TextMeshProUGUI BienText;
+    public TextMeshProUGUI MalText;
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +39,7 @@ public class EvaluationTexts : MonoBehaviour
         }
     }
 
-    private IEnumerator showEvaluationText(Text text)
+    private IEnumerator showEvaluationText(TextMeshProUGUI text)
     {
         Color c = text.color;
         c.a = 1;
