@@ -125,6 +125,11 @@ MonoBehaviour:
     volume: 0.538
     source: {fileID: 0}
     outputMixer: {fileID: 8175875374606695600, guid: db35175ae1ef9cf45bd391e211343bbe, type: 2}
+  - name: BoatSmash
+    clip: {fileID: 8300000, guid: dc1ee9d3b99113c4c85dc13768f5d2be, type: 3}
+    volume: 0.538
+    source: {fileID: 0}
+    outputMixer: {fileID: 8175875374606695600, guid: db35175ae1ef9cf45bd391e211343bbe, type: 2}
   soundtracks:
   - name: MenuLoop
     clip: {fileID: 8300000, guid: 88b5f217330a3574588fbb249000ae2e, type: 3}

@@ -8,6 +8,7 @@ public class BoatMovement : MonoBehaviour
     public Vector3 target;
     public BossFightManager bossFightManager;
     public GameObject player;
+    public Animator playerAnimator;
 
     private int pos;
     private bool atTarget;
@@ -100,8 +101,9 @@ public class BoatMovement : MonoBehaviour
         if (other.gameObject.tag == "Obstacle")
         {
             other.GetComponent<ObstacleMovement>().Hit();
+            playerAnimator.Play("Hit");
             Debug.Log("Golpe");
-            bossFightManager.UseLure();
+            bossFightManager.UseLure();           
         }
     }
 }

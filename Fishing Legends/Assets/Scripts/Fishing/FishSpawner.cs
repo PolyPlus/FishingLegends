@@ -58,11 +58,7 @@ public class FishSpawner : MonoBehaviour
         for(int i = 0; i < fishPrefabs.Count; i++)
         {
             int commonality = fishPrefabs[i].GetComponent<FishData>().Commonality;
-            if(commonality <= 20)
-            {
-                commonality += (int)StaticInfo.probabilityByDistance;
-            }
-            Debug.Log(fishPrefabs[i] + " Commonality: " + commonality);
+            commonality += (int)StaticInfo.probabilityByDistance / 2;
             fishWeights[i] = commonality;
         }
     }
@@ -75,6 +71,7 @@ public class FishSpawner : MonoBehaviour
         {
             sumWeight += choices[i];
         }
+        Debug.Log("Total weight " + sumWeight);
         //Se escoge un valor aleatorio entre 0 y el valor de la suma anterior
         int rnd = Random.Range(0, sumWeight);
         //Se recorre la lista de pesos hasta encontrar un peso inferior al valor aleatorio.
