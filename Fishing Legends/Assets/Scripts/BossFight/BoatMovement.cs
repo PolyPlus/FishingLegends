@@ -12,6 +12,11 @@ public class BoatMovement : MonoBehaviour
     private bool atTarget;
     private Vector3 startPosition;
 
+    private void Awake()
+    {
+        gameObject.GetComponent<Renderer>().material.renderQueue = 1998;
+    }
+
     private void Start()
     {
         pos = 1;

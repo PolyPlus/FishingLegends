@@ -3369,7 +3369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ExcelenteText: {fileID: 286823215}
-  BienText: {fileID: 286823215}
+  BienText: {fileID: 918969609}
   MalText: {fileID: 1030539338}
 --- !u!114 &2034373478
 MonoBehaviour:
