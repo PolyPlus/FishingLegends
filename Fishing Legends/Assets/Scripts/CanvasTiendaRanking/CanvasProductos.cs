@@ -33,7 +33,7 @@ public class CanvasProductos : MonoBehaviour {
         {
             botonAnzuelo.interactable = false;
         }
-        if (PlayerPrefs.GetInt(StaticInfo.nivelBarcoKey, 1) == 3)
+        if (PlayerPrefs.GetInt(StaticInfo.nivelBarcoKey, 1) == 4)
         {
             botonBarco.interactable = false;
         }
@@ -43,7 +43,7 @@ public class CanvasProductos : MonoBehaviour {
     {
         AudioManager.instance.PlaySound("ButtonSelected");
 
-        if (nivelBarco < 3)
+        if (nivelBarco < 4)
         {
             // Por ejemplo si mejora vale 1000 se hace monedas -= nivelBarco*1000;
             int m = monedas - nivelBarco * 1000;
@@ -69,7 +69,7 @@ public class CanvasProductos : MonoBehaviour {
             precioBarco.text = "" + (nivelBarco * 1000);
             panelPrincipal.textoMonedas.text = "" + monedas;
         }
-        else if (nivelBarco == 3)
+        else if (nivelBarco == 4)
         {
             botonBarco.interactable = false;
         }

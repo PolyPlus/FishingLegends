@@ -163,7 +163,11 @@ public class GridManager : MonoBehaviour
                 maxFuel = 40;
                 boatResistence.text = "Resistencia: 40";
                 break;
-                
+            case 4:
+                maxFuel = 50;
+                boatResistence.text = "Resistencia: 50";
+                break;
+
         }
         
         grid = GameObject.Find("Grid");
