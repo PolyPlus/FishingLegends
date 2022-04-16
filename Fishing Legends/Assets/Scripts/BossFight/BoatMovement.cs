@@ -100,6 +100,7 @@ public class BoatMovement : MonoBehaviour
     {
         if (other.gameObject.tag == "Obstacle")
         {
+            AudioManager.instance.PlaySound("BoatSmash");
             other.GetComponent<ObstacleMovement>().Hit();
             playerAnimator.Play("Hit");
             Debug.Log("Golpe");

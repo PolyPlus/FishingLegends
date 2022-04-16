@@ -117,6 +117,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishName: 
   size: 0
-  points: 800
+  points: 500
   commonality: 10
   id: 10
