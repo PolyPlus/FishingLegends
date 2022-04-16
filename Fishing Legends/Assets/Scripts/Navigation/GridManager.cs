@@ -15,7 +15,7 @@ using Random = UnityEngine.Random;
 public class GridManager : MonoBehaviour
 {
     #region Variables
-
+    public RouteArrow flechaDerecha, flechaIzda, flechaAbajo, flechaArriba;
     public GameObject leviathan;
     
     public Sprite coinTexture;
@@ -540,41 +540,45 @@ public class GridManager : MonoBehaviour
             }
             else
             {
-                currentPositionX = ((int) (_rowsColumns * (_a.point.x - min.x) / (max.x - min.x)));
-                currentPositionY = ((int) (_rowsColumns * (_a.point.z - min.z) / (max.z - min.z)));
-                //_a.collider.gameObject
-                Vector3 newPoint = TransformIdToGrid(currentPositionX, currentPositionY, _a.point);
-                newPoint.y = 1.7f;
-
-                if (((
-                    ((currentPositionY == lastPositionY + 1 || currentPositionY == lastPositionY - 1) &&
-                    currentPositionX == lastPositionX) ||
-                      
-                    ((currentPositionX == lastPositionX + 1 || currentPositionX == lastPositionX - 1) &&
-                    currentPositionY == lastPositionY)) 
-                     
-                    || indexPoints.Count == 0) && currentPositionX < _rowsColumns && currentPositionX >= 0 && currentPositionY < _rowsColumns && currentPositionY >= 0 && blockType[currentPositionX,currentPositionY] <= 1 )
+                if (!(flechaAbajo.pointerOver || flechaArriba.pointerOver || flechaDerecha.pointerOver|| flechaIzda.pointerOver))
                 {
-                    diamondPoint.transform.position = newPoint;
+                    currentPositionX = ((int) (_rowsColumns * (_a.point.x - min.x) / (max.x - min.x)));
+                    currentPositionY = ((int) (_rowsColumns * (_a.point.z - min.z) / (max.z - min.z)));
+                    //_a.collider.gameObject
+                    Vector3 newPoint = TransformIdToGrid(currentPositionX, currentPositionY, _a.point);
+                    newPoint.y = 1.7f;
 
-                    //  Debug.Log(gridPoint.transform.position);
-                    if (inHold && indexPoints.Count <= maxFuel )
+                    if (((
+                        ((currentPositionY == lastPositionY + 1 || currentPositionY == lastPositionY - 1) &&
+                        currentPositionX == lastPositionX) ||
+                          
+                        ((currentPositionX == lastPositionX + 1 || currentPositionX == lastPositionX - 1) &&
+                        currentPositionY == lastPositionY)) 
+                         
+                        || indexPoints.Count == 0) && currentPositionX < _rowsColumns && currentPositionX >= 0 && currentPositionY < _rowsColumns && currentPositionY >= 0 && blockType[currentPositionX,currentPositionY] <= 1 )
                     {
-                        GameObject diamond = Instantiate(diamondPoint, newPoint, gridPoint.transform.rotation);
-                        GameObject cloned = Instantiate(gridPoint, indexPoints.ElementAt(indexPoints.Count-1), gridPoint.transform.rotation);
-                        cloned.transform.LookAt(newPoint);
-                        //selectedPositions[currentPositionX, currentPositionY] = true;
-                        lastPositionX = currentPositionX;
-                        lastPositionY = currentPositionY;
-                        indexPoints.AddLast(newPoint);
-                        gridPointList.AddLast(cloned);
-                        gridPointDiamondsList.AddLast(diamond);
-                        boatResistence.text = "Resistencia : " + (maxFuel - gridPointList.Count);
-                        // Debug.Log(indexPoints.Count);
-                        //curvePoints.AddLast(new Vector2(cloned.transform.position.x,,))
+                        diamondPoint.transform.position = newPoint;
 
+                        //  Debug.Log(gridPoint.transform.position);
+                        if (inHold && indexPoints.Count <= maxFuel )
+                        {
+                            GameObject diamond = Instantiate(diamondPoint, newPoint, gridPoint.transform.rotation);
+                            GameObject cloned = Instantiate(gridPoint, indexPoints.ElementAt(indexPoints.Count-1), gridPoint.transform.rotation);
+                            cloned.transform.LookAt(newPoint);
+                            //selectedPositions[currentPositionX, currentPositionY] = true;
+                            lastPositionX = currentPositionX;
+                            lastPositionY = currentPositionY;
+                            indexPoints.AddLast(newPoint);
+                            gridPointList.AddLast(cloned);
+                            gridPointDiamondsList.AddLast(diamond);
+                            boatResistence.text = "Resistencia : " + (maxFuel - gridPointList.Count);
+                            // Debug.Log(indexPoints.Count);
+                            //curvePoints.AddLast(new Vector2(cloned.transform.position.x,,))
+
+                        }
                     }
                 }
+               
             }
             
             

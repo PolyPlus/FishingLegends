@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
@@ -17,14 +18,15 @@ public class CameraMovementController : MonoBehaviour
     private bool hold;
     private ClickController cc;
 
-    public GameObject flechaDerecha;
-    public GameObject flechaIzda;
-    public GameObject flechaAbajo;
-    public GameObject flechaArriba;
+    public RouteArrow flechaDerecha;
+    public RouteArrow flechaIzda;
+    public RouteArrow flechaAbajo;
+    public RouteArrow flechaArriba;
     public Collider gridcol;
 
     private Camera _camera;
     
+
     private void Awake()
     {
        
@@ -36,26 +38,26 @@ public class CameraMovementController : MonoBehaviour
     {
         cc.Enable();
         if (flechaAbajo != null)
-            flechaAbajo.SetActive(true);
+            flechaAbajo.gameObject.SetActive(true);
         if (flechaArriba != null)
-            flechaArriba.SetActive(true);
+            flechaArriba.gameObject.SetActive(true);
         if (flechaDerecha != null)
-            flechaDerecha.SetActive(true);
+            flechaDerecha.gameObject.SetActive(true);
         if (flechaIzda != null)
-            flechaIzda.SetActive(true);
+            flechaIzda.gameObject.SetActive(true);
     }
 
     private void OnDisable()
     {
         cc.Disable(); 
         if (flechaAbajo != null)
-            flechaAbajo.SetActive(false);
+            flechaAbajo.gameObject.SetActive(false);
         if (flechaArriba != null)
-            flechaArriba.SetActive(false);
+            flechaArriba.gameObject.SetActive(false);
         if (flechaDerecha != null)
-            flechaDerecha.SetActive(false);
+            flechaDerecha.gameObject.SetActive(false);
         if (flechaIzda != null)
-            flechaIzda.SetActive(false);
+            flechaIzda.gameObject.SetActive(false);
     }
 
     // Start is called before the first frame update
@@ -80,22 +82,28 @@ public class CameraMovementController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
+
         if (hold)
         {
+            
             _ray = _camera.ScreenPointToRay(new Vector3(Screen.width/2,Screen.height/2));
        
             Vector3 lastpos  = transform.position;
-            if (Pointer.current.position.ReadValue().x >= Screen.width - offset)
+
+           
+           
+            
+            if ( flechaDerecha.pointerOver)
             {
-                    
                 transform.position += mRightDirection * Time.deltaTime * speed;
-            }else if (Pointer.current.position.ReadValue().x <= offset)
+            }else if (flechaIzda.pointerOver)
             {
                 transform.position += mLeftDirection * Time.deltaTime * speed;
-            } else if (Pointer.current.position.ReadValue().y >= Screen.height - offset)
+            } else if (flechaArriba.pointerOver )
             {
                 transform.position += mUpDirection * Time.deltaTime * speed;
-            } else if (Pointer.current.position.ReadValue().y <= offset)
+            } else if (flechaAbajo.pointerOver)
             {
                 transform.position += mDownDirection * Time.deltaTime * speed;
             }
@@ -116,4 +124,5 @@ public class CameraMovementController : MonoBehaviour
        
         
     }
+    
 }

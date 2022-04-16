@@ -3159,6 +3159,7 @@ GameObject:
   - component: {fileID: 822968015}
   - component: {fileID: 822968017}
   - component: {fileID: 822968016}
+  - component: {fileID: 822968018}
   m_Layer: 5
   m_Name: FlechaArriba
   m_TagString: Untagged
@@ -3223,6 +3224,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 822968014}
   m_CullTransparentMesh: 1
+--- !u!114 &822968018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822968014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5cc6a793f386747b8058d68dbc3752, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointerOver: 0
 --- !u!1 &845538703
 GameObject:
   m_ObjectHideFlags: 0
@@ -3568,10 +3582,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e75df50e3b8092943b1eae166a293010, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flechaDerecha: {fileID: 1093092026}
-  flechaIzda: {fileID: 1864941041}
-  flechaAbajo: {fileID: 2000430091}
-  flechaArriba: {fileID: 822968014}
+  flechaDerecha: {fileID: 1093092030}
+  flechaIzda: {fileID: 1864941045}
+  flechaAbajo: {fileID: 2000430095}
+  flechaArriba: {fileID: 822968018}
   gridcol: {fileID: 1457806197}
 --- !u!20 &963194227
 Camera:
@@ -4188,6 +4202,7 @@ GameObject:
   - component: {fileID: 1093092027}
   - component: {fileID: 1093092029}
   - component: {fileID: 1093092028}
+  - component: {fileID: 1093092030}
   m_Layer: 5
   m_Name: FlechaDerecha
   m_TagString: Untagged
@@ -4252,6 +4267,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1093092026}
   m_CullTransparentMesh: 1
+--- !u!114 &1093092030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093092026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5cc6a793f386747b8058d68dbc3752, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointerOver: 0
 --- !u!1 &1093661750
 GameObject:
   m_ObjectHideFlags: 0
@@ -6197,8 +6225,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1592003829}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 78, y: 1.2, z: 54.3}
-  m_LocalScale: {x: 22.682, y: 1.1341, z: 22.682}
+  m_LocalPosition: {x: 78, y: 1.2, z: 54.2574}
+  m_LocalScale: {x: 22.682, y: 1.1341, z: 28.262644}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
@@ -6215,6 +6243,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 193e2992d113b8a4c9c50e453302fe19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flechaDerecha: {fileID: 1093092030}
+  flechaIzda: {fileID: 1864941045}
+  flechaAbajo: {fileID: 2000430095}
+  flechaArriba: {fileID: 822968018}
   leviathan: {fileID: 2073484882}
   coinTexture: {fileID: 21300000, guid: fea911a48d14b4a4daa50258d937b7a7, type: 3}
   baitTexture: {fileID: 21300000, guid: 8aacd1d2bad151143aab4291b2dddee5, type: 3}
@@ -6976,6 +7008,7 @@ GameObject:
   - component: {fileID: 1864941042}
   - component: {fileID: 1864941044}
   - component: {fileID: 1864941043}
+  - component: {fileID: 1864941045}
   m_Layer: 5
   m_Name: FlechaIzda
   m_TagString: Untagged
@@ -7040,6 +7073,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1864941041}
   m_CullTransparentMesh: 1
+--- !u!114 &1864941045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1864941041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5cc6a793f386747b8058d68dbc3752, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointerOver: 0
 --- !u!1 &1893530297
 GameObject:
   m_ObjectHideFlags: 0
@@ -7208,8 +7254,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1909368187}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 80.263, y: -12.4, z: 54.4013}
-  m_LocalScale: {x: 232.33519, y: 2.1455193, z: 231.19374}
+  m_LocalPosition: {x: 80.263, y: -12.4, z: 59.6211}
+  m_LocalScale: {x: 232.33519, y: 2.1455193, z: 332.46716}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 16
@@ -7593,6 +7639,7 @@ GameObject:
   - component: {fileID: 2000430092}
   - component: {fileID: 2000430094}
   - component: {fileID: 2000430093}
+  - component: {fileID: 2000430095}
   m_Layer: 5
   m_Name: FlechaAbajo
   m_TagString: Untagged
@@ -7657,6 +7704,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2000430091}
   m_CullTransparentMesh: 1
+--- !u!114 &2000430095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2000430091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5cc6a793f386747b8058d68dbc3752, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointerOver: 0
 --- !u!1001 &2015113931
 PrefabInstance:
   m_ObjectHideFlags: 0
