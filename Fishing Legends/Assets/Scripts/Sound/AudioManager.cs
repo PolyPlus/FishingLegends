@@ -58,10 +58,8 @@ public class AudioManager : MonoBehaviour
 
     public void Start()
     {
-        if(PlayerPrefs.HasKey(StaticInfo.volMusicKey))
-            SetVolumeMusic(PlayerPrefs.GetFloat(StaticInfo.volMusicKey));
-        if (PlayerPrefs.HasKey(StaticInfo.volSoundsKey))
-            SetVolumeSounds(PlayerPrefs.GetFloat(StaticInfo.volSoundsKey));
+        SetVolumeMusic(PlayerPrefs.GetFloat(StaticInfo.volMusicKey, 0.0f));
+        SetVolumeSounds(PlayerPrefs.GetFloat(StaticInfo.volSoundsKey, 0.0f));
         this.PlayAtStartScene(SceneManager.GetActiveScene().name);
     }
 
@@ -151,36 +149,36 @@ public class AudioManager : MonoBehaviour
     }
     #endregion
 
-    public IEnumerator FadeMusicCoroutine(bool toSilent)
-    {
-        float vol, volTarget;
-        AudioMixer mixer = AudioManager.instance.mixer;
-        mixer.GetFloat("MusicVolume", out vol);
-        volTarget = (toSilent) ? -40 : GameManager.GetInstance().volumeMusic;
-        float inc = (toSilent) ? ((volTarget - Mathf.Abs(vol)) / 100) : Mathf.Abs((volTarget - Mathf.Abs(vol)) / 100);
-        if (toSilent)
-        {
-            while (vol >= volTarget)
-            {
-                mixer.SetFloat("MusicVolume", vol + inc);
-                yield return new WaitForSeconds(0.01f);
-                mixer.GetFloat("MusicVolume", out vol);
-            }
-        }
-        else
-        {
-            while (vol <= volTarget)
-            {
-                mixer.SetFloat("MusicVolume", vol + inc);
-                yield return new WaitForSeconds(0.01f);
-                mixer.GetFloat("MusicVolume", out vol);
-            }
-        }
-    }
+    //public IEnumerator FadeMusicCoroutine(bool toSilent)
+    //{
+    //    //float vol, volTarget;
+    //    //AudioMixer mixer = AudioManager.instance.mixer;
+    //    //mixer.GetFloat("MusicVolume", out vol);
+    //    //volTarget = (toSilent) ? -40 : GameManager.GetInstance().volumeMusic;
+    //    //float inc = (toSilent) ? ((volTarget - Mathf.Abs(vol)) / 100) : Mathf.Abs((volTarget - Mathf.Abs(vol)) / 100);
+    //    //if (toSilent)
+    //    //{
+    //    //    while (vol >= volTarget)
+    //    //    {
+    //    //        mixer.SetFloat("MusicVolume", vol + inc);
+    //    //        yield return new WaitForSeconds(0.01f);
+    //    //        mixer.GetFloat("MusicVolume", out vol);
+    //    //    }
+    //    //}
+    //    //else
+    //    //{
+    //    //    while (vol <= volTarget)
+    //    //    {
+    //    //        mixer.SetFloat("MusicVolume", vol + inc);
+    //    //        yield return new WaitForSeconds(0.01f);
+    //    //        mixer.GetFloat("MusicVolume", out vol);
+    //    //    }
+    //    //}
+    //}
 
     public void FadeMusic(bool toSilent)
     {
-        StartCoroutine(FadeMusicCoroutine(toSilent));
+        //StartCoroutine(FadeMusicCoroutine(toSilent));
     }
 
 }
