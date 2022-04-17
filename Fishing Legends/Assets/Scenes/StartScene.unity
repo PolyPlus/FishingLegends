@@ -2408,7 +2408,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 433090349}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c26ca0f05c800aa4a8fd6426aa5bfced, type: 3}
+  m_Script: {fileID: 11500000, guid: d199490a83bb2b844b9695cbf13b01ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -2449,7 +2449,7 @@ MonoBehaviour:
   m_LineType: 0
   m_HideMobileInput: 0
   m_CharacterValidation: 3
-  m_CharacterLimit: 0
+  m_CharacterLimit: 12
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls: []
@@ -2464,10 +2464,6 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_ShouldActivateOnSelect: 1
-  m_DialogTitle: Input Text
-  m_DialogOkBtn: OK
-  m_DialogCancelBtn: Cancel
-  m_DialogType: 1
 --- !u!114 &433090352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4742,7 +4738,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &941959673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7649,7 +7645,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1406615217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7846,7 +7842,7 @@ MonoBehaviour:
   ContactCanvas: {fileID: 888243901}
   TutorialCanvas: {fileID: 352792210}
   NameCanvas: {fileID: 941959675}
-  usernameL: {fileID: 0}
+  usernameL: {fileID: 433090351}
   passwordL: {fileID: 772436328}
   black: {fileID: 1526574050}
   usernameS: {fileID: 1640974405}
