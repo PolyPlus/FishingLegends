@@ -176,40 +176,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textComponent: {fileID: 1494421773}
   lines:
-  - "Arriba a la izquierda se muestra el n\xFAmero de anzuelos que te quedan."
   - "Para pescar, pulsa el rat\xF3n para lanzar la ca\xF1a y espera a que se acerque
     alg\xFAn pez. "
   - "El pez comenzar\xE1 a tocar el anzuelo varias veces, hasta que pique. Cuando
     pique, vuelve a pulsar el rat\xF3n."
   - "Entonces dar\xE1 comienzo el juego de ritmo en el que aparecer\xE1n peces en
     la parte superior de la pantalla."
-  - Hay que pulsar la pantalla justo cuando un pez pase por el anzuelo. Si el pez
-    viene por la derecha, hay que pulsar la mitad derecha de la pantalla.
-  - "Si viene por la izquierda, la mitad izquierda de la pantalla. Seg\xFAn lo cerca
-    que est\xE9 el pez del anzuelo, recibir\xE1s m\xE1s o menos puntos."
-  - "Si aciertas todos los peces del juego de ritmo, podr\xE1s seguir pescando. Cada
-    vez que saques peces del agua, perder\xE1s un anzuelo."
-  - "Si mantienes la ca\xF1a en el agua, puede formarse un combo y picar m\xE1s peces.
-    La dificultad aumenta conforme m\xE1s peces piquen, pero tambi\xE9n dar\xE1n
+  - 'Hay que pulsar la pantalla justo cuando un pez pase por el anzuelo. '
+  - 'Si el pez viene por la derecha, hay que pulsar la mitad derecha de la pantalla.
+    Si viene por la izquierda, la mitad izquierda. '
+  - "Seg\xFAn lo cerca que est\xE9 el pez del anzuelo, recibir\xE1s m\xE1s o menos
+    puntos."
+  - "Arriba a la izquierda se muestra el n\xFAmero de anzuelos que te quedan."
+  - "Cada vez que saques peces del agua, perder\xE1s un anzuelo."
+  - "Si mantienes la ca\xF1a en el agua, puede formarse un combo y picar m\xE1s peces."
+  - "La dificultad aumenta conforme m\xE1s peces piquen, pero tambi\xE9n dar\xE1n
     m\xE1s puntos."
-  - "Adem\xE1s, s\xF3lo perder\xE1s un anzuelo cuando hayas sacado la ca\xF1a, por
-    lo que podr\xE1s aprovechar el combo para pescar m\xE1s peces sin perder tantos
-    anzuelos."
+  - "Adem\xE1s, puedes aprovechar el combo para pescar m\xE1s peces con un solo anzuelo."
   - "Si fallas en el juego de ritmo, todos los peces del combo se ir\xE1n. Puedes
     sacar la ca\xF1a cuando quieras pulsando el rat\xF3n."
   - "Al sacar la ca\xF1a, se mostrar\xE1n los peces que has conseguido pescar."
   images:
-  - {fileID: 21300000, guid: 13228bd56325a0348a9fd67eb18a5db6, type: 3}
   - {fileID: 21300000, guid: 35be5d7802a4a454b8b4c5baf204510f, type: 3}
   - {fileID: 21300000, guid: 3bf2b0d0f8f3eb448b634867fa16fb42, type: 3}
   - {fileID: 21300000, guid: 253de087702142f4498b544230e67331, type: 3}
   - {fileID: 21300000, guid: 253de087702142f4498b544230e67331, type: 3}
   - {fileID: 21300000, guid: 89e570e72417e6c47b7b631c2cf6f0ed, type: 3}
+  - {fileID: 21300000, guid: dfe3e70d63bd60946b0f646a553ba95d, type: 3}
+  - {fileID: 21300000, guid: a7babdaa4e8a60e46ad1fc34ed3b66ce, type: 3}
   - {fileID: 21300000, guid: 406cebb36415bde4881196a1f5fce638, type: 3}
   - {fileID: 21300000, guid: 23d6918cfb3d48442974ea6ade7a8f8f, type: 3}
   - {fileID: 21300000, guid: 23d6918cfb3d48442974ea6ade7a8f8f, type: 3}
+  - {fileID: 21300000, guid: 23d6918cfb3d48442974ea6ade7a8f8f, type: 3}
   - {fileID: 21300000, guid: 406cebb36415bde4881196a1f5fce638, type: 3}
-  - {fileID: 21300000, guid: 621bc3f0afb6c9f479d30b5121b73929, type: 3}
+  - {fileID: 21300000, guid: 85fffb7f619be56489c5d107cdc3b533, type: 3}
   fondo: {fileID: 1734837881}
   textSpeed: 0.01
   black: {fileID: 1893732108}
@@ -486,7 +486,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 239463671}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -494,9 +494,9 @@ RectTransform:
   m_Father: {fileID: 387302127}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -200.00006, y: -80.00009}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 600, y: -50}
   m_SizeDelta: {x: 240, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &239463673
@@ -568,7 +568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6, g: 0.4392157, b: 0.32156864, a: 1}
+  m_Color: {r: 0.2509804, g: 0.5254902, b: 0.57254905, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -725,7 +725,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: "Si te golpea una roca, perder\xE1s un anzuelo. Si te quedas sin anzuelos,
+    la criatura se escapar\xE1 y no podr\xE1s continuar pescando."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -752,12 +753,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 64
   m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 64
   m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
@@ -1133,24 +1134,25 @@ MonoBehaviour:
   - "Dibuja la ruta deseada con el rat\xF3n. Es importante que la ruta empiece y
     acabe en el barco. "
   - "La resistencia determina la distancia m\xE1xima que puedes recorrer."
+  - "En el mapa aparecer\xE1n bancos de peces, que debes atravesar para comenzar
+    a pescar."
+  - "Tambi\xE9n pueden aparecer cofres con anzuelos o monedas en su interior."
+  - Para obtener su contenido, dibuja la ruta de forma que pase por su lado.
   - "Una vez hayas dibujado la ruta, pulsa en el bot\xF3n \"Empezar ruta\" para comenzar
     el viaje."
-  - "Esta es una zona de pesca. Al atravesarla, pasar\xE1s a la pantalla de pesca."
-  - Esto es un cofre, contiene  anzuelos o monedas.
-  - Para obtener su contenido, dibuja la ruta de forma que pase por su lado.
   - "Despu\xE9s de pescar, la ruta contin\xFAa hasta que llegar al muelle."
-  - "Entonces se mostrar\xE1n los peces que has conseguido en la ruta, la puntuaci\xF3n
-    total y las monedas de recompensa."
+  - "Entonces se mostrar\xE1n los peces capturados, la puntuaci\xF3n total y las
+    monedas de recompensa."
   images:
-  - {fileID: 21300000, guid: 6d5638ad8f6c4b44daf98d3330dbd9c3, type: 3}
-  - {fileID: 21300000, guid: 6d5638ad8f6c4b44daf98d3330dbd9c3, type: 3}
-  - {fileID: 21300000, guid: 06db021957e90114a85e0f4b27ece172, type: 3}
-  - {fileID: 21300000, guid: dd7bf4dce89bf5d43815c6677e9088d8, type: 3}
-  - {fileID: 21300000, guid: dd7bf4dce89bf5d43815c6677e9088d8, type: 3}
-  - {fileID: 21300000, guid: 83ca2fa261031b24c9147d96b356ede7, type: 3}
+  - {fileID: 21300000, guid: 90852c4ca86274c4799ea3a130f288d5, type: 3}
+  - {fileID: 21300000, guid: 90852c4ca86274c4799ea3a130f288d5, type: 3}
+  - {fileID: 21300000, guid: c8419b3f094d2904ca861a27329e9e2d, type: 3}
+  - {fileID: 21300000, guid: c8419b3f094d2904ca861a27329e9e2d, type: 3}
+  - {fileID: 21300000, guid: c8419b3f094d2904ca861a27329e9e2d, type: 3}
   - {fileID: 21300000, guid: 72863f09fbcf816468beea807d7e1fa0, type: 3}
   - {fileID: 21300000, guid: fec3ed9e85f980a4798b638cec6b6f7c, type: 3}
   - {fileID: 21300000, guid: b4613551ec482dc4a8c8a0004edf85b9, type: 3}
+  - {fileID: 21300000, guid: 83ca2fa261031b24c9147d96b356ede7, type: 3}
   - {fileID: 21300000, guid: 45d49793b89c49f4d8ce6cb248559155, type: 3}
   - {fileID: 21300000, guid: d5fe6dd9726ff48418fa13e538aaf3aa, type: 3}
   fondo: {fileID: 1144207563}
@@ -1220,7 +1222,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 947873452}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1228,9 +1230,9 @@ RectTransform:
   m_Father: {fileID: 1694218948}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -199.99994, y: -80.00006}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 600, y: -50}
   m_SizeDelta: {x: 240, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &947873454
@@ -1302,7 +1304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6, g: 0.4392157, b: 0.32156864, a: 1}
+  m_Color: {r: 0.2509804, g: 0.5254902, b: 0.57254905, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1682,7 +1684,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1240864120}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1690,9 +1692,9 @@ RectTransform:
   m_Father: {fileID: 2067321109}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -200.00006, y: -80.00009}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 600, y: -50}
   m_SizeDelta: {x: 240, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1240864122
@@ -1764,7 +1766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6, g: 0.4392157, b: 0.32156864, a: 1}
+  m_Color: {r: 0.2509804, g: 0.5254902, b: 0.57254905, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1995,16 +1997,16 @@ MonoBehaviour:
   - "\xA1Esta es la tienda! En ella podr\xE1s realizar diferentes acciones gracias
     a las monedas que has conseguido pescando."
   - "Puedes mejorar el barco, lo que te permitir\xE1 recorrer m\xE1s distancia. Tambi\xE9n
-    puedes comprar m\xE1s anzuelos con los que pescar peces."
+    puedes comprar m\xE1s anzuelos."
   - "\xA1Esta es la piscipedia! En ella se registrar\xE1n todos los peces que vas
-    pescando, \xA1intenta conseguirlos todos!"
+    pescando. \xA1Intenta conseguirlos todos!"
   - "Este es el club de pesca. En \xE9l se encuentra el ranking con las puntuaciones
-    de cada jugador. \xA1Ve a por el primer puesto!"
+    de cada pescador. \xA1Ve a por el primer puesto!"
   images:
-  - {fileID: 21300000, guid: 0d9c37627bf7643408efe7afa1bb7e51, type: 3}
-  - {fileID: 21300000, guid: 0d9c37627bf7643408efe7afa1bb7e51, type: 3}
-  - {fileID: 21300000, guid: e3d60695451bf444ea7057bc53182103, type: 3}
-  - {fileID: 21300000, guid: 9d5324ceba906eb42ae2c5dbbd8896a2, type: 3}
+  - {fileID: 21300000, guid: 266492b1e3aa7e547a10ca1f1ebceec7, type: 3}
+  - {fileID: 21300000, guid: 266492b1e3aa7e547a10ca1f1ebceec7, type: 3}
+  - {fileID: 21300000, guid: ee50bd2c830042d4d9bbe964f4b55fdb, type: 3}
+  - {fileID: 21300000, guid: b4612ac7383885d42a758a2dd256ccb3, type: 3}
   fondo: {fileID: 1794520744}
   textSpeed: 0.01
   black: {fileID: 2054241565}
@@ -2284,12 +2286,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 64
   m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 64
   m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
@@ -2470,7 +2472,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 'Si el pez viene por la derecha, hay que pulsar la mitad derecha de la
+    pantalla. Si viene por la izquierda, la mitad izquierda. '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2497,12 +2500,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 64
   m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 64
   m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
@@ -2600,23 +2603,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textComponent: {fileID: 262698931}
   lines:
-  - "\xA1Te has encontrado una sombra enorme! Ten cuidado con ella, parece un pez
-    muy grande y peligroso."
-  - "Si a\xFAn as\xED quieres pescarlo, \xA1lanza la ca\xF1a y ve a por \xE9l!"
-  - "La criatura gigante te arrastrar\xE1 por el mar y tendr\xE1s que esquivar las
-    rocas. "
-  - "Para esquivarlas, pulsa con el rat\xF3n el lado de la pantalla donde te quieras
-    desplazar, \xA1ve a donde no haya ninguna roca!"
+  - "\xA1Te has encontrado una sombra enorme!"
+  - "Despu\xE9s de lanzar la ca\xF1a, la criatura gigante te arrastrar\xE1 por el
+    mar y tendr\xE1s que esquivar rocas. "
+  - "Para esquivarlas, pulsa con el rat\xF3n el lado de la pantalla al que te quieres
+    desplazar."
   - "Si te golpea una roca, perder\xE1s un anzuelo. Si te quedas sin anzuelos, la
-    criatura se escapar\xE1 y adem\xE1s no podr\xE1s continuar pescando."
-  - "\xA1Intenta llegar al final!"
+    criatura se escapar\xE1 y no podr\xE1s continuar pescando."
   images:
-  - {fileID: 21300000, guid: 8a46a542e3f476b4d85cf64326625de5, type: 3}
-  - {fileID: 21300000, guid: 8a46a542e3f476b4d85cf64326625de5, type: 3}
-  - {fileID: 21300000, guid: f85bcdc878abcf249a3b16650bd0b0bd, type: 3}
-  - {fileID: 21300000, guid: f85bcdc878abcf249a3b16650bd0b0bd, type: 3}
-  - {fileID: 21300000, guid: f85bcdc878abcf249a3b16650bd0b0bd, type: 3}
-  - {fileID: 21300000, guid: f85bcdc878abcf249a3b16650bd0b0bd, type: 3}
+  - {fileID: 21300000, guid: d529504ef4143724694a47344f82ed81, type: 3}
+  - {fileID: 21300000, guid: e735da5286d74c44194140cfa79a12cc, type: 3}
+  - {fileID: 21300000, guid: e735da5286d74c44194140cfa79a12cc, type: 3}
+  - {fileID: 21300000, guid: e735da5286d74c44194140cfa79a12cc, type: 3}
   fondo: {fileID: 256698776}
   textSpeed: 0.01
   black: {fileID: 951651990}
@@ -2684,7 +2682,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1580103793}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2692,9 +2690,9 @@ RectTransform:
   m_Father: {fileID: 1174938167}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -200.00006, y: -80.00009}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 600, y: -50}
   m_SizeDelta: {x: 240, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1580103795
@@ -2766,7 +2764,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6, g: 0.4392157, b: 0.32156864, a: 1}
+  m_Color: {r: 0.2509804, g: 0.5254902, b: 0.57254905, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3027,7 +3025,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: "Este es el club de pesca. En \xE9l se encuentra el ranking con las puntuaciones
+    de cada pescador. \xA1Ve a por el primer puesto!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3054,12 +3053,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
-  m_fontSizeBase: 70
+  m_fontSize: 64
+  m_fontSizeBase: 64
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 64
   m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
