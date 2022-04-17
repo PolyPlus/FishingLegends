@@ -404,37 +404,42 @@ public class GridManager : MonoBehaviour
                     else if(blockType[x,y] == 0)
                     {
                         bool treasureFound = false;
-                        if (x - 1 > 0 && x + 1 < _rowsColumns)
+                        if (x - 1 >= 0 && blockType[x - 1, y] == 6 )
                         {
-                            if (blockType[x - 1, y] == 6 )
-                            {
+                          
                                 treasureFound = true;
                                 blockType[x - 1, y] = 2;
                                 Destroy(treasures[new Vector2Int(x - 1, y)]);
-                            }
-                            if  (!treasureFound && blockType[x + 1, y] == 6)
-                            {
+                            
+                            
+                                
+                        }
+
+                       else if ( x + 1 < _rowsColumns && blockType[x + 1, y] == 6)
+                        {
+                            
                                 treasureFound = true;
                                 blockType[x + 1, y] = 2;
                                 Destroy(treasures[new Vector2Int(x + 1, y)]);
-                            }
-                                
+                            
                         }
-                        if (!treasureFound && y - 1 > 0 && y + 1 < _rowsColumns)
+                       else  if ( y - 1 >= 0 && blockType[x , y - 1] == 6 )
                         {
-                            if (blockType[x , y - 1] == 6 )
-                            {
                                 treasureFound = true;
                                 blockType[x, y - 1] = 2;
                                 Destroy(treasures[new Vector2Int(x , y - 1)]);
-                            }
-                            if ( !treasureFound && blockType[x , y + 1] == 6)
-                            {
+                            
+                            
+                                
+                        }
+
+                       else  if ( y + 1 < _rowsColumns && blockType[x , y + 1] == 6)
+                        {
+                            
                                 treasureFound = true;
                                 blockType[x, y + 1] = 2;
                                 Destroy(treasures[new Vector2Int(x , y + 1)]);
-                            }
-                                
+                            
                         }
                         if (treasureFound)
                         {
@@ -725,7 +730,7 @@ public class GridManager : MonoBehaviour
                             }
                             if (validPosition && j - 1 > 0 && j + 1 < _rowsColumns)
                             {
-                                if (blockType[i , j - 1] == 6 || blockType[i , j - 1] == 6)
+                                if (blockType[i , j - 1] == 6 || blockType[i , j + 1] == 6)
                                 {
                                     validPosition = false;
                                 }
