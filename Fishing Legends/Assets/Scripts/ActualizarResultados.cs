@@ -69,6 +69,8 @@ public class ActualizarResultados : MonoBehaviour
 
     public void onClick()
     {
+        AudioManager.instance.PlaySound("ButtonSelected");
+
         //sr.gameObject.SetActive(false);
         mostrarPecesPanel.SetActive(false);
         mostrarResultados.SetActive(true);
@@ -78,6 +80,8 @@ public class ActualizarResultados : MonoBehaviour
 
     public void Salir()
     {
+        AudioManager.instance.PlaySound("ButtonSelected");
+
         mostrarResultados.SetActive(false);
         fishTransition.SetBool("reloadScene",true);
         //GameManager.GetInstance().SelectScene(StaticInfo.navigationScene);

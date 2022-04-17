@@ -628,8 +628,9 @@ public class GridManager : MonoBehaviour
 
     public void startRoute()
     {
-        
-         if(TransformCoordinateToId(indexPoints.ElementAt(indexPoints.Count-1).x,min.x,max.x) 
+        AudioManager.instance.PlaySound("ButtonSelected");
+
+        if (TransformCoordinateToId(indexPoints.ElementAt(indexPoints.Count-1).x,min.x,max.x) 
          ==  TransformCoordinateToId(indexPoints.ElementAt(0).x,min.x,max.x) && TransformCoordinateToId(indexPoints.ElementAt(indexPoints.Count-1).z,min.z,max.z) 
          ==  TransformCoordinateToId(indexPoints.ElementAt(0).z,min.z,max.z) && indexPoints.Count > 1) 
          {
@@ -659,6 +660,8 @@ public class GridManager : MonoBehaviour
 
     public void undoRoutePoint()
     {
+        AudioManager.instance.PlaySound("ButtonSelected");
+
         if (indexPoints.Count > 1)
         {
             indexPoints.RemoveLast();
@@ -679,6 +682,8 @@ public class GridManager : MonoBehaviour
 
     public void atras()
     {
+        AudioManager.instance.PlaySound("ButtonSelected");
+
         StaticInfo.finishRoute = true;
         transition.SetBool("reloadScene", true);
     }
@@ -794,7 +799,9 @@ public class GridManager : MonoBehaviour
     }
 
     public void continueRouteAfterTreasure()
-    {   
+    {
+        AudioManager.instance.PlaySound("ButtonSelected");
+
         treasurePanel.SetActive(false);
         stop = false;
     }
