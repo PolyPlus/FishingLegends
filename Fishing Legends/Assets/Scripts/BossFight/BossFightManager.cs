@@ -148,6 +148,7 @@ public class BossFightManager: MonoBehaviour
 
     public void StopBossFight()
     {
+        UpdateScore(Score);
         baitAnimator.Play("PullBack_Bait");
         playerAnimator.Play("Pull");       
         AudioManager.instance.PlaySound("ThrowingRod2");
@@ -192,7 +193,6 @@ public class BossFightManager: MonoBehaviour
         {
             stage++;           
             Score += _score * 10;
-            UpdateScore(Score);
             Debug.Log("Score: " + Score);
         }
         else
