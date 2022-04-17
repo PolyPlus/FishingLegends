@@ -1892,21 +1892,13 @@ MonoBehaviour:
     desplazar, \xA1ve a donde no haya ninguna roca!"
   - "Si te golpea una roca, perder\xE1s un anzuelo. Si te quedas sin anzuelos, la
     criatura se escapar\xE1 y adem\xE1s no podr\xE1s continuar pescando."
-  - "Si sobrevives a una tanda de rocas, te aparecer\xE1 un juego de ritmo, que funciona
-    como cuando pescas un pez."
-  - Hay que pulsar en la pantalla justo cuando el pez pase por el anzuelo.
-  - Si el pez aparece por la derecha, hay que pulsar en la mitad derecha de la pantalla,
-    y sino, en la izquierda.
-  - "Si consigues llegar al final, \xA1habr\xE1s conseguido a la criatura!"
+  - "\xA1Intenta llegar al final!"
   images:
   - {fileID: 21300000, guid: 8a46a542e3f476b4d85cf64326625de5, type: 3}
   - {fileID: 21300000, guid: 8a46a542e3f476b4d85cf64326625de5, type: 3}
   - {fileID: 21300000, guid: f85bcdc878abcf249a3b16650bd0b0bd, type: 3}
   - {fileID: 21300000, guid: f85bcdc878abcf249a3b16650bd0b0bd, type: 3}
   - {fileID: 21300000, guid: f85bcdc878abcf249a3b16650bd0b0bd, type: 3}
-  - {fileID: 21300000, guid: 6c3ac9ffa57869c419cbd99ed13a2002, type: 3}
-  - {fileID: 21300000, guid: 6c3ac9ffa57869c419cbd99ed13a2002, type: 3}
-  - {fileID: 21300000, guid: 6c3ac9ffa57869c419cbd99ed13a2002, type: 3}
   - {fileID: 21300000, guid: f85bcdc878abcf249a3b16650bd0b0bd, type: 3}
   fondo: {fileID: 256698776}
   textSpeed: 0.01
