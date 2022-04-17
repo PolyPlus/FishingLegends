@@ -111,10 +111,10 @@ public class PanelsBehaviour : MonoBehaviour
         sd.scores.Add(new Score("Pisco", 13180));
         sd.scores.Add(new Score("Onion", 8830));
         sd.scores.Add(new Score("xXFishrXx", 6070));
-        sd.scores.Add(new Score("Alfonsina", 3470));
+        sd.scores.Add(new Score("Coralina", 3470));
         sd.scores.Add(new Score("Antonio", 2990));
         sd.scores.Add(new Score("Sobre Ruedas", 1230));
-        sd.scores.Add(new Score("Pedro", 420));
+        sd.scores.Add(new Score("Pepe", 420));
 
         Debug.Log("Add Default");
 
