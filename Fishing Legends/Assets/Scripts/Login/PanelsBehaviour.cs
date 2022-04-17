@@ -188,8 +188,8 @@ public class PanelsBehaviour : MonoBehaviour
     public void OnClickNameSet()
     {
         AudioManager.instance.PlaySound("ButtonSelected");
-        if (usernameL.text != "")
-        {
+        //if (usernameL.text != "")
+        //{
             PlayerPrefs.SetString(StaticInfo.name, usernameL.text);
             if (comeFromConfig)
             {
@@ -208,12 +208,12 @@ public class PanelsBehaviour : MonoBehaviour
             {
                 this.OnClickStart();
             }
-        }
-        else
-        {
-            usernameL.placeholder.color = new Color(255,0,0,1);
-            usernameL.placeholder.GetComponent<Text>().text = "Introduce un nuevo nombre";
-        }
+        //}
+        //else
+        //{
+        //    usernameL.placeholder.color = new Color(255,0,0,1);
+        //    usernameL.placeholder.GetComponent<Text>().text = "Introduce un nuevo nombre";
+        //}
     }
 
     public void OnClickTutorial()
