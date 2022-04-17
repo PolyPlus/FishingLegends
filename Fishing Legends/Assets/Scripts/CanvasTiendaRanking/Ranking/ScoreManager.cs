@@ -33,6 +33,5 @@ public class ScoreManager : MonoBehaviour
     {
         var json = JsonUtility.ToJson(sd);
         PlayerPrefs.SetString("scores", json);
-
     }
 }

@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class ActualizarResultados : MonoBehaviour
 {
+    private ScoreData sd;
+
     public Text peces;
     public Text puntos;
     public Text monedas;
@@ -18,6 +21,11 @@ public class ActualizarResultados : MonoBehaviour
     //private bool pulsado = false;
     //private bool salir = false;
 
+    private void Start()
+    {
+        var json = PlayerPrefs.GetString("scores", "{}");
+        sd = JsonUtility.FromJson<ScoreData>(json);
+    }
 
     public void actualizarPuntuacion(FishData[] pecesTotales)
     {
@@ -38,8 +46,10 @@ public class ActualizarResultados : MonoBehaviour
         puntos.text = "" + puntuacion;
         StaticInfo.totalScore = puntuacion;
 
-        StaticInfo.totalScores.Add(puntuacion);
-        StaticInfo.addRanking = true;
+        sd.scores.Add(new Score(PlayerPrefs.GetString(StaticInfo.name), StaticInfo.totalScore));
+
+        var json = JsonUtility.ToJson(sd);
+        PlayerPrefs.SetString("scores", json);
     }
 
     public void mostrarPeces(FishData[] pecesTotales)

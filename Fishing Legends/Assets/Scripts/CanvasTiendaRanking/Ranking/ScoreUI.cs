@@ -10,18 +10,8 @@ public class ScoreUI : MonoBehaviour
     void Start()
     {
 
-        //scoreManager.AddScore(new Score("BanbAna", 50));
+        //scoreManager.AddScore(new Score("BanAna", 50));
         //scoreManager.AddScore(new Score("ManzAna", 120));
-        if (StaticInfo.addRanking == true)
-        {
-            for (int i=0; i<StaticInfo.totalScores.Count; ++i)
-            {
-                scoreManager.AddScore(new Score(PlayerPrefs.GetString(StaticInfo.name), StaticInfo.totalScores[i]));
-            }
-
-            StaticInfo.totalScores = new List<int>(); 
-            StaticInfo.addRanking = false;
-        }
 
         var scores = scoreManager.GetHighScores().ToArray();
         for (int i=0; i < scores.Length && i < 10; ++i)

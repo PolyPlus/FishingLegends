@@ -87,4 +87,17 @@ public class DialogOldManStory : MonoBehaviour, IPointerClickHandler
             OldMan.sprite = OldManHappy;
     }
 
+    public void SkipDialog()
+    {
+        if (PlayerPrefs.GetInt(StaticInfo.tutorialNavKey, 0) == 0)
+        {
+            StaticInfo.tutorialID = 1;
+            StartCoroutine(GameManager.GetInstance().Fade(black, true, 0.01f, StaticInfo.tutorialScene));
+        }
+        else
+        {
+            StartCoroutine(GameManager.GetInstance().Fade(black, true, 0.01f, StaticInfo.navigationScene));
+        }
+    }
+
 }

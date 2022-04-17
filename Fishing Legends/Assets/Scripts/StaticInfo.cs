@@ -14,11 +14,7 @@ public static class StaticInfo
 
     public static bool finishRoute = true;
 
-    public static bool addRanking = false;
-
     public static string name = "name";
-
-    public static List<int> totalScores=new List<int>();
 
     public static int tutorialID;
 

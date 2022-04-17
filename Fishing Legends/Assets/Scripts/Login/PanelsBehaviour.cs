@@ -100,6 +100,28 @@ public class PanelsBehaviour : MonoBehaviour
         }
     }
 
+    private void AddDefaultScores()
+    {
+        var json = PlayerPrefs.GetString("scores", "{}");
+        ScoreData sd = JsonUtility.FromJson<ScoreData>(json);
+
+        sd.scores.Add(new Score("Barracudo", 15000));
+        sd.scores.Add(new Score("Hislleza", 14310));        
+        sd.scores.Add(new Score("ManzAna", 13210));
+        sd.scores.Add(new Score("Pisco", 13180));
+        sd.scores.Add(new Score("Onion", 8830));
+        sd.scores.Add(new Score("xXFishrXx", 6070));
+        sd.scores.Add(new Score("Alfonsina", 3470));
+        sd.scores.Add(new Score("Antonio", 2990));
+        sd.scores.Add(new Score("Sobre Ruedas", 1230));
+        sd.scores.Add(new Score("Pedro", 420));
+
+        Debug.Log("Add Default");
+
+        var json2 = JsonUtility.ToJson(sd);
+        PlayerPrefs.SetString("scores", json2);
+    }
+
     public void OnClickStart()
     {
         AudioManager.instance.PlaySound("ButtonSelected");
@@ -118,6 +140,7 @@ public class PanelsBehaviour : MonoBehaviour
         }
         else
         {
+            AddDefaultScores();
             NameCanvas.gameObject.SetActive(true);
             LogInCanvas.gameObject.SetActive(false);
             goBackFromNameCanvas.gameObject.SetActive(false);

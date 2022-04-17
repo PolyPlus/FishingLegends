@@ -63,7 +63,7 @@ public class Dialog: MonoBehaviour, IPointerClickHandler
             endDialog();
         }
     }
-    void endDialog()
+    public void endDialog()
     {
         switch (StaticInfo.tutorialID)
         {
