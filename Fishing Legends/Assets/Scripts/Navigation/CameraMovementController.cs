@@ -110,8 +110,8 @@ public class CameraMovementController : MonoBehaviour
             if (Physics.Raycast(_ray, out _a) )
             {
             
-                if (!(transform.position.x > gridcol.bounds.min.x + 55 && transform.position.x < gridcol.bounds.max.x - 30 &&
-                      transform.position.z > gridcol.bounds.min.z + 60   && transform.position.z < gridcol.bounds.max.z - 60))
+                if (!(transform.position.x > gridcol.bounds.min.x + 49 && transform.position.x < gridcol.bounds.max.x - 23 &&
+                      transform.position.z > gridcol.bounds.min.z + 75   && transform.position.z < gridcol.bounds.max.z - 75))
                 {
 
                     transform.position = lastpos;
