@@ -32,12 +32,12 @@ public class CanvasProductos : MonoBehaviour {
         if (PlayerPrefs.GetInt(StaticInfo.maxAnzuelosKey, 3) == 7)
         {
             botonAnzuelo.interactable = false;
-            precioAnzuelo.GetComponentInParent<GameObject>().SetActive(false);
+            precioAnzuelo.transform.parent.gameObject.SetActive(false);
         }
         if (PlayerPrefs.GetInt(StaticInfo.nivelBarcoKey, 1) == 4)
         {
             botonBarco.interactable = false;
-            precioBarco.GetComponentInParent<GameObject>().SetActive(false);
+            precioBarco.transform.parent.gameObject.SetActive(false);
         }
     }
 
@@ -65,7 +65,7 @@ public class CanvasProductos : MonoBehaviour {
                 if (PlayerPrefs.GetInt(StaticInfo.nivelBarcoKey, 1) == 4)
                 {
                     botonBarco.interactable = false;
-                    precioBarco.GetComponentInParent<GameObject>().SetActive(false);
+                    precioBarco.transform.parent.gameObject.SetActive(false);
                 }
             }
             textoNivBarco.text = "Nivel barco: " + nivelBarco;
@@ -75,7 +75,7 @@ public class CanvasProductos : MonoBehaviour {
         else if (nivelBarco == 4)
         {
             botonBarco.interactable = false;
-            precioBarco.GetComponentInParent<GameObject>().SetActive(false);
+            precioBarco.transform.parent.gameObject.SetActive(false);
         }
     }
 
@@ -103,7 +103,7 @@ public class CanvasProductos : MonoBehaviour {
                 if (PlayerPrefs.GetInt(StaticInfo.maxAnzuelosKey, 3) == 7)
                 {
                     botonAnzuelo.interactable = false;
-                    precioAnzuelo.GetComponentInParent<GameObject>().SetActive(false);
+                    precioAnzuelo.transform.parent.gameObject.SetActive(false);
                 }
             }
             textoNumAnzuelos.text = "Nº anzuelos: " + numAnzuelos;          
@@ -113,7 +113,7 @@ public class CanvasProductos : MonoBehaviour {
         else if (numAnzuelos == 7)
         {
             botonAnzuelo.interactable = false;
-            precioAnzuelo.GetComponentInParent<GameObject>().SetActive(false);
+            precioAnzuelo.transform.parent.gameObject.SetActive(false);
         }
     }
 
