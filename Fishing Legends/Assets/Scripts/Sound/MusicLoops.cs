@@ -41,14 +41,23 @@ public class MusicLoops : MonoBehaviour
         source.loop = true;
         source.Play();
     }
-    private IEnumerator StartLoop(AudioClip introClip, AudioClip loopClip) {
-        source.clip = introClip;
-        source.loop = false;
-        source.Play();
-        yield return new WaitForSeconds(introClip.length);
+    //private IEnumerator StartLoop(AudioClip introClip, AudioClip loopClip) {
+    //    source.clip = introClip;
+    //    source.loop = false;
+    //    source.Play();
+    //    yield return new WaitForSeconds(introClip.length);
+    //    source.clip = loopClip;
+    //    source.loop = true;
+    //    source.Play();
+    //}
+    private void StartLoop(AudioClip introClip, AudioClip loopClip)
+    {
         source.clip = loopClip;
         source.loop = true;
-        source.Play();
+        source.PlayDelayed(introClip.length);
+        source.clip = introClip;
+        source.loop = false;
+        source.Play();       
     }
 
 }

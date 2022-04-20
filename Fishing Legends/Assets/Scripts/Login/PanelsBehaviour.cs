@@ -130,6 +130,7 @@ public class PanelsBehaviour : MonoBehaviour
         {
             if (PlayerPrefs.GetInt(StaticInfo.storyKey, 0) == 0)
             {
+                AddDefaultScores();
                 PlayerPrefs.SetInt(StaticInfo.storyKey, 1);
                 StartCoroutine(GameManager.GetInstance().Fade(black, true, 0.01f, StaticInfo.storyScene));
             }

@@ -153,7 +153,7 @@ public class RythmManager : MonoBehaviour
             AudioManager.instance.PlaySound("CorrectFishTap");
             return 2;
         }
-        else if (distance <= 22.0f)
+        else if (distance <= 24.0f)
         {
             Debug.Log("BIEN");
             textScript.showEvText(1);

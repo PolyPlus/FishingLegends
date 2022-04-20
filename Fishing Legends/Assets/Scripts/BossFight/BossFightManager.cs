@@ -42,9 +42,11 @@ public class BossFightManager: MonoBehaviour
     private PointerControlls controls;
     private FishData bossData;
     private bool waiting;
+    private bool paused;
 
     public int Score { get => score; set => score = value; }
     public bool Waiting { get => waiting; set => waiting = value; }
+    public bool Paused { get => paused; set => paused = value; }
 
     private void Awake()
     {       
@@ -101,32 +103,35 @@ public class BossFightManager: MonoBehaviour
     private void OnPointerPress()
     {
         Vector2 mousePosition = controls.Pointer.Position.ReadValue<Vector2>();
-
-        switch (state)
+        if (!Paused)
         {
-            case State.start:
-                if (!Waiting) StartBossFight();              
-                break;
-            case State.obstacle:
-                boatMovement.OnPointerPress(mousePosition);
-                break;
-            case State.rythm:
-                if (rythmGame.started)
-                {
-                    rythmGame.OnPointerPress(mousePosition);
-                }               
-                break;
-            case State.end:
-                if (exit)
-                {
-                    fishTransition.SetBool("reloadScene", true);
-                }
-                else
-                {
-                    StopBossFight();
-                }                
-                break;
+            switch (state)
+            {
+                case State.start:
+                    if (!Waiting) StartBossFight();
+                    break;
+                case State.obstacle:
+                    boatMovement.OnPointerPress(mousePosition);
+                    break;
+                case State.rythm:
+                    if (rythmGame.started)
+                    {
+                        rythmGame.OnPointerPress(mousePosition);
+                    }
+                    break;
+                case State.end:
+                    if (exit)
+                    {
+                        fishTransition.SetBool("reloadScene", true);
+                    }
+                    else
+                    {
+                        StopBossFight();
+                    }
+                    break;
+            }
         }
+        
         //Debug.Log("Pointer Press on" + mousePosition);
     }
 

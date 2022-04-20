@@ -19,6 +19,10 @@ public class ReturnMenu : MonoBehaviour
         {
             fishingManager.Paused = true;
         }
+        else if (bossManager != null)
+        {
+            bossManager.Paused = true;
+        }
         ReturnPanel.SetActive(true);
     }
 
@@ -28,6 +32,10 @@ public class ReturnMenu : MonoBehaviour
         if (fishingManager != null)
         {
             fishingManager.Paused = false;
+        }
+        else if (bossManager != null)
+        {
+            bossManager.Paused = false;
         }
         ReturnPanel.SetActive(false);
     }

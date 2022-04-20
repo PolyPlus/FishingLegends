@@ -29,7 +29,7 @@ public class RythmFish : MonoBehaviour
     {
         if (right)
         {
-            transform.Translate(new Vector2(-1, 0f) * Time.deltaTime * speed * Screen.width/1000);
+            transform.Translate(new Vector2(-1, 0f) * Time.deltaTime * speed * Screen.width/1200);
             if (transform.position.x < latIz.transform.position.x)  //Si se te escapa el pez y pasa ese margen
             {
                 rythmManager.stopRythmGame(true);
@@ -38,7 +38,7 @@ public class RythmFish : MonoBehaviour
         }
         else
         {
-            transform.Translate(new Vector2(-1, 0f) * Time.deltaTime * speed * Screen.width / 1000);
+            transform.Translate(new Vector2(-1, 0f) * Time.deltaTime * speed * Screen.width / 1200);
             if (transform.position.x > latDer.transform.position.x)  //Si se te escapa el pez y pasa ese margen
             {
                 rythmManager.stopRythmGame(true);
