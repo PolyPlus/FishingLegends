@@ -1,4 +1,13 @@
 # Fishing Legends
+- Álvaro González: Progamador principal
+
+- Ana Márquez: Modeladora 3D y programadora
+
+- Marta García: Artista 2D y programadora
+
+- Álvaro Ramírez: Diseñador de Juego y programador
+
+- Oihane Roca: Modeladora 3D y programadora
 ## Introducción
 Fishing Legends es un juego de pesca arcade rítmico en el que planificas tu ruta de navegación.
 
@@ -33,24 +42,14 @@ Hay una probabilidad de que aparezca una criatura marina en una casilla de agua.
 - Pesca rítmica: entre las secciones en las que hay que evitar obstáculos habrá que superar un juego de ritmo al igual que en las zonas de pesca, pero más complicado.
 
 Tras superar 3 pescas rítmicas se capturará a la criatura marina y se continuará la ruta. En caso de perder todos los anzuelos, se terminará la ruta.
-
-
-## Interfaz
-
-### Pantallas y bocetos
-La interfaz se divide en interfaz de juego y menús
-  - Interfaz de Juego
-    - Indicador de cebos y anzuelos : Indicadores para indicar al jugador dentro de la zona de juego del numero de cebos y anzuelos del que dispondrá antes de realizar la ruta.
-    - Barra de combustible o resistencia : Indicador en forma de barra , para indicar cuanto combustible nos queda para pintar la ruta, y asu vez que indicará cuanto trayecto
-      queda por recorrer.   
-  - Menús
-    - Tienda
-    - Inicio de sesión
-    - Opciones
         
-### Diagramas de flujo
 ## Arte
 ### Historia
+Una tarde tranquila de domingo en el pub, nuestro protagonista oye a unos marineros hablar sobre una leyenda que dice que una extraña criatura merodea por aquellas aguas. Se trata del temible Leviatán, al que únicamente una persona asegura haber visto un día entre la niebla, y entonces desplegó las velas y salió por patas.
+ 
+Motivado por la majestuosidad de esta criatura, el protagonista decide investigar sobre el paradero del Leviatán y cree haber dado con una pista. Siguiendo su instinto aventurero, decide hacerse con una humilde barca, rescatar su caña una vez olvidada en el trastero, y adentrarse en las sorprendentes aguas que le rodean.  
+En ellas se esforzará por encontrar a todas las criaturas que las habitan, conseguir recursos para mejorar su equipo, hacer frente a todos los peligros que allí se encuentren, y soñar con que quizá algún día, llegue a toparse con el legendario Leviatán. 
+
 ### Estética
 Fishing Legends utilizará una estética sencilla y amigable acorde con el tono del juego. Los modelos 3D se representarán a través de formas geométricas sencillas y colores planos, utilizando la técnica de cell shading para el sombreado. A la hora de realizar los modelos se tendrá en cuenta que el juego utiliza en mayor medida la perspectiva cenital, por lo que se deben poder distinguir desde arriba.
 El diseño de los peces no será realista, pero estarán inspirados en peces reales y tendrán variaciones de color. 
@@ -64,10 +63,10 @@ Cada categoría utilizará el mismo modelo debajo del agua, consistente de una s
 
 ### Música y Sonido
 Música
-- Música del Menú: música tranquila que transmita sensación de bienvenida
-- Música de selección de ruta: música de aventura marítima
-- Música de Pesca: música de ambiente con oleaje y gaviotas
-- Música de Juego Rítmico: Percusión sencilla con la que distinguir el ritmo con facilidad.
+- Menú: música tranquila para dar la bienvenida.
+- Planificación de ruta: música de aventura marítima.
+- Pesca: música de ambiente con oleaje y gaviotas que invite a relajarse con la pesca.
+- Criatura marina: música épica de enfrentamiento.
 
 Sonido
 Menú:
@@ -95,7 +94,6 @@ Pesca
 - Recoger el anzuelo sin pez
 - Recoger el anzuelo con pez
 - Recompensa al capturar un pez
-- Derrota al romper un anzuelo
 - Volver a la ruta
 
 
